@@ -1,26 +1,14 @@
-import Image from "next/image";
-
-{
-	/* <style>
-  .container {
-    width: 100%;
-
-  }
-</style> */
-}
-
-/*
-.box {
-  width: 200px;
-  height: 100px;
-  background: red;
-}
-*/
-
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			<div className="w-[200px] h-[100px] bg-red-600"></div>
+		<main className="w-full h-screen bg-red-200">
+			{/* 169px 1fr 156px */}
+			<div className="my-grid bg-blue-400">
+				<div className="flex justify-center items-center">
+					<img className="h-[20px]" src="logo.svg"></img>
+				</div>
+				<div className="bg-green-200">いいい</div>
+				<div>ううう</div>
+			</div>
 		</main>
 	);
 }
