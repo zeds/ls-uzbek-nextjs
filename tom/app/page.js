@@ -7,8 +7,16 @@ export default function Home() {
 				</div>
 				<div className="bg-blue-200 flex items-center justify-center px-4">
 					<input className="h-[40px] w-full max-w-[536px]"></input>
-					<button className="w-[64px] h-[40px] bg-gray-200"></button>
-					<button className="w-[40px] h-[40px] bg-gray-500 ml-[12px]"></button>
+
+					{/* scope */}
+					<button className="w-[64px] h-[40px] bg-gray-200">
+						<img src="scope.svg"></img>
+					</button>
+
+					{/* mic */}
+					<button className="w-[40px] h-[40px] bg-gray-500 ml-[12px]">
+						<img src="mic.svg"></img>
+					</button>
 				</div>
 				<ul className="flex items-center justify-center gap-2">
 					<li className="p-2">
