@@ -26,6 +26,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.my-grid {
+  display: grid;
+  grid-template-columns: 169px 1fr 156px;
+  height: 56px;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
