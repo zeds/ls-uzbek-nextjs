@@ -1,11 +1,10 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
 	return (
-		<main className="w-full h-screen bg-white">
-			<header className="my-grid">
-				{/* burger logo */}
-				<div className="flex items-center justify-center ml-4">
+		<main className="w-full h-screen bg-red-200">
+			<header className="flex  bg-green-400 items-center justify-between">
+				<div className="flex items-center justify-center w-[169px] bg-blue-500">
 					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg"></img>
 					</div>
@@ -13,9 +12,7 @@ export default function Home() {
 						<img src="logo.svg"></img>
 					</div>
 				</div>
-
-				{/* search */}
-				<div className="items-center justify-center px-1 ml-[80px] hidden sm:flex">
+				<div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
 					<input
 						placeholder="検索"
 						className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
@@ -38,18 +35,26 @@ export default function Home() {
 					</button>
 				</div>
 
-				{/* nav */}
-				<ul className="flex items-center justify-center gap-2">
-					<Link href="/company">
-						<li className="p-2">
-							<img className="h-[24px]" src="video.svg"></img>
-						</li>
-					</Link>
-					<li className="p-2">
-						<img className="h-[24px]" src="bell.svg"></img>
+				<ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
+					<li className="flex sm:hidden ml-[12px] w-[40px] h-[40px] p-2 shrink-0">
+						<img className="bg-green-200" src="scope.svg"></img>
 					</li>
-					<li className="py-[1px] px-[6px]">
-						<img className="h-[32px] rounded-full" src="tom.png"></img>
+					<li className="flex sm:hidden ml-[12px] w-[40px] h-[40px] p-2 shrink-0">
+						<img className="bg-green-500" src="mic.svg"></img>
+					</li>
+					{/* video */}
+					<li className="p-2 w-[40px] h-[40px] flex items-center">
+						<img className="bg-green-500" src="video.svg"></img>
+					</li>
+					{/*bell*/}
+					<li className="p-2 w-[40px] h-[40px] flex items-center">
+						<img className="bg-green-500" src="bell.svg"></img>
+					</li>
+					<li className="flex justify-center py-[1px] px-[6px] w-[60px] h-[34px]">
+						<img
+							className="w-[32px] h=[32px] rounded-full"
+							src="tom.png"
+						></img>
 					</li>
 				</ul>
 			</header>
