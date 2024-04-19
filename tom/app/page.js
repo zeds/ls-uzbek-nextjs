@@ -1,15 +1,20 @@
+import Link from "next/link";
+
 export default function Home() {
 	return (
 		<main className="w-full h-screen bg-white">
 			<header className="my-grid">
+				{/* burger logo */}
 				<div className="flex items-center justify-center ml-4">
-					<div className="w-[40px] h-[40px] flex items-center justify-center shrink-0">
-						<img className="h-[24px]" src="burger.svg"></img>
+					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
+						<img src="burger.svg"></img>
 					</div>
-					<div className="flex h-full py-[18px] pl-[14px] pr-[16px] shrink-0">
-						<img className="h-[20px]" src="logo.svg"></img>
+					<div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
+						<img src="logo.svg"></img>
 					</div>
 				</div>
+
+				{/* search */}
 				<div className="items-center justify-center px-1 ml-[80px] hidden sm:flex">
 					<input
 						placeholder="検索"
@@ -32,10 +37,14 @@ export default function Home() {
 						></img>
 					</button>
 				</div>
+
+				{/* nav */}
 				<ul className="flex items-center justify-center gap-2">
-					<li className="p-2">
-						<img className="h-[24px]" src="video.svg"></img>
-					</li>
+					<Link href="/company">
+						<li className="p-2">
+							<img className="h-[24px]" src="video.svg"></img>
+						</li>
+					</Link>
 					<li className="p-2">
 						<img className="h-[24px]" src="bell.svg"></img>
 					</li>
