@@ -1,13 +1,14 @@
 export default function Home() {
   return (
-    <main className='w-full h-screen bg-red-200'>
+    <main className='w-full h-screen'>
       <header className='my-grid'>
         <div className='flex items-center justify-center'>
+          <img className='h-[20px] mr-5' src='burger.svg'></img>
           <img className='h-[20px]' src='logo.svg'></img>
         </div>
         <div className=' flex items-center justify-center'>
-          <input className='h-[40px] w-[80%] outline-none rounded-s-lg'></input>
-          <button className="bg-slate-200 p-2"><img className=""></img>Search</button>
+          <input className='h-[40px] w-[80%] outline-none rounded-s-3xl'></input>
+          <button className="bg-neutral-200 p-2 rounded-e-3xl"><img className="pl-2 pr-2" src="search.svg"></img></button>
         </div>
         <ul className='flex items-center justify-center'>
           <li className='p-2'>
