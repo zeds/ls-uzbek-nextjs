@@ -25,6 +25,7 @@ export default function Home() {
         </ul>
         <div></div>
       </header>
+      {/* next */}
     </main>
   )
 }
