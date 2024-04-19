@@ -31,6 +31,14 @@ body {
   grid-template-columns: 169px 1fr 156px;
   height: 56px;
 }
+.input-br{
+  border: 1px solid rgb(197, 197, 197);
+  border-right: none;
+
+}
+.input-br img{
+  padding: 2px 5px;
+}
 
 @layer utilities {
   .text-balance {
