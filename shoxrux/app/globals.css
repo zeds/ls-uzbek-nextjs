@@ -31,6 +31,15 @@ body {
   grid-template-columns: 169px 1fr 156px;
   height: 56px;
 }
+.contents-grid{
+  display: grid;
+  grid-template-columns: 0.6fr 3fr;
+}
+.article-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px auto;  
+}
 .input-br{
   border: 1px solid rgb(197, 197, 197);
   border-right: none;
@@ -39,7 +48,21 @@ body {
 .input-br img{
   padding: 2px 5px;
 }
-
+.search-btn {
+  background: #F8F8F8;
+  border: 1px solid #D4D4D4;
+}
+.search-btn:hover{
+  background: #F0F0F0;
+}
+.category-list:hover{
+background-color: #E6E6E6;
+border-radius: 10px;
+}
+.imgInfo{
+object-fit: cover;
+border-radius: 10px;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
