@@ -6,10 +6,10 @@ export default function Home() {
 			<header className="flex  bg-green-400 items-center justify-between">
 				<div className="flex items-center justify-center w-[169px] bg-blue-500">
 					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
-						<img src="burger.svg"></img>
+						<img src="burger.svg" alt=""></img>
 					</div>
 					<div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
-						<img src="logo.svg"></img>
+						<img src="logo.svg" alt=""></img>
 					</div>
 				</div>
 				<div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
@@ -23,6 +23,7 @@ export default function Home() {
 						<img
 							className="w-[24px] absolute right-4 bottom-1.5"
 							src="scope.svg"
+							alt=""
 						></img>
 					</button>
 
@@ -31,29 +32,31 @@ export default function Home() {
 						<img
 							className="flex shrink-0 rounded-full w-[24px]"
 							src="mic.svg"
+							alt=""
 						></img>
 					</button>
 				</div>
 
 				<ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
 					<li className="flex sm:hidden ml-[12px] w-[40px] h-[40px] p-2 shrink-0">
-						<img className="bg-green-200" src="scope.svg"></img>
+						<img className="bg-green-200" src="scope.svg" alt=""></img>
 					</li>
 					<li className="flex sm:hidden ml-[12px] w-[40px] h-[40px] p-2 shrink-0">
-						<img className="bg-green-500" src="mic.svg"></img>
+						<img className="bg-green-500" src="mic.svg" alt=""></img>
 					</li>
 					{/* video */}
-					<li className="p-2 w-[40px] h-[40px] flex items-center">
-						<img className="bg-green-500" src="video.svg"></img>
+					<li className="p-2 w-[40px] h-[40px] flex items-center shrink-0">
+						<img className="bg-green-500" src="video.svg" alt=""></img>
 					</li>
 					{/*bell*/}
-					<li className="p-2 w-[40px] h-[40px] flex items-center">
-						<img className="bg-green-500" src="bell.svg"></img>
+					<li className="p-2 w-[40px] h-[40px] flex items-center shrink-0">
+						<img className="bg-green-500" src="bell.svg" alt=""></img>
 					</li>
 					<li className="flex justify-center py-[1px] px-[6px] w-[60px] h-[34px]">
 						<img
 							className="w-[32px] h=[32px] rounded-full"
 							src="tom.png"
+							alt=""
 						></img>
 					</li>
 				</ul>
