@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 
-.my-grid {
+/* .my-grid {
   display: grid;
   grid-template-columns: 169px 1fr 156px;
   height: 56px;
-}
+} */
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -37,4 +37,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
