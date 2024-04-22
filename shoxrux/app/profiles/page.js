@@ -1,14 +1,58 @@
-import React from "react";
+'use client'
+import { useCallback, useEffect, useState } from 'react'
+import { createClient } from '@/utils/supabase/client'
 
 const page = () => {
-  return (
-    <div className="flex justify-around items-center mt-20">
-      <div>
-        <h1 className="text-center font-medium">プロフィール</h1> <img id='img' className="w-[620px] rounded-2xl object-cover" src="fff.jpg"></img>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full pl-[50px] pr-[50px] mt-5">btn</button>
-      </div>
-    </div>
-  );
-};
+  const supabase = createClient()
+  const [dataSource, setDataSource] = useState([])
 
-export default page;
+  const getProfile = useCallback(async () => {
+    try {
+      //   setLoading(true)
+
+      const { data, error, status } = await supabase
+        .from('profiles2')
+        .select('*')
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        console.log('data = ', data)
+        setDataSource(data)
+      }
+    } catch (error) {
+      alert('Error loading user data!')
+    } finally {
+      //   setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  return (
+    <>
+      <div>プロフィール</div>
+      <div className='bg-red-200'>
+        {dataSource.map(item => (
+          <div>{item.username}</div>
+        ))}
+      </div>
+      <div className='bg-green-200'>
+        {dataSource.map(item => (
+          <div>{item.address}</div>
+        ))}
+      </div>
+      <div className='bg-yellow-200'>
+        {dataSource.map(item => (
+          <div>{item.phone}</div>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default page
