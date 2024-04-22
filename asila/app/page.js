@@ -1,36 +1,58 @@
+import Link from "next/link";
+
 export default function Home() {
-  return (
-    <main className="w-full h-screen bg-red-200">
-      <header className="my-grid bg-green-400">
-        <div className="flex items-center justify-center">
-          <img className="h-[20px]  " src="burger.svg"></img>
-          <img className="h-[20px] " src="logo.svg"></img>
-        </div>
-        <div className="bg-blue-200 flex items-center justify-center px-4">
-          <input className="h-[40px] w-full max-w-[536px]"></input>
+	return (
+		<main className="w-full h-screen bg-white">
+			<header className="my-grid">
+				{/* burger logo */}
+				<div className="flex items-center justify-center ml-4">
+					<div className=" w-10 h-10 p-2 shrink-0">
+						<img src="burger.svg"></img>
+					</div>
+					<div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
+						<img src="logo.svg"></img>
+					</div>
+				</div>
 
-          {/* scope */}
-          <button className="w-[64px] h-[40px] bg-gray-200">
-            <img src="search.svg"></img>
-          </button>
+				{/* search */}
+				<div className="items-center justify-center px-1 ml-[80px] hidden sm:flex">
+					<input
+						placeholder="検索"
+						className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
+					></input>
 
-          {/* mic */}
-          <button className="w-[40px] h-[40px] bg-gray-500 ml-[12px]">
-            <img src="mic.svg"></img>
-          </button>
-        </div>
-        <ul className="flex items-center justify-center gap-2">
-          <li className="p-2">
-            <img className="h-[24px]" src="video.svg"></img>
-          </li>
-          <li className="p-2">
-            <img className="h-[24px]" src="bell.svg"></img>
-          </li>
-          <li className="py-[1px] px-[6px]">
-            <img className="h-[32px] rounded-full" src="tom.jpeg"></img>
-          </li>
-        </ul>
-      </header>
-    </main>
-  );
+					{/* scope */}
+					<button className="shrink-0 w-[64px] h-[40px] bg-lightgray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+						<img
+							className="w-[24px] absolute right-4 bottom-1.5"
+							src="scope.svg"
+						></img>
+					</button>
+
+					{/* mic */}
+					<button className="ml-[12px] w-[40px] h-[40px] rounded-full bg-lightgray-300 flex items-center justify-center aspect-square">
+						<img
+							className="flex shrink-0 rounded-full w-[24px]"
+							src="mic.svg"
+						></img>
+					</button>
+				</div>
+
+				{/* nav */}
+				<ul className="flex items-center justify-center gap-2">
+					<Link href="/company">
+						<li className="p-2">
+							<img className="h-[24px]" src="video.svg"></img>
+						</li>
+					</Link>
+					<li className="p-2">
+						<img className="h-[24px]" src="bell.svg"></img>
+					</li>
+					<li className="py-[1px] px-[6px]">
+						<img className="h-[32px] rounded-full" src="asila.jpg"></img>
+					</li>
+				</ul>
+			</header>
+		</main>
+	);
 }
