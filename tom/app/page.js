@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -61,13 +62,15 @@ export default function Home() {
             <img className="bg-green-500" src="bell.svg" alt=""></img>
           </li>
 					{/* Mr Tom */}
-          <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
-            <img
-              className="w-[32px] h-[32px] rounded-full"
-              src="tom.png"
-              alt=""
-            ></img>
-          </li>
+          <Link href={"/profiles"}>
+            <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+              <img
+                className="w-[32px] h-[32px] rounded-full"
+                src="tom.png"
+                alt=""
+              ></img>
+            </li>
+          </Link>
         </ul>
       
       </header>
