@@ -11,7 +11,7 @@ const page = () => {
       //   setLoading(true)
 
       const { data, error, status } = await supabase
-        .from('profiles2')
+        .from('profiles')
         .select('*')
 
       if (error && status !== 406) {
@@ -36,17 +36,17 @@ const page = () => {
   return (
     <>
       <div>プロフィール</div>
-      <div className='bg-red-200'>
+      <div>
         {dataSource.map(item => (
           <div>{item.username}</div>
         ))}
       </div>
-      <div className='bg-green-200'>
+      <div>
         {dataSource.map(item => (
           <div>{item.address}</div>
         ))}
       </div>
-      <div className='bg-yellow-200'>
+      <div>
         {dataSource.map(item => (
           <div>{item.phone}</div>
         ))}
