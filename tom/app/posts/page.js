@@ -14,6 +14,7 @@ const page = () => {
         const { data, error, status } = await supabase
           .from('posts')
           .select("*")
+          .order("created_at", { ascending: false });
   
         if (error && status !== 406) {
           throw error

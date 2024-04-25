@@ -6,6 +6,12 @@ const page = () => {
    const supabase = createClient()
    const [dataSource, setDataSource] = useState([]);
 
+   // Listen to inserts
+supabase
+.channel('todos')
+.on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'todos' }, handleInserts)
+.subscribe()
+
    const getProfile = useCallback(async () => {
       try {
       //   setLoading(true)
@@ -13,6 +19,7 @@ const page = () => {
         const { data, error, status } = await supabase
           .from('profiles')
           .select("*")
+          .order("id", { ascending: false });
   
         if (error && status !== 406) {
           throw error
@@ -42,6 +49,27 @@ const page = () => {
       setDataSource(newArr)
    };
 
+  const clickUpdate = async (index) => {
+    // alert(JSON.stringify(dataSource[index]))
+
+    // usernameを更新
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({
+        username: dataSource[index].username
+      })
+      .eq("id", dataSource[index].id);// 'cf3466fb-1af1-48ec-9868-73437564da11'
+// update profiles set username = 'とむかも' where id = 'cf3466fb-1af1-48ec-9868-73437564da11'
+
+      // alert(updateError)  // nullはエラーがない意味
+      if (updateError === null ){
+        alert("成功！")
+      }else{
+        alert("失敗！：" + JSON.stringify(updateError))
+      }
+    
+  }
+
   return (
    <>
     <div>プロフィール</div>
@@ -51,15 +79,15 @@ const page = () => {
           <div>
             <div>Name</div>
             <input
-              className='p-1'
+              className='p-1 bg-red-200 w-full'
               type="text"
-              name="name"
+              name="username"
               onChange={(e) => onChangeHandler(e.target.value,index)}
               value={item.username}
             />
           </div>
           <div className='justify-center flex absolute bottom-1 start-1/3'>
-            <button className='bg-blue-400 text-white px-3 py-1 rounded-md'>更新</button>
+            <button onClick={() => clickUpdate(index)} className='bg-blue-400 text-white px-3 py-1 rounded-md'>更新</button>
           </div>
         </div>
        ))}
