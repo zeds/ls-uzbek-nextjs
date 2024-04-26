@@ -36,7 +36,10 @@ const Page = () => {
   return (
     <div>
       {profiles.map((item, index) =>(
-        <div key={index}>{item.name}</div>
+        <div key={index}>
+            name:{item.name},
+            age:{item.age}
+            </div>
         
       ))}
 /*
