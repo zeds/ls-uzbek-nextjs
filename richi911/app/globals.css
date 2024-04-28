@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.my-grid {
+  display: grid;
+  grid-template-columns: 169px 1fr 156px;
+  height: 56px;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
