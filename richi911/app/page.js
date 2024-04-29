@@ -57,7 +57,7 @@ export default function Home() {
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="notifications.svg" alt=""></img>
           </li>
-          {/* Mr Tom */}
+          {/* Shakhriyor */}
           <Link href={"/profiles"}>
             <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
               <img
