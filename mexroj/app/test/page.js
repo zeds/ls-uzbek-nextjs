@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 
 const Page = () => {
-  // nameはboxの中にあるnameを表示
-  // setNameで、boxの中にあるnameを変更する。
   const [name, setName] = useState("tom");
-  // const [fruits, setFruits] = useState(["banana", "melon", "apple", "peach"]);
+  const [age, setAge] = useState(30);
 
   const [profiles, setProfiles] = useState([
     { name: "tom", age: 18 },
@@ -16,57 +14,74 @@ const Page = () => {
     { name: "asila", age: 22 },
   ]);
 
-  const clickAdd = (index) => {
-    alert("okoko");
+  const clickAdd = () => {
+    setProfiles([...profiles, { name, age }]);
   };
-
-  // ボタンが押されたら、年齢を50にする。
 
   const clickEdit = (index) => {
     let newArr = [...profiles];
-    newArr[index].age = 50;
-    setProfiles(newArr); // まるごと交換
+    setAge(newArr[index].age);
+    setName(newArr[index].name);
+    newArr.splice(index, 1);
+    setProfiles(newArr);
+    // newArr[index].age = 50;
+    // setProfiles(newArr);
   };
-
-  //  ボタンが押されたら、一つのプロフィールが消えます
-
   const clickDelete = (index) => {
-    let delArr = [...profiles];
-    delArr.splice(index, 1);
-    setProfiles(delArr); // まるごと交換
+    let delteValue = [...profiles];
+    delteValue.splice(index, 1);
+    setProfiles(delteValue);
   };
 
   return (
-    <div className="items-center justify-center flex">
-      <div className="p-3 w-[500px] justify-center bg-[skyblue] ">
-        <div className="border-[3px] items-center justify-center flex">
-          私の名前は{name}です
+    <div className="p-3">
+      <div className="w-[300px] bg-pink-300  p-3 gap-3">
+        <div className="flex gap-3 mb-2 ">
+          <div>名前:</div>
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            className="w-[200px] bg-white right-[10px]"
+          ></input>
+        </div>
+        <div className="flex gap-3 ">
+          <div>年齢:</div>
+          <input
+            value={age}
+            onChange={(event) => setAge(event.target.value)}
+            className="w-[200px] bg-white right-[10px]"
+          ></input>
+        </div>
+      </div>
+      <div className="flex my-4">
+        <div className="">
+          私の名前は{name}です,私は{age}齢です。よろしくお願いします。
+        </div>
+        <button
+          onClick={() => clickAdd()}
+          className="bg-[#00FF00] rounded-md px-2 py-1 hover:opacity-70"
+        >
+          追加
+        </button>
+      </div>
+      {profiles.map((item, index) => (
+        <div key={index} className="flex m-3 items-center bg-gray-400">
+          <div className="w-[120px] ">名前：{item.name}</div>
+          <div className="w-[80px]">年齢：{item.age}</div>
           <button
-            onClick={() => clickAdd()}
-            className="bg-[#00FF00] rounded-md px-2 py-1"
+            onClick={() => clickEdit(index)}
+            className="bg-blue-400 rounded-md px-2 py-1 mr-2 hover:opacity-70 "
           >
-            追加
+            変更
+          </button>
+          <button
+            onClick={() => clickDelete(index)}
+            className="bg-[#FF0000] text-white rounded-md px-2 py-1 hover:opacity-70 "
+          >
+            削除
           </button>
         </div>
-        {profiles.map((item, index) => (
-          <div key={index} className="flex m-3 items-center justify-around">
-            <div className="w-[120px]">名前：{item.name}</div>
-            <div className="w-[80px]">年齢：{item.age}</div>
-            <button
-              onClick={() => clickEdit(index)}
-              className="bg-[#00FF00] rounded-md px-2 py-1"
-            >
-              50齢にする
-            </button>
-            <button
-              onClick={() => clickDelete(index)}
-              className="bg-[#00FF00] rounded-md px-2 py-1"
-            >
-              削除
-            </button>
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 };

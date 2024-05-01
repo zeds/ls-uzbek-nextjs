@@ -97,7 +97,6 @@ const Page = () => {
   return (
     <>
       <div>プロフィール</div>
-      {/* {JSON.stringify(dataSource)} */}
       <div className="flex bg-gray-300 gap-1 flex-wrap p-2">
         {dataSource.map((item, index) => (
           <div

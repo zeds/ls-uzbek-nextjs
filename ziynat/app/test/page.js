@@ -45,11 +45,11 @@ const Page = () => {
     <div className="p-3">
       <div>私の名前は{name}です</div>
 
-      <div className="w-[320px] h-[150px] bg-gray-400 p-2 rounded-md">
+      <div className="w-[350px] h-[150px] bg-pink-300 p-2">
         <div className="flex items-center">
           名前：
           <input
-            className="p-1 rounded-md"
+            className="p-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
@@ -57,7 +57,7 @@ const Page = () => {
         <div className="flex items-center mt-2">
           年齢：
           <input
-            className="p-1 rounded-md"
+            className="p-1"
             value={age}
             onChange={(e) => setAge(e.target.value)}
           ></input>
@@ -65,7 +65,7 @@ const Page = () => {
         <div className="flex w-full h-[50px] justify-center items-center">
           <button
             onClick={() => clickAdd()}
-            className="bg-[#00FF00] rounded-md px-10 py-2 mt-5 rounded-md px-2 py-1 hover:opacity-70"
+            className="bg-[#00FF00] rounded-md px-10 py-2 mt-5"
           >
             {isEdit ? "更新" : "追加"}
           </button>
@@ -78,7 +78,7 @@ const Page = () => {
           <div className="w-[80px]">年齢：{item.age}</div>
           <button
             onClick={() => clickEdit(index)}
-            className="bg-[#00FF00] rounded-md px-2 py-1 mr-2 text-black rounded-md px-2 py-1 hover:opacity-70"
+            className="bg-[#00FF00] rounded-md px-2 py-1 mr-2"
           >
             変更
           </button>
