@@ -29,6 +29,7 @@ const Page = () => {
   //   setProfiles(newArr);
   //   setAge(newArr)
   // };
+  // news
   const clickEdit = (index) => {
     isEditnig = false;
     // editing(true);
