@@ -101,7 +101,7 @@ const Page = () => {
 				{dataSource.map((item, index) => (
 					<div
 						key={index}
-						className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+						className="w-[200px] h-[250px] bg-blue-300 relative p-2"
 					>
 						<div>
 							<div>Name</div>
