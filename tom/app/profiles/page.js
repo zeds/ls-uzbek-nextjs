@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
 
 const Page = () => {
 	const [dataSource, setDataSource] = useState([]);
@@ -103,6 +104,15 @@ const Page = () => {
 						key={index}
 						className="w-[200px] h-[300px] bg-blue-300 relative p-2"
 					>
+						<div className="w-full justify-center flex">
+							{item.avatar_url ? (
+								<img
+									className="rounded-full w-[100px]"
+									src={item.avatar_url}
+									alt="hoge"
+								/>
+							) : null}
+						</div>
 						<div>
 							<div>Name</div>
 							<input
