@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="w-full h-screen bg-red-200">
       <header className="flex  bg-green-400 items-center justify-between">
-        
+
         {/* logo */}
         <div className="flex items-center justify-center w-[169px] bg-blue-500">
           <div className="bg-red-200 w-10 h-10 p-2 shrink-0">
@@ -14,14 +14,14 @@ export default function Home() {
             <img src="logo.svg" alt=""></img>
           </div>
         </div>
-        
+
         <div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
           {/* search */}
           <input
             placeholder="検索"
             className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
           ></input>
-          
+
           {/* scope */}
           <button
             className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
@@ -31,7 +31,7 @@ export default function Home() {
               alt=""
             ></img>
           </button>
-          
+
           {/* mic */}
           <button
             className="ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
@@ -42,13 +42,13 @@ export default function Home() {
             ></img>
           </button>
         </div>
-        
+
         <ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
-					{/* search */}
+          {/* search */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="bg-green-200" src="scope.svg" alt=""></img>
           </li>
-					{/* mic */}
+          {/* mic */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="mic.svg" alt=""></img>
           </li>
@@ -60,7 +60,7 @@ export default function Home() {
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="bell.svg" alt=""></img>
           </li>
-					{/* Mr Tom */}
+          {/* Mr Tom */}
           <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
             <img
               className="w-[32px] h-[32px] rounded-full"
@@ -69,7 +69,7 @@ export default function Home() {
             ></img>
           </li>
         </ul>
-      
+
       </header>
     </main>
   );
