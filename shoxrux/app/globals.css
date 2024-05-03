@@ -2,4 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
- 
+.btn{
+    border: 1px solid black;
+    padding: 2px 12px;
+    border-radius: 3px;
+}
+.btn:hover{
+    background-color: rgba(0, 0,0,0.1);
+}
+.inputName{
+    border: 1px solid rgb(45, 179, 197);
+    outline: none;
+}
+.bg-fon{
+    background: #a5fcff;
+}
