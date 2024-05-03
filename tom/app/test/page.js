@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from "react";
 
 const Page = () => {
-	const [name, setName] = useState("tom");
-	const [age, setAge] = useState(34);
+	const [name, setName] = useState("hogehoge");
+	const [age, setAge] = useState(99);
+
 	const [isEdit, setIsEdit] = useState(false); // 追加
+
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const [profiles, setProfiles] = useState([
@@ -25,6 +27,7 @@ const Page = () => {
 			newArr[currentIndex].age = age;
 			setProfiles(newArr);
 		} else {
+			// 追加
 			setProfiles([...profiles, { name: name, age: age }]);
 		}
 		setIsEdit(false);
@@ -33,6 +36,7 @@ const Page = () => {
 	const clickEdit = (index) => {
 		setName(profiles[index].name);
 		setAge(profiles[index].age);
+
 		setIsEdit(true);
 		setCurrentIndex(index);
 	};
