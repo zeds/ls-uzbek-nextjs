@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const Page = () => {
   const [name, setName] = useState("tom");
+  const [age, setAge] = useState(30);
 
   const [profiles, setProfiles] = useState([
     { name: "tom", age: 18 },
@@ -14,7 +15,7 @@ const Page = () => {
   ]);
 
   const clickAdd = () => {
-    setProfiles([...profiles, { name: "mike", age: 50 }]);
+    setProfiles([...profiles, { name: name, age: age }]);
   };
 
   const clickEdit = (index) => {
@@ -31,8 +32,28 @@ const Page = () => {
 
   return (
     <div className="p-3">
-      <div>{JSON.stringify(profiles[3])}</div>
-      <div>私の名前は{name}です</div>
+      <div>
+        私の名前は{name}で、年齢は{age}です。
+      </div>
+      <dir className="bg-red-200 p-2 w-[350px] rounded-md mb-2">
+        <dir className="flex gap-3">
+          <div className="mr-1">名前:</div>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-[200px]"
+          ></input>
+        </dir>
+        <dir className="flex gap-3">
+          <div className="mr-1">年齢:</div>
+          <input
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            className="w-[200px]"
+          ></input>
+        </dir>
+      </dir>
+
       <button
         onClick={() => clickAdd()}
         className="bg-[#00FF00] rounded-md px-2 py-1"
@@ -51,7 +72,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => clickDelete(index)}
-            className="bg-[#FF0000] text-white rounded-md px-2 py-1 hover:opacity-70"
+            className="bg-[#FF0000] text-white rounded-md px-2 py-1"
           >
             削除
           </button>
