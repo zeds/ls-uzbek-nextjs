@@ -67,6 +67,7 @@ const Page = () => {
 
 	useEffect(() => {
 		getProfile();
+		
 	}, []);
 
 	const onChangeHandler = (name, index) => {

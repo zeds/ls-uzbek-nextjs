@@ -16,10 +16,10 @@ const page = () => {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
 
-  useEffect(()=>{
-    getProfile();
-    console.log("profileId=",profileId);
-  },[]);
+    useEffect(() => {
+        getProfile();
+        console.log("profileId=", profileId);
+    }, []);
 
     const getProfile = useCallback(async () => {
         try {
@@ -47,15 +47,24 @@ const page = () => {
 
     useEffect(() => {
         getProfile();
+        
 
     }, []);
 
-
+let indexId = dataSource.index;
+console.log(indexId);
     return (
         <div className='w-full flex justify-center'>
             <div className='w-[600px] h-screen bg-red-300 flex justify-center'>
                 <div className='url_icon'>
+                    <div className="w-[80%]">
+                        {dataSource.map((item, index) => (
+                            <div className="w-full justify-center flex">
+                               <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
+                            </div>
+                        ))}
 
+                    </div>
                 </div>
             </div>
         </div>
