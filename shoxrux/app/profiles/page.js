@@ -67,7 +67,6 @@ const Page = () => {
 
 	useEffect(() => {
 		getProfile();
-		
 	}, []);
 
 	const onChangeHandler = (name, index) => {
@@ -102,11 +101,9 @@ const Page = () => {
 			<div>プロフィール</div>
 			<div className="flex bg-gray-300 gap-1 flex-wrap p-2">
 				{dataSource.map((item, index) => (
-		
 					<Link
 						key={index}
 						href={`/profiles/${item.id}`}
-
 						className="w-[200px] h-[300px] bg-blue-300 relative p-2"
 					>
 						<div className="w-full justify-center flex">
