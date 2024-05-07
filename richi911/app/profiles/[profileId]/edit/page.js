@@ -72,28 +72,32 @@ const ProfileEdit = () => {
   return (
     <div className="w-full h-screen bg-blue-300 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-300">
-        <h1>編集画面</h1>
+      <div className="w-full max-w-xl bg-yellow-700">
+        <h1 className="text-black font-semibold p-2">編集画面</h1>
         {/* アバター */}
         <div className="w-full flex justify-center items-center mt-5 flex-col">
-          <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
-          <label>username</label>
+          <img
+            className="w-[80px] rounded-full"
+            src={dataSource.avatar_url}
+            alt=""
+          />
+          <label className="font-semibold">Username:</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           ></input>
-          <label>email</label>
+          <label className="font-semibold">Email:</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <button
             onClick={clickSave}
-            className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+            className="mt-5 p-2 bg-yellow-950 text-white rounded-md"
           >
             保存
           </button>

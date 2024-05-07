@@ -48,18 +48,27 @@ const Profile = () => {
   return (
     <div className="w-full h-screen bg-blue-300 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-300">
-        <Link href={`/profiles`} className="underline">
+      <div className="w-full max-w-xl bg-yellow-700">
+        <Link
+          href={`/profiles`}
+          className="m-2 p-2 bg-yellow-950 rounded-md text-white"
+        >
           プロファイル選べ
         </Link>
         {/* アバター */}
         <div className="w-full flex justify-center items-center mt-5 flex-col">
-          <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
-          <label>username: {dataSource.username}</label>
-          <label>email: {dataSource.email}</label>
+          <img
+            className="w-[80px] rounded-full mb-2"
+            src={dataSource.avatar_url}
+            alt=""
+          />
+          <label className="font-semibold">
+            Username: {dataSource.username}
+          </label>
+          <label className="font-semibold">Email: {dataSource.email}</label>
           <button
             onClick={clickEdit}
-            className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+            className="mt-5 p-2 bg-yellow-950 text-white rounded-md"
           >
             プロフィールを編集
           </button>
