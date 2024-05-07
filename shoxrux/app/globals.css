@@ -20,16 +20,34 @@
 .bg-fon {
     background: #a5fcff;
 }
-
+.intoduce-text{
+    font-size: 16px;
+}
 .home-icon {
     color: #3b82f6;
     margin-right: 20px;
 }
-.btn-container{
+.emailIcon{
+    margin-right: 5px;
+}
+
+.emailIcon,
+.occupationIcon,
+.locationIcon,
+.userIcon{
+    color: black;
+}
+.btn-container {
     display: flex;
     justify-content: end;
 }
+
 .nameIcon,
-.emailText{
-    overflow: visible;
+.emailText {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+}
+
+.userImg {
+    object-fit: cover;
 }

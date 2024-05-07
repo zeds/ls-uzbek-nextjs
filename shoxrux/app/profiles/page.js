@@ -104,7 +104,7 @@ const Page = () => {
 					<Link
 						key={index}
 						href={`/profiles/${item.id}`}
-						className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+						className="w-[200px] h-[250px]  bg-blue-300 relative p-3"
 					>
 						<div className="w-full justify-center flex">
 							{item.avatar_url ? (
