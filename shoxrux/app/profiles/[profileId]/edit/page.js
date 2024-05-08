@@ -12,6 +12,9 @@ const ProfileEdit = () => {
 
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
+	const [occupation, setOccupation] = useState("");
+	const [phone, setPhone] = useState("");
+	const [address, setAddress] = useState("");
 
 	useEffect(() => {
 		getProfile();
@@ -36,7 +39,10 @@ const ProfileEdit = () => {
 				console.log("data = ", data);
 				setUserName(data.username);
 				setEmail(data.email);
-				setDataSource(data);
+				setOccupation(data.occupation);
+				setPhone(data.phone);
+				setAddress(data.address),
+					setDataSource(data);
 			}
 		} catch (error) {
 			alert("Error loading user data!");
@@ -54,6 +60,9 @@ const ProfileEdit = () => {
 			.update({
 				username: userName,
 				email: email,
+				occupation: occupation,
+				phone: phone,
+				address: address,
 			})
 			.eq("id", dataSource.id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
 
@@ -70,33 +79,59 @@ const ProfileEdit = () => {
 	// };
 
 	return (
-		<div className="w-full h-screen bg-blue-300 flex justify-center">
+		<div className="w-full h-screen bg-blue-300 flex items-center justify-center">
 			{/* 576pxの外枠 */}
-			<div className="w-full max-w-xl bg-pink-300">
-				<h1>編集画面</h1>
+			<div className="w-[500px] h-[550px]  max-w-xl bg-green-200 rounded-2xl">
+				{/* <h1>編集画面</h1> */}
 				{/* アバター */}
-				<div className="w-full flex justify-center items-center mt-5 flex-col">
-					<img className="w-[80px]" src={dataSource.avatar_url} alt="" />
-					<label>username</label>
+				<div className="w-full flex justify-center items-center flex-col ">
+					<img className="w-[150px] h-[100px]  object-cover userImg rounded-xl mt-5" src={dataSource.avatar_url} alt="" />
+					<label className="text-gray-600">username</label>
 					<input
-						className="w-[300px] p-2"
+						className="w-[300px] p-2 outline-none "
 						type="text"
 						value={userName}
 						onChange={(e) => setUserName(e.target.value)}
 					></input>
-					<label>email</label>
+					<label className="text-gray-600">email</label>
 					<input
-						className="w-[300px] p-2"
+						className="w-[300px] p-2 outline-none"
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					></input>
-					<button
-						onClick={clickSave}
-						className="mt-5 p-2 bg-blue-500 text-white rounded-md"
-					>
-						保存
-					</button>
+					<label className="text-gray-600">occupation</label>
+					<input
+						className="w-[300px] p-2 outline-none"
+						type="text"
+						value={occupation}
+						onChange={(e) => setOccupation(e.target.value)}
+					></input>
+					<label className="text-gray-600">phone</label>
+					<input
+						className="w-[300px] p-2 outline-none"
+						type="text"
+						value={phone}
+						onChange={(e) => setPhone(e.target.value)}
+					></input>
+						<label className="text-gray-600">address</label>
+					<input
+						className="w-[300px] p-2 outline-none"
+						type="text"
+						value={address}
+						onChange={(e) => setAddress(e.target.value)}
+					></input>
+					<div>
+						<button
+							onClick={clickSave}
+							className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+						>
+							保存
+						</button>
+						{/* <Link href={`../profiles`} className="underline home-icon flex items-end pb-3">
+							<TfiHome className="size-6" />
+						</Link> */}
+					</div>
 				</div>
 			</div>
 		</div>

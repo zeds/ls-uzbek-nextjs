@@ -65,7 +65,7 @@ const Profile = () => {
 					<div className="w-full flex justify-center mt-10px items-center mt-5 flex-col">
 						<img className="w-[150px] h-[100px]  object-cover userImg rounded-xl mt-5" src={dataSource.avatar_url} alt="" />
 						<div className="">
-							<label className="nameIcon mb-[20px] w-full px-[95px] h-[35px] mt-10 flex text-gray-500 ">
+							<label className="items-center nameIcon mb-[20px] w-full px-[95px] h-[35px] mt-10 flex text-gray-500 ">
 								<CiUser className="userIcon size-10 mr-[5px]" />{dataSource.username}
 							</label>
 
