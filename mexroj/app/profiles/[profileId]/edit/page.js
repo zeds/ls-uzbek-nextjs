@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ProfileEdit = () => {
   const [dataSource, setDataSource] = useState({});
@@ -70,30 +71,42 @@ const ProfileEdit = () => {
   // };
 
   return (
-    <div className="w-full h-screen bg-blue-300 flex justify-center">
+    <div className="w-full h-screen bg-blue-300 flex justify-center p-7">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-300">
-        <h1>編集画面</h1>
+      <div className="w-full max-w-xl bg-pink-400 rounded-3xl">
         {/* アバター */}
         <div className="w-full flex justify-center items-center mt-5 flex-col">
-          <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
-          <label>username</label>
-          <input
-            className="w-[300px] p-2"
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          ></input>
-          <label>email</label>
-          <input
-            className="w-[300px] p-2"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
+          <img
+            className="w-[100px]  rounded-full"
+            src={dataSource.avatar_url}
+            alt=""
+          />
+          <div className="justify-start m-4 ">
+            <div className=" font-serif text-xl">username</div>
+            <input
+              className="w-[300px] p-2 rounded-lg"
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            ></input>
+          </div>
+          <div className="justify-start m-4">
+            <div className=" font-serif text-xl">email</div>
+            <input
+              className="w-[300px] p-2 rounded-lg"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+
+          {/* <button className="bg-blue-300 hover:bg-blue-500 text-black rounded-md p-2">
+            <Link href={"app/profiles/[profileId]"}>プロフィールへ</Link>
+          </button> */}
+
           <button
             onClick={clickSave}
-            className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+            className="bg-blue-300 hover:bg-blue-500 text-black rounded-md p-2"
           >
             保存
           </button>
