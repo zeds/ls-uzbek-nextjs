@@ -98,27 +98,27 @@ const Page = () => {
 
   return (
     <>
-      <div>プロフィール</div>
-      <div className="flex bg-gray-300 gap-1 flex-wrap p-2">
+      <div>Profiles</div>
+      <div className="flex bg-gray-300 gap-1 flex-wrap p-5 justify-center items-center">
         {dataSource.map((item, index) => (
           <Link
             key={index}
             href={`/profiles/${item.id}`}
-            className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+            className="w-[200px] h-[300px] bg-gradient-to-r from-cyan-300 to-blue-300 relative p-2"
           >
             <div className="w-full justify-center flex">
               {item.avatar_url ? (
                 <img
-                  className="rounded-full w-[100px]"
+                  className="rounded-full w-[100px] mb-[10px]"
                   src={item.avatar_url}
                   alt="hoge"
                 />
               ) : null}
             </div>
             <div>
-              <div>Name</div>
+              <div className="text-black">Name</div>
               <input
-                className="p-1 bg-red-200 w-full"
+                className="p-1 bg-white-600 bg-opacity-25 text-black w-full"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
@@ -128,9 +128,9 @@ const Page = () => {
             <div className="justify-center flex absolute bottom-1 start-1/3">
               <button
                 onClick={() => clickUpdate(index)}
-                className="bg-blue-400 text-white px-3 py-1 rounded-md"
+                className="bg-indigo-600 bg-opacity-75 text-white px-3 py-1 rounded-md"
               >
-                更新
+                Update
               </button>
             </div>
           </Link>
