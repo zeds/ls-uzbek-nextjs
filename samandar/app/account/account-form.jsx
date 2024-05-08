@@ -9,6 +9,7 @@ export default function AccountForm({ user }) {
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
+  const [nationality, setNationality] = useState(null);
 
   const getProfile = useCallback(async () => {
     try {
@@ -16,7 +17,8 @@ export default function AccountForm({ user }) {
 
       const { data, error, status } = await supabase
         .from('profiles')
-        .select(`full_name, username, website, avatar_url`)
+        .select(`*`)
+        // .select(`full_name, username, website, avatar_url`)
         .eq('id', user?.id)
         .single()
 
@@ -25,6 +27,8 @@ export default function AccountForm({ user }) {
       }
 
       if (data) {
+        console.log("data = ", data);
+        setNationality(data.nationality);
         setFullname(data.full_name)
         setUsername(data.username)
         setWebsite(data.website)
@@ -49,6 +53,7 @@ export default function AccountForm({ user }) {
         id: user?.id,
         full_name: fullname,
         username,
+        nationality,
         website,
         avatar_url,
         updated_at: new Date().toISOString(),
@@ -93,6 +98,15 @@ export default function AccountForm({ user }) {
           type="url"
           value={website || ''}
           onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+      <div>
+      <label htmlFor="nationality">Nationality</label>
+        <input
+          id="nationality"
+          type="text"
+          value={nationality || ""}
+          onChange={(e) => setNationality(e.target.value)}
         />
       </div>
 
