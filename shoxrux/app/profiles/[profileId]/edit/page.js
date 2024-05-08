@@ -114,7 +114,7 @@ const ProfileEdit = () => {
 						value={phone}
 						onChange={(e) => setPhone(e.target.value)}
 					></input>
-						<label className="text-gray-600">address</label>
+					<label className="text-gray-600">address</label>
 					<input
 						className="w-[300px] p-2 outline-none"
 						type="text"
@@ -128,9 +128,6 @@ const ProfileEdit = () => {
 						>
 							保存
 						</button>
-						{/* <Link href={`../profiles`} className="underline home-icon flex items-end pb-3">
-							<TfiHome className="size-6" />
-						</Link> */}
 					</div>
 				</div>
 			</div>
