@@ -12,6 +12,7 @@ const ProfileEdit = () => {
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
+  const [nationality, setNationality] = useState("");
 
   useEffect(() => {
     getProfile();
@@ -36,6 +37,7 @@ const ProfileEdit = () => {
         console.log("data = ", data);
         setUserName(data.username);
         setEmail(data.email);
+        setNationality(data.nationality);
         setDataSource(data);
       }
     } catch (error) {
@@ -54,6 +56,7 @@ const ProfileEdit = () => {
       .update({
         username: userName,
         email: email,
+        nationality: nationality,
       })
       .eq("id", dataSource.id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
 
@@ -94,6 +97,13 @@ const ProfileEdit = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <label className="font-semibold">Nationality:</label>
+          <input
+            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            type="text"
+            value={nationality}
+            onChange={(e) => setNationality(e.target.value)}
           ></input>
           <button
             onClick={clickSave}

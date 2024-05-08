@@ -127,6 +127,18 @@ const Page = () => {
                 value={item.username}
               />
             </div>
+            <div className="font-semibold">{item.nationality}</div>
+            {/* <div>
+              <div className="font-semibold">Nationality:</div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold"
+                type="text"
+                name="username"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.nationality}
+              />
+            </div> */}
+
             <div className="justify-center flex absolute bottom-1 start-1/3">
               <button
                 onClick={() => clickUpdate(index)}
