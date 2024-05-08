@@ -124,7 +124,7 @@ const ProfileEdit = () => {
 					<div>
 						<button
 							onClick={clickSave}
-							className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+							className="mt-5 p-2 pr-8 pl-8 bg-blue-500 text-white rounded-md"
 						>
 							保存
 						</button>
