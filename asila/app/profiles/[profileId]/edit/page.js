@@ -41,7 +41,10 @@ const page = () => {
     <div className="w-full h-screen bg-blue-200 flex justify-center">
       <div className="w-full max-w-xl bg-pink-300">
         <div className="w-full flex justifu-center items-center mt-5 flex-col">
-          <img className="w-[100px] h-[100px] round-full" src={dataSource.avatar_url} />
+          <img
+            className="w-[100px] h-[100px] round-full"
+            src={dataSource.avatar_url}
+          />
           <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-10">
             名前：{dataSource.username}
           </div>
