@@ -66,6 +66,9 @@ const Profile = () => {
             Username: {dataSource.username}
           </label>
           <label className="font-semibold">Email: {dataSource.email}</label>
+          <label className="font-semibold">
+            Nationality: {dataSource.nationality}
+          </label>
           <button
             onClick={clickEdit}
             className="mt-5 p-2 bg-yellow-950 text-white rounded-md"
