@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const [dataSource, setDataSource] = useState({});
   const supabase = createClient();
 
@@ -45,10 +45,10 @@ const page = () => {
             className="w-[100px] h-[100px] round-full"
             src={dataSource.avatar_url}
           />
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-10">
+          <div className="w-[350px] h-[40px] bg-white border-solid border-2 border-indigo-600 gap-10">
             名前：{dataSource.username}
           </div>
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-1">
+          <div className="w-[350px] h-[40px] bg-white border-solid border-2 border-indigo-600 gap-1">
             メール：{dataSource.email}
           </div>
           <button className="mt-5 p-2 bg-green-300 text-white round-md">
@@ -60,4 +60,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const [dataSource, setDataSource] = useState({});
   const supabase = createClient();
 
@@ -48,7 +48,7 @@ const page = () => {
           <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-1">
             メール：{dataSource.email}
           </div>
-          <button className="mt-5 p-2 bg-green-300 text-white round-md">
+          <button onClick={clickEdit} className="mt-5 p-2 bg-green-300 text-white round-md">
             プロフィールを編集
           </button>
         </div>
@@ -57,4 +57,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
