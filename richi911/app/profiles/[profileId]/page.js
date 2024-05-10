@@ -62,19 +62,35 @@ const Profile = () => {
             src={dataSource.avatar_url}
             alt=""
           />
-          <label className="font-semibold">
-            Username: {dataSource.username}
-          </label>
-          <label className="font-semibold">Email: {dataSource.email}</label>
-          <label className="font-semibold">
-            Nationality: {dataSource.nationality}
-          </label>
-          <button
-            onClick={clickEdit}
-            className="mt-5 p-2 bg-yellow-950 text-white rounded-md"
-          >
-            プロフィールを編集
-          </button>
+          <div className="flex w-[300px] h-max] flex-col">
+            <label className="font-semibold">
+              Username: {dataSource.username}
+            </label>
+            <label className="font-semibold">Email: {dataSource.email}</label>
+            <label className="font-semibold">
+              Nationality: {dataSource.nationality}
+            </label>
+            <label className="font-semibold">
+              Birthday: {dataSource.birthday}
+            </label>
+            <label className="font-semibold">Gender: {dataSource.sex}</label>
+            <label className="font-semibold">School: {dataSource.school}</label>
+            <label className="font-semibold">
+              Occupation: {dataSource.occupation}
+            </label>
+            <label className="font-semibold">
+              Address: {dataSource.address}
+            </label>
+            <label className="font-semibold">Phone: {dataSource.phone}</label>
+            <label className="font-semibold">Hobby: {dataSource.hobby}</label>
+            <label className="font-semibold">Bio: {dataSource.introduce}</label>
+            <button
+              onClick={clickEdit}
+              className="mt-5 p-2 bg-yellow-950 text-white rounded-md"
+            >
+              プロフィールを編集
+            </button>
+          </div>
         </div>
       </div>
     </div>
