@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 
 const Page = () => {
-	const [name, setName] = useState("tom");
+	const [name, setName] = useState("Jon");
+	const [age, setAge] = useState(20);
+
+	const [isEdit, setIsEdit] = useState(false); 
+	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const [profiles, setProfiles] = useState([
 		{ name: "tom", age: 18 },
@@ -14,13 +18,23 @@ const Page = () => {
 	]);
 
 	const clickAdd = () => {
-		setProfiles([...profiles, { name: "mike", age: 50 }]);
+		if (isEdit) {
+			let newArr = [...profiles];
+			newArr[currentIndex].name = name;
+			newArr[currentIndex].age = age;
+			setProfiles(newArr);
+		} else {
+			setProfiles([...profiles, { name: name, age: age }]);
+		}
+		setIsEdit(false);
 	};
 
 	const clickEdit = (index) => {
-		let newArr = [...profiles];
-		newArr[index].age = 50;
-		setProfiles(newArr);
+		setName(profiles[index].name);
+		setAge(profiles[index].age);
+
+		setIsEdit(true);
+		setCurrentIndex(index);
 	};
 
 	const clickDelete = (index) => {
@@ -31,16 +45,35 @@ const Page = () => {
 
 	return (
 		<div className="p-3">
-			<div>{JSON.stringify(profiles[3])}</div>
-			<div>私の名前は{name}です</div>
-			<button
-				onClick={() => clickAdd()}
-				className="bg-[#00FF00] rounded-md px-2 py-1"
-			>
-				追加
-			</button>
+			<div className="w-[300px] h-[150px] bg-pink-300 p-2">
+				<div className="flex items-center">
+					<div>名前：</div>
+					<input
+						className="p-1"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					></input>
+				</div>
+				<div className="flex items-center mt-2">
+					年齢：
+					<input
+						className="p-1"
+						value={age}
+						onChange={(e) => setAge(e.target.value)}
+					></input>
+				</div>
+				<div className="flex w-full h-[50px] justify-center items-center">
+					<button
+						onClick={() => clickAdd()}
+						className="bg-[#00FF00] rounded-md px-10 py-2 mt-5"
+					>
+						{isEdit ? "更新" : "追加"}
+					</button>
+				</div>
+			</div>
+
 			{profiles.map((item, index) => (
-				<div key={index} className="flex m-3 items-center">
+				<div key={index} className="flex m-3 items-center bg-blue-100">
 					<div className="w-[120px]">名前：{item.name}</div>
 					<div className="w-[80px]">年齢：{item.age}</div>
 					<button

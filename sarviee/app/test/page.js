@@ -2,11 +2,10 @@
 import React, { useState, useEffect } from "react";
 
 const Page = () => {
-  // nameはboxの中にあるnameを表示
-  // setNameで、boxの中にあるnameを変更する。
   const [name, setName] = useState("tom");
-  const [fruits, setFruits] = useState(["banana", "melon", "apple", "peach"]);
-  // let fruits = ["banana", "melon", "apple", "peach"];
+  const [age, setAge] = useState(34);
+  const [isEdit, setIsEdit] = useState(false); // 追加
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [profiles, setProfiles] = useState([
     { name: "tom", age: 18 },
@@ -17,46 +16,79 @@ const Page = () => {
     { name: "asila", age: 22 },
   ]);
 
-  // ボタンが押されたら、年齢を50にする。
-
   const clickAdd = () => {
-    // grapeを追加、「...」はスプレット構文
-    let newArr = [...fruits, "grape"];
-    // newArr.push("grape");
-    setFruits(newArr); // まるごと交換
+    // 更新と追加がある
+    if (isEdit) {
+      // 更新
+      let newArr = [...profiles];
+      newArr[currentIndex].name = name;
+      newArr[currentIndex].age = age;
+      setProfiles(newArr);
+    } else {
+      setProfiles([...profiles, { name: name, age: age }]);
+    }
+    setIsEdit(false);
+  };
+
+  const clickEdit = (index) => {
+    setName(profiles[index].name);
+    setAge(profiles[index].age);
+    setIsEdit(true);
+    setCurrentIndex(index);
   };
 
   const clickDelete = (index) => {
-    let newArr = [...fruits];
-    newArr.splice(index, 1);
-    setFruits(newArr); // まるごと交換
-  };
-
-  const clickChange = (index) => {
-    let newArr = [...profiles];
-    newArr[index].age = 50;
-    setProfiles(newArr);
+    let delteValue = [...profiles];
+    delteValue.splice(index, 1);
+    setProfiles(delteValue);
   };
 
   return (
     <div className="p-3">
       <div>私の名前は{name}です</div>
-      <button
-        onClick={() => clickAdd()}
-        className="bg-[#00FF00] rounded-md px-2 py-1"
-      >
-        追加
-      </button>
+
+      <div className="w-[300px] h-[150px] bg-red-300 p-2">
+        <div className="flex items-center">
+          名前：
+          <input
+            className="p-1 text-black"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+        </div>
+        <div className="flex items-center mt-2">
+          年齢：
+          <input
+            className="p-1 text-black"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          ></input>
+        </div>
+        <div className="flex w-full h-[50px] justify-center items-center">
+          <button
+            onClick={() => clickAdd()}
+            className="bg-[#00FF00] rounded-md px-10 py-2 mt-5"
+          >
+            {isEdit ? "更新" : "追加"}
+          </button>
+        </div>
+      </div>
 
       {profiles.map((item, index) => (
         <div key={index} className="flex m-3 items-center">
           <div className="w-[120px]">名前：{item.name}</div>
           <div className="w-[80px]">年齢：{item.age}</div>
           <button
-            onClick={() => clickChange(index)}
-            className="bg-[#00FF00] rounded-md px-2 py-1"
+            onClick={() => clickEdit(index)}
+            className="bg-[#00FF00] rounded-md px-2 py-1 mr-2"
           >
             変更
+          </button>
+          <button
+            onClick={() => clickDelete(index)}
+            className="bg-[#FF0000] text-white rounded-md px-2 py-1 hover:opacity-70"
+          >
+            削除
           </button>
         </div>
       ))}

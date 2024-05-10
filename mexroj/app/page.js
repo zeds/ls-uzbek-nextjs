@@ -51,7 +51,11 @@ export default function Home() {
             <img className="bg-green-500" src="bell.svg"></img>
           </li>
           <li className="flex justify-center py-[1px] px-[6px] w-[60px] h-[34px]">
-            <img className="w-[32px] h=[32px] rounded-full" src="tom.png"></img>
+            <img
+              className="w-[32px] h=[32px] rounded-full"
+              src="me.jpg
+            "
+            ></img>
           </li>
         </ul>
       </header>

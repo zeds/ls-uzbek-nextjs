@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 
 const Page = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -96,13 +97,16 @@ const Page = () => {
 
   return (
     <>
-      <div>プロフィール</div>
+      <div className="bg-yellow-800 p-2 text-black font-semibold">
+        プロフィール
+      </div>
       {/* {JSON.stringify(dataSource)} */}
-      <div className="flex bg-gray-300 gap-1 flex-wrap p-2">
+      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2">
         {dataSource.map((item, index) => (
-          <div
+          <Link
             key={index}
-            className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+            href={`/profiles/${item.id}`}
+            className="w-[200px] h-[300px] bg-yellow-700 relative p-2"
           >
             <div className="w-full justify-center flex">
               {item.avatar_url ? (
@@ -114,24 +118,36 @@ const Page = () => {
               ) : null}
             </div>
             <div>
-              <div>Name</div>
+              <div className="font-semibold">Name:</div>
               <input
-                className="p-1 bg-red-200 w-full"
+                className="p-1 bg-yellow-800 w-full text-black font-semibold"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
                 value={item.username}
               />
             </div>
+            <div className="font-semibold">{item.nationality}</div>
+            {/* <div>
+              <div className="font-semibold">Nationality:</div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold"
+                type="text"
+                name="username"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.nationality}
+              />
+            </div> */}
+
             <div className="justify-center flex absolute bottom-1 start-1/3">
               <button
                 onClick={() => clickUpdate(index)}
-                className="bg-blue-400 text-white px-3 py-1 rounded-md"
+                className="bg-yellow-950 text-white px-3 py-1 rounded-md"
               >
                 更新
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

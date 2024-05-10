@@ -1,84 +1,142 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
+import Link from "next/link";
 
 const Page = () => {
-  const [name, setName] = useState("tom");
-  const [age, setAge] = useState(30);
+  const [dataSource, setDataSource] = useState([]);
 
-  const [profiles, setProfiles] = useState([
-    { name: "tom", age: 18 },
-    { name: "mexroj", age: 20 },
-    { name: "shox", age: 23 },
-    { name: "alsu", age: 19 },
-    { name: "sarvi", age: 21 },
-    { name: "asila", age: 22 },
-  ]);
+  const supabase = createClient();
 
-  const clickAdd = () => {
-    setProfiles([...profiles, { name: name, age: age }]);
+  const channelA = supabase
+    .channel("schema-db-changes")
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        // テーブルを指定しない場合、全てのテーブルの変更が通知される。
+        // table: "notifications",
+      },
+      (payload) => {
+        if (payload.table === "profiles") {
+          if (payload.new && "username" in payload.new) {
+            updateProfile(payload.new);
+            // setMessage(payload.new.introduce);
+          }
+        }
+      }
+    )
+    .subscribe();
+
+  const updateProfile = (target) => {
+    // mapで見つけて更新する
+    let newArr = [...dataSource];
+    newArr.map((item, index) => {
+      if (target.id === item.id) {
+        newArr[index] = target;
+        setDataSource(newArr);
+      }
+    });
   };
 
-  const clickEdit = (index) => {
-    let newArr = [...profiles];
-    newArr[index].age = 50;
-    setProfiles(newArr);
+  const getProfile = useCallback(async () => {
+    try {
+      //   setLoading(true)
+
+      const { data, error, status } = await supabase
+        .from("profiles")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        console.log("data = ", data);
+        setDataSource(data);
+      }
+    } catch (error) {
+      alert("Error loading user data!");
+    } finally {
+      //   setLoading(false)
+    }
+  }, []);
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const onChangeHandler = (name, index) => {
+    console.log(dataSource[index].username);
+    // dataSourceを直接編集できない
+    // dataSourceのコピーを作って、編集したあと、コピーをdataSourceに上書きする
+    let newArr = [...dataSource];
+    newArr[index].username = name;
+    setDataSource(newArr);
   };
 
-  const clickDelete = (index) => {
-    let delteValue = [...profiles];
-    delteValue.splice(index, 1);
-    setProfiles(delteValue);
+  const clickUpdate = async (index) => {
+    // alert(JSON.stringify(dataSource[index]))
+
+    // usernameを更新
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({
+        username: dataSource[index].username,
+      })
+      .eq("id", dataSource[index].id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
+    // update profiles set username = 'とむかも' where id = 'cf3466fb-1af1-48ec-9868-73437564da11'
+
+    // alert(updateError)  // nullはエラーがない意味
+    if (updateError !== null) {
+      alert("失敗！：" + JSON.stringify(updateError));
+    }
   };
 
   return (
-    <div className="p-3">
-      <div>
-        私の名前は{name}で、年齢は{age}です。
+    <>
+      <div>Profiles</div>
+      <div className="flex bg-gray-300 gap-1 flex-wrap p-5 justify-center items-center">
+        {dataSource.map((item, index) => (
+          <Link
+            key={index}
+            href={`/profiles/${item.id}`}
+            className="w-[200px] h-[300px] bg-gradient-to-r from-cyan-300 to-blue-300 relative p-2"
+          >
+            <div className="w-full justify-center flex">
+              {item.avatar_url ? (
+                <img
+                  className="rounded-full w-[100px] mb-[10px]"
+                  src={item.avatar_url}
+                  alt="hoge"
+                />
+              ) : null}
+            </div>
+            <div>
+              <div className="text-black">Name</div>
+              <input
+                className="p-1 bg-white-600 bg-opacity-25 text-black w-full"
+                type="text"
+                name="username"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.username}
+              />
+            </div>
+            <div className="justify-center flex absolute bottom-1 start-1/3">
+              <button
+                onClick={() => clickUpdate(index)}
+                className="bg-indigo-600 bg-opacity-75 text-white px-3 py-1 rounded-md"
+              >
+                Update
+              </button>
+            </div>
+          </Link>
+        ))}
       </div>
-      <dir className="bg-red-200 p-2 w-[350px] rounded-md mb-2">
-        <dir className="flex gap-3">
-          <div className="mr-1">名前:</div>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-[200px]"
-          ></input>
-        </dir>
-        <dir className="flex gap-3">
-          <div className="mr-1">年齢:</div>
-          <input
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="w-[200px]"
-          ></input>
-        </dir>
-      </dir>
-
-      <button
-        onClick={() => clickAdd()}
-        className="bg-[#00FF00] rounded-md px-2 py-1"
-      >
-        追加
-      </button>
-      {profiles.map((item, index) => (
-        <div key={index} className="flex m-3 items-center">
-          <div className="w-[120px]">名前：{item.name}</div>
-          <div className="w-[80px]">年齢：{item.age}</div>
-          <button
-            onClick={() => clickEdit(index)}
-            className="bg-[#00FF00] rounded-md px-2 py-1 mr-2"
-          >
-            変更
-          </button>
-          <button
-            onClick={() => clickDelete(index)}
-            className="bg-[#FF0000] text-white rounded-md px-2 py-1"
-          >
-            削除
-          </button>
-        </div>
-      ))}
-    </div>
+    </>
   );
 };
 

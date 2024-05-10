@@ -2,4 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
- 
+.btn {
+    border: 1px solid black;
+    padding: 2px 12px;
+    border-radius: 3px;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.inputName {
+    border: 1px solid rgb(45, 179, 197);
+    outline: none;
+}
+
+.bg-fon {
+    background: #a5fcff;
+}
+.intoduce-text{
+    font-size: 16px;
+}
+.home-icon {
+    color: #3b82f6;
+    margin-right: 20px;
+}
+.emailIcon{
+    margin-right: 5px;
+}
+
+.emailIcon,
+.occupationIcon,
+.locationIcon,
+.userIcon{
+    color: black;
+}
+.btn-container {
+    display: flex;
+    justify-content: end;
+}
+
+.nameIcon,
+.emailText {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+}
+
+.userImg {
+    object-fit: cover;
+}
