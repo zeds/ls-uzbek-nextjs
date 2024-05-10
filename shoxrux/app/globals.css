@@ -20,23 +20,27 @@
 .bg-fon {
     background: #a5fcff;
 }
-.intoduce-text{
+
+.intoduce-text {
     font-size: 16px;
 }
+
 .home-icon {
     color: #3b82f6;
     margin-right: 20px;
 }
-.emailIcon{
+
+.emailIcon {
     margin-right: 5px;
 }
 
 .emailIcon,
 .occupationIcon,
 .locationIcon,
-.userIcon{
+.userIcon {
     color: black;
 }
+
 .btn-container {
     display: flex;
     justify-content: end;
@@ -50,4 +54,23 @@
 
 .userImg {
     object-fit: cover;
+}
+
+.list li {
+    margin-bottom: 15px;
+}
+
+
+.profileContainerActive {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.603);
+}
+.profileContainer {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.603);
 }

@@ -9,6 +9,7 @@ const ProfileEdit = () => {
 	const supabase = createClient();
 	const profileId = usePathname().split("/")[2];
 	const route = useRouter();
+	const [message,setMessage] = useState();
 
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");

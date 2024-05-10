@@ -1,6 +1,29 @@
 import Image from "next/image";
+import { CgProfile } from "react-icons/cg";
+import Link from "next/link";
+import { FaUserEdit } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
+// import { useState } from "react";
+
 
 export default function Home() {
+
+  // const [showContainer, setShowContainer] = useState(false);
+  // useEffect(() => {
+  //   const toggleContainer = () => {
+  //     setShowContainer(!showContainer); // Toggle the state when button is clicked
+  //   };
+
+  // }, []);
+
+
+  // const routeH = useRouter();
+
+  // const clickProfile = () => {
+  // 	routeH.push(`/profiles/../`);
+  // };
+
+
   return (
     <main className="w-full h-screen bg-red-200">
       <header className="flex  bg-green-400 items-center justify-between">
@@ -62,7 +85,7 @@ export default function Home() {
           </li>
           {/* Mr Tom */}
           <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
-            <img
+            <img 
               className="w-[32px] h-[32px] rounded-full"
               src="tom.png"
               alt=""
@@ -71,6 +94,27 @@ export default function Home() {
         </ul>
 
       </header>
+    
+        <div className="profileContainer w-[240px] h-[240px]  p-2 rounded-2xl  justify-center flex">
+          <ul className="list w-full">
+            <li>
+              <Link href={"/profiles/"}>
+                <button className="bg-sky-500/100 pt-1 pb-1 pl-3 pr-3 rounded-md flex items-center gap-2"><CgProfile /> Profile</button>
+              </Link>
+            </li>
+            <li>
+              <Link href={"/profiles/profileId"}>
+                <button className="bg-sky-500/100 pt-1 pb-1 pl-3 pr-3 rounded-md flex items-center gap-2"><FaUserEdit />Edit Prodile</button>
+              </Link>
+            </li>
+            <li>
+              <Link href={"https://docs.google.com/spreadsheets/d/1CXmPzeaC0Gon8Wjws0XC7MU-1GvmUuVlITCu2GRi4U4/edit#gid=1483313234"}>
+                <button className="bg-sky-500/100 pt-1 pb-1 pl-3 pr-3 rounded-md flex items-center gap-2"><FaReact />More Info</button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )
     </main>
   );
 }
