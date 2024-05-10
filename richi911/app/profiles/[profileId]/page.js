@@ -1,9 +1,8 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import { createClient } from "@/utils/supabase/client";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { createClient } from "@/utils/supabase/client"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { useCallback, useEffect, useState } from "react"
 
 const Profile = () => {
   const [dataSource, setDataSource] = useState({});
@@ -60,7 +59,7 @@ const Profile = () => {
           <img
             className="w-[80px] rounded-full mb-2"
             src={dataSource.avatar_url}
-            alt=""
+            alt="https://qoqjesbdiymmyyibtwsw.supabase.co/storage/v1/object/sign/profiles/public/Masato%20(Asil).jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9maWxlcy9wdWJsaWMvTWFzYXRvIChBc2lsKS5qcGciLCJpYXQiOjE3MTUzMDM3NDMsImV4cCI6MTc0NjgzOTc0M30.zDtdMwm_vbW8lBg4IRMVC8BlVdCtjueilgX1gXsq2lc&t=2024-05-10T01%3A15%3A44.752Z"
           />
           <div className="flex w-[300px] h-max] flex-col">
             <label className="font-semibold">
