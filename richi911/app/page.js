@@ -1,8 +1,31 @@
+"use client";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [showCountry, setShowCountry] = useState(false);
+
+  const clickGlobe = () => {
+    setShowCountry(true);
+  };
+  const closeCountry = () => {
+    setShowCountry(false);
+  };
+
   return (
     <main className="w-full h-screen bg-red-200">
+      {showCountry ? (
+        <div className="absolute w-[800px] h-[400px] bg-sky-500 top-[50px] left-[100px]">
+          <button
+            class="absolute right-2 top-2 bg-gray-500 p-2"
+            onClick={() => closeCountry()}
+          >
+            閉じる
+          </button>
+        </div>
+      ) : null}
+
       <header className="flex  bg-green-400 items-center justify-between">
         {/* logo */}
         <div className="flex items-center justify-center w-[169px] bg-blue-500">
@@ -48,6 +71,16 @@ export default function Home() {
           {/* mic */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="mic.svg" alt=""></img>
+          </li>
+          {/* globe */}
+          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+            <button onClick={() => clickGlobe()}>
+              <img
+                className="bg-green-500 w-[30px]"
+                src="globe.svg"
+                alt=""
+              ></img>
+            </button>
           </li>
           {/* video */}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
