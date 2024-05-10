@@ -1,24 +1,35 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const Page = () => {
-  const [dataSource, setDataSource] = useState({});
+const Profile = () => {
+  const [dataSource, setDataSource] = useState([]);
   const supabase = createClient();
-
   const profileId = usePathname().split("/")[2];
-  // const route = useRouter();
+  const route = useRouter();
+
+  useEffect(() => {
+    getProfile();
+    console.log("profileId=", profileId);
+  }, []);
+
+  const clickEdit = () => {
+    route.push("/profiles/${profileId}/edit");
+  };
 
   const getProfile = useCallback(async () => {
     try {
+      //   setLoading(true)
+
       const { data, error, status } = await supabase
         .from("profiles")
         .select("*")
         .eq("id", profileId)
         .single();
+      // .order("id", { ascending: false });
 
       if (error && status !== 406) {
         throw error;
@@ -30,26 +41,31 @@ const Page = () => {
       }
     } catch (error) {
       alert("Error loading user data!");
+    } finally {
+      //   setLoading(false)
     }
   }, []);
-
-  useEffect(() => {
-    getProfile();
-  }, []);
-
   return (
     <div className="w-full h-screen bg-blue-200 flex justify-center">
-      <div className="w-full max-w-xl bg-pink-300">
-        <div className="w-full flex justifu-center items-center mt-5 flex-col">
-          <img className="w-[100px] h-[100px] round-full" src={dataSource.avatar_url} />
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-10">
-            名前：{dataSource.username}
-          </div>
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-1">
-            メール：{dataSource.email}
-          </div>
-          <button onClick={clickEdit} className="mt-5 p-2 bg-green-300 text-white round-md">
-            プロフィールを編集
+      <div className="w-full max-w-xl bg-pink-200">
+        <Link href={`/profiles`} className="underline">
+          プロフィール一覧へ
+        </Link>
+        <div className="w-full  flex justify-center items-center mt-5 flex-col">
+          <img className="h-[80px] " src={dataSource.avatar_url} alt=""></img>
+          <label className="w-full px-[100px] h-[30px] mt-10">
+            username: {dataSource.username}
+          </label>
+          {/* <input type="text" value={dataSource.username}></input> */}
+					<label className="w-full px-[100px] h-[30px]">
+          email: {dataSource.email}
+            </label>
+          {/* <input type="text" value={dataSource.email}></input> */}
+          <button
+            onClick={clickEdit}
+            className="mt-5 p-2 bg-green-500 text-white rounded-md"
+          >
+            Edit Profile
           </button>
         </div>
       </div>
@@ -57,4 +73,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Profile;
