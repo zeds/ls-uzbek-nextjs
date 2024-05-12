@@ -1,19 +1,29 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const Page = () => {
+const Profile = () => {
   const [dataSource, setDataSource] = useState({});
   const supabase = createClient();
-
   const profileId = usePathname().split("/")[2];
-  // const route = useRouter();
+  const route = useRouter();
+
+  useEffect(() => {
+    getProfile();
+    console.log("profileId=", profileId);
+  }, []);
+
+  const clickEdit = () => {
+    route.push(`/profiles/${profileId}/edit`);
+  };
 
   const getProfile = useCallback(async () => {
     try {
+      //   setLoading(true)
+
       const { data, error, status } = await supabase
         .from("profiles")
         .select("*")
@@ -30,31 +40,45 @@ const Page = () => {
       }
     } catch (error) {
       alert("Error loading user data!");
+    } finally {
+      //   setLoading(false)
     }
   }, []);
 
-  useEffect(() => {
-    getProfile();
-  }, []);
-
   return (
-    <div className="w-full h-screen bg-blue-200 flex justify-center">
-      <div className="w-full max-w-xl bg-pink-300">
-        <div className="w-full flex justifu-center items-center mt-5 flex-col">
-          <img className="w-[100px] h-[100px] round-full" src={dataSource.avatar_url} />
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-10">
-            名前：{dataSource.username}
+    <div className="w-full h-screen bg-blue-200 flex justify-center p-7 ">
+      {/* 576pxの外枠 */}
+      <div className="w-full max-w-xl bg-pink-200 rounded-3xl">
+        {/* アバター */}
+        <div className="w-full flex justify-center items-center mt-5 flex-col ">
+          <img
+            className="w-[100px] rounded-full"
+            src={dataSource.avatar_url}
+            alt=""
+          />
+          <div className="w-full justify-center flex flex-col  items-center">
+            <label className="h-[30px] mt-10 font-serif text-xl">
+              username: {dataSource.username}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              email: {dataSource.email}
+            </label>
           </div>
-          <div className="w-[350px] h-[40px] bg-blue-300 border-solid border-2 border-indigo-600 gap-1">
-            メール：{dataSource.email}
+          <div className="flex justify-center items-center  gap-3  w-full mt-3">
+            {/* <button className="bg-blue-300 hover:bg-blue-500 text-black rounded-md p-2">
+              <Link href={`/profiles`}>プロフィール一覧へ</Link>
+            </button> */}
+            <button
+              onClick={clickEdit}
+              className=" p-2 bg-blue-300  hover:bg-blue-500  text-black rounded-md"
+            >
+              Edit Profile
+            </button>
           </div>
-          <button onClick={clickEdit} className="mt-5 p-2 bg-green-300 text-white round-md">
-            プロフィールを編集
-          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default Profile;
