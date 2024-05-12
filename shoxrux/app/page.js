@@ -75,6 +75,9 @@ export default function Home() {
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="mic.svg" alt=""></img>
           </li>
+          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+            <img className="bg-green-500 size-6 bg-transparent cursor-pointer" src="globe.svg" alt=""></img>
+          </li>
           {/* video */}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
             <img className="bg-green-500" src="video.svg" alt=""></img>
