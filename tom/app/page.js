@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -29,7 +30,7 @@ export default function Home() {
 		}
 
 		if (data) {
-			console.log("data = ", data[0].iso2);
+			console.log("country data = ", data);
 			setDataSource(data);
 		}
 		// } catch (error) {
@@ -59,26 +60,35 @@ export default function Home() {
 			{/* { showCountry ? <div> .... </div> : null } */}
 
 			{showCountry ? (
-				<div className="absolute flex w-[800px] left-0 right-0 ml-auto mr-auto  bg-sky-500 top-[50px] p-4 flex-wrap">
+				<div className="absolute flex w-[800px] left-0 right-0 ml-auto mr-auto bg-white top-[50px] p-4 flex-wrap">
 					{dataSource.map((item, index) => (
 						<div key={index}>
 							<div
 								onClick={() => clickFlag(index)}
-								className="w-[60px] mr-2 mb-2"
+								className="w-[200px] mr-2 mb-3 flex gap-1 hover:cursor-pointer"
 							>
 								<img
-									src={`https://flagcdn.com/w320/${item.iso2.toLowerCase()}.png`}
+									className="w-[22px]"
+									src={`/flags/${item.iso2.toLowerCase()}.svg`}
 									alt="flag"
 								/>
+								<div>{item.name}</div>
 							</div>
 						</div>
 					))}
+					<div
+						onClick={() => closeCountry()}
+						class="absolute right-2 top-2 p-2 hover:cursor-pointer hover:bg-gray-300"
+					>
+						<Icon icon="iconamoon:close-bold" width="24" height="24" />
+					</div>
+					{/* 
 					<button
 						class="absolute right-2 top-2 bg-gray-500 p-2"
 						onClick={() => closeCountry()}
 					>
 						閉じる
-					</button>
+					</button> */}
 				</div>
 			) : null}
 
