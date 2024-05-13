@@ -16,6 +16,13 @@ const ProfileEdit = () => {
 	useEffect(() => {
 		getProfile();
 		console.log("profileId=", profileId);
+		profileId.map((item, index) => {
+			{
+				item.avatar_url ? (
+					<img className="rounded-full w-[100px]" src={item.avatar_url}></img>
+				) : null
+			}
+		})
 	}, []);
 
 	const getProfile = useCallback(async () => {

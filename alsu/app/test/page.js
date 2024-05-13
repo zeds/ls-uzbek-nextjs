@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 
 const Page = () => {
   const [name, setName] = useState("tom");
-  const [age, setAge] = useState(30);
+  const [age, setAge] = useState(34);
+  const [isEdit, setIsEdit] = useState(false); // 追加
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [profiles, setProfiles] = useState([
     { name: "tom", age: 18 },
@@ -15,13 +17,24 @@ const Page = () => {
   ]);
 
   const clickAdd = () => {
-    setProfiles([...profiles, { name: name, age: age }]);
+    // 更新と追加がある
+    if (isEdit) {
+      // 更新
+      let newArr = [...profiles];
+      newArr[currentIndex].name = name;
+      newArr[currentIndex].age = age;
+      setProfiles(newArr);
+    } else {
+      setProfiles([...profiles, { name: name, age: age }]);
+    }
+    setIsEdit(false);
   };
 
   const clickEdit = (index) => {
-    let newArr = [...profiles];
-    newArr[index].age = 50;
-    setProfiles(newArr);
+    setName(profiles[index].name);
+    setAge(profiles[index].age);
+    setIsEdit(true);
+    setCurrentIndex(index);
   };
 
   const clickDelete = (index) => {
@@ -32,34 +45,35 @@ const Page = () => {
 
   return (
     <div className="p-3">
-      <div>
-        私の名前は{name}で、年齢は{age}です。
-      </div>
-      <dir className="bg-red-200 p-2 w-[350px] rounded-md mb-2">
-        <dir className="flex gap-3">
-          <div className="mr-1">名前:</div>
+      <div>私の名前は{name}です</div>
+
+      <div className="w-[300px] h-[150px] bg-pink-300 p-2">
+        <div className="flex items-center">
+          名前：
           <input
+            className="p-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-[200px]"
           ></input>
-        </dir>
-        <dir className="flex gap-3">
-          <div className="mr-1">年齢:</div>
+        </div>
+        <div className="flex items-center mt-2">
+          年齢：
           <input
+            className="p-1"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className="w-[200px]"
           ></input>
-        </dir>
-      </dir>
+        </div>
+        <div className="flex w-full h-[50px] justify-center items-center">
+          <button
+            onClick={() => clickAdd()}
+            className="bg-[#00FF00] rounded-md px-10 py-2 mt-5"
+          >
+            {isEdit ? "更新" : "追加"}
+          </button>
+        </div>
+      </div>
 
-      <button
-        onClick={() => clickAdd()}
-        className="bg-[#00FF00] rounded-md px-2 py-1"
-      >
-        追加
-      </button>
       {profiles.map((item, index) => (
         <div key={index} className="flex m-3 items-center">
           <div className="w-[120px]">名前：{item.name}</div>
@@ -72,7 +86,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => clickDelete(index)}
-            className="bg-[#FF0000] text-white rounded-md px-2 py-1"
+            className="bg-[#FF0000] text-white rounded-md px-2 py-1 hover:opacity-70"
           >
             削除
           </button>

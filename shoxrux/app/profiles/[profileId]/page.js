@@ -54,10 +54,10 @@ const Profile = () => {
 	//プロフィール一覧へ home link
 	return (
 
-		<div className="w-full h-screen bg-blue-300 flex justify-center items-center">
+		<div className="w-full h-screen bg-blue-300 flex justify-center items-center ">
 			{/* 576pxの外枠 */}
 			<div>
-				<div className="w-full h-[50px] bg-green-200 rounded-2xl intoduce-text text-center justify-center items-center flex">
+				<div className="w-full h-[50px] bg-green-200 rounded-2xl intoduce-text text-center justify-center items-center flex ">
 					{dataSource.introduce}
 				</div>
 				<div className="w-[420px] h-[500px] max-w-xl bg-green-200 rounded-3xl">
@@ -65,7 +65,7 @@ const Profile = () => {
 					<div className="w-full flex justify-center mt-10px items-center mt-5 flex-col">
 						<img className="w-[150px] h-[100px]  object-cover userImg rounded-xl mt-5" src={dataSource.avatar_url} alt="" />
 						<div className="">
-							<label className="nameIcon mb-[20px] w-full px-[95px] h-[35px] mt-10 flex text-gray-500 ">
+							<label className="items-center nameIcon mb-[20px] w-full px-[95px] h-[35px] mt-10 flex text-gray-500 ">
 								<CiUser className="userIcon size-10 mr-[5px]" />{dataSource.username}
 							</label>
 

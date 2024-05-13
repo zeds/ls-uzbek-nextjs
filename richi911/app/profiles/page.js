@@ -118,16 +118,31 @@ const Page = () => {
               ) : null}
             </div>
             <div>
-              <div className="font-semibold">Name:</div>
+              <div className="font-semibold text-sm">Name:</div>
               <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold"
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
                 value={item.username}
               />
+              <div className="font-semibold text-sm">Nationality: </div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
+                type="text"
+                name="nationality"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.nationality}
+              />
+              <div className="font-semibold text-sm">Bio: </div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm truncate"
+                type="text"
+                name="introduce"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.introduce}
+              />
             </div>
-            <div className="font-semibold">{item.nationality}</div>
             {/* <div>
               <div className="font-semibold">Nationality:</div>
               <input

@@ -3,11 +3,18 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { TfiHome } from "react-icons/tfi";
 
 const Page = () => {
 	const [dataSource, setDataSource] = useState([]);
 
 	const supabase = createClient();
+	const routeH = useRouter();
+
+	const clickHome = () => {
+		routeH.push(`/profiles/../`);
+	};
 
 	const channelA = supabase
 		.channel("schema-db-changes")
@@ -95,10 +102,10 @@ const Page = () => {
 			alert("失敗！：" + JSON.stringify(updateError));
 		}
 	};
-
+// プロフィール
 	return (
 		<>
-			<div>プロフィール</div>
+			<div><button onClick={clickHome} className="flex bg-indigo-400 p-2 rounded-2xl">	<TfiHome className="size-6" />go to Home</button></div>
 			<div className="flex bg-gray-300 gap-1 flex-wrap p-2">
 				{dataSource.map((item, index) => (
 					<Link
