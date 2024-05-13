@@ -8,6 +8,16 @@ import { createClient } from "@/utils/supabase/client";
 export default function Home() {
 	// supabaseから取得したデータを保存、2 letter codeも入っている
 	const [dataSource, setDataSource] = useState([]);
+	const [resultData, setResultData] = useState([]);
+
+	const [searchValue, setSearchValue] = useState(""); // ja
+
+	useEffect(() => {
+		let result = dataSource.filter((data) => {
+			return data.name.match(new RegExp(`^${searchValue}`, "g"));
+		});
+		setResultData(result);
+	}, [searchValue]);
 
 	// headerに表示している旗の2 letter code。初期値はuzにしている。
 	const [flag, setFlag] = useState("uz"); // jp us au
@@ -32,6 +42,7 @@ export default function Home() {
 		if (data) {
 			console.log("country data = ", data);
 			setDataSource(data);
+			// dataSource.filter((data) => data. >= 20);
 		}
 		// } catch (error) {
 		// 	alert("Error loading user data!");
@@ -47,12 +58,14 @@ export default function Home() {
 	};
 	const closeCountry = () => {
 		setShowCountry(false);
+		setSearchValue("");
 	};
 
 	const clickFlag = (index) => {
 		let selected = dataSource[index].iso2; // "UZ"
 		setFlag(selected.toLowerCase()); // "uz"
 		setShowCountry(false);
+		setSearchValue("");
 	};
 
 	return (
@@ -61,7 +74,16 @@ export default function Home() {
 
 			{showCountry ? (
 				<div className="absolute flex w-[800px] left-0 right-0 ml-auto mr-auto bg-white top-[50px] p-4 flex-wrap">
-					{dataSource.map((item, index) => (
+					<div>
+						<input
+							className="bg-red-200 p-2"
+							type="text"
+							name="searchValue"
+							onChange={(e) => setSearchValue(e.target.value)}
+							value={searchValue}
+						/>
+					</div>
+					{resultData.map((item, index) => (
 						<div key={index}>
 							<div
 								onClick={() => clickFlag(index)}
