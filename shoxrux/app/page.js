@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { GiNinjaHead } from "react-icons/gi";
 
 export default function Home() {
 	// supabaseから取得したデータを保存、2 letter codeも入っている
@@ -24,6 +25,9 @@ export default function Home() {
 
 	// trueの時にmodal dialogを表示している。
 	const [showCountry, setShowCountry] = useState(true);
+
+	const [blackModal, setBlackModal] = useState(true);
+
 
 	const supabase = createClient();
 
@@ -55,9 +59,11 @@ export default function Home() {
 
 	const showModal = () => {
 		setShowCountry(true);
+		setBlackModal(true)
 	};
 	const closeCountry = () => {
 		setShowCountry(false);
+		setBlackModal(false)
 		setSearchValue("");
 	};
 
@@ -65,11 +71,12 @@ export default function Home() {
 		let selected = dataSource[index].iso2; // "UZ"
 		setFlag(selected.toLowerCase()); // "uz"
 		setShowCountry(false);
+		setBlackModal(false)
 		setSearchValue("");
 	};
 
 	return (
-		<main className="w-full h-screen bg-red-200">
+		<main className="w-full h-screen">
 			{/* { showCountry ? <div> .... </div> : null } */}
 
 			{showCountry ? (
@@ -102,7 +109,7 @@ export default function Home() {
 						onClick={() => closeCountry()}
 						class="absolute right-2 top-2 p-2 hover:cursor-pointer hover:bg-gray-300"
 					>
-						<Icon icon="iconamoon:close-bold" width="24" height="24" />
+						<Icon icon="iconamoon:close-bold" width="24" height="24"  />
 					</div>
 					{/* 
 					<button
@@ -112,7 +119,9 @@ export default function Home() {
 						閉じる
 					</button> */}
 				</div>
+
 			) : null}
+
 
 			<header className="flex  bg-green-400 items-center justify-between">
 				{/* logo */}
@@ -193,6 +202,12 @@ export default function Home() {
 					</Link>
 				</ul>
 			</header>
+			{blackModal ? (
+				<div className="blackModal w-full h-[100vh] flex items-center justify-around">
+
+					<h1 className="text-2xl font-medium flex items-center"><GiNinjaHead className="size-30"/>NINJA 黒いでしょう</h1>
+				</div>
+			) : null}
 		</main>
 	);
 }
