@@ -3,18 +3,21 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Button } from "antd";
 
 const ProfileEdit = () => {
 	const [dataSource, setDataSource] = useState({});
 	const supabase = createClient();
 	const profileId = usePathname().split("/")[2];
 	const route = useRouter();
+	const [message, setMessage] = useState("Editing Message");
 
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
 	const [occupation, setOccupation] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		getProfile();
@@ -52,6 +55,32 @@ const ProfileEdit = () => {
 	}, []);
 
 	const clickSave = async () => {
+		setLoading(true)
+		// alert(JSON.stringify(dataSource[index]))
+
+		// usernameを更新
+		const { error: updateError } = await supabase
+			.from("profiles")
+			.update({
+				username: userName,
+				email: email,
+				occupation: occupation,
+				phone: phone,
+				address: address,
+			})
+			.eq("id", dataSource.id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
+
+		// alert(updateError)  // nullはエラーがない意味
+		if (updateError !== null) {
+			alert("失敗！：" + JSON.stringify(updateError));
+		} else {
+			// route.push(`/profiles/${profileId}`);
+			setMessage('Done');
+			setLoading(false);
+		}
+	};
+	const clickBack = async () => {
+		setLoading(true)
 		// alert(JSON.stringify(dataSource[index]))
 
 		// usernameを更新
@@ -71,6 +100,7 @@ const ProfileEdit = () => {
 			alert("失敗！：" + JSON.stringify(updateError));
 		} else {
 			route.push(`/profiles/${profileId}`);
+			setLoading(false);
 		}
 	};
 
@@ -122,12 +152,20 @@ const ProfileEdit = () => {
 						onChange={(e) => setAddress(e.target.value)}
 					></input>
 					<div>
-						<button
+						<Button
+							loading={loading}
 							onClick={clickSave}
 							className="mt-5 p-2 pr-8 pl-8 bg-blue-500 text-white rounded-md"
 						>
 							保存
-						</button>
+						</Button>
+						<Button
+							onClick={clickBack}
+							className="mt-5 p-2 pr-8 pl-8 bg-blue-500 text-white rounded-md"
+						>
+							go Back
+						</Button>
+						<div>		{message}</div>
 					</div>
 				</div>
 			</div>

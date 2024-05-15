@@ -54,10 +54,10 @@ const Profile = () => {
 	//プロフィール一覧へ home link
 	return (
 
-		<div className="w-full h-screen bg-blue-300 flex justify-center items-center">
+		<div className="w-full h-screen bg-blue-300 flex justify-center items-center ">
 			{/* 576pxの外枠 */}
 			<div>
-				<div className="w-full h-[50px] bg-green-200 rounded-2xl intoduce-text text-center justify-center items-center flex">
+				<div className="w-full h-[50px] bg-green-200 rounded-2xl intoduce-text text-center justify-center items-center flex ">
 					{dataSource.introduce}
 				</div>
 				<div className="w-[420px] h-[500px] max-w-xl bg-green-200 rounded-3xl">

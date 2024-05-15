@@ -7,22 +7,16 @@ import { useRouter } from "next/navigation";
 const ProfileEdit = () => {
 	const [dataSource, setDataSource] = useState({});
 	const supabase = createClient();
-	const profileId = usePathname().split("/")[2];
+	// path = "/profiles/cf3466fb-1af1-48ec-9868-73437564da11/edit"
+	const profileId = usePathname().split("/")[2]; // cf3466fb-1af1-48ec-9868-73437564da11
 	const route = useRouter();
 
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
+	const [nationality, setNationality] = useState("");
 
 	useEffect(() => {
 		getProfile();
-		console.log("profileId=", profileId);
-		profileId.map((item, index) => {
-			{
-				item.avatar_url ? (
-					<img className="rounded-full w-[100px]" src={item.avatar_url}></img>
-				) : null
-			}
-		})
 	}, []);
 
 	const getProfile = useCallback(async () => {
@@ -43,6 +37,8 @@ const ProfileEdit = () => {
 				console.log("data = ", data);
 				setUserName(data.username);
 				setEmail(data.email);
+				setNationality(data.nationality);
+
 				setDataSource(data);
 			}
 		} catch (error) {
@@ -61,6 +57,7 @@ const ProfileEdit = () => {
 			.update({
 				username: userName,
 				email: email,
+				nationality: nationality,
 			})
 			.eq("id", dataSource.id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
 
@@ -98,11 +95,19 @@ const ProfileEdit = () => {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					></input>
+					<label>nationality</label>
+					<input
+						className="w-[300px] p-2"
+						type="text"
+						value={nationality}
+						onChange={(e) => setNationality(e.target.value)}
+					></input>
+
 					<button
 						onClick={clickSave}
 						className="mt-5 p-2 bg-blue-500 text-white rounded-md"
 					>
-						保存
+						保存？
 					</button>
 				</div>
 			</div>
