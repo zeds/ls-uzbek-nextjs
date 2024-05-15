@@ -45,10 +45,14 @@ const Profile = () => {
     }
   }, []);
 
+  useEffect(() => {
+    getProfile();
+  });
+
   return (
-    <div className="w-full h-screen bg-blue-300 flex justify-center">
+    <div className="w-full h-screen bg-purple-300 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-300">
+      <div className="w-full max-w-xl bg-blue-100">
         <Link href={`/profiles`} className="underline">
           プロフィールー選べ
         </Link>
@@ -57,9 +61,15 @@ const Profile = () => {
           <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
           <label>username: {dataSource.username}</label>
           <label>email: {dataSource.email}</label>
+          <div>Nationality: {dataSource.nationality}</div>
+          <div>Address: {dataSource.address}</div>
+          <div>Birthday: {dataSource.birthday}</div>
+          <div>Occupation: {dataSource.occupation}</div>
+          <div>Hobby: {dataSource.hobby}</div>
+          <div>Introduce: {dataSource.introduce}</div>
           <button
             onClick={clickEdit}
-            className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+            className="mt-5 p-2 bg-pink-400 text-white rounded-md"
           >
             プロフィールを編集
           </button>

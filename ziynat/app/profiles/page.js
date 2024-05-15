@@ -103,7 +103,7 @@ const Page = () => {
           <Link
             key={index}
             href={`/profiles/${item.id}`}
-            className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+            className="w-[200px] h-[300px] bg-purple-300 relative p-2"
           >
             <div className="w-full justify-center flex">
               {item.avatar_url ? (
@@ -117,17 +117,19 @@ const Page = () => {
             <div>
               <div>Name</div>
               <input
-                className="p-1 bg-red-200 w-full"
+                className="p-1 bg-yellow-200 w-full"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
                 value={item.username}
               />
             </div>
+            <div> {item.nationality}</div>
+            <div> {item.introduce}</div>
             <div className="justify-center flex absolute bottom-1 start-1/3">
               <button
                 onClick={() => clickUpdate(index)}
-                className="bg-blue-400 text-white px-3 py-1 rounded-md"
+                className="bg-blue-500 text-white px-3 py-1 rounded-md"
               >
                 更新
               </button>

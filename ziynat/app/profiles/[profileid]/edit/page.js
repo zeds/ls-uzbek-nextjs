@@ -12,6 +12,12 @@ const ProfileEdit = () => {
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [address, setAddress] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [hobby, setHobby] = useState("");
+  const [introduce, setIntroduce] = useState("");
 
   useEffect(() => {
     getProfile();
@@ -36,6 +42,12 @@ const ProfileEdit = () => {
         console.log("data = ", data);
         setUserName(data.username);
         setEmail(data.email);
+        setNationality(data.nationality);
+        setAddress(data.address);
+        setBirthday(data.birthday);
+        setOccupation(data.occupation);
+        setHobby(data.hobby);
+        setIntroduce(data.introduce);
         setDataSource(data);
       }
     } catch (error) {
@@ -54,6 +66,12 @@ const ProfileEdit = () => {
       .update({
         username: userName,
         email: email,
+        nationality: nationality,
+        address: address,
+        birthday: birthday,
+        occupation: occupation,
+        hobby: hobby,
+        introduce: introduce,
       })
       .eq("id", dataSource.id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
 
@@ -70,9 +88,9 @@ const ProfileEdit = () => {
   // };
 
   return (
-    <div className="w-full h-screen bg-blue-300 flex justify-center">
+    <div className="w-full h-max bg-purple-300 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-300">
+      <div className="w-full max-w-xl bg-blue-100">
         <h1>編集画面</h1>
         {/* アバター */}
         <div className="w-full flex justify-center items-center mt-5 flex-col">
@@ -91,9 +109,51 @@ const ProfileEdit = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
+          <label>Nationality</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={nationality}
+            onChange={(e) => setNationality(e.target.value)}
+          ></input>
+          <label>Address</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          ></input>
+          <label>Birthday</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          ></input>
+          <label>Occupation</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={occupation}
+            onChange={(e) => setOccupation(e.target.value)}
+          ></input>
+          <label>Hobby</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={hobby}
+            onChange={(e) => setHobby(e.target.value)}
+          ></input>
+          <label>Introduce</label>
+          <input
+            className="w-[300px] p-2"
+            type="text"
+            value={introduce}
+            onChange={(e) => setIntroduce(e.target.value)}
+          ></input>
           <button
             onClick={clickSave}
-            className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+            className="mt-5 p-2 bg-pink-400 text-white rounded-md"
           >
             保存
           </button>
