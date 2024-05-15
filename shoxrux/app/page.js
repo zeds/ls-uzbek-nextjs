@@ -73,10 +73,10 @@ export default function Home() {
 			{/* { showCountry ? <div> .... </div> : null } */}
 
 			{showCountry ? (
-				<div className="absolute flex w-[800px] left-0 right-0 ml-auto mr-auto bg-white top-[50px] p-4 flex-wrap">
+				<div className="absolute flex w-[800px] p-2 items-center left-0 right-0 ml-auto mr-auto bg-white top-[100px] rounded-2xl p-4 flex-wrap">
 					<div>
 						<input
-							className="bg-red-200 p-2"
+							className="bg-red-200 p-2 outline-none"
 							type="text"
 							name="searchValue"
 							onChange={(e) => setSearchValue(e.target.value)}
