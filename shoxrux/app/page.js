@@ -68,7 +68,7 @@ export default function Home() {
 	};
 
 	const clickFlag = (index) => {
-		let selected = dataSource[index].iso2; // "UZ"
+		let selected = resultData[index].iso2; // "UZ"
 		setFlag(selected.toLowerCase()); // "uz"
 		setShowCountry(false);
 		setBlackModal(false)
