@@ -4,16 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { GiNinjaHead } from "react-icons/gi";
 
 export default function Home() {
 	// supabaseから取得したデータを保存、2 letter codeも入っている
 	const [dataSource, setDataSource] = useState([]);
+	const [resultData, setResultData] = useState([]);
+
+	const [searchValue, setSearchValue] = useState(""); // ja
+
+	useEffect(() => {
+		let result = dataSource.filter((data) => {
+			return data.name.match(new RegExp(`^${searchValue}`, "g"));
+		});
+		setResultData(result);
+	}, [searchValue]);
 
 	// headerに表示している旗の2 letter code。初期値はuzにしている。
 	const [flag, setFlag] = useState("uz"); // jp us au
 
 	// trueの時にmodal dialogを表示している。
 	const [showCountry, setShowCountry] = useState(true);
+
+	const [blackModal, setBlackModal] = useState(true);
+
 
 	const supabase = createClient();
 
@@ -32,6 +46,7 @@ export default function Home() {
 		if (data) {
 			console.log("country data = ", data);
 			setDataSource(data);
+			// dataSource.filter((data) => data. >= 20);
 		}
 		// } catch (error) {
 		// 	alert("Error loading user data!");
@@ -44,24 +59,38 @@ export default function Home() {
 
 	const showModal = () => {
 		setShowCountry(true);
+		setBlackModal(true)
 	};
 	const closeCountry = () => {
 		setShowCountry(false);
+		setBlackModal(false)
+		setSearchValue("");
 	};
 
 	const clickFlag = (index) => {
 		let selected = dataSource[index].iso2; // "UZ"
 		setFlag(selected.toLowerCase()); // "uz"
 		setShowCountry(false);
+		setBlackModal(false)
+		setSearchValue("");
 	};
 
 	return (
-		<main className="w-full h-screen bg-red-200">
+		<main className="w-full h-screen">
 			{/* { showCountry ? <div> .... </div> : null } */}
 
 			{showCountry ? (
-				<div className="absolute flex w-[800px] left-0 right-0 ml-auto mr-auto bg-white top-[50px] p-4 flex-wrap">
-					{dataSource.map((item, index) => (
+				<div className="absolute flex w-[800px] p-2 items-center left-0 right-0 ml-auto mr-auto bg-white top-[100px] rounded-2xl p-4 flex-wrap">
+					<div>
+						<input
+							className="bg-red-200 p-2 outline-none"
+							type="text"
+							name="searchValue"
+							onChange={(e) => setSearchValue(e.target.value)}
+							value={searchValue}
+						/>
+					</div>
+					{resultData.map((item, index) => (
 						<div key={index}>
 							<div
 								onClick={() => clickFlag(index)}
@@ -80,7 +109,7 @@ export default function Home() {
 						onClick={() => closeCountry()}
 						class="absolute right-2 top-2 p-2 hover:cursor-pointer hover:bg-gray-300"
 					>
-						<Icon icon="iconamoon:close-bold" width="24" height="24" />
+						<Icon icon="iconamoon:close-bold" width="24" height="24"  />
 					</div>
 					{/* 
 					<button
@@ -90,7 +119,9 @@ export default function Home() {
 						閉じる
 					</button> */}
 				</div>
+
 			) : null}
+
 
 			<header className="flex  bg-green-400 items-center justify-between">
 				{/* logo */}
@@ -171,6 +202,12 @@ export default function Home() {
 					</Link>
 				</ul>
 			</header>
+			{blackModal ? (
+				<div className="blackModal w-full h-[100vh] flex items-center justify-around">
+
+					<h1 className="text-2xl font-medium flex items-center"><GiNinjaHead className="size-30"/>NINJA 黒いでしょう</h1>
+				</div>
+			) : null}
 		</main>
 	);
 }
