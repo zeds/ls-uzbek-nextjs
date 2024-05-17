@@ -62,7 +62,8 @@ export default function Home() {
   };
 
   const clickFlag = (index) => {
-    let selected = dataSource[index].iso2; // "UZ"
+    let selected = resultData[index].iso2; // "UZ"
+    console.log("selected=", selected);
     setFlag(selected.toLowerCase()); // "uz"
     setShowCountry(false);
     setSearchValue("");
