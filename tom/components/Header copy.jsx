@@ -1,26 +1,34 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import FlagModal from "./FlagModal";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
+	// headerに表示している旗の2 letter code。初期値はuzにしている。
 	const [flag, setFlag] = useState("jp"); // jp us au
-	const [showModal, setShowModal] = useState(false); // true/false
 
 	return (
 		<>
-			{showModal ? <FlagModal setShowModal={setShowModal} /> : null}
-			<div className="fixed z-10 flex h-[56px] w-full bg-gray-500 justify-between items-center">
+			<header
+				className={cn(
+					`sticky flex justify-between items-center inset-x-0 top-0 z-30 w-full transition-all border-b border-gray-200 bg-red-50`,
+					{
+						// "border-b border-gray-200 bg-white/75 backdrop-blur-lg":scrolled,
+						// "border-b border-gray-200 bg-white": selectedLayout,
+					}
+				)}
+			>
+				{/* <header className="flex  bg-green-400 items-center justify-between"> */}
+				{/* logo */}
 				<div className="flex items-center justify-center w-[169px] bg-blue-500">
 					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
 					</div>
-					<Link href={"/"}>
-						<div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
-							<img src="logo.svg" alt=""></img>
-						</div>
-					</Link>
+					<div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
+						<img src="logo.svg" alt=""></img>
+					</div>
 				</div>
+
 				<div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
 					{/* search */}
 					<input
@@ -46,6 +54,7 @@ const Header = () => {
 						></img>
 					</button>
 				</div>
+
 				<ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
 					{/* search */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
@@ -56,13 +65,13 @@ const Header = () => {
 						<img className="bg-green-500" src="mic.svg" alt=""></img>
 					</li>
 
-					{/* flag 国旗 */}
+					{/* globe */}
 					<li className="flex items-center shrink-0 w-[60px] p-2">
-						<button onClick={() => setShowModal(true)}>
+						<button onClick={() => showModal()}>
 							<img
-								className=" w-[30px]"
-								// src={`https://flagcdn.com/w320/${flag}.png`}
-								src={`/flags/${flag}.svg`}
+								className="bg-green-500 w-[50px]"
+								src={`https://flagcdn.com/w320/${flag}.png`}
+								// src="globe.svg"
 								alt=""
 							></img>
 						</button>
@@ -87,7 +96,7 @@ const Header = () => {
 						</li>
 					</Link>
 				</ul>
-			</div>
+			</header>
 		</>
 	);
 };
