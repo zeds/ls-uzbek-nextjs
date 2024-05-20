@@ -1,8 +1,8 @@
 "use client";
-import { createClient } from "@/utils/supabase/client"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 const Profile = () => {
   const [dataSource, setDataSource] = useState({});
@@ -43,6 +43,10 @@ const Profile = () => {
       //   setLoading(false)
     }
   }, []);
+
+  useEffect(() => {
+    getProfile();
+  }, {});
 
   return (
     <div className="w-full h-screen bg-blue-300 flex justify-center">

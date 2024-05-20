@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 
 const Page = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -99,9 +100,10 @@ const Page = () => {
       <div>プロフィール</div>
       <div className="flex bg-gray-300 gap-1 flex-wrap p-2">
         {dataSource.map((item, index) => (
-          <div
+          <Link
             key={index}
-            className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+            href={`/profiles/${item.id}`}
+            className="w-[200px] h-[300px] bg-purple-300 relative p-2"
           >
             <div className="w-full justify-center flex">
               {item.avatar_url ? (
@@ -115,22 +117,24 @@ const Page = () => {
             <div>
               <div>Name</div>
               <input
-                className="p-1 bg-red-200 w-full"
+                className="p-1 bg-yellow-200 w-full"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
                 value={item.username}
               />
             </div>
+            <div> {item.nationality}</div>
+            <div> {item.introduce}</div>
             <div className="justify-center flex absolute bottom-1 start-1/3">
               <button
                 onClick={() => clickUpdate(index)}
-                className="bg-blue-400 text-white px-3 py-1 rounded-md"
+                className="bg-blue-500 text-white px-3 py-1 rounded-md"
               >
                 更新
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>
