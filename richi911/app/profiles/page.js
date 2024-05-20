@@ -97,11 +97,9 @@ const Page = () => {
 
   return (
     <>
-      <div className="bg-yellow-800 p-2 text-black font-semibold">
-        プロフィール
-      </div>
+      {/* <div className="bg-yellow-800 p-2 text-black font-semibold"></div> */}
       {/* {JSON.stringify(dataSource)} */}
-      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2">
+      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2 mt-[56px]">
         {dataSource.map((item, index) => (
           <Link
             key={index}
