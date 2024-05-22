@@ -1,36 +1,28 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
+import FlagModal from "./FlagModal";
 
 const Header = () => {
-  // headerに表示している旗の2 letter code。初期値はuzにしている。
   const [flag, setFlag] = useState("jp"); // jp us au
+  const [showModal, setShowModal] = useState(false); // true/false
 
   return (
     <>
-      <header
-        className={cn(
-          `sticky flex  justify-between items-center inset-x-0 top-0 z-30 w-full transition-all border-b border-gray-200 bg-red-50`,
-          {
-            // "border-b border-gray-200 bg-white/75 backdrop-blur-lg":scrolled,
-            // "border-b border-gray-200 bg-white": selectedLayout,
-          }
-        )}
-      >
-        {/* <header className="flex  bg-green-400 items-center justify-between"> */}
-        {/* logo */}
+      {showModal ? (
+        <FlagModal setShowModal={setShowModal} setFlag={setFlag} />
+      ) : null}
+      <div className="fixed z-10 flex h-[56px] w-full bg-gray-500 justify-between items-center">
         <div className="flex items-center justify-center w-[169px] bg-blue-500">
           <div className="bg-red-200 w-10 h-10 p-2 shrink-0">
             <img src="burger.svg" alt=""></img>
           </div>
           <Link href={"/"}>
             <div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
-              <img src="youtube-logo.svg" alt=""></img>
+              <img src="logo.svg" alt=""></img>
             </div>
           </Link>
         </div>
-
         <div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
           {/* search */}
           <input
@@ -42,7 +34,7 @@ const Header = () => {
           <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
-              src="search.svg"
+              src="scope.svg"
               alt=""
             ></img>
           </button>
@@ -56,7 +48,6 @@ const Header = () => {
             ></img>
           </button>
         </div>
-
         <ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
           {/* search */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
@@ -67,13 +58,13 @@ const Header = () => {
             <img className="bg-green-500" src="mic.svg" alt=""></img>
           </li>
 
-          {/* globe */}
+          {/* flag 国旗 */}
           <li className="flex items-center shrink-0 w-[60px] p-2">
-            <button onClick={() => showModal()}>
+            <button onClick={() => setShowModal(true)}>
               <img
-                className="bg-green-500 w-[50px]"
-                src={`https://flagcdn.com/w320/${flag}.png`}
-                // src="globe.svg"
+                className=" w-[30px]"
+                // src={`https://flagcdn.com/w320/${flag}.png`}
+                src={`/flags/${flag}.svg`}
                 alt=""
               ></img>
             </button>
@@ -81,24 +72,24 @@ const Header = () => {
 
           {/* video */}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="bg-green-500" src="create.svg" alt=""></img>
+            <img className="bg-green-500" src="video.svg" alt=""></img>
           </li>
           {/*bell*/}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="bg-green-500" src="notifications.svg" alt=""></img>
+            <img className="bg-green-500" src="bell.svg" alt=""></img>
           </li>
           {/* Mr Tom */}
           <Link href={"/profiles"}>
             <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
               <img
                 className="w-[32px] h-[32px] rounded-full"
-                src="profile.jpg"
+                src="tom.png"
                 alt=""
               ></img>
             </li>
           </Link>
         </ul>
-      </header>
+      </div>
     </>
   );
 };
