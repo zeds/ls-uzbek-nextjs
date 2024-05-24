@@ -4,9 +4,11 @@ import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 
 const Page = () => {
-  const [dataSource, setDataSource] = useState([]);
-
   const supabase = createClient();
+
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   const channelA = supabase
     .channel("schema-db-changes")
