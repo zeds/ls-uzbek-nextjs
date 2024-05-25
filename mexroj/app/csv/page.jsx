@@ -22,17 +22,6 @@ const Page = () => {
     },
   ];
 
-  const datas = [
-    {
-      first: "foo",
-      second: "bar",
-    },
-    {
-      first: "foobar",
-      second: "foobar",
-    },
-  ];
-
   const recommendData = [
     {
       img: "https://i.ytimg.com/vi/q-VNPpo9z0Y/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCTfzICpNJURsAUR7H5oKiwbRU1OQ",
@@ -133,15 +122,16 @@ const Page = () => {
   ];
 
   return (
-    <div className="pt-[56px]">
+    <div className="pt-[56px] bg-sky-200 w-full h-[100vh]">
       <CsvDownloader
-        filename="myfile"
+        filename="csv file"
         extension=".csv"
         separator=";"
         wrapColumnChar=""
         columns={columns}
         datas={recommendData}
         text="DOWNLOAD"
+        className="border-solid border-2 border-red-400 m-2 bg-purple-500 "
       />
     </div>
   );

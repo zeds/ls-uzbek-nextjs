@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const Page = () => {
   const supabase = createClient();
+  const [dataSource, setDataSource] = useState([]);
 
   useEffect(() => {
     getProfile();
@@ -20,6 +21,7 @@ const Page = () => {
         // テーブルを指定しない場合、全てのテーブルの変更が通知される。
         // table: "notifications",
       },
+
       (payload) => {
         if (payload.table === "profiles") {
           if (payload.new && "username" in payload.new) {
@@ -29,6 +31,7 @@ const Page = () => {
         }
       }
     )
+
     .subscribe();
 
   const updateProfile = (target) => {
@@ -98,47 +101,44 @@ const Page = () => {
   };
 
   return (
-    <>
-      <div>プロフィール</div>
-      <div className="flex bg-gray-300 gap-1 flex-wrap p-2">
-        {dataSource.map((item, index) => (
-          <Link
-            key={index}
-            href={`/profiles/${item.id}`}
-            className="w-[200px] h-[300px] bg-blue-300 relative p-2"
-          >
-            <div className="w-full justify-center flex">
-              {item.avatar_url ? (
-                <img
-                  className="rounded-full w-[100px]"
-                  src={item.avatar_url}
-                  alt="hoge"
-                />
-              ) : null}
-            </div>
-            <div>
-              <div>Name</div>
-              <input
-                className="p-1 bg-red-200 w-full"
-                type="text"
-                name="username"
-                onChange={(e) => onChangeHandler(e.target.value, index)}
-                value={item.username}
+    <div className="flex bg-gray-300 gap-3 flex-wrap pt-[56px]">
+      {dataSource.map((item, index) => (
+        <Link
+          key={index}
+          href={`/profiles/${item.id}`}
+          className="w-[200px] h-[300px] bg-blue-300 relative p-2"
+        >
+          <div className="w-full justify-center flex">
+            {item.avatar_url ? (
+              <img
+                className="rounded-full w-[100px]"
+                src={item.avatar_url}
+                alt="hoge"
               />
-            </div>
+            ) : null}
+          </div>
+          <div>
+            <div>Name</div>
+            <input
+              className="p-1 bg-red-200 w-full"
+              type="text"
+              name="username"
+              onChange={(e) => onChangeHandler(e.target.value, index)}
+              value={item.username}
+            />
+          </div>
 
-            <div className="justify-center flex absolute bottom-1 start-1/3">
-              <button
-                onClick={() => clickUpdate(index)}
-                className="bg-blue-400 text-white px-3 py-1 rounded-md"
-              >
-                更新
-              </button>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </>
+          <div className="justify-center flex absolute bottom-1 start-1/3">
+            <button
+              onClick={() => clickUpdate(index)}
+              className="bg-blue-400 text-white px-3 py-1 rounded-md"
+            >
+              更新
+            </button>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 };
 
