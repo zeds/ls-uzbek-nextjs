@@ -12,13 +12,9 @@ export default function Home() {
 
   const getArticles = useCallback(async () => {
     try {
-      //   setLoading(true)
-
       const { data, error, status } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", profileId)
-        .single();
+        .from("articles")
+        .select("*");
 
       if (error && status !== 406) {
         throw error;
@@ -33,17 +29,23 @@ export default function Home() {
     } finally {
       //   setLoading(false)
     }
-  }, []);
+  });
 
   useEffect(() => {
     getArticles();
   }, []);
 
   return (
-    <div className="bg-red-300 w-full pt-[56px] flex flex-wrap gap-2 ">
-      {articles.map((item, index) => (
+    <div className="flex flex-wrap bg-red-300 w-full pt-[56px] gap-2">
+      {dataSource.map((item, index) => (
         <div key={index}>
-          <Article title={item.title} avatar={item.avatar} />
+          <Article
+            title={item.title}
+            avatar={item.avatar_url}
+            user_name={item.user_name}
+            stats={item.stats}
+            img_url={item.img_url}
+          />
         </div>
       ))}
     </div>
