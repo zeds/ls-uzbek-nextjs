@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.grid-frame {
+  padding-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.photo {
+  width: 100%;
+}
+.article {
+  width: 100%;
+  background: white;
+  border: 1px solid pink;
+}
+.img {
+  background: white;
+  border-radius: 30px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.user {
+  padding-left: 5px;
+}
