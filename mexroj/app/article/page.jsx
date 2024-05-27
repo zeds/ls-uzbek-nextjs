@@ -135,12 +135,12 @@ function page() {
       {videoData.map((item, index) => (
         <div key={index} className="article">
           <img className="w-full h-2/3 rounded-[12px]" src={item.img} />
-          <div className="flex gap-3 m-2">
-            <img className="w-9 h-9 rounded-full mt-2" src={item.avatar} />
-            <div className="">
-              <h3 className="">{item.title}</h3>
+          <div className="flex  m-2">
+            <img className="w-9 h-9 rounded-full mt-3 mr-3" src={item.avatar} />
+            <div className="pr-6">
+              <h2 className="">{item.title}</h2>
               <p className="text-slate-600">{item.user}</p>
-              <p>{item.statistics}</p>
+              <p className="font-normal">{item.statistics}</p>
             </div>
           </div>
         </div>
