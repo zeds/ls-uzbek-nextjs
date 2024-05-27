@@ -99,8 +99,8 @@ function page() {
           />
           <div>
             <div className="title">
-              Free BGM "I'll be sleepy after a snack" 2 hours ver - Kawaii
-              Afternoon Break [NoCopyrightMusic]
+              Free BGM ver - Kawaii Afternoon Break "I'll be sleepy after a
+              snack" 2 hours ver - Kawaii Afternoon Break [NoCopyrightMusic]
             </div>
             <div className="author">Nyalpaca BGM Workshop</div>
             <div className="statistics">440K views 2 months ago</div>
