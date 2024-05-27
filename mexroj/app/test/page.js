@@ -44,7 +44,7 @@ const Page = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="pt-[66px] w-full h-[100vh]">
       <div className="w-[300px] bg-pink-300  p-3 gap-3 items-center justify-center">
         <div className="flex gap-3 mb-2 ">
           <div>名前:</div>
