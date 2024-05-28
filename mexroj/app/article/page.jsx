@@ -35,44 +35,27 @@ function Page() {
   }, [getArticles]);
 
   return (
-    <div className="container">
+    <div className="bg-red-300 w-full pt-16 grid grid-cols-2 sm:grid-cols-3 gap-2">
       {dataSource.map((item, index) => (
-        <div key={index} className="frame">
-          <Image
-            width={0}
-            height={0}
-            sizes="100vw"
-            src={item.img_url}
-            alt="rasm"
-            style={{
-              width: "100%",
-              height: "auto",
-              borderRadius: "12px",
-            }}
-          />
+        <div key={index} className="bg-green-300 w-full ">
+          <img className="rounded-[12px] w-full" src={item.img_url} alt="" />
 
-          <div className="decs">
-            <Image
-              width={0}
-              height={0}
-              sizes="100vw"
+          <div className="flex">
+            <img
+              className="w-9 h-9 rounded-full mt-3 mr-3"
               src={item.avatar_url}
-              alt="rasm"
-              style={{
-                width: "36px",
-                height: "36px",
-                borderRadius: "18px",
-                marginTop: "3px",
-              }}
+              alt="video"
             />
             <div>
-              <div className="title">
+              <div className="title font-medium leading-[22px] text-[16ox] ">
                 {item.title}
-                {/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
-                Kawaii Afternoon Break [NoCopyrightMusic] */}
               </div>
-              <div className="author">{item.user_name}</div>
-              <div className="statistics">{item.stats}</div>
+              <div className="author font-normal leading-5 text-[14px]">
+                {item.user_name}
+              </div>
+              <div className="statistics font-normal leading-5 text-[14px]">
+                {item.stats}
+              </div>
             </div>
           </div>
         </div>
