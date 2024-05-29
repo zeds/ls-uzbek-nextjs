@@ -39,7 +39,6 @@ function Page() {
       {dataSource.map((item, index) => (
         <div key={index} className="bg-green-300 w-full ">
           <img className="rounded-[12px] w-full" src={item.img_url} alt="" />
-
           <div className="flex">
             <img
               className="w-9 h-9 rounded-full mt-3 mr-3"
