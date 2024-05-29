@@ -97,11 +97,9 @@ const Page = () => {
 
   return (
     <>
-      <div className="bg-yellow-800 p-2 text-black font-semibold">
-        プロフィール
-      </div>
+      {/* <div className="bg-yellow-800 p-2 text-black font-semibold"></div> */}
       {/* {JSON.stringify(dataSource)} */}
-      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2">
+      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2 mt-[56px]">
         {dataSource.map((item, index) => (
           <Link
             key={index}
@@ -118,16 +116,31 @@ const Page = () => {
               ) : null}
             </div>
             <div>
-              <div className="font-semibold">Name:</div>
+              <div className="font-semibold text-sm">Name:</div>
               <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold"
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
                 type="text"
                 name="username"
                 onChange={(e) => onChangeHandler(e.target.value, index)}
                 value={item.username}
               />
+              <div className="font-semibold text-sm">Nationality: </div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
+                type="text"
+                name="nationality"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.nationality}
+              />
+              <div className="font-semibold text-sm">Bio: </div>
+              <input
+                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm truncate"
+                type="text"
+                name="introduce"
+                onChange={(e) => onChangeHandler(e.target.value, index)}
+                value={item.introduce}
+              />
             </div>
-            <div className="font-semibold">{item.nationality}</div>
             {/* <div>
               <div className="font-semibold">Nationality:</div>
               <input

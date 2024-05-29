@@ -58,7 +58,7 @@ const Profile = () => {
 					<label className="w-full px-[100px] h-[30px] mt-10">
 						username: {dataSource.username}
 					</label>
-					<label className="w-full px-[100px] h-[30px]">
+					<label className="w-full px-[100px] h-[30px] ">
 						email: {dataSource.email}
 					</label>
 					<button
