@@ -19,7 +19,7 @@ const Header = () => {
           </div>
           <Link href={"/"}>
             <div className="w-[127px] h-[56px] bg-blue-300 py-[18px] pl-[16px] pr-[14px] shrink-0">
-              <img src="logo.svg" alt=""></img>
+              <img src="youtube-logo.svg" alt=""></img>
             </div>
           </Link>
         </div>
@@ -34,7 +34,7 @@ const Header = () => {
           <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
-              src="scope.svg"
+              src="search.svg"
               alt=""
             ></img>
           </button>
@@ -51,7 +51,7 @@ const Header = () => {
         <ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
           {/* search */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-            <img className="bg-green-200" src="scope.svg" alt=""></img>
+            <img className="bg-green-200" src="search.svg" alt=""></img>
           </li>
           {/* mic */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
@@ -72,18 +72,18 @@ const Header = () => {
 
           {/* video */}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="bg-green-500" src="video.svg" alt=""></img>
+            <img className="bg-green-500" src="create.svg" alt=""></img>
           </li>
           {/*bell*/}
           <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="bg-green-500" src="bell.svg" alt=""></img>
+            <img className="bg-green-500" src="notifications.svg" alt=""></img>
           </li>
           {/* Mr Tom */}
           <Link href={"/profiles"}>
             <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
               <img
                 className="w-[32px] h-[32px] rounded-full"
-                src="tom.png"
+                src="profile.jpg"
                 alt=""
               ></img>
             </li>

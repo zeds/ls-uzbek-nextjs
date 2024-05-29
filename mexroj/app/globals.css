@@ -38,14 +38,21 @@ body {
   }
 }
 
-.article {
-  background: skyblue;
-  border: 1px solid pink;
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-.container {
-  background: lightgray;
-  gap: 10px;
-  padding: 65px 10px 0 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.author {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.statistics {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
