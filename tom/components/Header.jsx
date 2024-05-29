@@ -12,7 +12,8 @@ const Header = () => {
 			{showModal ? (
 				<FlagModal setShowModal={setShowModal} setFlag={setFlag} />
 			) : null}
-			<div className="fixed z-10 flex h-[56px] w-full bg-gray-500 justify-between items-center">
+			//fixed
+			<div className=" z-10 flex h-[56px] w-full bg-gray-500 justify-between items-center">
 				<div className="flex items-center justify-center w-[169px] bg-blue-500">
 					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
