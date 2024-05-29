@@ -56,7 +56,7 @@ function Page() {
 							width={0}
 							height={0}
 							sizes="100vw"
-							src={item.avatar_url}
+							src={item.har_url}
 							alt="rasm"
 							style={{
 								width: "36px",
