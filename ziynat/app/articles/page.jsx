@@ -9,7 +9,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -23,7 +23,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -37,7 +37,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -51,7 +51,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -65,7 +65,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -79,7 +79,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -93,7 +93,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -107,7 +107,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
@@ -121,7 +121,7 @@ const Page = () => {
         <img className="photo" src="study.webp" al="study" />
         <div className="desc">
           <img className="img" src="CAT.jpg" al="cat" />
-          <div>
+          <div className="stats">
             <div>
               2.5-HOUR STUDY WITH ME / calm piano / 🚢 Yokohama Harbor at
               SUNSET🌃 / with countdown+alarm
