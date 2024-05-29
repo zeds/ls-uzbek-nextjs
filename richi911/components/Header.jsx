@@ -34,7 +34,7 @@ const Header = () => {
           <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
-              src="scope.svg"
+              src="search.svg"
               alt=""
             ></img>
           </button>
