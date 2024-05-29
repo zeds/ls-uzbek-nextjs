@@ -37,7 +37,7 @@ function Page() {
 	return (
 		<div className="container">
 			{dataSource.map((item, index) => (
-				<div key={index} className="frame">
+				<div key={index} className="w-full">
 					<Image
 						width={0}
 						height={0}
@@ -51,7 +51,7 @@ function Page() {
 						}}
 					/>
 
-					<div className="decs">
+					<div className="flex gap-[10px] mt-3 mr-3">
 						<Image
 							width={0}
 							height={0}
@@ -66,13 +66,17 @@ function Page() {
 							}}
 						/>
 						<div>
-							<div className="title">
+							<div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
 								{item.title}
 								{/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
 								Kawaii Afternoon Break [NoCopyrightMusic] */}
 							</div>
-							<div className="author">{item.user_name}</div>
-							<div className="statistics">{item.stats}</div>
+							<div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
+								{item.user_name}
+							</div>
+							<div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
+								{item.stats}
+							</div>
 						</div>
 					</div>
 				</div>
