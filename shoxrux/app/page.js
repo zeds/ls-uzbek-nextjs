@@ -16,6 +16,9 @@ export default function Home() {
 	const clickArticle2 = () => {
 		routeM.push(`/article2`);
 	};
+	const clickuseState = () => {
+		routeM.push(`/useState`);
+	};
 	const getArticles = useCallback(async () => {
 		try {
 			const { data, error, status } = await supabase
@@ -43,6 +46,7 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-wrap  w-full pt-[56px] gap-2 justify-center">
+			<button onClick={clickuseState} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to useState</button>
 			<button onClick={clickArticle2} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to Article Page</button>
 			{/* {dataSource.map((item, index) => (
         <div key={index}>
