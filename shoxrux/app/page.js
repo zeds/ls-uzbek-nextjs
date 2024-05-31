@@ -5,16 +5,22 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
+import { useRouter } from "next/navigation";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 export default function Home() {
 	const supabase = createClient();
+	const routeM = useRouter();
 	const [dataSource, setDataSource] = useState([]);
 
+	const clickArticle2 = () => {
+		routeM.push(`/article2`);
+	};
 	const getArticles = useCallback(async () => {
 		try {
 			const { data, error, status } = await supabase
 				.from("articles")
-				.select("*").like("title","%ing%")
+				.select("*");
 
 			if (error && status !== 406) {
 				throw error;
@@ -36,18 +42,19 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="flex flex-wrap bg-red-300 w-full pt-[56px] gap-2">
-			{dataSource.map((item, index) => (
-				<div key={index}>
-					<Article
-						title={item.title}
-						avatar={item.avatar_url}
-						user_name={item.user_name}
-						stats={item.stats}
-						img_url={item.img_url}
-					/>
-				</div>
-			))}
+		<div className="flex flex-wrap  w-full pt-[56px] gap-2 justify-center">
+			<button onClick={clickArticle2} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to Article Page</button>
+			{/* {dataSource.map((item, index) => (
+        <div key={index}>
+          <Article
+            title={item.title}
+            avatar={item.avatar_url}
+            user_name={item.user_name}
+            stats={item.stats}
+            img_url={item.img_url}
+          />
+        </div>
+      ))} */}
 		</div>
 	);
 }
