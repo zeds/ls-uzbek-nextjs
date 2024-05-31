@@ -28,30 +28,21 @@
 }
 .decs {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 .title {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-
-  line-height: 22px;
-  font-weight: 500;
 }
 .author {
-  line-height: 20px;
-  font-weight: 400;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
 .statistics {
-  font-weight: 400;
-  line-height: 20px;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

@@ -48,13 +48,13 @@ function Page() {
               alt="video"
             />
             <div>
-              <div className="title clamp-2 leading-[22px] text-[16px] text-{rgb(15, 15, 15)} ">
+              <div className="title clamp-2 leading-6  text-[16px] text-{rgb(15, 15, 15)} font-medium">
                 {item.title}
               </div>
-              <div className="author line-clamp-1 leading-5 text-[14px] text-{rgb(15, 15, 15)}">
+              <div className="author line-clamp-1 leading-5 text-[14px] text-{rgb(15, 15, 15)} font-normal">
                 {item.user_name}
               </div>
-              <div className="statistics line-clamp-1 leading-5 text-[14px] text-{rgb(96, 96, 96)}">
+              <div className="statistics line-clamp-1 leading-5 text-[14px] text-{rgb(96, 96, 96)} font-normal">
                 {item.stats}
               </div>
             </div>
