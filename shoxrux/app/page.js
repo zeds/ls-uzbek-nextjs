@@ -19,6 +19,9 @@ export default function Home() {
 	const clickuseState = () => {
 		routeM.push(`/useState`);
 	};
+	const clickArticle = () => {
+		routeM.push(`/article`);
+	};
 	const getArticles = useCallback(async () => {
 		try {
 			const { data, error, status } = await supabase
@@ -46,8 +49,9 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-wrap  w-full pt-[56px] gap-2 justify-center">
-			<button onClick={clickuseState} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to useState</button>
-			<button onClick={clickArticle2} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to Article Page</button>
+			<button onClick={clickuseState} className="flex bg-indigo-200 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to useState</button>
+			<button onClick={clickArticle} className="flex bg-indigo-300 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to Article tilwind を　使いました。</button>
+			<button onClick={clickArticle2} className="flex bg-indigo-400 p-2 rounded-2xl items-center gap-2">	<FaArrowRightToBracket />go to Article Page2 5/31/2024</button>
 			{/* {dataSource.map((item, index) => (
         <div key={index}>
           <Article
