@@ -14,7 +14,7 @@ export default function Home() {
 		try {
 			const { data, error, status } = await supabase
 				.from("articles")
-				.select("*");
+				.select("*").like("title","%ing%")
 
 			if (error && status !== 406) {
 				throw error;

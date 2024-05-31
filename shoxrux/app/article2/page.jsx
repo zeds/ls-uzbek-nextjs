@@ -79,14 +79,14 @@ const Page = () => {
 
 
     return (
-        <div className='container2 flex gap-1 flex-wrap p-2'>
+        <div className='container2 w-full  grid grid-cols-2 sm:grid-cols-4 gap-2 p-2'>
             {dataMedia.map((item, index) => (
-                <div key={index} className="frame relative p-3 ">
+                <div key={index} className="frame relative p-1 ">
                     <img className='rounded-2xl' src={item.img} />
-                    <div className='flex mt-5 gap-[6px]'>
-                        <img className='object-cover rounded-3xl w-[45px] h-[45px]' src={item.icon} />
+                    <div className='flex mt-3 gap-[6px]'>
+                        <img className='object-cover rounded-3xl w-9 h-[45px]' src={item.icon} />
                         <div>
-                            <div className='title'>{item.title}</div>
+                            <div className='title  font-medium leading-[22px] text-[16ox]'>{item.title}</div>
                             <div className='chanelName text-slate-600'>{item.channelName}</div>
                             <div className=' text-slate-600'>{item.users}</div>
                         </div>

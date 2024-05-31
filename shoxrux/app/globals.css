@@ -80,11 +80,10 @@
     background: #0000006b;
 }
 
-.article-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
 
+.article-container img{
+    object-fit: scale-down;
+}
 .container2 {
     width: 100%;
     height: 100vh;
