@@ -3,37 +3,62 @@
 @tailwind utilities;
 
 .my-grid {
-  display: grid;
-  grid-template-columns: 169px 1fr 156px;
-  height: 56px;
+	display: grid;
+	grid-template-columns: 169px 1fr 156px;
+	height: 56px;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.article {
+	background: skyblue;
+	border: 1px solid pink;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.container {
+	width: 100%;
+	height: 100vh;
+	background: white;
+	padding: 65px 10px 0 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 10px;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.frame {
+	width: 100%;
+	height: 100px;
+	/* background: red; */
 }
+.decs {
+	display: flex;
+	gap: 10px;
+	margin: 12px 12px 0 0;
+}
+.title {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	line-height: 22px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #0f0f0f;
+}
+.author {
+	font-size: 12px;
+	font-weight: 400;
+	color: #606060;
+
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+.statistics {
+	font-size: 14px;
+	color: #606060;
+	font-weight: 400;
+
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 }
