@@ -159,7 +159,7 @@ const Page = () => {
 	];
 
 	return (
-		<div className="pt-[56px]">
+		<div className="pt-[60px] bg-blue-600">
 			<p>配列をcsvで出力(export)します</p>
 			<CsvDownloader
 				filename="articles"
