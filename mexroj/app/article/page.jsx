@@ -13,6 +13,7 @@ function Page() {
       const { data, error, status } = await supabase
         .from("articles")
         .select("*")
+        // .like("30 yoshda")
         .order("id", { ascending: false });
 
       if (error && status !== 406) {
@@ -46,10 +47,10 @@ function Page() {
               alt="video"
             />
             <div>
-              <div className="title font-medium leading-[22px] text-[16ox] ">
+              <div className="line-clamp-2 font-medium leading-[22px] text-[16px] text-[rgb(15,15,15,1)]">
                 {item.title}
               </div>
-              <div className="author font-normal leading-5 text-[14px]">
+              <div className="line-clamp-1 font-normal leading-5 text-[14px]">
                 {item.user_name}
               </div>
               <div className="statistics font-normal leading-5 text-[14px]">
