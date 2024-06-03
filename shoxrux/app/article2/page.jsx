@@ -50,12 +50,21 @@ function Page() {
 		alert("検索します" + value);
 		getArticles(searchKeyword);
 	};
-
+	const clickSearch = () => {
+		// alert("入力された値：" + value);
+		getArticles(value);
+	};
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-2">
-				<input className="bg-red-200"></input>
-				<button>検索</button>
+			<div className="flex pt-[56px] ml-3">
+				<input
+					className="p-2 bg-red-200"
+					type="text"
+					onChange={(e) => setValue(e.target.value)}
+				></input>
+				<button onClick={clickSearch} className="bg-blue-300 p-3">
+					検索
+				</button>
 			</div>
 			<div className="container">
 				{dataSource.map((item, index) => (
