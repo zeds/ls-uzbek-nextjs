@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const useCounterStore = create((set) => ({
 	count: 777,
-	text: "かきくけこ",
+	text: "ロシア",
 	changeText: (value) => {
 		set({ text: value });
 	},

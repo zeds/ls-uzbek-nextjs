@@ -3,12 +3,14 @@ import React, { useCallback, useState, useEffect } from "react";
 import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { useCounterStore } from "@/store";
 
 function Page() {
 	const [searchKeyword, setSearchKeyword] = useState("");
 	const [dataSource, setDataSource] = useState([]);
 	const supabase = createClient();
 	const [value, setValue] = useState("");
+	const text = useCounterStore((state) => state.text); //ロシア
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
@@ -45,6 +47,10 @@ function Page() {
 		console.log("us=", searchKeyword);
 		getArticles(searchKeyword);
 	}, [searchKeyword]);
+
+	useEffect(() => {
+		getArticles(text);
+	}, [text]);
 
 	const searchArticles = () => {
 		alert("検索します");
