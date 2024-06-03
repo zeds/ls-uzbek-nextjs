@@ -2,11 +2,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useCounterStore } from "@/store";
 
 const Header = () => {
 	// headerに表示している旗の2 letter code。初期値はuzにしている。
 	const [flag, setFlag] = useState("jp"); // jp us au
-
+	const changeText = useCounterStore((state) => state.changeText);
+	const [searchText, setSearchText] = useState("");
 	return (
 		<>
 			<header
