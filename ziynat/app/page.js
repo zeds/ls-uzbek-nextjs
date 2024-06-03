@@ -7,7 +7,6 @@ import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
 
 export default function Home() {
-  const [searchKeyword, setSearchKeyword] = useState("%ing%");
   const supabase = createClient();
   const [dataSource, setDataSource] = useState([]);
 
@@ -15,9 +14,7 @@ export default function Home() {
     try {
       const { data, error, status } = await supabase
         .from("articles")
-        .select("*")
-        .like("title", "%Spring%")
-        .order("id", { ascending: false });
+        .select("*");
 
       if (error && status !== 406) {
         throw error;
