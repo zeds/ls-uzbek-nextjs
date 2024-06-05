@@ -2,7 +2,7 @@ import React from "react";
 
 const page = () => {
 	return (
-		<div className="pt-10">
+		<div className="pt-14">
 			<div className="w-[380px] border border-black flex">
 				<div className="w-[36px] h-[36px] flex-shrink-0">
 					<img src="raichel-avatar.jpeg" alt="rachel" />
