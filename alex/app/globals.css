@@ -2,63 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.my-grid {
-	display: grid;
-	grid-template-columns: 169px 1fr 156px;
-	height: 56px;
-	background: blue;
+html {
+	font-size: 16px;
 }
 
-main {
-}
-
-.grid-frame {
+.container {
+	width: 100%;
+	height: 100vh;
+	background: white;
+	padding: 65px 10px 0 10px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-
-	padding: 0;
-}
-
-.article {
-	border: 1px solid purple;
-	border-radius: 5%;
-	flex-shrink: 0;
-	margin: 5px;
-}
-
-.pop {
-	overflow: hidden;
-}
-
-.cart {
-	border-radius: 100%;
-	height: 36px;
-	width: 36px;
-	margin: 12px 12px 0px 0px;
-	flex-shrink: 0;
-}
-
-.socr {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	margin: 12px 12px 0px 0px;
-}
-
-.disc {
-	display: flex;
-}
-
-.clamp-2 {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-}
-
-.imga {
-	width: 100%;
-	height: 320px;
-	border-radius: 5%;
+	gap: 10px;
 }
