@@ -3,12 +3,14 @@ import React, { useCallback, useState, useEffect } from "react";
 import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { useCounterStore } from "@/store";
 
 function Page() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [dataSource, setDataSource] = useState([]);
   const supabase = createClient();
-  const [value, setValue] = useState("");
+
+  const text = useCounterStore((state) => state.text);
 
   const getArticles = useCallback(async (keyword) => {
     try {
@@ -46,28 +48,12 @@ function Page() {
     getArticles(searchKeyword);
   }, [searchKeyword]);
 
-  const searchArticles = () => {
-    alert("検索します");
-    getArticles(searchKeyword);
-  };
-
-  const clickSearch = () => {
-    // alert("入力された値：" + value);
-    getArticles(value);
-  };
+  useEffect(() => {
+    getArticles(text);
+  }, [text]);
 
   return (
     <div>
-      <div className="flex pt-[56px] ml-3">
-        <input
-          className="p-2 bg-red-200"
-          type="text"
-          onChange={(e) => setValue(e.target.value)}
-        ></input>
-        <button onClick={clickSearch} className="bg-blue-300 p-3">
-          検索
-        </button>
-      </div>
       <div className="container">
         {dataSource.map((item, index) => (
           <div key={index} className="w-full">
