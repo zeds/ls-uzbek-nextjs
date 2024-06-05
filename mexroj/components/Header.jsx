@@ -9,7 +9,6 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false); // true/false
 
   const changeText = useCounterStore((state) => state.changeText);
-
   const [searchText, setSearchText] = useState("");
 
   const clickSearch = () => {
