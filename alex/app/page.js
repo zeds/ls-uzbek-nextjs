@@ -14,7 +14,9 @@ export default function Home() {
 		try {
 			const { data, error, status } = await supabase
 				.from("articles")
-				.select("*");
+				.select("*")
+				.like("title", "%Bulgaria%")
+				.order("id", {ascending: false});
 
 			if (error && status !== 406) {
 				throw error;
@@ -38,7 +40,7 @@ export default function Home() {
 	return (
 		<div className="flex flex-wrap bg-red-300 w-full pt-[56px] gap-2">
 			{dataSource.map((item, index) => (
-				<div key={index}>
+				<div key={index} className="w-full">
 					<Article
 						title={item.title}
 						avatar={item.avatar_url}
@@ -47,7 +49,10 @@ export default function Home() {
 						img_url={item.img_url}
 					/>
 				</div>
+				
 			))}
+			
 		</div>
+		
 	);
 }
