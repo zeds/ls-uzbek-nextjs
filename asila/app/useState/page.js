@@ -8,7 +8,7 @@ let update = true;
 const Page = () => {
   const count = useCounterStore((state) => state.count);
   const text = useCounterStore((state) => state.text);
-const supabase = createClient
+  const supabase = createClient;
   const [value, setValue] = useState("useStateの練習をするよ");
 
   const clickSearch = () => {
