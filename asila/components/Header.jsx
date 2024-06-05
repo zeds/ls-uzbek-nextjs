@@ -7,11 +7,15 @@ import { useCounterStore } from "@/store";
 const Header = () => {
   const [flag, setFlag] = useState("jp"); // jp us au
   const [showModal, setShowModal] = useState(false); // true/false
-  // const changeText = useCounterStore((state) => state.changeText);
-  // const [searchText, setSearchText] = useState("");
+  const changeText = useCounterStore((state) => state.changeText);
+  const [searchText, setSearchText] = useState("");
   const count = useCounterStore((state) => state.count);
   const increment = useCounterStore((state) => state.increment);
   const decrement = useCounterStore((state) => state.decrement);
+
+  const clickSearch = () => {
+		changeText(searchText);
+	};
 
 
 
