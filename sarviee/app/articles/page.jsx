@@ -3,17 +3,25 @@ import React, { useCallback, useState, useEffect } from "react";
 import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { useCounterStore } from "@/store";
 
 function Page() {
+  const [searchKeyword, setSearchKeyword] = useState("");
   const [dataSource, setDataSource] = useState([]);
   const supabase = createClient();
 
-  const getArticles = useCallback(async () => {
+  const text = useCounterStore((state) => state.text);
+
+  const getArticles = useCallback(async (keyword) => {
     try {
+      console.log("searchKeyword=", keyword); // piano
+      keyword = "%" + keyword + "%"; // %piano%
+
       const { data, error, status } = await supabase
         .from("articles")
         .select("*")
-        // .like("title", "%ing%")
+        // .textSearch("title", "Tokyo")
+        .ilike("title", keyword) // %piano%
         .order("id", { ascending: false });
 
       if (error && status !== 406) {
@@ -32,35 +40,67 @@ function Page() {
   }, []);
 
   useEffect(() => {
-    getArticles();
+    getArticles(searchKeyword);
   }, [getArticles]);
 
-  return (
-    <div className="w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-3 bg-white">
-      {dataSource.map((item, index) => (
-        <div key={index} className="w-full ">
-          <img className="rounded-[12px] w-full" src={item.img_url} alt="" />
+  useEffect(() => {
+    console.log("us=", searchKeyword);
+    getArticles(searchKeyword);
+  }, [searchKeyword]);
 
-          <div className="flex mt-[12px]">
-            <img
-              className="w-9 h-9 rounded-full mr-3"
-              src={item.avatar_url}
-              alt="video"
+  useEffect(() => {
+    getArticles(text);
+  }, [text]);
+
+  return (
+    <div>
+      <div className="container">
+        {dataSource.map((item, index) => (
+          <div key={index} className="w-full">
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src={item.img_url}
+              alt="rasm"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "12px",
+              }}
             />
-            <div>
-              <div className="title clamp-2 leading-6  text-[16px] text-{rgb(15, 15, 15)} font-medium">
-                {item.title}
-              </div>
-              <div className="author line-clamp-1 leading-5 text-[14px] text-{rgb(15, 15, 15)} font-normal">
-                {item.user_name}
-              </div>
-              <div className="statistics line-clamp-1 leading-5 text-[14px] text-{rgb(96, 96, 96)} font-normal">
-                {item.stats}
+
+            <div className="flex gap-[10px] mt-3 mr-3">
+              <Image
+                width={0}
+                height={0}
+                sizes="100vw"
+                src={item.avatar_url}
+                alt="rasm"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "18px",
+                  marginTop: "3px",
+                }}
+              />
+              <div>
+                <div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
+                  {item.title}
+                  {/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
+                Kawaii Afternoon Break [NoCopyrightMusic] */}
+                </div>
+                <div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
+                  {item.user_name}
+                </div>
+                <div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
+                  {item.stats}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
