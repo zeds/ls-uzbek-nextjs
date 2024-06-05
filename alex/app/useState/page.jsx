@@ -1,5 +1,5 @@
 "use client";
-import { useCounterStore } from "../store";
+import { useCounterStore } from "@/store";
 import React, { useEffect, useState } from "react";
 
 let update = true;
