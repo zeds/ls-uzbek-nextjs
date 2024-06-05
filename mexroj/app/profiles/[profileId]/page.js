@@ -20,7 +20,7 @@ const Profile = () => {
     route.push(`/profiles/${profileId}/edit`);
   };
 
-  const getProfile = useCallback(async () => {=
+  const getProfile = useCallback(async () => {
     try {
       //   setLoading(true)
 
