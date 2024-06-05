@@ -1,11 +1,23 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import FlagModal from "./FlagModal";
+import { useCounterStore } from "@/store";
 
 const Header = () => {
   const [flag, setFlag] = useState("jp"); // jp us au
   const [showModal, setShowModal] = useState(false); // true/false
+  const changeText = useCounterStore((state) => state.changeText);
+  const [searchText, setSearchText] = useState("");
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
+
+  const clickSearch = () => {
+		changeText(searchText);
+	};
+
+
 
   return (
     <>
@@ -22,10 +34,21 @@ const Header = () => {
               <img src="logo.svg" alt=""></img>
             </div>
           </Link>
+          <div className="flex items-center">
+            <button onClick={increment} className="p-1 border m-1">
+              +
+            </button>
+            {count}
+            <button onClick={decrement} className="p-1 border m-1">
+              -
+            </button>
+          </div>
         </div>
         <div className="ml-[90px] w-full max-w-[732px] h-[40px] bg-orange-200 hidden sm:flex justify-end">
           {/* search */}
           <input
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
             placeholder="検索"
             className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
           ></input>
