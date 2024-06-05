@@ -87,10 +87,8 @@ function Page() {
               <div>
                 <div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
                   {item.title}
-                  {/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
-                Kawaii Afternoon Break [NoCopyrightMusic] */}
                 </div>
-                <div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
+                <div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
                   {item.user_name}
                 </div>
                 <div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
