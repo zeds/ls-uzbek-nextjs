@@ -11,7 +11,7 @@ const Header = () => {
 	const [searchText, setSearchText] = useState("");
 
 	const clickSearch = () => {
-		changeText(searchText);
+		changeText(searchText)
 	};
 	return (
 		<>
