@@ -19,7 +19,7 @@ const Page = () => {
 
         <div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
             {text}
-            {count}
+            {' ' + count}
             <input type="text" onChange={changeValue}></input>
             <button onClick={clickSearch} >search</button>
      
