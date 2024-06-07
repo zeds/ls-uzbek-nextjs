@@ -54,7 +54,7 @@ function Page() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container flex justify-center">
         {dataSource.map((item, index) => (
           <div key={index} className="w-full">
             <Image
@@ -70,7 +70,7 @@ function Page() {
               }}
             />
 
-            <div className="flex gap-[10px] mt-3 mr-3">
+            <div className="flex gap-[10px] mt-3 ">
               <Image
                 width={0}
                 height={0}

@@ -56,7 +56,7 @@ function Page() {
 	};
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3 justify-center">
+			<div className="flex pt-[56px]  justify-center">
 				<input
 					className="p-2 bg-red-200"
 					type="text"
@@ -66,7 +66,7 @@ function Page() {
 					検索
 				</button>
 			</div>
-			<div className="container">
+			<div className="container flex justify-center">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image

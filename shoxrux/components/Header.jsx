@@ -66,7 +66,7 @@ const Header = () => {
 					</li>
 					{/* mic */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="mic.svg" alt=""></img>
+						<img className="bg-green-500" src="tom.png" alt=""></img>
 					</li>
 
 					{/* flag 国旗 */}
