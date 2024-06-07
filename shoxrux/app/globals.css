@@ -77,3 +77,11 @@
   .inputSearch{
     outline: none;
   }
+  .drop-p2,
+  .drop-p{
+    font-size: 14px;
+    font-weight: 400;
+  }
+  /* .drop-p2{
+    color: rgb(6,95,212);
+  } */

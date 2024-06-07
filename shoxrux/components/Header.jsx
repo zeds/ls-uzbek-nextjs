@@ -3,7 +3,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
-import { useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa6";
+import { IoIosLogOut } from "react-icons/io";
+import { BiSolidUserAccount } from "react-icons/bi";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -21,14 +23,11 @@ const Header = () => {
 	const [showModal, setShowModal] = useState(false); // true/false
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
-	const routeM = useRouter();
 
 	const clickSearch = () => {
 		changeText(searchText)
 	};
-	const clickArticle2 = () => {
-		routeM.push(`/article2`);
-	};
+
 	return (
 		<>
 			{showModal ? (
@@ -107,7 +106,7 @@ const Header = () => {
 					</li>
 					{/* Mr Tom */}
 					{/* <Link href={"/profiles"}> */}
-					<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+					<li className="flex justify-center w-[70px] h-[34px] px-[6px] py-[1px]">
 						<DropdownMenu>
 							<DropdownMenuTrigger className="outline-none">
 								<img
@@ -116,17 +115,23 @@ const Header = () => {
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="m-3 mt-4 bg-green-200">
-								<DropdownMenuLabel>My Account</DropdownMenuLabel>
+							<DropdownMenuContent className="mr-[40px] mt-4 ">
+								<DropdownMenuLabel className="flex gap-4 w-full">
+									<img className="w-[36px] h-[36px] rounded-full" src="shox.jpg" />
+									<div className=" items-center">
+										<h1>Amirjonov Shoxrux</h1>
+										<p className="drop-p text-sm text-current">amirjonovdamin@gmial.com</p>
+										<p className="drop-p2 text-[#095ED5]">showing channel</p>
+									</div>
+
+								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
 								<Link href={"http://localhost:3000/"}>
-								<DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
+									<DropdownMenuItem className="cursor-pointer gap-3 "><img className="w-[24px]" src="ggg.svg"/>Google Account</DropdownMenuItem>
 								</Link>
-								<DropdownMenuItem className="cursor-pointer">Billing</DropdownMenuItem>
-								<DropdownMenuItem className="cursor-pointer">Team</DropdownMenuItem>
-								<DropdownMenuItem className="cursor-pointer">Subscription</DropdownMenuItem>
+								<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>Change Account</DropdownMenuItem>
 								<Link href={"article2"}>
-									<DropdownMenuItem onCklick={clickArticle2} className="cursor-pointer">Article</DropdownMenuItem>
+									<DropdownMenuItem className="cursor-pointer gap-3"><img src="logOut.svg"/>アーティクル</DropdownMenuItem>
 								</Link>
 							</DropdownMenuContent>
 						</DropdownMenu>
