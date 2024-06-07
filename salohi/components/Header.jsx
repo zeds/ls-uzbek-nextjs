@@ -13,9 +13,7 @@
 	const decrement = useCounterStore((state) => state.decrement);
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
-	const clickSearch = () => {
-		changeText(searchText)
-	}
+	const clickSearch = () => {changeText(searchText)}
     
 	return (
 		<>
@@ -34,14 +32,14 @@
 			</Link>
 			<div className=" flex items-center">
 				<button onClick={increment} className="p-1 border m-1">
-				+
+				plus
 				</button>
 				{count}
 				<button
-				onClick={(e) => changeText("salom")}
+				onClick={decrement}
 				className="p-1 border m-1"
 				>
-				-
+				minus
 				</button>
 			</div>
 			</div>

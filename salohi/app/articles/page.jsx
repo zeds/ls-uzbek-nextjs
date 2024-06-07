@@ -20,7 +20,6 @@ function Page() {
 			const { data, error, status } = await supabase
 				.from("articles")
 				.select("*")
-				// .textSearch("title", "Tokyo")
 				.ilike("title", keyword) // %piano%
 				.order("id", { ascending: false });
 
@@ -29,15 +28,15 @@ function Page() {
 			}
 
 			if (data) {
-				console.log("data = ", data);
+				// console.log("data = ", data);
 				setDataSource(data);
 			}
-		} catch (error) {
-			alert("Error loading user data!");
-		} finally {
-			//   setLoading(false)
-		}
-	}, []);
+			} catch (error) {
+				// alert("Error loading user data!");
+			} finally {
+				// setLoading(false)
+			}
+		}, []);
 
 	useEffect(() => {
 		getArticles(searchKeyword);
@@ -49,6 +48,7 @@ function Page() {
 	}, [searchKeyword]);
 
 	useEffect(() => {
+		// alert("sa");
 		getArticles(text);
 	}, [text]);
 
@@ -58,7 +58,7 @@ function Page() {
 	};
 
 	const clickSearch = () => {
-		// alert("入力された値：" + value);
+		alert("入力された値：" + value);
 		getArticles(value);
 	};
 
