@@ -9,7 +9,8 @@ function Page() {
 	const [searchKeyword, setSearchKeyword] = useState("");
 	const [dataSource, setDataSource] = useState([]);
 	const supabase = createClient();
-	const [value, setValue] = useState("");
+
+	// 取得
 	const text = useCounterStore((state) => state.text); //ロシア
 
 	const getArticles = useCallback(async (keyword) => {
@@ -48,32 +49,14 @@ function Page() {
 		getArticles(searchKeyword);
 	}, [searchKeyword]);
 
+	// textの変更を監視しています。
+	// 変更された時に、実行されます。
 	useEffect(() => {
 		getArticles(text);
 	}, [text]);
 
-	const searchArticles = () => {
-		alert("検索します");
-		getArticles(searchKeyword);
-	};
-
-	const clickSearch = () => {
-		// alert("入力された値：" + value);
-		getArticles(value);
-	};
-
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3">
-				<input
-					className="p-2 bg-red-200"
-					type="text"
-					onChange={(e) => setValue(e.target.value)}
-				></input>
-				<button onClick={clickSearch} className="bg-blue-300 p-3">
-					検索
-				</button>
-			</div>
 			<div className="container">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
