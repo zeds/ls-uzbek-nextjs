@@ -16,7 +16,6 @@
         // };
 
         const clickSearch = () => {
-            alert("押された:" + value)
         };
 
     return (
