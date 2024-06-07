@@ -1,19 +1,29 @@
 "use client";
+import { useCounterStore } from "@/store";
+import { createClient } from "@/utils/supabase/client";
 import React, { useEffect, useState } from "react";
 
-const Page = () => {
-	const [value, setValue] = useState("useStateの練習をするよ");
+let update = true;
 
+const Page = () => {
+	const text = useCounterStore((state) => state.text);
+
+	const supabase = createClient;
 
 	const clickSearch = () => {
-		alert("押されたばい: " + value);
+		alert("入力された値：" + value);
 	};
 
 	return (
-		<div className="pt-[56px] bg-blue-300 h-screen flex justify-center items-center">
+		<div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
+			{text}
 			<div className="flex">
-				<input type="text" onChange={(e) => setValue(e.target.value)}></input>
-				<button onClick={clickSearch} className="bg-green-300 p-3">
+				<input
+					className="p-2"
+					type="text"
+					onChange={(e) => setValue(e.target.value)}
+				></input>
+				<button onClick={clickSearch} className="bg-blue-300 p-3">
 					検索
 				</button>
 			</div>

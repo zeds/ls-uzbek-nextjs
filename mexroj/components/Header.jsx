@@ -54,9 +54,9 @@ const Header = () => {
           </button>
 
           {/* mic */}
-          <button className="ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
+          <button className="ml-[12px] w-[40px] h-[40px] shrink-0 rounded-full bg-gray-300 flex items-center justify-center aspect-square">
             <img
-              className="flex shrink-0 rounded-full w-[24px]"
+              className="flex rounded-full w-[24px]"
               src="mic.svg"
               alt=""
             ></img>

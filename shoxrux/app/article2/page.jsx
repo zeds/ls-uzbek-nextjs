@@ -3,12 +3,17 @@ import React, { useCallback, useState, useEffect } from "react";
 import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { useCounterStore } from "@/store";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 
 function Page() {
 	const [searchKeyword, setSearchKeyword] = useState("");
 	const [dataSource, setDataSource] = useState([]);
 	const supabase = createClient();
-    const [value,setValue] = useState("");
+	const [value, setValue] = useState("");
+	const text = useCounterStore((state) => state.text); //ロシア
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
@@ -46,27 +51,33 @@ function Page() {
 		getArticles(searchKeyword);
 	}, [searchKeyword]);
 
+	useEffect(() => {
+		getArticles(text);
+	}, [text]);
+
 	const searchArticles = () => {
-		alert("検索します" + value);
+		alert("検索します");
 		getArticles(searchKeyword);
 	};
+
 	const clickSearch = () => {
 		// alert("入力された値：" + value);
 		getArticles(value);
 	};
+
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3">
-				<input
-					className="p-2 bg-red-200"
+			<div className="flex pt-[56px] ml-3 justify-center gap-3">
+				<Input
+					className="p-2 bg-green-200 w-[320px] inputSearch"
 					type="text"
 					onChange={(e) => setValue(e.target.value)}
-				></input>
-				<button onClick={clickSearch} className="bg-blue-300 p-3">
+				/>
+				<Button onClick={clickSearch} className=" p-3">
 					検索
-				</button>
+				</Button>
 			</div>
-			<div className="container">
+			<div className="container w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 p-3 bg-white ">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image

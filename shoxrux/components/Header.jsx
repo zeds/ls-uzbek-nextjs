@@ -3,15 +3,31 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "./ui/button";
+
+
 
 const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
+	const routeM = useRouter();
 
 	const clickSearch = () => {
 		changeText(searchText)
+	};
+	const clickArticle2 = () => {
+		routeM.push(`/article2`);
 	};
 	return (
 		<>
@@ -66,7 +82,7 @@ const Header = () => {
 					</li>
 					{/* mic */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="mic.svg" alt=""></img>
+						<img className="bg-green-500" src="tom.png" alt=""></img>
 					</li>
 
 					{/* flag 国旗 */}
@@ -90,15 +106,32 @@ const Header = () => {
 						<img className="bg-green-500" src="bell.svg" alt=""></img>
 					</li>
 					{/* Mr Tom */}
-					<Link href={"/profiles"}>
-						<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
-							<img
-								className="w-[32px] h-[32px] rounded-full"
-								src="tom.jpeg"
-								alt=""
-							></img>
-						</li>
-					</Link>
+					{/* <Link href={"/profiles"}> */}
+					<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+						<DropdownMenu>
+							<DropdownMenuTrigger className="outline-none">
+								<img
+									className="w-[32px] h-[32px] rounded-full object-cover"
+									src="shox.jpg"
+									alt=""
+								></img>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="m-3 mt-4 bg-green-200">
+								<DropdownMenuLabel>My Account</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<Link href={"http://localhost:3000/"}>
+								<DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
+								</Link>
+								<DropdownMenuItem className="cursor-pointer">Billing</DropdownMenuItem>
+								<DropdownMenuItem className="cursor-pointer">Team</DropdownMenuItem>
+								<DropdownMenuItem className="cursor-pointer">Subscription</DropdownMenuItem>
+								<Link href={"article2"}>
+									<DropdownMenuItem onCklick={clickArticle2} className="cursor-pointer">Article</DropdownMenuItem>
+								</Link>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					</li>
+					{/* </Link> */}
 				</ul>
 			</div>
 		</>

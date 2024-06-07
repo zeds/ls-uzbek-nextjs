@@ -7,11 +7,10 @@ import { useCounterStore } from "@/store";
 const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
-	const count = useCounterStore((state) => state.count);
-	const increment = useCounterStore((state) => state.increment);
-	const decrement = useCounterStore((state) => state.decrement);
+
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
+	const isLogin = useCounterStore((state) => state.isLogin);
 
 	const clickSearch = () => {
 		changeText(searchText);
@@ -32,24 +31,11 @@ const Header = () => {
 							<img src="logo.svg" alt=""></img>
 						</div>
 					</Link>
-					<div className="flex items-center">
-						<button onClick={increment} className="p-1 border m-1">
-							+
-						</button>
-						{count}
-						<button
-							onClick={(e) => changeText("ホゲ")}
-							className="p-1 border m-1"
-						>
-							-
-						</button>
-					</div>
 				</div>
 				<div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
 					{/* search */}
 					<input
 						type="text"
-						// value={searchText}
 						onChange={(e) => setSearchText(e.target.value)}
 						placeholder="検索"
 						className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
@@ -68,9 +54,9 @@ const Header = () => {
 					</button>
 
 					{/* mic */}
-					<button className="ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
+					<button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
 						<img
-							className="flex shrink-0 rounded-full w-[24px]"
+							className="flex rounded-full w-[24px]"
 							src="mic.svg"
 							alt=""
 						></img>
@@ -109,11 +95,15 @@ const Header = () => {
 					{/* Mr Tom */}
 					<Link href={"/profiles"}>
 						<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
-							<img
-								className="w-[32px] h-[32px] rounded-full"
-								src="me.jpg"
-								alt=""
-							></img>
+							{isLogin ? (
+								<img
+									className="w-[32px] h-[32px] rounded-full"
+									src="tom.jpeg"
+									alt=""
+								></img>
+							) : (
+								<div>ログイン</div>
+							)}
 						</li>
 					</Link>
 				</ul>
