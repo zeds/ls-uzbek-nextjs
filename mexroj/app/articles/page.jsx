@@ -1,6 +1,5 @@
 "use client";
 import React, { useCallback, useState, useEffect } from "react";
-import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
 import { useCounterStore } from "@/store";
@@ -54,7 +53,7 @@ function Page() {
 
   return (
     <div>
-      <div className="container">
+      <div className="w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-3 bg-white ">
         {dataSource.map((item, index) => (
           <div key={index} className="w-full">
             <Image

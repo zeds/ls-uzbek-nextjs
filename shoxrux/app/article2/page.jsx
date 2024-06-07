@@ -56,7 +56,7 @@ function Page() {
 	};
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3">
+			<div className="flex pt-[56px] ml-3 justify-center">
 				<input
 					className="p-2 bg-red-200"
 					type="text"
