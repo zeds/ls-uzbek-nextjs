@@ -67,7 +67,7 @@ const Page = () => {
 						<DropdownMenuItem>
 							{/* <User className="mr-2 h-4 w-4" />
 							<span>Google account</span> */}
-							<div className="flex"><img src="" alt="rasm"></img>Google　アカウント</div>
+							<div className="flex items-center cursor-pointer gap-3"><img className="w-[24px]" src="ggg.svg" alt="rasm"></img>Google　アカウント</div>
 							{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
 						</DropdownMenuItem>
 						{/* <DropdownMenuItem>
@@ -96,7 +96,7 @@ const Page = () => {
 							<DropdownMenuSubTrigger>
 								{/* <UserPlus className="mr-2 h-4 w-4" />
 								<span>Invite users</span> */}
-								<div className="flex"><img src="" alt="rasm"></img>アカウントを切り替える</div>
+								<div className="flex items-center cursor-pointer gap-3 "><img src="changeAccount.svg" alt="rasm"></img>アカウントを切り替える</div>
 							</DropdownMenuSubTrigger>
 							{/* <DropdownMenuPortal>
 								<DropdownMenuSubContent> */}
@@ -126,7 +126,7 @@ const Page = () => {
 					<DropdownMenuItem>
 						{/* <LogOut className="mr-2 h-4 w-4" />
 						<span>ログアウト</span> */}
-						<div className="flex items-center"><img className="px-2" src="log-out.svg" alt="rasm"></img>ログアウト</div>
+						<div className="flex items-center cursor-pointer gap-3"><img src="log-out.svg" alt="rasm"></img>ログアウト</div>
 						{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
 					</DropdownMenuItem>
 				</DropdownMenuContent>
