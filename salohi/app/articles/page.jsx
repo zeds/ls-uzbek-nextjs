@@ -64,16 +64,7 @@ function Page() {
 
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3">
-				<input
-					className="p-2 bg-red-200"
-					type="text"
-					onChange={(e) => setValue(e.target.value)}
-				></input>
-				<button onClick={clickSearch} className="bg-blue-300 p-3">
-					検索
-				</button>
-			</div>
+
 			<div className="container">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
