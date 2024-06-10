@@ -3,6 +3,20 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { FaGoogle } from "react-icons/fa6";
+import { IoIosLogOut } from "react-icons/io";
+import { BiSolidUserAccount } from "react-icons/bi";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "./ui/button";
+
+
 
 const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
@@ -13,6 +27,7 @@ const Header = () => {
 	const clickSearch = () => {
 		changeText(searchText)
 	};
+
 	return (
 		<>
 			{showModal ? (
@@ -66,7 +81,7 @@ const Header = () => {
 					</li>
 					{/* mic */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="mic.svg" alt=""></img>
+						<img className="bg-green-500" src="tom.png" alt=""></img>
 					</li>
 
 					{/* flag 国旗 */}
@@ -90,15 +105,38 @@ const Header = () => {
 						<img className="bg-green-500" src="bell.svg" alt=""></img>
 					</li>
 					{/* Mr Tom */}
-					<Link href={"/profiles"}>
-						<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
-							<img
-								className="w-[32px] h-[32px] rounded-full"
-								src="tom.jpeg"
-								alt=""
-							></img>
-						</li>
-					</Link>
+					{/* <Link href={"/profiles"}> */}
+					<li className="flex justify-center w-[70px] h-[34px] px-[6px] py-[1px]">
+						<DropdownMenu>
+							<DropdownMenuTrigger className="outline-none">
+								<img
+									className="w-[32px] h-[32px] rounded-full object-cover"
+									src="shox.jpg"
+									alt=""
+								></img>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="mr-[40px] mt-4 ">
+								<DropdownMenuLabel className="flex gap-4 w-full">
+									<img className="w-[36px] h-[36px] rounded-full" src="shox.jpg" />
+									<div className=" items-center">
+										<h1>Amirjonov Shoxrux</h1>
+										<p className="drop-p text-sm text-current">amirjonovdamin@gmial.com</p>
+										<p className="drop-p2 text-[#095ED5]">showing channel</p>
+									</div>
+
+								</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<Link href={"http://localhost:3000/"}>
+									<DropdownMenuItem className="cursor-pointer gap-3 "><img className="w-[24px]" src="ggg.svg"/>Google Account</DropdownMenuItem>
+								</Link>
+								<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>Change Account</DropdownMenuItem>
+								<Link href={"article2"}>
+									<DropdownMenuItem className="cursor-pointer gap-3"><img src="logOut.svg"/>アーティクル</DropdownMenuItem>
+								</Link>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					</li>
+					{/* </Link> */}
 				</ul>
 			</div>
 		</>

@@ -37,14 +37,17 @@ import {
 let update = true;
 
 const Page = () => {
+<<<<<<< HEAD
   const text = useCounterStore((state) => state.text);
 
   const [value, setValue] = useState("useStateの練習をするよ");
+=======
+	const text = useCounterStore((state) => state.text);
+>>>>>>> 381c99f63b36d08c35b6f1625ac9bae0b1576777
 
-  const clickSearch = () => {
-    alert("入力された値：" + value);
-  };
+	const supabase = createClient;
 
+<<<<<<< HEAD
   return (
     <div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
       <DropdownMenu>
@@ -120,6 +123,27 @@ const Page = () => {
       </div>
     </div>
   );
+=======
+	const clickSearch = () => {
+		alert("入力された値：" + value);
+	};
+
+	return (
+		<div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
+			{text}
+			<div className="flex">
+				<input
+					className="p-2"
+					type="text"
+					onChange={(e) => setValue(e.target.value)}
+				></input>
+				<button onClick={clickSearch} className="bg-blue-300 p-3">
+					検索
+				</button>
+			</div>
+		</div>
+	);
+>>>>>>> 381c99f63b36d08c35b6f1625ac9bae0b1576777
 };
 
 export default Page;
