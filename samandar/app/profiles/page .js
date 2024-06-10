@@ -99,7 +99,7 @@ const Page = () => {
 	return (
 		<>
 			<div>プロフィール</div>
-			<div className="flex bg-gray-300 gap-1 flex-wrap p-2">
+			<div className="flex bg-gray-300 gap-1 flex-wrap p-2 mt-[56px]">
 				{dataSource.map((item, index) => (
 					<Link
 						key={index}
