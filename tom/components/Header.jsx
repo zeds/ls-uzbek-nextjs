@@ -144,7 +144,7 @@ const Header = () => {
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="w-[300px]" align="top">
+							<DropdownMenuContent className="w-[300px]" align="end">
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
 										<div className="flex">
@@ -218,13 +218,11 @@ const Header = () => {
 							onClick={() => setLogin(true)}
 						>
 							<Image
-								className="text-blue-400"
+								className=""
 								src={"/logout-avatar.svg"}
 								alt={"setting.svg"}
-								// fill
-								width={0}
-								height={0}
-								style={{ width: "30px", color: "red" }}
+								width={30}
+								height={30}
 							/>
 							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
 						</div>
