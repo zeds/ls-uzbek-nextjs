@@ -16,12 +16,13 @@
 	const Header = () => {
 		const [flag, setFlag] = useState("jp"); // jp us au
 		const [showModal, setShowModal] = useState(false); // true/false
-		const count = useCounterStore((state) => state.count);
-		// const count = useCounterStore((state) => state.text);
-		const increment = useCounterStore((state) => state.increment);
-		const decrement = useCounterStore((state) => state.decrement);
 		const changeText = useCounterStore((state) => state.changeText);
 		const [searchText, setSearchText] = useState("");
+
+		const setLogin = useCounterStore((state) => state.setLogin);
+		const isLogin = useCounterStore((state) => state.isLogin);
+
+		
 		const clickSearch = () => {
 			changeText(searchText);
 		};
@@ -45,13 +46,13 @@
 				</Link>
 				</div>
 				<div className=" flex items-center">
-					<button onClick={increment} className="p-1 border m-1">
+					{/* <button onClick={increment} className="p-1 border m-1">
 					+
 					</button>
 					{count}
 					<button onClick={decrement} className="p-1 border m-1">
 					-
-					</button>
+					</button> */}
 				</div>
 				<div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
 				{/* search */}
@@ -114,8 +115,9 @@
 					<img className="" src="bell.svg" alt=""></img>
 				</li>
 				{/* Mr Tom */}
-				{/* <Link href={"/useState"}> */}
-					<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+
+				<li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+						{isLogin ? (
 					<DropdownMenu>
 								<DropdownMenuTrigger className="outline-none">
 									<img
@@ -137,17 +139,25 @@
 
 									</DropdownMenuLabel>
 									<DropdownMenuSeparator />
-									<Link href={"http://localhost:3000/"}>
 										<DropdownMenuItem className="cursor-pointer gap-3 "><img className="w-[24px]" src="ggg.svg"/>				Google アカウント</DropdownMenuItem>
-									</Link>
 									<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>アカウントを切り替える</DropdownMenuItem>
-									<Link href={"article2"}>
-										<DropdownMenuItem className="cursor-pointer gap-3"><img src="logout.svg"/>ログアウト</DropdownMenuItem>
-									</Link>
-								</DropdownMenuContent>
+									<DropdownMenuItem> <div className="flex bg-slate-400">
+										<div className=" w-6 h-6 mr-4" onClick={() => setLogin(false)}>
+											<img src="logout.svg" alt="logout" />
+											</div>ログアウト
+									</div>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
 							</DropdownMenu>
+							) : (
+								<div
+								onClick={() => setLogin(true)}
+								className="boder px-2 py-1 flex cursor-pointer rounded-full "
+								><img src="profiles.svg" alt="" />
+								<div>login</div>
+								</div>
+							)}
 					</li>
-				{/* </Link> */}
 				</ul>
 			</div>
 			</>
