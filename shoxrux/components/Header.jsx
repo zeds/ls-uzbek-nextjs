@@ -207,12 +207,14 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
+									<div onClick={()=> setLogin(false)} className="flex">
 									<div className="w-6 h-6 mr-4">
 										<img src="/logout.svg" alt="logout" />
 									</div>
-									<span onClick={() => setLogin(false)}>
+									<span>
 										ログアウト
 									</span>
+									</div>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
