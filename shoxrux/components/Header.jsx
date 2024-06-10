@@ -131,7 +131,7 @@ const Header = () => {
 								</Link>
 								<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>Change Account</DropdownMenuItem>
 								<Link href={"article2"}>
-									<DropdownMenuItem className="cursor-pointer gap-3"><img src="logOut.svg"/>アーティクル</DropdownMenuItem>
+									<DropdownMenuItem className="cursor-pointer gap-3"><img src="logOut.svg"/>Log Out</DropdownMenuItem>
 								</Link>
 							</DropdownMenuContent>
 						</DropdownMenu>
