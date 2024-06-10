@@ -53,11 +53,7 @@ function Page() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <div className="container flex justify-center">
-=======
-      <div className="w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-3 bg-white ">
->>>>>>> d6ea7bc5db657d91171792b7836406391d973d81
+      <div className="w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-3 bg-white  ">
         {dataSource.map((item, index) => (
           <div key={index} className="w-full">
             <Image

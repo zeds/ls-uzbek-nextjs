@@ -15,7 +15,7 @@ export default function Home() {
 			const { data, error, status } = await supabase
 				.from("articles")
 				.select("*")
-				.like("title", "%Bulgaria%")
+				.like("title", "%%")
 				.order("id", {ascending: false});
 
 			if (error && status !== 406) {
