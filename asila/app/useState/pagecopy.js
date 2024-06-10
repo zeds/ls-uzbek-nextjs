@@ -18,6 +18,7 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
+import logout from "@/public/logout.svg";
 
 import {
   DropdownMenu,
@@ -33,7 +34,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import google from "../public/google.svg";
+
 let update = true;
 
 const Page = () => {
@@ -51,34 +52,27 @@ const Page = () => {
         <DropdownMenuTrigger asChild>
           <Button variant="outline">Open</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-[300px]" align="top">
+        <DropdownMenuContent className="w-56" align="top">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <div className="flex">
-                <div className="w-10 h-10 mr-4">
-                  <img src="/me.jpg" className="rounded-full" />
-                </div>
-                <div>
-                  <div>Asila Mamanova</div>
-                  <div>@user-kv5to5kw3k</div>
-                  <div className="text-[#095ED2] mt-2">Kanalingizni ochish</div>
-                </div>
-              </div>
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <div className="mr-4 h-6 w-6">
-                <img src="/google.svg" />
-              </div>
+            <div className="w-6 h-6 mr-4">
+            <img src="/google.svg" alt="google"/>
+            </div>
               <span>Google hisobi</span>
             </DropdownMenuItem>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-                <div className="mr-4 h-6 w-6">
-                  <img src="/account.svg" />
-                </div>
+                <div className="w-6 h-6 mr-4">
+              <img src="/account.svg" alt="account"/>
+              </div>
                 <span>Hisobni almashtirish</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
@@ -91,7 +85,6 @@ const Page = () => {
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Message</span>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>More...</span>
@@ -100,11 +93,13 @@ const Page = () => {
               </DropdownMenuPortal>
             </DropdownMenuSub>
           </DropdownMenuGroup>
+          <DropdownMenuSeparator />
           <DropdownMenuItem>
-          <div className="mr-4 h-6 w-6">
-                  <img src="/logout.svg" />
-                </div>
+          <div className="w-6 h-6 mr-4">
+            <img src="/logout.svg" alt="logout"/>
+            </div>
             <span>Chiqish</span>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
