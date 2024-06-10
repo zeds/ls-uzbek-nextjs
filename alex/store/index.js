@@ -1,8 +1,12 @@
 import { create } from "zustand";
 
 export const useCounterStore = create((set) => ({
-	text: "カザフ",
+	isLogin: false,
+	text: "あいうえお",
 	changeText: (value) => {
 		set({ text: value });
+	},
+	setLogin: (value) => {
+		set({ isLogin: value });
 	},
 }));
