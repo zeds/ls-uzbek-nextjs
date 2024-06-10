@@ -38,7 +38,7 @@ import {
 import Image from "next/image";
 
 const Header = () => {
-	const [flag, setFlag] = useState("jp"); // jp us au
+	const [flag, setFlag] = useState("uz"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
 	const changeText = useCounterStore((state) => state.changeText);
@@ -140,24 +140,24 @@ const Header = () => {
 							<DropdownMenuTrigger asChild>
 								<img
 									className="w-[32px] h-[32px] rounded-full cursor-pointer"
-									src="tom.jpeg"
+									src="samandar.png"
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="w-[300px]" align="end">
+							<DropdownMenuContent className="w-[300px]" align="top">
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
 										<div className="flex">
 											<div class="w-10 h-10 mr-4">
 												<img
 													className="rounded-full"
-													src="tom.jpeg"
-													alt="tom"
+													src="samandar.png"
+													alt="samandar"
 												/>
 											</div>
 											<div>
-												<div>Tsutomu Okumura</div>
-												<div>@tomzed39</div>
+												<div>Qutbiddinov Samandar</div>
+												<div>qutbiddinovsamandar@gmail.com</div>
 												<div className="text-[#095ED5] mt-2">
 													チャンネルを表示
 												</div>
@@ -218,11 +218,13 @@ const Header = () => {
 							onClick={() => setLogin(true)}
 						>
 							<Image
-								className=""
+								className="text-blue-400"
 								src={"/logout-avatar.svg"}
 								alt={"setting.svg"}
-								width={30}
-								height={30}
+								// fill
+								width={0}
+								height={0}
+								style={{ width: "30px", color: "red" }}
 							/>
 							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
 						</div>
