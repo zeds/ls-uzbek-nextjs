@@ -46,7 +46,7 @@ const Page = () => {
 			//   setLoading(true)
 
 			const { data, error, status } = await supabase
-				.from("profiles2")
+				.from("profiles")
 				.select("*")
 				.order("id", { ascending: false });
 
