@@ -11,13 +11,14 @@ function Page() {
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
-			console.log("searchKeyword=", searchKeyword);
+			console.log("searchKeyword=", keyword);
+			keyword = "%" + keyword + "%";
 
 			const { data, error, status } = await supabase
 				.from("articles")
 				.select("*")
 				// .textSearch("title", "Tokyo")
-				.ilike("title", searchKeyword)
+				.ilike("title", keyword)
 				.order("id", { ascending: false });
 
 			if (error && status !== 406) {
@@ -43,6 +44,11 @@ function Page() {
 		console.log("us=", searchKeyword);
 		getArticles(searchKeyword);
 	}, [searchKeyword]);
+
+	const searchArticles = () => {
+		alert("検索します");
+		getArticles(searchKeyword);
+	};
 
 	return (
 		<div className="container">
