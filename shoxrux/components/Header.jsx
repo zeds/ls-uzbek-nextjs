@@ -3,19 +3,39 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
-import { FaGoogle } from "react-icons/fa6";
-import { IoIosLogOut } from "react-icons/io";
-import { BiSolidUserAccount } from "react-icons/bi";
+
+import { Button } from "@/components/ui/button";
+import {
+	Cloud,
+	CreditCard,
+	Github,
+	Keyboard,
+	LifeBuoy,
+	LogOut,
+	Mail,
+	MessageSquare,
+	Plus,
+	PlusCircle,
+	Settings,
+	User,
+	UserPlus,
+	Users,
+} from "lucide-react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
+	DropdownMenuGroup,
 	DropdownMenuItem,
 	DropdownMenuLabel,
+	DropdownMenuPortal,
 	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "./ui/button";
-
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 
 const Header = () => {
@@ -23,6 +43,12 @@ const Header = () => {
 	const [showModal, setShowModal] = useState(false); // true/false
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
+
+	const isLogin = useCounterStore((state) => state.isLogin)
+	const setLogin = useCounterStore((state) => state.setLogin);
+
+
+
 
 	const clickSearch = () => {
 		changeText(searchText)
@@ -34,9 +60,9 @@ const Header = () => {
 				<FlagModal setShowModal={setShowModal} setFlag={setFlag} />
 			) : null}
 
-			<div className=" flex h-[56px] w-full bg-gray-500 justify-between items-center">
+			<div className=" flex h-[56px] w-full bg-gray-500 justify-between items-center pl-2 pr-2">
 				<div className="flex items-center justify-center w-[169px] bg-blue-500">
-					<div className="bg-red-200 w-10 h-10 p-2 shrink-0">
+					<div className="bg-red-200 w-10 h-10 p-2 shrink-0 rounded-full">
 						<img src="burger.svg" alt=""></img>
 					</div>
 					<Link href={"/"}>
@@ -74,14 +100,14 @@ const Header = () => {
 						></img>
 					</button>
 				</div>
-				<ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-500 shrink-0">
+				<ul className="flex items-center justify-end w-[225px] h-[40px] bg-red-400 rounded-full p-1 shrink-0">
 					{/* search */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
 						<img className="bg-green-200" src="scope.svg" alt=""></img>
 					</li>
 					{/* mic */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="tom.png" alt=""></img>
+						<img className="bg-green-500" src="shox.jpg" alt=""></img>
 					</li>
 
 					{/* flag 国旗 */}
@@ -96,46 +122,115 @@ const Header = () => {
 						</button>
 					</li>
 
-					{/* video */}
-					<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="video.svg" alt=""></img>
-					</li>
-					{/*bell*/}
-					<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-						<img className="bg-green-500" src="bell.svg" alt=""></img>
-					</li>
+					{isLogin ? (
+						<>
+							{/* video */}
+							<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+								<img className="" src="video.svg" alt=""></img>
+							</li>
+							{/*bell*/}
+							<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+								<img className="" src="bell.svg" alt=""></img>
+							</li>
+						</>
+					) : null}
+
 					{/* Mr Tom */}
-					{/* <Link href={"/profiles"}> */}
-					<li className="flex justify-center w-[70px] h-[34px] px-[6px] py-[1px]">
+
+					{/* 三項演算子
+					{isLogin ? <div>a</div> : <div>b</div>} */}
+					{isLogin ? (
 						<DropdownMenu>
-							<DropdownMenuTrigger className="outline-none">
+							<DropdownMenuTrigger asChild>
 								<img
-									className="w-[32px] h-[32px] rounded-full object-cover"
+									className="w-[32px] h-[32px] rounded-full cursor-pointer"
 									src="shox.jpg"
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="mr-[40px] mt-4 ">
-								<DropdownMenuLabel className="flex gap-4 w-full">
-									<img className="w-[36px] h-[36px] rounded-full" src="shox.jpg" />
-									<div className=" items-center">
-										<h1>Amirjonov Shoxrux</h1>
-										<p className="drop-p text-sm text-current">amirjonovdamin@gmial.com</p>
-										<p className="drop-p2 text-[#095ED5]">showing channel</p>
-									</div>
-
-								</DropdownMenuLabel>
+							<DropdownMenuContent className="w-[260px] mt-4 mr-4" align="end">
+								<DropdownMenuGroup>
+									<DropdownMenuItem>
+										<div className="flex">
+											<div class="w-10 h-10 mr-4">
+												<img
+													className="rounded-full"
+													src="shox.jpg"
+													alt="Shox"
+												/>
+											</div>
+											<div>
+												<div>Amirjonov Shoxrux</div>
+												<div>amirjonovdamin@gmail.com</div>
+												<div className="text-[#095ED5] mt-2">
+													チャンネルを表示
+												</div>
+											</div>
+										</div>
+									</DropdownMenuItem>
+								</DropdownMenuGroup>
 								<DropdownMenuSeparator />
-								<Link href={"http://localhost:3000/"}>
-									<DropdownMenuItem className="cursor-pointer gap-3 "><img className="w-[24px]" src="ggg.svg"/>Google Account</DropdownMenuItem>
-								</Link>
-								<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>Change Account</DropdownMenuItem>
-								<Link href={"article2"}>
-									<DropdownMenuItem className="cursor-pointer gap-3"><img src="logOut.svg"/>Log Out</DropdownMenuItem>
-								</Link>
+								<DropdownMenuGroup>
+									<DropdownMenuItem>
+										<div className="w-6 h-6 mr-4">
+											<img src="/ggg.svg" alt="google" />
+										</div>
+										<span>Google アカウント</span>
+									</DropdownMenuItem>
+									<DropdownMenuSub>
+										<DropdownMenuSubTrigger>
+											<div className="w-6 h-6 mr-4">
+												<img
+													src="/changeAccount.svg"
+													alt="changeAccount"
+												/>
+											</div>
+											<span>アカウントを切り替える</span>
+										</DropdownMenuSubTrigger>
+										<DropdownMenuPortal>
+											<DropdownMenuSubContent>
+												<DropdownMenuItem>
+													<Mail className="mr-2 h-4 w-4" />
+													<span>Email</span>
+												</DropdownMenuItem>
+												<DropdownMenuItem>
+													<MessageSquare className="mr-2 h-4 w-4" />
+													<span>Message</span>
+												</DropdownMenuItem>
+												<DropdownMenuSeparator />
+												<DropdownMenuItem>
+													<PlusCircle className="mr-2 h-4 w-4" />
+													<span>More...</span>
+												</DropdownMenuItem>
+											</DropdownMenuSubContent>
+										</DropdownMenuPortal>
+									</DropdownMenuSub>
+								</DropdownMenuGroup>
+								<DropdownMenuItem>
+									<div className="w-6 h-6 mr-4">
+										<img src="/logout.svg" alt="logout" />
+									</div>
+									<span onClick={() => setLogin(false)}>
+										ログアウト
+									</span>
+								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
-					</li>
+					) : (
+						<div
+							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+							onClick={() => setLogin(true)}
+						>
+							{/* <Image
+								className=""
+								src={"/logOut.svg"}
+								alt={"setting.svg"}
+								width={30}
+								height={30}
+							/> */}
+							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
+						</div>
+					)}
 					{/* </Link> */}
 				</ul>
 			</div>
