@@ -1,104 +1,131 @@
 "use client";
-import React, { useCallback, useState, useEffect } from "react";
-import "../globals.css";
-import Image from "next/image";
-import { createClient } from "@/utils/supabase/client";
+import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
+import React, { useEffect, useState } from "react";
+import {
+	Cloud,
+	CreditCard,
+	Github,
+	Keyboard,
+	LifeBuoy,
+	LogOut,
+	Mail,
+	MessageSquare,
+	Plus,
+	PlusCircle,
+	Settings,
+	User,
+	UserPlus,
+	Users,
+} from "lucide-react";
 
-function Page() {
-	const [searchKeyword, setSearchKeyword] = useState("%morning%");
-	const [dataSource, setDataSource] = useState([]);
-	const supabase = createClient();
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuPortal,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-	const getArticles = useCallback(async (keyword) => {
-		try {
-			console.log("searchKeyword=", searchKeyword);
+let update = true;
 
-			const { data, error, status } = await supabase
-				.from("articles")
-				.select("*")
-				// .textSearch("title", "Tokyo")
-				.ilike("title", searchKeyword)
-				.order("id", { ascending: false });
+const Page = () => {
+	const text = useCounterStore((state) => state.text);
 
-			if (error && status !== 406) {
-				throw error;
-			}
+	const [value, setValue] = useState("useStateの練習をするよ");
 
-			if (data) {
-				console.log("data = ", data);
-				setDataSource(data);
-			}
-		} catch (error) {
-			alert("Error loading user data!");
-		} finally {
-			//   setLoading(false)
-		}
-	}, []);
-
-	useEffect(() => {
-		getArticles(searchKeyword);
-	}, [getArticles]);
-
-	useEffect(() => {
-		console.log("us=", searchKeyword);
-		getArticles(searchKeyword);
-	}, [searchKeyword]);
+	const clickSearch = () => {
+		alert("入力された値：" + value);
+	};
 
 	return (
-		<div className="container">
-			<input
-				className="h-5 bg-red-300"
-				type="text"
-				value={searchKeyword}
-				onChange={(event) => setSearchKeyword(event.target.value)}
-			></input>
-			{dataSource.map((item, index) => (
-				<div key={index} className="w-full">
-					<Image
-						width={0}
-						height={0}
-						sizes="100vw"
-						src={item.img_url}
-						alt="rasm"
-						style={{
-							width: "100%",
-							height: "auto",
-							borderRadius: "12px",
-						}}
-					/>
-
-					<div className="flex gap-[10px] mt-3 mr-3">
-						<Image
-							width={0}
-							height={0}
-							sizes="100vw"
-							src={item.avatar_url}
-							alt="rasm"
-							style={{
-								width: "36px",
-								height: "36px",
-								borderRadius: "18px",
-								marginTop: "3px",
-							}}
-						/>
-						<div>
-							<div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
-								{item.title}
-								{/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
-								Kawaii Afternoon Break [NoCopyrightMusic] */}
+		<div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button variant="outline">Open</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent className="w-[300px]" align="top">
+					<DropdownMenuGroup>
+						<DropdownMenuItem>
+							<div className="flex">
+								<div class="w-10 h-10 mr-4">
+									<img
+										className="rounded-full"
+										src="samandar.png"
+										alt="samandar"
+									/>
+								</div>
+								<div>
+									<div>Qutbiddinov Samandar</div>
+									<div>qutbiddinovsamandar@gmail.com</div>
+									<div className="text-[#095ED5] mt-2">
+										チャンネルを表示
+									</div>
+								</div>
 							</div>
-							<div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
-								{item.user_name}
+						</DropdownMenuItem>
+					</DropdownMenuGroup>
+					<DropdownMenuSeparator />
+					<DropdownMenuGroup>
+						<DropdownMenuItem>
+							<div className="w-6 h-6 mr-4">
+								<img src="/google.svg" alt="google" />
 							</div>
-							<div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
-								{item.stats}
-							</div>
+							<span>Google アカウント</span>
+						</DropdownMenuItem>
+						<DropdownMenuSub>
+							<DropdownMenuSubTrigger>
+								<div className="w-6 h-6 mr-4">
+									<img src="/changeAccount.svg" alt="changeAccount" />
+								</div>
+								<span>アカウントを切り替える</span>
+							</DropdownMenuSubTrigger>
+							<DropdownMenuPortal>
+								<DropdownMenuSubContent>
+									<DropdownMenuItem>
+										<Mail className="mr-2 h-4 w-4" />
+										<span>Email</span>
+									</DropdownMenuItem>
+									<DropdownMenuItem>
+										<MessageSquare className="mr-2 h-4 w-4" />
+										<span>Message</span>
+									</DropdownMenuItem>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem>
+										<PlusCircle className="mr-2 h-4 w-4" />
+										<span>More...</span>
+									</DropdownMenuItem>
+								</DropdownMenuSubContent>
+							</DropdownMenuPortal>
+						</DropdownMenuSub>
+					</DropdownMenuGroup>
+					<DropdownMenuItem>
+						<div className="w-6 h-6 mr-4">
+							<img src="/logout.svg" alt="logout" />
 						</div>
-					</div>
-				</div>
-			))}
+						<span>ログアウト</span>
+					</DropdownMenuItem>
+				</DropdownMenuContent>
+			</DropdownMenu>
+			<div className="flex">
+				<input
+					className="p-2"
+					type="text"
+					onChange={(e) => setValue(e.target.value)}
+				></input>
+				<Button onClick={clickSearch} className="bg-blue-300 p-3">
+					検索
+				</Button>
+			</div>
 		</div>
 	);
-}
+};
 
 export default Page;
