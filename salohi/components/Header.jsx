@@ -22,7 +22,7 @@
 		const setLogin = useCounterStore((state) => state.setLogin);
 		const isLogin = useCounterStore((state) => state.isLogin);
 
-		
+
 		const clickSearch = () => {
 			changeText(searchText);
 		};
@@ -84,7 +84,7 @@
 					></img>
 				</button>
 				</div>
-				<ul className="flex items-center justify-end w-[225px] h-[40px] shrink-0">
+				<ul className="flex items-center justify-end w-[250px] h-[40px] shrink-0">
 				{/* search */}
 				<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
 					<img className="" src="scope.svg" alt=""></img>
@@ -111,7 +111,7 @@
 					<img className="" src="video.svg" alt=""></img>
 				</li>
 				{/*bell*/}
-				<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+				<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2 mr-2">
 					<img className="" src="bell.svg" alt=""></img>
 				</li>
 				{/* Mr Tom */}
@@ -139,10 +139,10 @@
 
 									</DropdownMenuLabel>
 									<DropdownMenuSeparator />
-										<DropdownMenuItem className="cursor-pointer gap-3 "><img className="w-[24px]" src="ggg.svg"/>				Google アカウント</DropdownMenuItem>
-									<DropdownMenuItem className="cursor-pointer gap-3 "><img src="changeAccount.svg"/>アカウントを切り替える</DropdownMenuItem>
-									<DropdownMenuItem> <div className="flex bg-slate-400">
-										<div className=" w-6 h-6 mr-4" onClick={() => setLogin(false)}>
+										<DropdownMenuItem className=" gap-3 "><img className="w-[24px] cursor-pointer" src="ggg.svg"/>				Google アカウント</DropdownMenuItem>
+									<DropdownMenuItem className="gap-3 "><img  className="w-[24px] cursor-pointer"src="changeAccount.svg"/>アカウントを切り替える</DropdownMenuItem>
+									<DropdownMenuItem> <div className="flex items-center">
+										<div className=" w-6 h-6 mr-4 cursor-pointer" onClick={() => setLogin(false)}>
 											<img src="logout.svg" alt="logout" />
 											</div>ログアウト
 									</div>
@@ -152,9 +152,9 @@
 							) : (
 								<div
 								onClick={() => setLogin(true)}
-								className="boder px-2 py-1 flex cursor-pointer rounded-full "
+								className="boder px-2 py-1 flex cursor-pointer rounded-full"
 								><img src="profiles.svg" alt="" />
-								<div>login</div>
+								<div className="mr-8 text">Login</div>
 								</div>
 							)}
 					</li>
