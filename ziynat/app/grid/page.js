@@ -8,7 +8,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -24,7 +24,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -40,7 +40,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px]  w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -56,7 +56,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -72,7 +72,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -88,7 +88,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -104,7 +104,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -120,7 +120,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="h-9 w-9 mr-3 mt-3">
+            <div className="h-[36px] w-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
@@ -136,7 +136,7 @@ const page = () => {
         <div className="bg-pink-400">
           <img className="w-full rounded-2xl" src="/study.webp" alt="study" />
           <div className="flex gap-3 mt-3">
-            <div className="w-[36px] mr-3 mt-3">
+            <div className="w-[36px] h-[36px] mr-3 mt-3">
               <img className="rounded-full " src="/CAT.jpg" alt="cat" />
             </div>
             <div>
