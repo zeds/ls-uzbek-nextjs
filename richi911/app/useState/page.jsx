@@ -46,7 +46,7 @@ const Page = () => {
   };
 
   return (
-    <div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
+    <div className="pt-[56px] bg-gray-400 h-screen flex justify-center items-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline">Open</Button>
