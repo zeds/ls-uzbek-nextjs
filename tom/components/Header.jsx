@@ -36,8 +36,10 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+	const router = useRouter();
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
@@ -203,12 +205,15 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-									<div className="w-6 h-6 mr-4">
-										<img src="/logout.svg" alt="logout" />
+									<div
+										className="flex bg-red-200 w-full"
+										onClick={() => setLogin(false)}
+									>
+										<div className="w-6 h-6 mr-4">
+											<img src="/logout.svg" alt="logout" />
+										</div>
+										<span>ログアウト</span>
 									</div>
-									<span onClick={() => setLogin(false)}>
-										ログアウト
-									</span>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
@@ -224,7 +229,12 @@ const Header = () => {
 								width={30}
 								height={30}
 							/>
-							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
+							<span
+								onClick={() => router.push("/login")}
+								className="text-[rgba(8,94,212,1)]"
+							>
+								ログイン
+							</span>
 						</div>
 					)}
 				</ul>
