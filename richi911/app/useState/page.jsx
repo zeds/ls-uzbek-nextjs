@@ -46,7 +46,7 @@ const Page = () => {
   };
 
   return (
-    <div className="pt-[56px] bg-red-300 h-screen flex justify-center items-center">
+    <div className="pt-[56px] bg-gray-400 h-screen flex justify-center items-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline">Open</Button>
@@ -55,7 +55,7 @@ const Page = () => {
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <div className="flex">
-                <div className="w-10 h-10 mr-4">
+                <div class="w-10 h-10 mr-4">
                   <img
                     className="rounded-full"
                     src="profile.jpg"
@@ -63,9 +63,9 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <div>Abdukodirov Shakhriyor</div>
+                  <div>Abdukorirov Shakhriyor</div>
                   <div>shakhriyor.life@gmail.com</div>
-                  <div className="text-[#095ED5] mt-2">チャンネル表示</div>
+                  <div className="text-[#095ED5] mt-2">チャンネルを表示</div>
                 </div>
               </div>
             </DropdownMenuItem>
