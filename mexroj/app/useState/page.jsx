@@ -38,7 +38,6 @@ let update = true;
 
 const Page = () => {
   const text = useCounterStore((state) => state.text);
-
   const [value, setValue] = useState("useStateの練習をするよ");
 
   const clickSearch = () => {
