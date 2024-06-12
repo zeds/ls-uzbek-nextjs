@@ -154,7 +154,7 @@
 								onClick={() => setLogin(true)}
 								className="boder px-2 py-1 flex cursor-pointer rounded-full"
 								><img src="profiles.svg" alt="" />
-								<div className="mr-8 text">Login</div>
+								<div className="mr-8 text-[rgba(8,94,212,1)]">Login</div>
 								</div>
 							)}
 					</li>
