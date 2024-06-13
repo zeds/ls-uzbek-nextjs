@@ -3,117 +3,65 @@ import React, { useCallback, useState, useEffect } from "react";
 import "../globals.css";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
-import { useCounterStore } from "@/store";
 
 function Page() {
-	const [searchKeyword, setSearchKeyword] = useState("");
-	const [dataSource, setDataSource] = useState([]);
-	const supabase = createClient();
-	const [value, setValue] = useState("");
-	const text = useCounterStore((state) => state.text); //ロシア
+    const [dataSource, setDataSource] = useState([]);
+    const supabase = createClient();
 
-	const getArticles = useCallback(async (keyword) => {
-		try {
-			console.log("searchKeyword=", keyword); // piano
-			keyword = "%" + keyword + "%"; // %piano%
+    const getArticles = useCallback(async () => {
+        try {
+            const { data, error, status } = await supabase
+                .from("articles")
+                .select("*")
+                .order("id", { ascending: false });
 
-			const { data, error, status } = await supabase
-				.from("articles")
-				.select("*")
-				.ilike("title", keyword) // %piano%
-				.order("id", { ascending: false });
+            if (error && status !== 406) {
+                throw error;
+            }
 
-			if (error && status !== 406) {
-				throw error;
-			}
+            if (data) {
+                console.log("data = ", data);
+                setDataSource(data);
+            }
+        } catch (error) {
+            alert("Error loading user data!");
+        } finally {
+            //   setLoading(false)
+        }
+    }, []);
 
-			if (data) {
-				// console.log("data = ", data);
-				setDataSource(data);
-			}
-			} catch (error) {
-				// alert("Error loading user data!");
-			} finally {
-				// setLoading(false)
-			}
-		}, []);
+    useEffect(() => {
+        getArticles();
+    }, [getArticles]);
 
-	useEffect(() => {
-		getArticles(searchKeyword);
-	}, [getArticles]);
-
-	useEffect(() => {
-		console.log("us=", searchKeyword);
-		getArticles(searchKeyword);
-	}, [searchKeyword]);
-
-	useEffect(() => {
-		// alert("sa");
-		getArticles(text);
-	}, [text]);
-
-	const searchArticles = () => {
-		alert("検索します");
-		getArticles(searchKeyword);
-	};
-
-	const clickSearch = () => {
-		alert("入力された値：" + value);
-		getArticles(value);
-	};
-
-	return (
-		<div>
-
-			<div className="container">
-				{dataSource.map((item, index) => (
-					<div key={index} className="w-full">
-						<Image
-							width={0}
-							height={0}
-							sizes="100vw"
-							src={item.img_url}
-							alt="rasm"
-							style={{
-								width: "100%",
-								height: "auto",
-								borderRadius: "12px",
-							}}
-						/>
-
-						<div className="flex gap-[10px] mt-3 mr-3">
-							<Image
-								width={0}
-								height={0}
-								sizes="100vw"
-								src={item.avatar_url}
-								alt="rasm"
-								style={{
-									width: "36px",
-									height: "36px",
-									borderRadius: "18px",
-									marginTop: "3px",
-								}}
-							/>
-							<div>
-								<div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
-									{item.title}
-									{/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
-								Kawaii Afternoon Break [NoCopyrightMusic] */}
-								</div>
-								<div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
-									{item.user_name}
-								</div>
-								<div className="line-clamp-1 text-sm font-normal text-[rgba(96,96,96,1)]">
-									{item.stats}
-								</div>
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	);
+    return (
+        <div className="w-full pt-8 grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-2 bg-white">
+            {dataSource.map((item, index) => (
+                <div key={index} className=" w-full dataSourceDiv">
+                    <img className="rounded-[12px] w-full" src={item.img_url} alt="" />
+                    <div className="flex mt-[12px]">
+                        <img
+                            className="w-[36px] h-[36px] rounded-full  mr-[12px]"
+                            src={item.avatar_url}
+                            alt="video"
+                        />
+                        <div >
+                            <div className="title font-medium leading-[22px] text-[16px] overflow-hidden ">
+                                {item.title}
+                            </div>
+                            <div className="author flex gap-1 mt-[6px] font-normal leading-5 text-[14px] nameColor">
+                                {item.user_name}
+                                <img className="checkIcon w-[14px]" src="checkIcon.svg"/>
+                            </div>
+                            <div className="statistics font-normal leading-5 text-[14px] mt-[10px] statusColor">
+                                {item.stats}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default Page;

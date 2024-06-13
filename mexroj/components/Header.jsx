@@ -3,6 +3,40 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { Button } from "./ui/button";
+import {
+  Cloud,
+  CreditCard,
+  Github,
+  Image,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { logging } from "@/next.config";
 
 const Header = () => {
   const [flag, setFlag] = useState("jp"); // jp us au
@@ -10,6 +44,9 @@ const Header = () => {
 
   const changeText = useCounterStore((state) => state.changeText);
   const [searchText, setSearchText] = useState("");
+
+  const isLogin = useCounterStore((state) => state.isLogin);
+  const setLogin = useCounterStore((state) => state.setLogin);
 
   const clickSearch = () => {
     changeText(searchText);
@@ -85,23 +122,106 @@ const Header = () => {
           </li>
 
           {/* video */}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="" src="video.svg" alt=""></img>
-          </li>
-          {/*bell*/}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="" src="bell.svg" alt=""></img>
-          </li>
-          {/* Mr Tom */}
-          <Link href={"/profiles"}>
-            <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+
+          {isLogin ? (
+            <>
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img className="" src="video.svg" alt=""></img>
+              </li>
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img className="" src="bell.svg" alt=""></img>
+              </li>
+            </>
+          ) : null}
+
+          {/* dropdown */}
+
+          {isLogin ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button>
+                  <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+                    <img
+                      className="w-[32px] h-[32px] rounded-full"
+                      src="me.jpg"
+                      alt=""
+                    ></img>
+                  </li>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="w-[300px] bg-white  mt-4 mr-10"
+                align="top"
+              >
+                <DropdownMenuGroup className="flex ">
+                  <DropdownMenuItem>
+                    <img
+                      src="me.jpg"
+                      alt="mexroj"
+                      className="mr-4 w-10 rounded-full"
+                    />
+                    <div className="">
+                      <div>Mexroj Sayfullayev</div>
+                      <div>mexrojsayfullayev5990</div>
+                      <div className="text-[#095ed5] mt-2">チャンネル表示</div>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="w-6 h-6 mr-4">
+                      <img src="google.svg" alt="google" />
+                    </div>
+                    <span>Google アカウント</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <div className="w-6 h-6 mr-4">
+                        <img src="changeAcount.svg" alt="changeAcount" />
+                      </div>
+                      <span>アカウントを切り替える</span>
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuItem>
+                          <Mail className="mr-2 h-4 w-4" />
+                          <span>Email</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          <span>Message</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <span>More...</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <div className="w-6 h-6 mr-4">
+                    <img src="/logout.svg" alt="logout" />
+                  </div>
+                  <span onClick={() => setLogin(false)}>ログアウト</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div
+              className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+              onClick={() => setLogin(true)}
+            >
               <img
-                className="w-[32px] h-[32px] rounded-full"
-                src="me.jpg"
-                alt=""
-              ></img>
-            </li>
-          </Link>
+                src="/logoutAvaatr"
+                alt="logoutAvatar"
+                className="w-[30px] h-[30px]"
+              />
+              <span className="text-[rgba(8,94,212,1)]">ログイン</span>
+            </div>
+          )}
         </ul>
       </div>
     </>
