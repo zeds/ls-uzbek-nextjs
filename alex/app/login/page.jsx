@@ -1,4 +1,5 @@
-import { login, signup } from './actions'
+import React from 'react';
+import { login, signup } from './actions';
 
 export default function LoginPage() {
   return (
