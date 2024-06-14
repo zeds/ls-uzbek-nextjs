@@ -38,7 +38,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="flex flex-wrap bg-red-300 w-full pt-[56px] gap-2">
+		<div className="w-full pt-16 flex flex-wrap grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-[36px] p-3 bg-red-300">
 			{dataSource.map((item, index) => (
 				<div key={index} className="w-full">
 					<Article

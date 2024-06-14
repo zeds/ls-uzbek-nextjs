@@ -55,13 +55,13 @@ const Page = () => {
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <div className="flex">
-                <div className="w-10 h-10 mr-4">
-                  <img className="rounded-full" src="icon.jpg" alt="ziynat" />
+                <div class="w-10 h-10 mr-4">
+                  <img className="rounded-full" src="icon.jpg" alt="icon" />
                 </div>
                 <div>
                   <div>Ziynat Abdukodirova</div>
                   <div>@odakaori1788</div>
-                  <div className="text-[#095ED5] mt-2">チャンネル表示</div>
+                  <div className="text-[#095ED5] mt-2">チャンネルを表示</div>
                 </div>
               </div>
             </DropdownMenuItem>
@@ -77,7 +77,7 @@ const Page = () => {
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
                 <div className="w-6 h-6 mr-4">
-                  <img src="/changeAccount.svg" alt="changeAccount" />
+                  <img src="/changeAccount.svg" alt="Account" />
                 </div>
                 <span>アカウントを切り替える</span>
               </DropdownMenuSubTrigger>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import React, { useState, useTransition } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { Button } from "@/components/ui/button";
+
 import {
   Cloud,
   CreditCard,
@@ -19,7 +21,7 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
-import logout from "@/public/logout.svg";
+// import logout from "@/public/logout.svg";
 
 import {
   DropdownMenu,
@@ -35,7 +37,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
+import Image from "next/image";
 
 const Header = () => {
   const [flag, setFlag] = useState("jp"); // jp us au
@@ -117,113 +119,116 @@ const Header = () => {
               ></img>
             </button>
           </li>
-		  {isLogin ? (
-<>
-          {/* video */}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img src="video.svg" alt=""></img>
-          </li>
-          {/*bell*/}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img src="bell.svg" alt=""></img>
-          </li>
-		  </>):null}
+          {isLogin ? (
+            <>
+              {/* video */}
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img src="video.svg" alt=""></img>
+              </li>
+              {/*bell*/}
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img src="bell.svg" alt=""></img>
+              </li>
+            </>
+          ) : null}
           {/* Mr Tom */}
           {/* <Link href={"/profiles"}> */}
-            {/* <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
+          {/* <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
               <img
                 className="w-[32px] h-[32px] rounded-full"
                 src="me.jpg"
                 alt=""
               ></img>
             </li> */}
-					{/* <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]"> */}
-          {isLogin ?(
-   <DropdownMenu>
-   <DropdownMenuTrigger asChild>
-	 <img
-	   className="w-[32px] h-[32px] rounded-full"
-	   src="me.jpg"
-	   alt=""
-	 ></img>
-	 {/* <Button variant="outline">Open</Button> */}
-   </DropdownMenuTrigger>
-   <DropdownMenuContent className="w-[300px]" align="top">
-	 <DropdownMenuGroup>
-	   <DropdownMenuItem>
-		 <div className="flex">
-		   <div className="w-10 h-10 mr-4">
-			 <img src="/me.jpg" className="rounded-full" />
-		   </div>
-		   <div>
-			 <div>Asila Mamanova</div>
-			 <div>@user-kv5to5kw3k</div>
-			 <div className="text-[#095ED2] mt-2">
-			   Kanalingizni ochish
-			 </div>
-		   </div>
-		 </div>
-	   </DropdownMenuItem>
-	 </DropdownMenuGroup>
-	 <DropdownMenuSeparator />
-	 <DropdownMenuGroup>
-	   <DropdownMenuItem>
-		 <div className="mr-4 h-6 w-6">
-		   <img src="/google.svg" />
-		 </div>
-		 <span>Google hisobi</span>
-	   </DropdownMenuItem>
-	   <DropdownMenuSub>
-		 <DropdownMenuSubTrigger>
-		   <div className="mr-4 h-6 w-6">
-			 <img src="/account.svg" />
-		   </div>
-		   <span>Hisobni almashtirish</span>
-		 </DropdownMenuSubTrigger>
-		 <DropdownMenuPortal>
-		   <DropdownMenuSubContent>
-			 <DropdownMenuItem>
-			   <Mail className="mr-2 h-4 w-4" />
-			   <span>Email</span>
-			 </DropdownMenuItem>
-			 <DropdownMenuItem>
-			   <MessageSquare className="mr-2 h-4 w-4" />
-			   <span>Message</span>
-			 </DropdownMenuItem>
-			 <DropdownMenuSeparator />
-			 <DropdownMenuItem>
-			   <PlusCircle className="mr-2 h-4 w-4" />
-			   <span>More...</span>
-			 </DropdownMenuItem>
-		   </DropdownMenuSubContent>
-		 </DropdownMenuPortal>
-	   </DropdownMenuSub>
-	 </DropdownMenuGroup>
-	 <DropdownMenuItem>
-	   <div className="mr-4 h-6 w-6">
-		 <img src="/logout.svg" />
-	   </div>
-	   <span>Chiqish</span>
-	 </DropdownMenuItem>
-   </DropdownMenuContent>
- </DropdownMenu>) :(
-	<div
-							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => setLogin(true)}
-						>
-							{/* <
-								className=""
-								src={"/logout-avatar.svg"}
-								alt={"setting.svg"}
-								width={30}
-								height={30}
-							/> */}
-							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
-						</div>
- )
-		  }
-		 
-			{/* </li> */}
+          {/* <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]"> */}
+          {isLogin ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <img
+                  className="w-[32px] h-[32px] rounded-full"
+                  src="me.jpg"
+                  alt=""
+                ></img>
+                {/* <Button variant="outline">Open</Button> */}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[300px]" align="top">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="flex">
+                      <div className="w-10 h-10 mr-4">
+                        <img src="/me.jpg" className="rounded-full" />
+                      </div>
+                      <div>
+                        <div>Asila Mamanova</div>
+                        <div>@user-kv5to5kw3k</div>
+                        <div className="text-[#095ED2] mt-2">
+                          Kanalingizni ochish
+                        </div>
+                      </div>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="mr-4 h-6 w-6">
+                      <img src="/google.svg" />
+                    </div>
+                    <span>Google hisobi</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <div className="mr-4 h-6 w-6">
+                        <img src="/account.svg" />
+                      </div>
+                      <span>Hisobni almashtirish</span>
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuItem>
+                          <Mail className="mr-2 h-4 w-4" />
+                          <span>Email</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          <span>Message</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <span>More...</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <div onClick={() => setLogin(false)} className="flex">
+                    <div className="mr-4 h-6 w-6">
+                      <img src="/logout.svg" />
+                    </div>
+                    <span>Chiqish</span>
+                  </div>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div
+              className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+              onClick={() => setLogin(true)}
+            >
+              {/* <Image
+                className=""
+                src={"/logout-avatar.svg"}
+                alt={"setting.svg"}
+                width={30}
+                height={30}
+              /> */}
+              <span className="text-[rgba(8,94,212,1)]">ログイン</span>
+            </div>
+          )}
+
+          {/* </li> */}
           {/* </Link> */}
         </ul>
       </div>
