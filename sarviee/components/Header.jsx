@@ -3,12 +3,45 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { Button } from "@/components/ui/button";
+import {
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 const Header = () => {
   const [flag, setFlag] = useState("jp"); // jp us au
   const [showModal, setShowModal] = useState(false); // true/false
   const changeText = useCounterStore((state) => state.changeText);
   const [searchText, setSearchText] = useState("");
+  const isLogin = useCounterStore((state) => state.isLogin);
+  const setLogin = useCounterStore((state) => state.setLogin);
   const clickSearch = () => {
     changeText(searchText);
   };
@@ -17,7 +50,7 @@ const Header = () => {
       {showModal ? (
         <FlagModal setShowModal={setShowModal} setFlag={setFlag} />
       ) : null}
-      <div className="fixed z-10 flex h-[56px] w-full justify-between items-center bg-white">
+      <div className="fixed z-10 flex h-[56px] w-full justify-between items-center bg-white px-3">
         <div className="flex items-center justify-center w-[169px]">
           <div className="w-10 h-10 p-2 shrink-0">
             <img src="burger.svg" alt=""></img>
@@ -79,17 +112,97 @@ const Header = () => {
               ></img>
             </button>
           </li>
+          {isLogin ? (
+            <>
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img className="" src="video.svg" alt=""></img>
+              </li>
+              <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+                <img className="" src="bell.svg" alt=""></img>
+              </li>
+            </>
+          ) : null}
 
-          {/* video */}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="" src="video.svg" alt=""></img>
-          </li>
-          {/*bell*/}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-            <img className="" src="bell.svg" alt=""></img>
-          </li>
           {/* Mr Tom */}
-          <Link href={"/profiles"}>
+          {isLogin ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <img
+                  className="w-[32px] h-[32px] rounded-full cursor-pointer"
+                  src="tom.png"
+                  alt=""
+                ></img>
+                {/* <Button variant="outline">Open</Button> */}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[300px]" align="top">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="flex">
+                      <div className="w-10 h-10 mr-4">
+                        <img src="/tom.png" className="rounded-full" />
+                      </div>
+                      <div>
+                        <div>Sarviee</div>
+                        <div>sarvie.s@gmail.com</div>
+                        <div className="text-[#095ED2] mt-2">Channel</div>
+                      </div>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="mr-2 h-6 w-6">
+                      <img src="/google.svg" />
+                    </div>
+                    <span>Google Account</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <div className="mr-2 h-6 w-6">
+                        <img src="/users.svg" />
+                      </div>
+                      <span>Change the Account</span>
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuItem>
+                          <Mail className="mr-2 h-4 w-4" />
+                          <span>Email</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          <span>Message</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <span>More...</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <div className="mr-2 h-6 w-6">
+                    <img src="/logout.svg" />
+                  </div>
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div
+              className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+              onClick={() => setLogin(true)}
+            >
+              <img
+                className="text-[rgba(8,94,212,1)]"
+                src="logoutavatar.svg"
+              ></img>{" "}
+              <span className="text-[rgba(8,94,212,1)]">Login</span>
+            </div>
+          )}
+          {/* <Link href={"/profiles"}>
             <li className="flex justify-center w-[60px] h-[34px] px-[6px] py-[1px]">
               <img
                 className="w-[32px] h-[32px] rounded-full"
@@ -97,7 +210,7 @@ const Header = () => {
                 alt=""
               ></img>
             </li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
     </>
