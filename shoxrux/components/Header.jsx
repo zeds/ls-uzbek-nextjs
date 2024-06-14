@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
-
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
 	Cloud,
@@ -43,6 +43,7 @@ const Header = () => {
 	const [showModal, setShowModal] = useState(false); // true/false
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
+	const router = useRouter();
 
 	const isLogin = useCounterStore((state) => state.isLogin)
 	const setLogin = useCounterStore((state) => state.setLogin);
@@ -221,7 +222,8 @@ const Header = () => {
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => setLogin(true)}
+							// onClick={() => setLogin(true)}
+							onClick={()=> router.push("/login")}
 						>
 							{/* <Image
 								className=""
