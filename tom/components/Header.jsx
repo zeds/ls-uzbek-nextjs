@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,7 +37,6 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
 	const router = useRouter();
