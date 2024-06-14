@@ -1,14 +1,25 @@
-import { login, signup } from './actions'
+import React from "react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function LoginPage() {
+const page = () => {
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
-  )
-}
+    <div className="w-full h-screen bg-purple-200 flex justify-center items-center">
+      <div className="flex flex-col w-[400px] bg-yellow-300 p-4">
+        <div className="my-2 font-bold">ユーザー名</div>
+        <Input type="email" placeholder="メールアドレス" />
+        <div className="my-2 font-bold">パスワード</div>
+        <Input type="password" placeholder="パスワード" />
+        <Link
+          href="/forget-password"
+          className="text-blue-500 underline text-sm mt-1"
+        >
+          パスワードを忘れた
+        </Link>
+        <Button className="mt-5">ログイン</Button>
+      </div>
+    </div>
+  );
+};
+export default page;
