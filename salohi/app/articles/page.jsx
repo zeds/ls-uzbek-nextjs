@@ -46,7 +46,7 @@ function Page() {
                             alt="video"
                         />
                         <div >
-                            <div className="title font-medium leading-[22px] text-[16px] overflow-hidden ">
+                            <div className="title font-medium leading-[22px] text-[16px] overflow-hidden line-clamp-1">
                                 {item.title}
                             </div>
                             <div className="author flex gap-1 mt-[6px] font-normal leading-5 text-[14px] nameColor">

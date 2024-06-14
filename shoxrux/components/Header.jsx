@@ -207,7 +207,7 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-									<div onClick={()=> setLogin(false)} className="flex">
+									<div onClick={()=> setLogin(false)} className="flex w-full cursor-pointer">
 									<div className="w-6 h-6 mr-4">
 										<img src="/logout.svg" alt="logout" />
 									</div>
