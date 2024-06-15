@@ -12,9 +12,11 @@
 	DropdownMenuTrigger,
 	} from "@/components/ui/dropdown-menu";
 	import { Button } from "./ui/button";
-import { Link2 } from "lucide-react";
+	import { Link2 } from "lucide-react";
+	import { useRouter } from "next/navigation";
 
 	const Header = () => {
+	const router = useRouter
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 	const changeText = useCounterStore((state) => state.changeText);
@@ -161,8 +163,8 @@ import { Link2 } from "lucide-react";
 						>
 							<img src="logout.svg" alt="logout" />
 						</div>
-						ログアウト
-						</div></Link>
+						ログアウト</div>
+						</Link>
 					</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
@@ -172,7 +174,8 @@ import { Link2 } from "lucide-react";
 					className="boder px-2 py-1 flex cursor-pointer rounded-full"
 				>
 					<img src="profiles.svg" alt="" />
-					<div className="mr-8 text-[rgba(8,94,212,1)]">Login</div>
+					<span className="mr-8 text-[rgba(8,94,212,1)]">Login</span>
+					{/* <span onClick={() => router.push("/login2")} className="mr-8 text-[rgba(8,94,212,1)]">Login</span> */}
 				</div>
 				)}
 			</li>
