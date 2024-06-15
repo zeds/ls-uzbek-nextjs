@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -38,6 +39,7 @@ import {
 import Image from "next/image";
 
 const Header = () => {
+	const router = useRouter();
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
@@ -203,19 +205,22 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-									<div className="w-6 h-6 mr-4">
-										<img src="/logout.svg" alt="logout" />
+									<div
+										className="flex bg-red-200 w-full"
+										onClick={() => setLogin(false)}
+									>
+										<div className="w-6 h-6 mr-4">
+											<img src="/logout.svg" alt="logout" />
+										</div>
+										<span>ログアウト</span>
 									</div>
-									<span onClick={() => setLogin(false)}>
-										ログアウト
-									</span>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => setLogin(true)}
+							onClick={() => router.push("/login")}
 						>
 							<Image
 								className=""
