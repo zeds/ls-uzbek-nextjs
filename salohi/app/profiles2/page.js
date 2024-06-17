@@ -9,21 +9,18 @@ const Page = () => {
 
 	const supabase = createClient();
 
-	const channelA = supabase
+	const channel = supabase
 		.channel("schema-db-changes")
 		.on(
 			"postgres_changes",
 			{
 				event: "*",
 				schema: "public",
-				// テーブルを指定しない場合、全てのテーブルの変更が通知される。
-				// table: "notifications",
 			},
 			(payload) => {
-				if (payload.table === "profiles") {
+				if (payload.table === "profiles2") {
 					if (payload.new && "username" in payload.new) {
 						updateProfile(payload.new);
-						// setMessage(payload.new.introduce);
 					}
 				}
 			}
@@ -31,7 +28,6 @@ const Page = () => {
 		.subscribe();
 
 	const updateProfile = (target) => {
-		// mapで見つけて更新する
 		let newArr = [...dataSource];
 		newArr.map((item, index) => {
 			if (target.id === item.id) {
@@ -43,7 +39,6 @@ const Page = () => {
 
 	const getProfile = useCallback(async () => {
 		try {
-			//   setLoading(true)
 
 			const { data, error, status } = await supabase
 				.from("profiles2")
@@ -61,7 +56,6 @@ const Page = () => {
 		} catch (error) {
 			alert("Error loading user data!");
 		} finally {
-			//   setLoading(false)
 		}
 	}, []);
 
@@ -71,26 +65,19 @@ const Page = () => {
 
 	const onChangeHandler = (name, index) => {
 		console.log(dataSource[index].username);
-		// dataSourceを直接編集できない
-		// dataSourceのコピーを作って、編集したあと、コピーをdataSourceに上書きする
 		let newArr = [...dataSource];
 		newArr[index].username = name;
 		setDataSource(newArr);
 	};
 
 	const clickUpdate = async (index) => {
-		// alert(JSON.stringify(dataSource[index]))
 
-		// usernameを更新
 		const { error: updateError } = await supabase
-			.from("profiles")
+			.from("profiles2")
 			.update({
 				username: dataSource[index].username,
 			})
-			.eq("id", dataSource[index].id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
-		// update profiles set username = 'とむかも' where id = 'cf3466fb-1af1-48ec-9868-73437564da11'
-
-		// alert(updateError)  // nullはエラーがない意味
+			.eq("id", dataSource[index].id);
 		if (updateError !== null) {
 			alert("失敗！：" + JSON.stringify(updateError));
 		}

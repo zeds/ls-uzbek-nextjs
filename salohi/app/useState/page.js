@@ -38,8 +38,7 @@ let update = true;
 
 const Page = () => {
 	const text = useCounterStore((state) => state.text);
-
-	const [value, setValue] = useState("useStateの練習をするよ");
+    const [value, setValue] = useState("useStateの練習をするよ");
 
 	const clickSearch = () => {
 		alert("入力された値：" + value);
@@ -67,7 +66,7 @@ const Page = () => {
 						<DropdownMenuItem>
 							{/* <User className="mr-2 h-4 w-4" />
 							<span>Google account</span> */}
-							<div className="flex items-center cursor-pointer gap-3"><img className="w-[24px]" src="ggg.svg" alt="rasm"></img>Google　アカウント</div>
+							<div className="flex items-center cursor-pointer gap-3"><img className="w-[24px]" src="ggg.svg" alt="rasm"></img>Google アカウント</div>
 							{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
 						</DropdownMenuItem>
 						{/* <DropdownMenuItem>
