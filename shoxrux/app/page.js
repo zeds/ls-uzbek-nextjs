@@ -6,19 +6,18 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
 
-import { useCounterStore } from "@/store";  //from zustan this pack
+import { useCounterStore } from "@/store";
 
 export default function Home() {
 	const supabase = createClient();
-	// const [searchKeyword,setSearchKeyword]= useState("");
 	const [dataSource, setDataSource] = useState([]);
 
 	const text = useCounterStore((state) => state.text); 
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
-			console.log("searchKeyword=", keyword);
-			keyword = "%" + keyword + "%";
+			console.log("searchKeyword=", keyword); 
+			keyword = "%" + keyword + "%"; 
 
 			const { data, error, status } = await supabase
 				.from("articles")
@@ -45,12 +44,8 @@ export default function Home() {
 		getArticles("");
 	}, []);
 
-// useEffect(()=>{
-// 	getArticles(searchKeyword)
-// })
-
 	useEffect(() => {
-		getArticles(text); 
+		getArticles(text);
 	}, [text]);
 
 	return (
@@ -87,8 +82,7 @@ export default function Home() {
 							<div>
 								<div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
 									{item.title}
-									{/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
-              Kawaii Afternoon Break [NoCopyrightMusic] */}
+									{/* fast and furious*/}
 								</div>
 								<div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
 									{item.user_name}
