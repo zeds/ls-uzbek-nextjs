@@ -67,7 +67,7 @@ function Page() {
 
 	return (
 		<div>
-			<div className="flex pt-[56px] ml-3 justify-center gap-3">
+			{/* <div className="flex pt-[56px] ml-3 justify-center gap-3">
 				<Input
 					className="p-2 bg-green-200 w-[320px] inputSearch"
 					type="text"
@@ -76,8 +76,8 @@ function Page() {
 				<Button onClick={clickSearch} className=" p-3">
 					検索
 				</Button>
-			</div>
-			<div className="container w-full pt-16 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 p-3 bg-white ">
+			</div> */}
+			<div className="container w-full pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 p-3 bg-white ">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image

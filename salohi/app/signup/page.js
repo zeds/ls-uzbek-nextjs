@@ -21,7 +21,7 @@ const Page = () => {
 			email: email,
 			password: password,
 		});
- 		if (error) {
+		if (error) {
 			setMessage("エラーです。");
 		} else {
 			setMessage("成功！アカウントを作成しました！");
@@ -52,7 +52,7 @@ const Page = () => {
 					送信
 				</Button>
 				<div
-					onClick={() => route.push("/login2")}
+					onClick={() => route.push("/login")}
 					className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
 				>
 					ログインはこちら

@@ -38,7 +38,8 @@ let update = true;
 
 const Page = () => {
 	const text = useCounterStore((state) => state.text);
-    const [value, setValue] = useState("useStateの練習をするよ");
+
+	const [value, setValue] = useState("useStateの練習をするよ");
 
 	const clickSearch = () => {
 		alert("入力された値：" + value);
@@ -50,83 +51,66 @@ const Page = () => {
 				<DropdownMenuTrigger asChild>
 					<Button variant="outline">Open</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="w-[60]" align="top">
-					<DropdownMenuLabel><div className="flex gap-2">
-						<img className="w-[32px] h-[32px] rounded-full" src="my foto.jpg">
-						</img><div>
-                                <div>GULBOYEV SALOHIDDIN</div>
-                                <div>@gulboyev_1</div>
-								<div className="text-[#095ED5] mt-2 cursor-pointer">
-                                    チャンネルを表示</div>
-                            </div>
+				<DropdownMenuContent className="w-[300px]" align="top">
+					<DropdownMenuGroup>
+						<DropdownMenuItem>
+							<div className="flex">
+								<div class="w-10 h-10 mr-4">
+									<img
+										className="rounded-full"
+										src="tom.jpeg"
+										alt="tom"
+									/>
+								</div>
+								<div>
+									<div>Tsutomu Okumura</div>
+									<div>@tomzed39</div>
+									<div className="text-[#095ED5] mt-2">
+										チャンネルを表示
+									</div>
+								</div>
 							</div>
-						</DropdownMenuLabel>
+						</DropdownMenuItem>
+					</DropdownMenuGroup>
 					<DropdownMenuSeparator />
 					<DropdownMenuGroup>
 						<DropdownMenuItem>
-							{/* <User className="mr-2 h-4 w-4" />
-							<span>Google account</span> */}
-							<div className="flex items-center cursor-pointer gap-3"><img className="w-[24px]" src="ggg.svg" alt="rasm"></img>Google アカウント</div>
-							{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
+							<div className="w-6 h-6 mr-4">
+								<img src="/google.svg" alt="google" />
+							</div>
+							<span>Google アカウント</span>
 						</DropdownMenuItem>
-						{/* <DropdownMenuItem>
-							<CreditCard className="mr-2 h-4 w-4" />
-							<span>Billing</span>
-							<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-						</DropdownMenuItem> */}
-						{/* <DropdownMenuItem>
-							<Settings className="mr-2 h-4 w-4" />
-							<span>Settings</span>
-							<DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-						</DropdownMenuItem> */}
-						{/* <DropdownMenuItem>
-							<Keyboard className="mr-2 h-4 w-4" />
-							<span>Keyboard shortcuts</span>
-							<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-						</DropdownMenuItem> */}
-					</DropdownMenuGroup>
-					{/* <DropdownMenuSeparator /> */}
-					<DropdownMenuGroup>
-						{/* <DropdownMenuItem>
-							<Users className="mr-2 h-4 w-4" />
-							<span></span>
-						</DropdownMenuItem> */}
 						<DropdownMenuSub>
 							<DropdownMenuSubTrigger>
-								{/* <UserPlus className="mr-2 h-4 w-4" />
-								<span>Invite users</span> */}
-								<div className="flex items-center cursor-pointer gap-3 "><img src="changeAccount.svg" alt="rasm"></img>アカウントを切り替える</div>
+								<div className="w-6 h-6 mr-4">
+									<img src="/changeAccount.svg" alt="changeAccount" />
+								</div>
+								<span>アカウントを切り替える</span>
 							</DropdownMenuSubTrigger>
-							{/* <DropdownMenuPortal>
-								<DropdownMenuSubContent> */}
-									{/* <DropdownMenuItem>
+							<DropdownMenuPortal>
+								<DropdownMenuSubContent>
+									<DropdownMenuItem>
 										<Mail className="mr-2 h-4 w-4" />
 										<span>Email</span>
-									</DropdownMenuItem> */}
-									{/* <DropdownMenuItem>
+									</DropdownMenuItem>
+									<DropdownMenuItem>
 										<MessageSquare className="mr-2 h-4 w-4" />
 										<span>Message</span>
-									</DropdownMenuItem> */}
-									{/* <DropdownMenuSeparator /> */}
-									{/* <DropdownMenuItem>
+									</DropdownMenuItem>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem>
 										<PlusCircle className="mr-2 h-4 w-4" />
 										<span>More...</span>
-									</DropdownMenuItem> */}
-								{/* </DropdownMenuSubContent>
-							</DropdownMenuPortal> */}
+									</DropdownMenuItem>
+								</DropdownMenuSubContent>
+							</DropdownMenuPortal>
 						</DropdownMenuSub>
-						{/* <DropdownMenuItem>
-							<Plus className="mr-2 h-4 w-4" />
-							<span>New Team</span>
-							<DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-						</DropdownMenuItem> */}
 					</DropdownMenuGroup>
-					<DropdownMenuSeparator />
 					<DropdownMenuItem>
-						{/* <LogOut className="mr-2 h-4 w-4" />
-						<span>ログアウト</span> */}
-						<div className="flex items-center cursor-pointer gap-3"><img src="log-out.svg" alt="rasm"></img>ログアウト</div>
-						{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
+						<div className="w-6 h-6 mr-4">
+							<img src="/logout.svg" alt="logout" />
+						</div>
+						<span>ログアウト</span>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>

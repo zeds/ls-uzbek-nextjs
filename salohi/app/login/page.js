@@ -1,84 +1,74 @@
-// import React from 'react'
 "use client";
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
-// import { useCallback, useEffect, useState } from "react";
-// import { createClient } from "@/utils/supabase/client";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-	} from "@/components/ui/dropdown-menu";
+const Page = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [message, setMessage] = useState("メッセージ");
 
+	const supabase = createClient();
+	const setLogin = useCounterStore((state) => state.setLogin);
+	const route = useRouter();
 
+	const clickLogin = async () => {
+		let { data, error } = await supabase.auth.signInWithPassword({
+			email: email,
+			password: password,
+		});
+		if (error) {
+			setMessage("エラーです。");
+		} else {
+			setMessage("ログイン成功");
+            setLogin(true);
+            route.push("./article2")
+		}
+	};
+// async
+	return (
+		<div className="w-full h-screen flex justify-center items-center">
+			<div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
+				<div className="text-lg font-bold flex justify-center">
+					ログイン
+				</div>
+				<div className="my-2 font-bold">ユーザー名</div>
+				<Input
+					type="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					placeholder="メールアドレス"
+				/>
+				<div className="my-2 font-bold">パスワード</div>
+				<Input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					placeholder="パスワード"
+				/>
+				<div
+					onClick={() => route.push("/forgot_password")}
+					className="underline text-blue-500 text-sm mt-1 cursor-pointer"
+				>
+					パスワードを忘れた
+				</div>
+				<Button onClick={() => clickLogin()} className="mt-5">
+					ログイン
+				</Button>
+				<div
+					onClick={() => route.push("/signup")}
+					className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
+				>
+					新規登録はこちら
+				</div>
+				<div className="text-red-500">{message}</div>
+			</div>
+		</div>
+	);
+};
 
-
-const Article  = () => {
-//     const [dataSource, setDataSource] = useState({});
-// 	const supabase = createClient();
-// 	const [email, setEmail] = useState("");
-
-//     useEffect(() => {
-// 		getArticles();
-// 	}, []);
-
-//     const getArticles = useCallback(async () => {
-// 		try {
-//     const { data, error, status } = await supabase
-// 				.from("articles")
-// 				.select("*")
-// 				.eq("id", profileId)
-// 				.single();
-
-// 			if (error && status !== 406) {
-// 				throw error;
-// 			}
-
-// 			if (data) {
-// 				console.log("data = ", data);
-// 				setEmail(data.email);
-// 				setPassword(data.password);
-//                 setDataSource(data);
-// 			}
-// 		} catch (error) {
-// 			alert("Error loading user data!");
-// 		} finally {
-// 			//   setLoading(false)
-// 		}
-// 	}, []);
-
-    return (<div className='w-[100%] h-[100vh] bg-blue-700 flex justify-center items-center'>
-                <div className="w-[300px] h-[400px] border rounded-sm bg-slate-500">
-                    <div className='flex justify-center pt-[40px]'><img className='w-[70px] h-[70px]' src='profiles.svg'></img>
-                    </div>
-                        <div className='flex justify-center items-center pt-[80px] ml-[30px]'>email:
-                        <input className='h-[30px] border rounded-md' placeholder='e-mail'
-						></input>
-                        </div>
-                        <div className='flex justify-center items-center pt-[10px]'>password:
-                        <input className='h-[30px] border rounded-md' placeholder='password'
-                        ></input>
-                        </div>
-						<div className='ml-[95px] text-[rgba(8,94,212,1)]'>
-						<DropdownMenu>
-					<DropdownMenuTrigger className="outline-none">writepassword
-					</DropdownMenuTrigger>
-					<DropdownMenuContent className="mr-[1px]">
-					<DropdownMenuSeparator />
-					<DropdownMenuItem>
-						write 6 word or number
-					</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu></div>
-                        <div className='flex justify-center items-center pt-[60px]'>
-                        <button className='border bg-black text-white rounded-md w-[200px]'>Login</button>
-                        </div>
-                </div>
-
-        </div>
-    )
-    }
-
-    export default Article
+export default Page;
