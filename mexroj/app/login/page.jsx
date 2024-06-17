@@ -5,24 +5,27 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="flex items-center justify-center bg-yellow-200 w-full h-[100vh]">
-      <div className="bg-gray-400 w-1/3 h-60 p-10">
-        <div>username</div>
+    <div className="flex items-center justify-center bg-yellow-100 w-full h-screen">
+      <div className="bg-gray-200 w-[400px] flex flex-col p-4">
+        <div className="my-2 font-bold">ユーザー名</div>
         <Input
           type="email"
-          placeholder="Email"
+          placeholder="メールアドレス"
           className="bg-white placeholder:text-gray-400"
         />
-        <div>password</div>
+        <div className="my-2 font-bold">パスワード</div>
         <Input
           type="password"
-          placeholder="password"
+          placeholder="パスワード"
           className="bg-white  placeholder:text-gray-400"
         />
-        <Link href="#" className="text-blue-600">
-          forget
+        <Link
+          href="./forgot_password"
+          className="text-blue-500 underline text-sm mt-1  "
+        >
+          パスワードを忘れた
         </Link>
-        <Button className="bg-black text-white w-full  mt-4">login</Button>
+        <Button className="mt-5">ログイン</Button>
       </div>
     </div>
   );

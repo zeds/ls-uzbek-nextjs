@@ -12,6 +12,7 @@
 	DropdownMenuTrigger,
 	} from "@/components/ui/dropdown-menu";
 	import { Button } from "./ui/button";
+import { Link2 } from "lucide-react";
 
 	const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
@@ -152,7 +153,7 @@
 						アカウントを切り替える
 					</DropdownMenuItem>
 					<DropdownMenuItem>
-						{" "}
+						<Link href="/login2">
 						<div className="flex items-center">
 						<div
 							className=" w-6 h-6 mr-4 cursor-pointer"
@@ -161,7 +162,7 @@
 							<img src="logout.svg" alt="logout" />
 						</div>
 						ログアウト
-						</div>
+						</div></Link>
 					</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
