@@ -25,6 +25,8 @@ const Page = () => {
 			setMessage("エラーです。");
 		} else {
 			setMessage("ログイン成功");
+			setLogin(true);
+			route.push("/");
 		}
 	};
 
