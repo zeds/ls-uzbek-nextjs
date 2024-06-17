@@ -25,6 +25,8 @@ const Page = () => {
 			setMessage("エラーです。");
 		} else {
 			setMessage("ログイン成功");
+			setLogin(true);
+			route.push("/");
 		}
 	};
 
@@ -64,6 +66,7 @@ const Page = () => {
 					新規登録はこちら
 				</div>
 				<div className="text-red-500">{message}</div>
+				</div>
 			</div>
 		</div>
 	);

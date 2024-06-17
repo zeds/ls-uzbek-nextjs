@@ -36,8 +36,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const route = useRouter();
   const [flag, setFlag] = useState("jp"); // jp us au
   const [showModal, setShowModal] = useState(false); // true/false
 
@@ -210,7 +212,7 @@ const Header = () => {
           ) : (
             <div
               className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-              onClick={() => setLogin(true)}
+              onClick={() => Router.push("/login")}
             >
               <Image
                 className=""

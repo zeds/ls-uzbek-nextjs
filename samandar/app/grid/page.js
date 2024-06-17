@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
 	return (
 		<div className="pt-[56px] w-full rounded-xlh-screen">
-			<div className="grid grid-cols-3 gap-3">
+			<div className="  pt-16 grid md:grid-cols-2 lg:grid-cols-3 xl-grid-cols-4  gap-4 p-3 gap-y-[36px]">
 				<div className="bg-pink-300">
 					<img className="w-full rounded-xl"
 					src="/foodball1.jpg" alt="foodball1" />
