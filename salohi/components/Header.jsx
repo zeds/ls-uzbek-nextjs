@@ -40,23 +40,17 @@ import Image from "next/image";
 
 const Header = () => {
 	const router = useRouter();
-	const [flag, setFlag] = useState("uz"); // jp us au
+	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
+
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
 	const isLogin = useCounterStore((state) => state.isLogin);
 	const setLogin = useCounterStore((state) => state.setLogin);
 
-	const [searchKeyword, setSearchKeyword] = useState("");
-	const [dataSource, setDataSource] = useState([]);
-	const supabase = createClient();
-	const [value, setValue] = useState("");
-	const text = useCounterStore((state) => state.text);
-
 	const clickSearch = () => {
 		changeText(searchText);
 	};
-
 
 	return (
 		<>
@@ -68,7 +62,7 @@ const Header = () => {
 					<div className="w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
 					</div>
-					<Link href={"/articles"}>
+					<Link href={"/"}>
 						<div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
 							<img src="logo.svg" alt=""></img>
 						</div>
@@ -148,7 +142,7 @@ const Header = () => {
 							<DropdownMenuTrigger asChild>
 								<img
 									className="w-[32px] h-[32px] rounded-full cursor-pointer"
-									src="my foto.jpeg"
+									src="tom.jpeg"
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
@@ -164,8 +158,8 @@ const Header = () => {
 												/>
 											</div>
 											<div>
-												<div>Gulboyev Salohiddin</div>
-												<div>@gulboyev_1</div>
+												<div>Tsutomu Okumura</div>
+												<div>@tomzed39</div>
 												<div className="text-[#095ED5] mt-2">
 													チャンネルを表示
 												</div>
@@ -216,7 +210,7 @@ const Header = () => {
 										onClick={() => setLogin(false)}
 									>
 										<div className="w-6 h-6 mr-4">
-											<img src="/log-out.svg" alt="logout" />
+											<img src="/logout.svg" alt="logout" />
 										</div>
 										<span>ログアウト</span>
 									</div>
@@ -226,11 +220,11 @@ const Header = () => {
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => router.push("/login2")}
+							onClick={() => router.push("/login")}
 						>
 							<Image
 								className=""
-								src={"/profiles.svg"}
+								src={"/logout-avatar.svg"}
 								alt={"setting.svg"}
 								width={30}
 								height={30}
