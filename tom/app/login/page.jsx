@@ -66,6 +66,7 @@ const Page = () => {
 					新規登録はこちら
 				</div>
 				<div className="text-red-500">{message}</div>
+				</div>
 			</div>
 		</div>
 	);
