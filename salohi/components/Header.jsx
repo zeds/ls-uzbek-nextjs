@@ -42,15 +42,21 @@ const Header = () => {
 	const router = useRouter();
 	const [flag, setFlag] = useState("uz"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
-
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
 	const isLogin = useCounterStore((state) => state.isLogin);
 	const setLogin = useCounterStore((state) => state.setLogin);
 
+	const [searchKeyword, setSearchKeyword] = useState("");
+	const [dataSource, setDataSource] = useState([]);
+	const supabase = createClient();
+	const [value, setValue] = useState("");
+	const text = useCounterStore((state) => state.text);
+
 	const clickSearch = () => {
 		changeText(searchText);
 	};
+
 
 	return (
 		<>
