@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
+  const setLogin = useCounterStore((state) => state.setLogin);
+  const route = useRouter();
+
+  const clickLogin = () => {
+    setLogin(true);
+    route.push("/");
+  };
   return (
     <div className="w-full h-screen bg-purple-200 flex justify-center items-center">
       <div className="flex flex-col w-[400px] bg-yellow-300 p-4">
@@ -17,9 +27,11 @@ const page = () => {
         >
           パスワードを忘れた
         </Link>
-        <Button className="mt-5">ログイン</Button>
+        <Button onClick={() => clickLogin()} className="mt-5">
+          ログイン
+        </Button>
       </div>
     </div>
   );
 };
-export default page;
+export default Page;
