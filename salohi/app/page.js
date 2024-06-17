@@ -5,15 +5,20 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
+import { useCounterStore } from "@/store";
 
 import { useCounterStore } from "@/store";
 
 export default function Home() {
 	const supabase = createClient();
 	const [dataSource, setDataSource] = useState([]);
-
 	const text = useCounterStore((state) => state.text); //ロシア
 
+<<<<<<< HEAD
+	const text = useCounterStore((state) => state.text); //ロシア
+
+=======
+>>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 	const getArticles = useCallback(async (keyword) => {
 		try {
 			console.log("searchKeyword=", keyword); // piano
@@ -22,6 +27,10 @@ export default function Home() {
 			const { data, error, status } = await supabase
 				.from("articles")
 				.select("*")
+<<<<<<< HEAD
+=======
+				// .textSearch("title", "Tokyo")
+>>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 				.ilike("title", keyword) // %piano%
 				.order("id", { ascending: false });
 
