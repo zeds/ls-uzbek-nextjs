@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -38,6 +39,7 @@ import {
 import Image from "next/image";
 
 const Header = () => {
+	const router = useRouter();
 	const [flag, setFlag] = useState("uz"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
@@ -144,7 +146,7 @@ const Header = () => {
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="w-[300px]" align="top">
+							<DropdownMenuContent className="w-[300px]" align="end">
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
 										<div className="flex">
@@ -156,7 +158,7 @@ const Header = () => {
 												/>
 											</div>
 											<div>
-												<div>Qutbiddinov Samandar</div>
+												<div>Samandar Qutbiddinov</div>
 												<div>qutbiddinovsamandar@gmail.com</div>
 												<div className="text-[#095ED5] mt-2">
 													チャンネルを表示
@@ -203,28 +205,29 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-									<div className="w-6 h-6 mr-4">
-										<img src="/logout.svg" alt="logout" />
+									<div
+										className="flex bg-red-200 w-full"
+										onClick={() => setLogin(false)}
+									>
+										<div className="w-6 h-6 mr-4">
+											<img src="/logout.svg" alt="logout" />
+										</div>
+										<span>ログアウト</span>
 									</div>
-									<span onClick={() => setLogin(false)}>
-										ログアウト
-									</span>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => setLogin(true)}
+							onClick={() => router.push("/login1")}
 						>
 							<Image
-								className="text-blue-400"
+								className=""
 								src={"/logout-avatar.svg"}
 								alt={"setting.svg"}
-								// fill
-								width={0}
-								height={0}
-								style={{ width: "30px", color: "red" }}
+								width={30}
+								height={30}
 							/>
 							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
 						</div>
