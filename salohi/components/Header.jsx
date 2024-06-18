@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
 import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import {
 	Cloud,
@@ -37,30 +38,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 
-
 const Header = () => {
-<<<<<<< HEAD
-=======
 	const router = useRouter();
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
-	const router = useRouter();
-
-	const isLogin = useCounterStore((state) => state.isLogin)
+	const isLogin = useCounterStore((state) => state.isLogin);
 	const setLogin = useCounterStore((state) => state.setLogin);
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 	const clickSearch = () => {
-		changeText(searchText)
+		changeText(searchText);
 	};
 
 	return (
@@ -68,19 +57,13 @@ const Header = () => {
 			{showModal ? (
 				<FlagModal setShowModal={setShowModal} setFlag={setFlag} />
 			) : null}
-
-			<div className=" flex h-[56px] w-full justify-between items-center pl-2 pr-2">
+			<div className="fixed z-10 flex h-[56px] w-full justify-between items-center bg-white px-3">
 				<div className="flex items-center justify-center w-[169px] ">
-					<div className="w-10 h-10 p-2 shrink-0 rounded-full">
+					<div className="w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
 					</div>
-<<<<<<< HEAD
 					<Link href={"/articles"}>
-						<div className="w-[127px] h-[56px]  py-[18px] pl-[16px] pr-[14px] shrink-0">
-=======
-					<Link href={"/"}>
 						<div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 							<img src="logo.svg" alt=""></img>
 						</div>
 					</Link>
@@ -88,7 +71,7 @@ const Header = () => {
 				<div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
 					{/* search */}
 					<input
-						text="text"
+						type="text"
 						onChange={(e) => setSearchText(e.target.value)}
 						placeholder="検索"
 						className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
@@ -97,7 +80,8 @@ const Header = () => {
 					{/* scope */}
 					<button
 						onClick={clickSearch}
-						className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+						className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
+					>
 						<img
 							className="w-[24px] absolute right-4 bottom-1.5"
 							src="scope.svg"
@@ -106,15 +90,15 @@ const Header = () => {
 					</button>
 
 					{/* mic */}
-					<button className="ml-[12px] w-[40px] h-[40px] rounded-full flex shrink-0 items-center justify-center aspect-square">
+					<button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
 						<img
-							className="flex shrink-0 rounded-full w-[24px]"
+							className="flex rounded-full w-[24px]"
 							src="mic.svg"
 							alt=""
 						></img>
 					</button>
 				</div>
-				<ul className="flex items-center justify-end w-[225px] h-[40px]  rounded-full p-1 shrink-0">
+				<ul className="flex items-center justify-end w-[225px] h-[40px]  shrink-0">
 					{/* search */}
 					<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
 						<img className="" src="scope.svg" alt=""></img>
@@ -158,15 +142,11 @@ const Header = () => {
 							<DropdownMenuTrigger asChild>
 								<img
 									className="w-[32px] h-[32px] rounded-full cursor-pointer"
-<<<<<<< HEAD
 									src="my foto.jpg"
-=======
-									src="tom.jpeg"
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 									alt=""
 								></img>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="w-[260px] mt-4 mr-4" align="end">
+							<DropdownMenuContent className="w-[300px]" align="end">
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
 										<div className="flex">
@@ -178,13 +158,8 @@ const Header = () => {
 												/>
 											</div>
 											<div>
-<<<<<<< HEAD
 												<div>Salohiddin Gulboyev</div>
 												<div>@gulboyev_1</div>
-=======
-												<div>Tsutomu Okumura</div>
-												<div>@tomzed39</div>
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 												<div className="text-[#095ED5] mt-2">
 													チャンネルを表示
 												</div>
@@ -230,15 +205,6 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-<<<<<<< HEAD
-									<div onClick={()=> setLogin(false)} className="flex w-full cursor-pointer">
-									<div className="w-6 h-6 mr-4">
-										<img src="/logout.svg" alt="logout" />
-									</div>
-									<span>
-										ログアウト
-									</span>
-=======
 									<div
 										className="flex bg-red-200 w-full"
 										onClick={() => setLogin(false)}
@@ -247,7 +213,6 @@ const Header = () => {
 											<img src="/logout.svg" alt="logout" />
 										</div>
 										<span>ログアウト</span>
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 									</div>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
@@ -255,15 +220,11 @@ const Header = () => {
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-<<<<<<< HEAD
-							onClick={()=> router.push("/login")}
-=======
 							onClick={() => router.push("/login")}
->>>>>>> 8c0e259a51e5f46cf3fbf02a9f7aa8a46ea178d0
 						>
 							<Image
 								className=""
-								src={"/logout-avatar.svg"}
+								src={"/profiles.svg"}
 								alt={"setting.svg"}
 								width={30}
 								height={30}
@@ -271,7 +232,6 @@ const Header = () => {
 							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
 						</div>
 					)}
-					{/* </Link> */}
 				</ul>
 			</div>
 		</>
