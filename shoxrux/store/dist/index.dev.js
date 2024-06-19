@@ -12,6 +12,7 @@ var useCounterStore = (0, _zustand.create)(function (set) {
     isLogin: false,
     text: "あいうえお",
     changeText: function changeText(value) {
+      console.log("changeText=", value);
       set({
         text: value
       });
