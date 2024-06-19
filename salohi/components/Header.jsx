@@ -40,7 +40,7 @@ import Image from "next/image";
 
 const Header = () => {
 	const router = useRouter();
-	const [flag, setFlag] = useState("jp"); // jp us au
+	const [flag, setFlag] = useState("uz"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
 	const changeText = useCounterStore((state) => state.changeText);

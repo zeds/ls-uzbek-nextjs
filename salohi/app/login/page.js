@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,36 @@ const Page = () => {
 	const supabase = createClient();
 	const setLogin = useCounterStore((state) => state.setLogin);
 	const route = useRouter();
+	const getProfile = useCallback(async (profileId) => {
+		try {
+			//   setLoading(true)
+
+			const { data, error, status } = await supabase
+				.from("profiles")
+				.select("*")
+				.eq("id", profileId)
+				.single();
+
+			if (error && status !== 406) {
+				throw error;
+			}
+
+			if (data) {
+				alert("data=" + JSON.stringify(data))
+				console.log("data = ", data);
+				setDataSource(data);
+			}
+
+			setMessage("ログイン成功");
+            setLogin(true);
+            route.push("./")
+
+		} catch (error) {
+			alert("Error loading user data!");
+		} finally {
+			//   setLoading(false)
+		}
+	}, []);
 
 	const clickLogin = async () => {
 		let { data, error } = await supabase.auth.signInWithPassword({
@@ -24,9 +54,12 @@ const Page = () => {
 		if (error) {
 			setMessage("エラーです。");
 		} else {
+			// profile get
+
+			getProfile(data.user.id)
 			setMessage("ログイン成功");
             setLogin(true);
-            route.push("./article2")
+            route.push("./")
 		}
 	};
 // async
