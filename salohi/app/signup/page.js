@@ -16,25 +16,23 @@ const Page = () => {
 	const setLogin = useCounterStore((state) => state.setLogin);
 	const route = useRouter();
 
-	const clickLogin = async () => {
-		let { data, error } = await supabase.auth.signInWithPassword({
+	const clickSignup = async () => {
+		let { data, error } = await supabase.auth.signUp({
 			email: email,
 			password: password,
 		});
 		if (error) {
 			setMessage("エラーです。");
 		} else {
-			setMessage("ログイン成功");
-            setLogin(true);
-            route.push("./article2")
+			setMessage("成功！アカウントを作成しました！");
 		}
 	};
-// async
+
 	return (
 		<div className="w-full h-screen flex justify-center items-center">
 			<div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
 				<div className="text-lg font-bold flex justify-center">
-					ログイン
+					新規登録
 				</div>
 				<div className="my-2 font-bold">ユーザー名</div>
 				<Input
@@ -50,20 +48,14 @@ const Page = () => {
 					onChange={(e) => setPassword(e.target.value)}
 					placeholder="パスワード"
 				/>
-				<div
-					onClick={() => route.push("/forgot-password")}
-					className="underline text-blue-500 text-sm mt-1 cursor-pointer"
-				>
-					パスワードを忘れた
-				</div>
-				<Button onClick={() => clickLogin()} className="mt-5">
-					ログイン
+				<Button onClick={() => clickSignup()} className="mt-5">
+					送信
 				</Button>
 				<div
-					onClick={() => route.push("/signup")}
+					onClick={() => route.push("/login")}
 					className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
 				>
-					新規登録はこちら
+					ログインはこちら
 				</div>
 				<div className="text-red-500">{message}</div>
 			</div>
