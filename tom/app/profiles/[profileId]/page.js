@@ -46,7 +46,7 @@ const Profile = () => {
 	}, []);
 
 	return (
-		<div className="w-full h-screen bg-blue-300 flex justify-center">
+		<div className="pt-[56px] w-full h-screen bg-blue-300 flex justify-center">
 			{/* 576pxの外枠 */}
 			<div className="w-full max-w-xl  bg-gradient-to-r from-indigo-500">
 				<Link href={`/profiles`} className="underline">
@@ -60,6 +60,33 @@ const Profile = () => {
 					</label>
 					<label className="w-full px-[100px] h-[30px] ">
 						email: {dataSource.email}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						birthday: {dataSource.birthday}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						sex: {dataSource.sex}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						school: {dataSource.school}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						occupation: {dataSource.occupation}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						address: {dataSource.address}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						phone: {dataSource.phone}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						hobby: {dataSource.hobby}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						nationality: {dataSource.nationality}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						introduce: {dataSource.introduce}
 					</label>
 					<button
 						onClick={clickEdit}

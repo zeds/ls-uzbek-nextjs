@@ -12,7 +12,7 @@ export default function Home() {
 	const supabase = createClient();
 	const [dataSource, setDataSource] = useState([]);
 
-	const text = useCounterStore((state) => state.text); //ロシア
+	const { user, text } = useCounterStore();
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
@@ -51,6 +51,7 @@ export default function Home() {
 	return (
 		<div className="">
 			<div className="w-full pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 p-3  gap-y-9">
+				<div>ユーザー情報：{JSON.stringify(user)}</div>
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image

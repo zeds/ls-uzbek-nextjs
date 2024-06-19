@@ -74,7 +74,7 @@ const ProfileEdit = () => {
 	// };
 
 	return (
-		<div className="w-full h-screen bg-blue-300 flex justify-center">
+		<div className="w-full h-screen pt-[56px] bg-blue-300 flex justify-center">
 			{/* 576pxの外枠 */}
 			<div className="w-full max-w-xl bg-pink-300">
 				<h1>編集画面</h1>
