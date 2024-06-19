@@ -46,7 +46,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-blue-300 flex justify-center p-7 ">
+    <div className="w-full h-screen pt-14 bg-blue-300 flex justify-center p-7 ">
       {/* 576pxの外枠 */}
       <div className="w-full max-w-xl bg-pink-400 rounded-3xl">
         {/* アバター */}
@@ -62,6 +62,33 @@ const Profile = () => {
             </label>
             <label className=" h-[30px] font-serif text-xl">
               email: {dataSource.email}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              birthday: {dataSource.birthday}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              sex: {dataSource.sex}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              school: {dataSource.school}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              occupation: {dataSource.occupation}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              address: {dataSource.address}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              phone: {dataSource.phone}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              hobby: {dataSource.hobby}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              nationality: {dataSource.nationality}
+            </label>
+            <label className=" h-[30px] font-serif text-xl">
+              introduce: {dataSource.introduce}
             </label>
           </div>
           <div className="flex justify-center items-center  gap-3  w-full mt-3">

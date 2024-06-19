@@ -1,20 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import React from "react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const Page = () => {
   return (
-    <div className="flex items-center justify-center bg-yellow-100 w-full h-screen">
-      <div className="bg-gray-200 w-[400px] flex flex-col p-4">
-        <div>パスワードを再設定メールを送る</div>
+    <div className="w-full h-screen bg-yellow-100 flex justify-center items-center">
+      <div className="flex flex-col w-full max-w-xl bg-gray-200 p-4">
+        <div className="text-[30px]">パスワード再設定メールを送る</div>
         <div className="my-2 font-bold">メールアドレス</div>
-        <Input
-          type="email"
-          placeholder=""
-          className="bg-white placeholder:text-gray-400"
-        />
-        <p>Qiitaに登録したメールのみ送信可能です。</p>
-        <Button className="mt-5 bg-green-500 w-10">送信</Button>
+        <Input type="email" placeholder="メールアドレス" />
+        登録したメールアドレスを入力してください
+        <Button classaaName="mt-5 w-[60px]">送信</Button>
       </div>
     </div>
   );
