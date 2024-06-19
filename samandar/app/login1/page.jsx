@@ -14,6 +14,7 @@ const Page = () => {
 
 	const supabase = createClient();
 	const setLogin = useCounterStore((state) => state.setLogin);
+	const { setUser } = useCounterStore();
 	const route = useRouter();
 
 	const clickLogin = async () => {
@@ -21,10 +22,17 @@ const Page = () => {
 			email: email,
 			password: password,
 		});
+		console.log("login data=", JSON.stringify(data));
 		if (error) {
 			setMessage("エラーです。");
 		} else {
 			setMessage("ログイン成功");
+			setUser({
+				id: "aiueo",
+			});
+
+			setLogin(true);
+			route.push("/");
 		}
 	};
 
