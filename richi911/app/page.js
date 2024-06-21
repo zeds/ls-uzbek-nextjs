@@ -5,13 +5,18 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
+import { useCounterStore } from "@/store";
 
 export default function Home() {
   const supabase = createClient();
   const [dataSource, setDataSource] = useState([]);
+  const text = useCounterStore((state) => state.text); //ロシア
 
-  const getArticles = useCallback(async () => {
+  const getArticles = useCallback(async (keyword) => {
     try {
+      console.log("searchKeyword=", keyword); // piano
+      keyword = "%" + keyword + "%"; // %piano%
+
       const { data, error, status } = await supabase
         .from("articles")
         .select("*");
@@ -32,8 +37,12 @@ export default function Home() {
   });
 
   useEffect(() => {
-    getArticles();
+    getArticles("");
   }, []);
+
+  useEffect(() => {
+    getArticles(text);
+  }, [text]);
 
   return (
     <div className="">
