@@ -39,6 +39,8 @@ import {
 import Image from "next/image";
 
 const Header = () => {
+	const { user } = useCounterStore();
+
 	const router = useRouter();
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
@@ -171,15 +173,22 @@ const Header = () => {
 								<DropdownMenuSeparator />
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
-										<div className="w-6 h-6 mr-4">
-											<img src="/google.svg" alt="google" />
-										</div>
-										<span>Google アカウント</span>
+										<Link
+											href={`/profiles/${user.id}`}
+											className="flex items-center"
+										>
+											<div className="w-6 h-6 mr-4">
+												<img src="/google.svg" alt="google" />
+											</div>
+											<span>マイプロフィール</span>
+										</Link>
 									</DropdownMenuItem>
 									<DropdownMenuSub>
 										<DropdownMenuSubTrigger>
 											<div className="w-6 h-6 mr-4">
-												<img
+												<Image
+													width={36}
+													height={36}
 													src="/changeAccount.svg"
 													alt="changeAccount"
 												/>

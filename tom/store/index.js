@@ -1,6 +1,6 @@
 import { create } from "zustand";
-
-export const useCounterStore = create((set) => ({
+import { persist, createJSONStorage } from "zustand/middleware";
+export const useCounterStore = create((set, get) => ({
 	isLogin: false,
 	text: "",
 	changeText: (value) => {

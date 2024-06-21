@@ -3,6 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { DatePicker, Space } from "antd";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
+const dateFormat = "YYYY-MM-DD";
 
 const ProfileEdit = () => {
 	const [dataSource, setDataSource] = useState({});
@@ -13,11 +18,17 @@ const ProfileEdit = () => {
 
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
+	const [birthday, setBirthday] = useState("");
 	const [nationality, setNationality] = useState("");
 
 	useEffect(() => {
 		getProfile();
 	}, []);
+
+	// 10-09-2000
+	const onChange = (date, dateString) => {
+		console.log(date, dateString);
+	};
 
 	const getProfile = useCallback(async () => {
 		try {
@@ -38,6 +49,8 @@ const ProfileEdit = () => {
 				setUserName(data.username);
 				setEmail(data.email);
 				setNationality(data.nationality);
+				let djs = dayjs("2010-01-01", dateFormat);
+				setBirthday(djs);
 
 				setDataSource(data);
 			}
@@ -95,6 +108,14 @@ const ProfileEdit = () => {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					></input>
+					<label>birthday</label>
+					<div>{dataSource.birthday}</div>
+					<DatePicker
+						defaultValue={birthday}
+						// defaultValue={dayjs("2000-09-10", dateFormat)}
+						onChange={onChange}
+					/>
+
 					<label>nationality</label>
 					<input
 						className="w-[300px] p-2"
