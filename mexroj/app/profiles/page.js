@@ -101,7 +101,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex bg-gray-300 gap-3 flex-wrap pt-[56px]">
+    <div className="flex bg-gray-300 gap-3  flex-wrap pt-[56px]">
       {dataSource.map((item, index) => (
         <Link
           key={index}

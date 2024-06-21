@@ -50,7 +50,7 @@ const Profile = () => {
   });
 
   return (
-    <div className="w-full h-screen bg-purple-300 flex justify-center">
+    <div className="pt-[56px} w-full h-screen bg-purple-300 flex justify-center">
       {/* 576pxの外枠 */}
       <div className="w-full max-w-xl bg-blue-100">
         <Link href={`/profiles`} className="underline">
