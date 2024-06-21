@@ -13,7 +13,7 @@ export default function Home() {
 
   const text = useCounterStore((state) => state.text); //ロシア
 
-  const getArticles = useCallback(async () => {
+  const getArticles = useCallback(async (keyword) => {
     try {
       console.log("searchKeyword=", keyword); // piano
       keyword = "%" + keyword + "%"; // %piano%
