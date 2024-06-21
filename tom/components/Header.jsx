@@ -43,10 +43,11 @@ const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
-	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
-	const isLogin = useCounterStore((state) => state.isLogin);
-	const setLogin = useCounterStore((state) => state.setLogin);
+	// const changeText = useCounterStore((state) => state.changeText);
+	// const isLogin = useCounterStore((state) => state.isLogin);
+	// const setLogin = useCounterStore((state) => state.setLogin);
+	const { changeText, isLogin, setLogin } = useCounterStore();
 
 	const clickSearch = () => {
 		changeText(searchText);
@@ -206,7 +207,7 @@ const Header = () => {
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
 									<div
-										className="flex bg-red-200 w-full"
+										className="flex w-full"
 										onClick={() => setLogin(false)}
 									>
 										<div className="w-6 h-6 mr-4">

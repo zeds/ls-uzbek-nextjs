@@ -83,7 +83,7 @@ const Page = () => {
 
 		// usernameを更新
 		const { error: updateError } = await supabase
-			.from("profiles2")
+			.from("profiles")
 			.update({
 				username: dataSource[index].username,
 			})

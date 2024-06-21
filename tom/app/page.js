@@ -6,15 +6,24 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Article from "@/components/Article";
 
+import { useCounterStore } from "@/store";
+
 export default function Home() {
 	const supabase = createClient();
 	const [dataSource, setDataSource] = useState([]);
 
-	const getArticles = useCallback(async () => {
+	const { user, text } = useCounterStore();
+
+	const getArticles = useCallback(async (keyword) => {
 		try {
+			console.log("searchKeyword=", keyword); // piano
+			keyword = "%" + keyword + "%"; // %piano%
+
 			const { data, error, status } = await supabase
 				.from("articles")
-				.select("*");
+				.select("*")
+				.ilike("title", keyword) // %piano%
+				.order("id", { ascending: false });
 
 			if (error && status !== 406) {
 				throw error;
@@ -32,12 +41,17 @@ export default function Home() {
 	});
 
 	useEffect(() => {
-		getArticles();
+		getArticles("");
 	}, []);
+
+	useEffect(() => {
+		getArticles(text); // text="Morning"
+	}, [text]);
 
 	return (
 		<div className="">
 			<div className="w-full pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 p-3  gap-y-9">
+				<div>ユーザー情報：{JSON.stringify(user)}</div>
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image

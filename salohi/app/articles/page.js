@@ -1,28 +1,30 @@
 "use client";
-import { Icon } from "@iconify/react";
+import React, { useCallback, useState, useEffect } from "react";
+import "../globals.css";
 import Image from "next/image";
-import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import Article from "@/components/Article";
-
 import { useCounterStore } from "@/store";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-export default function Home() {
-	const supabase = createClient();
+
+function Page() {
+	const [searchKeyword, setSearchKeyword] = useState("");
 	const [dataSource, setDataSource] = useState([]);
-
-	const text = useCounterStore((state) => state.text); 
+	const supabase = createClient();
+	const [value, setValue] = useState("");
+	const text = useCounterStore((state) => state.text); //ロシア
 
 	const getArticles = useCallback(async (keyword) => {
 		try {
-			console.log("searchKeyword=", keyword); 
-			keyword = "%" + keyword + "%"; 
+			console.log("searchKeyword=", keyword); // piano
+			keyword = "%" + keyword + "%"; // %piano%
 
 			const { data, error, status } = await supabase
 				.from("articles")
 				.select("*")
-				.ilike("title", keyword)
+				// .textSearch("title", "Tokyo")
+				.ilike("title", keyword) // %piano%
 				.order("id", { ascending: false });
 
 			if (error && status !== 406) {
@@ -38,19 +40,44 @@ export default function Home() {
 		} finally {
 			//   setLoading(false)
 		}
-	});
+	}, []);
 
 	useEffect(() => {
-		getArticles("");
-	}, []);
+		getArticles(searchKeyword);
+	}, [getArticles]);
+
+	useEffect(() => {
+		console.log("us=", searchKeyword);
+		getArticles(searchKeyword);
+	}, [searchKeyword]);
 
 	useEffect(() => {
 		getArticles(text);
 	}, [text]);
 
+	const searchArticles = () => {
+		alert("検索します");
+		getArticles(searchKeyword);
+	};
+
+	const clickSearch = () => {
+		// alert("入力された値：" + value);
+		getArticles(value);
+	};
+
 	return (
-		<div className="">
-			<div className="w-full pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 p-3  gap-y-9">
+		<div>
+			{/* <div className="flex pt-[56px] ml-3 justify-center gap-3">
+				<Input
+					className="p-2 bg-green-200 w-[320px] inputSearch"
+					type="text"
+					onChange={(e) => setValue(e.target.value)}
+				/>
+				<Button onClick={clickSearch} className=" p-3">
+					検索
+				</Button>
+			</div> */}
+			<div className="container w-full pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-2 p-3 bg-white ">
 				{dataSource.map((item, index) => (
 					<div key={index} className="w-full">
 						<Image
@@ -65,7 +92,8 @@ export default function Home() {
 								borderRadius: "12px",
 							}}
 						/>
-						<div className="flex gap-[10px] mt-3 ">
+
+						<div className="flex gap-[10px] mt-3 mr-3">
 							<Image
 								width={0}
 								height={0}
@@ -82,7 +110,8 @@ export default function Home() {
 							<div>
 								<div className="line-clamp-2 leading-[22px] text-[rgba(15,15,15,1)]">
 									{item.title}
-									{/* fast and furious*/}
+									{/* Free BGM "I'll be sleepy after a snack" 2 hours ver -
+								Kawaii Afternoon Break [NoCopyrightMusic] */}
 								</div>
 								<div className="line-clamp-1 text-sm font-normal text-[rgba(15,15,15,1)]">
 									{item.user_name}
@@ -98,3 +127,5 @@ export default function Home() {
 		</div>
 	);
 }
+
+export default Page;
