@@ -10,6 +10,7 @@ import { useCounterStore } from "@/store";
 export default function Home() {
   const supabase = createClient();
   const [dataSource, setDataSource] = useState([]);
+
   const text = useCounterStore((state) => state.text); //ロシア
 
   const getArticles = useCallback(async (keyword) => {
@@ -19,7 +20,9 @@ export default function Home() {
 
       const { data, error, status } = await supabase
         .from("articles")
-        .select("*");
+        .select("*")
+        .ilike("title", keyword) // %piano%
+        .order("id", { ascending: false });
 
       if (error && status !== 406) {
         throw error;

@@ -13,12 +13,9 @@ const ProfileEdit = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [nationality, setNationality] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [sex, setSex] = useState("");
-  const [school, setSchool] = useState("");
-  const [occupation, setOccupation] = useState("");
   const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [occupation, setOccupation] = useState("");
   const [hobby, setHobby] = useState("");
   const [introduce, setIntroduce] = useState("");
 
@@ -46,12 +43,9 @@ const ProfileEdit = () => {
         setUserName(data.username);
         setEmail(data.email);
         setNationality(data.nationality);
-        setBirthday(data.birthday);
-        setSex(data.sex);
-        setSchool(data.school);
-        setOccupation(data.occupation);
         setAddress(data.address);
-        setPhone(data.phone);
+        setBirthday(data.birthday);
+        setOccupation(data.occupation);
         setHobby(data.hobby);
         setIntroduce(data.introduce);
         setDataSource(data);
@@ -73,12 +67,9 @@ const ProfileEdit = () => {
         username: userName,
         email: email,
         nationality: nationality,
-        birthday: birthday,
-        sex: sex,
-        school: school,
-        occupation: occupation,
         address: address,
-        phone: phone,
+        birthday: birthday,
+        occupation: occupation,
         hobby: hobby,
         introduce: introduce,
       })
@@ -97,93 +88,72 @@ const ProfileEdit = () => {
   // };
 
   return (
-    <div className="w-full h-max bg-blue-300 flex justify-center">
+    <div className="pt-[56px}w-full h-max bg-purple-300 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-yellow-700">
-        <h1 className="text-black font-semibold p-2">編集画面</h1>
+      <div className="w-full max-w-xl bg-blue-100">
+        <h1>編集画面</h1>
         {/* アバター */}
-        <div className="w-full flex justify-center items-center mt-2 flex-col">
-          <img className="w-[80px] mb-2" src={dataSource.avatar_url} alt="" />
-          <label className="font-semibold">Username:</label>
+        <div className="w-full flex justify-center items-center mt-5 flex-col">
+          <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
+          <label>username</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           ></input>
-          <label className="font-semibold">Email:</label>
+          <label>email</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-          <label className="font-semibold">Nationality:</label>
+          <label>Nationality</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
             value={nationality}
             onChange={(e) => setNationality(e.target.value)}
           ></input>
-          <label className="font-semibold">Birthday:</label>
+          <label>Address</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
-            type="text"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          ></input>
-          <label className="font-semibold">Gender:</label>
-          <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
-            type="text"
-            value={sex}
-            onChange={(e) => setSex(e.target.value)}
-          ></input>
-          <label className="font-semibold">School:</label>
-          <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
-            type="text"
-            value={school}
-            onChange={(e) => setSchool(e.target.value)}
-          ></input>
-          <label className="font-semibold">Occupation:</label>
-          <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
-            type="text"
-            value={occupation}
-            onChange={(e) => setOccupation(e.target.value)}
-          ></input>
-          <label className="font-semibold">Address:</label>
-          <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           ></input>
-          <label className="font-semibold">Phone:</label>
+          <label>Birthday</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
           ></input>
-          <label className="font-semibold">Hobby:</label>
+          <label>Occupation</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
+            type="text"
+            value={occupation}
+            onChange={(e) => setOccupation(e.target.value)}
+          ></input>
+          <label>Hobby</label>
+          <input
+            className="w-[300px] p-2"
             type="text"
             value={hobby}
             onChange={(e) => setHobby(e.target.value)}
           ></input>
-          <label className="font-semibold">Bio:</label>
+          <label>Introduce</label>
           <input
-            className="w-[300px] p-2 bg-yellow-800 text-black font-semibold"
+            className="w-[300px] p-2"
             type="text"
             value={introduce}
             onChange={(e) => setIntroduce(e.target.value)}
           ></input>
           <button
             onClick={clickSave}
-            className="mt-5 p-2 bg-yellow-950 text-white rounded-md mb-5"
+            className="mt-5 p-2 bg-pink-400 text-white rounded-md"
           >
             保存
           </button>

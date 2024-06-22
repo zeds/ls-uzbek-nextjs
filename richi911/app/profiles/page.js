@@ -1,44 +1,23 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const Page = () => {
-  const [dataSource, setDataSource] = useState([]);
-
+const Profile = () => {
+  const [dataSource, setDataSource] = useState({});
   const supabase = createClient();
+  const profileId = usePathname().split("/")[2];
+  const route = useRouter();
 
-  const channelA = supabase
-    .channel("schema-db-changes")
-    .on(
-      "postgres_changes",
-      {
-        event: "*",
-        schema: "public",
-        // テーブルを指定しない場合、全てのテーブルの変更が通知される。
-        // table: "notifications",
-      },
-      (payload) => {
-        if (payload.table === "profiles") {
-          if (payload.new && "username" in payload.new) {
-            updateProfile(payload.new);
-            // setMessage(payload.new.introduce);
-          }
-        }
-      }
-    )
-    .subscribe();
+  useEffect(() => {
+    getProfile();
+    console.log("profileId=", profileId);
+  }, []);
 
-  const updateProfile = (target) => {
-    // mapで見つけて更新する
-    let newArr = [...dataSource];
-    newArr.map((item, index) => {
-      if (target.id === item.id) {
-        newArr[index] = target;
-        setDataSource(newArr);
-      }
-    });
+  const clickEdit = () => {
+    route.push(`/profiles/${profileId}/edit`);
   };
 
   const getProfile = useCallback(async () => {
@@ -48,7 +27,8 @@ const Page = () => {
       const { data, error, status } = await supabase
         .from("profiles")
         .select("*")
-        .order("id", { ascending: false });
+        .eq("id", profileId)
+        .single();
 
       if (error && status !== 406) {
         throw error;
@@ -67,105 +47,36 @@ const Page = () => {
 
   useEffect(() => {
     getProfile();
-  }, []);
-
-  const onChangeHandler = (name, index) => {
-    console.log(dataSource[index].username);
-    // dataSourceを直接編集できない
-    // dataSourceのコピーを作って、編集したあと、コピーをdataSourceに上書きする
-    let newArr = [...dataSource];
-    newArr[index].username = name;
-    setDataSource(newArr);
-  };
-
-  const clickUpdate = async (index) => {
-    // alert(JSON.stringify(dataSource[index]))
-
-    // usernameを更新
-    const { error: updateError } = await supabase
-      .from("profiles")
-      .update({
-        username: dataSource[index].username,
-      })
-      .eq("id", dataSource[index].id); // 'cf3466fb-1af1-48ec-9868-73437564da11'
-    // update profiles set username = 'とむかも' where id = 'cf3466fb-1af1-48ec-9868-73437564da11'
-
-    // alert(updateError)  // nullはエラーがない意味
-    if (updateError !== null) {
-      alert("失敗！：" + JSON.stringify(updateError));
-    }
-  };
+  });
 
   return (
-    <>
-      {/* <div className="bg-yellow-800 p-2 text-black font-semibold"></div> */}
-      {/* {JSON.stringify(dataSource)} */}
-      <div className="flex bg-yellow-800 gap-1 flex-wrap p-2 mt-[56px]">
-        {dataSource.map((item, index) => (
-          <Link
-            key={index}
-            href={`/profiles/${item.id}`}
-            className="w-[200px] h-[300px] bg-yellow-700 relative p-2"
+    <div className="pt-[56px} w-full h-screen bg-purple-300 flex justify-center">
+      {/* 576pxの外枠 */}
+      <div className="w-full max-w-xl bg-blue-100">
+        <Link href={`/profiles`} className="underline">
+          プロフィールー選べ
+        </Link>
+        {/* アバター */}
+        <div className="w-full flex justify-center items-center mt-5 flex-col">
+          <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
+          <label>username: {dataSource.username}</label>
+          <label>email: {dataSource.email}</label>
+          <div>Nationality: {dataSource.nationality}</div>
+          <div>Address: {dataSource.address}</div>
+          <div>Birthday: {dataSource.birthday}</div>
+          <div>Occupation: {dataSource.occupation}</div>
+          <div>Hobby: {dataSource.hobby}</div>
+          <div>Introduce: {dataSource.introduce}</div>
+          <button
+            onClick={clickEdit}
+            className="mt-5 p-2 bg-pink-400 text-white rounded-md"
           >
-            <div className="w-full justify-center flex">
-              {item.avatar_url ? (
-                <img
-                  className="rounded-full w-[100px]"
-                  src={item.avatar_url}
-                  alt="hoge"
-                />
-              ) : null}
-            </div>
-            <div>
-              <div className="font-semibold text-sm">Name:</div>
-              <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
-                type="text"
-                name="username"
-                onChange={(e) => onChangeHandler(e.target.value, index)}
-                value={item.username}
-              />
-              <div className="font-semibold text-sm">Nationality: </div>
-              <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm"
-                type="text"
-                name="nationality"
-                onChange={(e) => onChangeHandler(e.target.value, index)}
-                value={item.nationality}
-              />
-              <div className="font-semibold text-sm">Bio: </div>
-              <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold text-sm truncate"
-                type="text"
-                name="introduce"
-                onChange={(e) => onChangeHandler(e.target.value, index)}
-                value={item.introduce}
-              />
-            </div>
-            {/* <div>
-              <div className="font-semibold">Nationality:</div>
-              <input
-                className="p-1 bg-yellow-800 w-full text-black font-semibold"
-                type="text"
-                name="username"
-                onChange={(e) => onChangeHandler(e.target.value, index)}
-                value={item.nationality}
-              />
-            </div> */}
-
-            <div className="justify-center flex absolute bottom-1 start-1/3">
-              <button
-                onClick={() => clickUpdate(index)}
-                className="bg-yellow-950 text-white px-3 py-1 rounded-md"
-              >
-                更新
-              </button>
-            </div>
-          </Link>
-        ))}
+            プロフィールを編集
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Page;
+export default Profile;

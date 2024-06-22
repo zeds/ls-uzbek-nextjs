@@ -29,8 +29,8 @@ const Page = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-gray-500">
-      <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-md">
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
         <div className="text-lg font-bold flex justify-center">新規登録</div>
         <div className="my-2 font-bold">ユーザー名</div>
         <Input
