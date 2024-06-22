@@ -173,17 +173,25 @@ const Header = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <Link href={"/profiles/%{user.id}"}>
+                    <Link
+                      href={`/profiles/${user.id}`}
+                      className="flex items-center"
+                    >
                       <div className="w-6 h-6 mr-4">
                         <img src="/google.svg" alt="google" />
                       </div>
-                      <span>Google アカウント</span>
+                      <span>マイプロフィル</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
                       <div className="w-6 h-6 mr-4">
-                        <img src="/changeAccount.svg" alt="changeAccount" />
+                        <Image
+                          width={36}
+                          height={36}
+                          src="/changeAccount.svg"
+                          alt="changeAccount"
+                        />
                       </div>
                       <span>アカウントを切り替える</span>
                     </DropdownMenuSubTrigger>
