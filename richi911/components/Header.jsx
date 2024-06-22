@@ -67,7 +67,7 @@ const Header = () => {
           </div>
           <Link href={"/"}>
             <div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
-              <img src="logo.svg" alt=""></img>
+              <img src="youtube-logo.svg" alt=""></img>
             </div>
           </Link>
         </div>
@@ -127,11 +127,11 @@ const Header = () => {
             <>
               {/* video */}
               <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-                <img className="" src="video.svg" alt=""></img>
+                <img className="" src="create.svg" alt=""></img>
               </li>
               {/*bell*/}
               <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-                <img className="" src="bell.svg" alt=""></img>
+                <img className="" src="notifications.svg" alt=""></img>
               </li>
             </>
           ) : null}
@@ -145,7 +145,7 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <img
                   className="w-[32px] h-[32px] rounded-full cursor-pointer"
-                  src="icon.jpg"
+                  src="profile.jpg"
                   alt=""
                 ></img>
               </DropdownMenuTrigger>
@@ -156,13 +156,13 @@ const Header = () => {
                       <div class="w-10 h-10 mr-4">
                         <img
                           className="rounded-full"
-                          src="icon.jpg"
-                          alt="ziynat"
+                          src="profile.jpg"
+                          alt="profile"
                         />
                       </div>
                       <div>
-                        <div>Ziynat Abdukodirova</div>
-                        <div>@ziynatzl56</div>
+                        <div>Abdukodirov Shakhriyor</div>
+                        <div>shakhriyor.life@gmail.com</div>
                         <div className="text-[#095ED5] mt-2">
                           チャンネルを表示
                         </div>
@@ -178,7 +178,7 @@ const Header = () => {
                       className="flex items-center"
                     >
                       <div className="w-6 h-6 mr-4">
-                        <img src="/google.svg" alt="google" />
+                        <img src="/ga.svg" alt="ga" />
                       </div>
                       <span>マイプロフィル</span>
                     </Link>
@@ -186,12 +186,7 @@ const Header = () => {
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
                       <div className="w-6 h-6 mr-4">
-                        <Image
-                          width={36}
-                          height={36}
-                          src="/changeAccount.svg"
-                          alt="changeAccount"
-                        />
+                        <Image width={36} height={36} src="/sa.svg" alt="sa" />
                       </div>
                       <span>アカウントを切り替える</span>
                     </DropdownMenuSubTrigger>
@@ -217,7 +212,7 @@ const Header = () => {
                 <DropdownMenuItem>
                   <div className="flex w-full" onClick={() => setLogin(false)}>
                     <div className="w-6 h-6 mr-4">
-                      <img src="/logout.svg" alt="logout" />
+                      <img src="/so.svg" alt="so" />
                     </div>
                     <span>ログアウト</span>
                   </div>

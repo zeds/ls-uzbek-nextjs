@@ -59,21 +59,31 @@ const Page = () => {
         <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
           <div className="text-lg font-bold flex justify-center">ログイン</div>
           <div className="my-2 font-bold">ユーザー名</div>
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="メールアドレス"
-          />
+          <div className="flex">
+            <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
+              <img src="/person.svg" alt="person" />
+            </div>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="メールアドレス"
+            />
+          </div>
           <div className="my-2 font-bold">パスワード</div>
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="パスワード"
-          />
+          <div className="flex">
+            <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
+              <img src="/password.svg" alt="password" />
+            </div>
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="パスワード"
+            />
+          </div>
           <div
-            onClick={() => route.push("/forgot-password")}
+            onClick={() => route.push("/forgot_password")}
             className="underline text-blue-500 text-sm mt-1 cursor-pointer"
           >
             パスワードを忘れた

@@ -11,7 +11,7 @@ const page = () => {
         <div className="my-2 font-bold">メールアドレス</div>
         <Input type="email" placeholder="メールアドレス" />
         登録したメールアドレスを入力してください
-        <Button className="mt-5 w-[60px]">送信</Button>
+        <Button classaaName="mt-5 w-[60px]">送信</Button>
       </div>
     </div>
   );
