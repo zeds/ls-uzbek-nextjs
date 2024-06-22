@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { TfiHome } from "react-icons/tfi";
+import { useCounterStore } from "@/store";
 
 const Page = () => {
 	const [dataSource, setDataSource] = useState([]);
