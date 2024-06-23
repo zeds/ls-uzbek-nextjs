@@ -36,15 +36,17 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
-
+	const router = useRouter();
 	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
 	const isLogin = useCounterStore((state) => state.isLogin);
 	const setLogin = useCounterStore((state) => state.setLogin);
+	
 
 	const clickSearch = () => {
 		changeText(searchText);
@@ -215,7 +217,7 @@ const Header = () => {
 					) : (
 						<div
 							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
-							onClick={() => setLogin(true)}
+							onClick={() => router.push("/loginin")}
 						>
 							<Image
 								className="text-blue-400"
