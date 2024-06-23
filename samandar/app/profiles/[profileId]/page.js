@@ -48,7 +48,7 @@ const Profile = () => {
 	return (
 		<div className="w-full h-screen bg-blue-300 flex justify-center">
 			{/* 576pxの外枠 */}
-			<div className="w-full max-w-xl bg-pink-300">
+			<div className="w-full max-w-xl  bg-gradient-to-r from-indigo-500">
 				<Link href={`/profiles`} className="underline">
 					プロフィール一覧へ
 				</Link>
@@ -58,7 +58,7 @@ const Profile = () => {
 					<label className="w-full px-[100px] h-[30px] mt-10">
 						username: {dataSource.username}
 					</label>
-					<label className="w-full px-[100px] h-[30px]">
+					<label className="w-full px-[100px] h-[30px] ">
 						email: {dataSource.email}
 					</label>
 					<button

@@ -1,30 +1,97 @@
-import { Button } from "@/components/ui/button";
+"use client";
+import React, { useCallback, useState } from "react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 const Page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("メッセージ");
+
+  const supabase = createClient();
+  const { setLogin, setUser, user } = useCounterStore();
+  const route = useRouter();
+
+  const getProfile = useCallback(async (profileId) => {
+    try {
+      const { data, error, status } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", profileId)
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      setMessage("ログイン成功");
+      setUser(data);
+      setLogin(true);
+      // route.push("/");
+    } catch (error) {
+      alert("Error loading user data!");
+    } finally {
+      //   setLoading(false)
+    }
+  }, []);
+
+  const clickLogin = async () => {
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    if (error) {
+      setMessage("エラーです。");
+    } else {
+      // profilesデータを取得
+      getProfile(data.user.id);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center bg-yellow-200 w-full h-[100vh]">
-      <div className="bg-gray-400 w-1/3 h-60 p-10">
-        <div>username</div>
-        <Input
-          type="email"
-          placeholder="Email"
-          className="bg-white placeholder:text-gray-400"
-        />
-        <div>password</div>
-        <Input
-          type="password"
-          placeholder="password"
-          className="bg-white  placeholder:text-gray-400"
-        />
-        <Link href="#" className="text-blue-600">
-          forget
-        </Link>
-        <Button className="bg-black text-white w-full  mt-4">login</Button>
+    <>
+      <div className="pt-[56px]">{JSON.stringify(user)}</div>
+
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
+          <div className="text-lg font-bold flex justify-center">ログイン</div>
+          <div className="my-2 font-bold">ユーザー名</div>
+          <Input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="メールアドレス"
+          />
+          <div className="my-2 font-bold">パスワード</div>
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="パスワード"
+          />
+          <div
+            onClick={() => route.push("/forgot-password")}
+            className="underline text-blue-500 text-sm mt-1 cursor-pointer"
+          >
+            パスワードを忘れた
+          </div>
+          <Button onClick={() => clickLogin()} className="mt-5">
+            ログイン
+          </Button>
+          <div
+            onClick={() => route.push("/signup")}
+            className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
+          >
+            新規登録はこちら
+          </div>
+          <div className="text-red-500">{message}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

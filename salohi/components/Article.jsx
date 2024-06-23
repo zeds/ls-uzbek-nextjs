@@ -1,6 +1,6 @@
 import React from "react";
 
-const Article = ({ title, avatar, user_name, stats, img_url }) => {
+const Page = ({ title, avatar, user_name, stats, img_url }) => {
 	return (
 		<div className="article-container  grid-cols-4">
 			<div className=" bg-blue-300 w-[300px]">
@@ -16,4 +16,4 @@ const Article = ({ title, avatar, user_name, stats, img_url }) => {
 
 
 
-export default Article;
+export default Page;

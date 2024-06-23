@@ -1,14 +1,107 @@
-import { login, signup } from "./actions";
+"use client";
+import React, { useCallback, useState } from "react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
-export default function LoginPage() {
+const Page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("メッセージ");
+
+  const supabase = createClient();
+  const { setLogin, setUser, user } = useCounterStore();
+  const route = useRouter();
+
+  const getProfile = useCallback(async (profileId) => {
+    try {
+      const { data, error, status } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", profileId)
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      setMessage("ログイン成功");
+      setUser(data);
+      setLogin(true);
+      //route.push("/");
+    } catch (error) {
+      alert("Error loading user data!");
+    } finally {
+      //   setLoading(false)
+    }
+  }, []);
+
+  const clickLogin = async () => {
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    if (error) {
+      setMessage("エラーです。");
+    } else {
+      getProfile(data.user.id);
+    }
+  };
+
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
+    <>
+      <div className="pt-[56px]">{JSON.stringify(user)}</div>
+
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
+          <div className="text-lg font-bold flex justify-center">ログイン</div>
+          <div className="my-2 font-bold">ユーザー名</div>
+          <div className="flex">
+            <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
+              <img src="/person.svg" alt="person" />
+            </div>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="メールアドレス"
+            />
+          </div>
+          <div className="my-2 font-bold">パスワード</div>
+          <div className="flex">
+            <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
+              <img src="/password.svg" alt="password" />
+            </div>
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="パスワード"
+            />
+          </div>
+          <div
+            onClick={() => route.push("/forgot_password")}
+            className="underline text-blue-500 text-sm mt-1 cursor-pointer"
+          >
+            パスワードを忘れた
+          </div>
+          <Button onClick={() => clickLogin()} className="mt-5">
+            ログイン
+          </Button>
+          <div
+            onClick={() => route.push("/signup")}
+            className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
+          >
+            新規登録はこちら
+          </div>
+          <div className="text-red-500">{message}</div>
+        </div>
+      </div>
+    </>
   );
-}
+};
+
+export default Page;
