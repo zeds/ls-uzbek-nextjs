@@ -88,72 +88,72 @@ const ProfileEdit = () => {
   // };
 
   return (
-    <div className="pt-[56px}w-full h-max bg-purple-300 flex justify-center">
+    <div className="pt-[56px} w-full h-max bg-yellow-700 flex justify-center">
       {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-blue-100">
+      <div className="w-full max-w-xl rounded-full bg-yellow-950">
         <h1>編集画面</h1>
         {/* アバター */}
-        <div className="w-full flex justify-center items-center mt-5 flex-col">
+        <div className="w-full flex justify-center items-center mt-10 flex-col">
           <img className="w-[80px]" src={dataSource.avatar_url} alt="" />
-          <label>username</label>
+          <label>Username</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           ></input>
-          <label>email</label>
+          <label>Email</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <label>Nationality</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={nationality}
             onChange={(e) => setNationality(e.target.value)}
           ></input>
           <label>Address</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           ></input>
           <label>Birthday</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
           ></input>
           <label>Occupation</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={occupation}
             onChange={(e) => setOccupation(e.target.value)}
           ></input>
           <label>Hobby</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={hobby}
             onChange={(e) => setHobby(e.target.value)}
           ></input>
           <label>Introduce</label>
           <input
-            className="w-[300px] p-2"
+            className="w-[300px] p-2 rounded-full"
             type="text"
             value={introduce}
             onChange={(e) => setIntroduce(e.target.value)}
           ></input>
           <button
             onClick={clickSave}
-            className="mt-5 p-2 bg-pink-400 text-white rounded-md"
+            className="mt-3 mb-3 p-2 bg-gray-500 text-white rounded-md"
           >
             保存
           </button>
