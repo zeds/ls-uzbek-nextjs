@@ -7,14 +7,14 @@ import { useCounterStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("メッセージ");
 
   const supabase = createClient();
-  const setLogin = useCounterStore((state) => state.setLogin);
-  const router = useRouter();
+  const { setLogin, setUser, user } = useCounterStore();
+  const route = useRouter();
 
   const getProfile = useCallback(async (profileId) => {
     try {
@@ -31,7 +31,7 @@ const page = () => {
       setMessage("ログイン成功");
       setUser(data);
       setLogin(true);
-      // route.push("/");
+      //route.push("/");
     } catch (error) {
       alert("Error loading user data!");
     } finally {
@@ -47,19 +47,18 @@ const page = () => {
     if (error) {
       setMessage("エラーです。");
     } else {
-      // profilesデータを取得
       getProfile(data.user.id);
     }
   };
 
   return (
     <>
-      {/* <div className="pt-[56px]">{JSON.stringify(user)}</div> */}
+      <div className="pt-[56px]">{JSON.stringify(user)}</div>
 
-      <div className="flex justify-center items-center w-full h-screen bg-gray-500">
-        <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-md">
-          <div className="text-lg font-bold flex justify-center">Login</div>
-          <div className="my-2 font-semibold">Username:</div>
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="flex flex-col w-[400px] bg-gray-200 p-4 rounded-sm">
+          <div className="text-lg font-bold flex justify-center">ログイン</div>
+          <div className="my-2 font-bold">ユーザー名</div>
           <div className="flex">
             <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
               <img src="/person.svg" alt="person" />
@@ -68,10 +67,10 @@ const page = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder="メールアドレス"
             />
           </div>
-          <div className="my-2 font-semibold">Password:</div>
+          <div className="my-2 font-bold">パスワード</div>
           <div className="flex">
             <div className="w-10 h-10 mr-0.5 flex items-center justify-center">
               <img src="/password.svg" alt="password" />
@@ -80,23 +79,23 @@ const page = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              placeholder="パスワード"
             />
           </div>
           <div
-            onClick={() => router.push("/forgot_password")}
-            className="text-blue-500 underline pt-2 text-sm cursor-pointer"
+            onClick={() => route.push("/forgot_password")}
+            className="underline text-blue-500 text-sm mt-1 cursor-pointer"
           >
-            Forgot password?
+            パスワードを忘れた
           </div>
           <Button onClick={() => clickLogin()} className="mt-5">
-            Login
+            ログイン
           </Button>
           <div
-            onClick={() => router.push("/signup")}
-            className="flex justify-end text-blue-500 underline pt-2 text-sm mt-3 cursor-pointer"
+            onClick={() => route.push("/signup")}
+            className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
           >
-            Sign up
+            新規登録はこちら
           </div>
           <div className="text-red-500">{message}</div>
         </div>
@@ -105,4 +104,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
