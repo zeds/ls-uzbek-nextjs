@@ -60,7 +60,7 @@ const Header = () => {
 			{showModal ? (
 				<FlagModal setShowModal={setShowModal} setFlag={setFlag} />
 			) : null}
-			<div className="fixed z-10 flex h-[56px] w-full justify-between items-center bg-white px-3">
+			<div className="absolute bg-red-300 top-0 z-10 flex h-[56px] w-full justify-between items-center px-3">
 				<div className="flex items-center justify-center w-[169px] ">
 					<div className="w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
@@ -116,7 +116,6 @@ const Header = () => {
 						<button onClick={() => setShowModal(true)}>
 							<img
 								className=" w-[30px]"
-								// src={`https://flagcdn.com/w320/${flag}.png`}
 								src={`/flags/${flag}.svg`}
 								alt=""
 							></img>

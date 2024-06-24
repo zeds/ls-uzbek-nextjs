@@ -31,7 +31,7 @@ const Page = () => {
 			setMessage("ログイン成功");
 			setUser(data);
 			setLogin(true);
-			// route.push("/");
+			route.push("/");
 		} catch (error) {
 			alert("Error loading user data!");
 		} finally {
