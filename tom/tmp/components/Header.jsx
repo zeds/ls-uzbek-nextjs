@@ -3,8 +3,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import FlagModal from "./FlagModal";
 import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
 	Cloud,
 	CreditCard,
@@ -36,20 +37,21 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
+	const { user } = useCounterStore();
+
 	const router = useRouter();
 	const [flag, setFlag] = useState("jp"); // jp us au
 	const [showModal, setShowModal] = useState(false); // true/false
 
-	const changeText = useCounterStore((state) => state.changeText);
 	const [searchText, setSearchText] = useState("");
-	const isLogin = useCounterStore((state) => state.isLogin);
-	const setLogin = useCounterStore((state) => state.setLogin);
+	// const changeText = useCounterStore((state) => state.changeText);
+	// const isLogin = useCounterStore((state) => state.isLogin);
+	// const setLogin = useCounterStore((state) => state.setLogin);
+	const { changeText, isLogin, setLogin } = useCounterStore();
 
 	const clickSearch = () => {
-		console.log("Header text=", searchText);
 		changeText(searchText);
 	};
 
@@ -58,7 +60,7 @@ const Header = () => {
 			{showModal ? (
 				<FlagModal setShowModal={setShowModal} setFlag={setFlag} />
 			) : null}
-			<div className="fixed z-10 flex h-[56px] w-full justify-between items-center bg-white px-3">
+			<div className="absolute bg-red-300 top-0 z-10 flex h-[56px] w-full justify-between items-center px-3">
 				<div className="flex items-center justify-center w-[169px] ">
 					<div className="w-10 h-10 p-2 shrink-0">
 						<img src="burger.svg" alt=""></img>
@@ -114,7 +116,6 @@ const Header = () => {
 						<button onClick={() => setShowModal(true)}>
 							<img
 								className=" w-[30px]"
-								// src={`https://flagcdn.com/w320/${flag}.png`}
 								src={`/flags/${flag}.svg`}
 								alt=""
 							></img>
@@ -143,8 +144,8 @@ const Header = () => {
 							<DropdownMenuTrigger asChild>
 								<img
 									className="w-[32px] h-[32px] rounded-full cursor-pointer"
-									src="me.jpg"
-									alt="me"
+									src="tom.jpeg"
+									alt=""
 								></img>
 							</DropdownMenuTrigger>
 							<DropdownMenuContent className="w-[300px]" align="end">
@@ -154,13 +155,13 @@ const Header = () => {
 											<div class="w-10 h-10 mr-4">
 												<img
 													className="rounded-full"
-													src="me.jpg"
-													alt="me"
+													src="tom.jpeg"
+													alt="tom"
 												/>
 											</div>
 											<div>
-												<div>Mexroj Sayfullayev</div>
-												<div>@mexrojsayfullayev5990</div>
+												<div>Tsutomu Okumura</div>
+												<div>@tomzed39</div>
 												<div className="text-[#095ED5] mt-2">
 													チャンネルを表示
 												</div>
@@ -171,15 +172,22 @@ const Header = () => {
 								<DropdownMenuSeparator />
 								<DropdownMenuGroup>
 									<DropdownMenuItem>
-										<div className="w-6 h-6 mr-4">
-											<img src="/google.svg" alt="google" />
-										</div>
-										<span>Google アカウント</span>
+										<Link
+											href={`/profiles/${user.id}`}
+											className="flex items-center"
+										>
+											<div className="w-6 h-6 mr-4">
+												<img src="/google.svg" alt="google" />
+											</div>
+											<span>マイプロフィール</span>
+										</Link>
 									</DropdownMenuItem>
 									<DropdownMenuSub>
 										<DropdownMenuSubTrigger>
 											<div className="w-6 h-6 mr-4">
-												<img
+												<Image
+													width={36}
+													height={36}
 													src="/changeAccount.svg"
 													alt="changeAccount"
 												/>
@@ -206,12 +214,15 @@ const Header = () => {
 									</DropdownMenuSub>
 								</DropdownMenuGroup>
 								<DropdownMenuItem>
-									<div className="w-6 h-6 mr-4">
-										<img src="/logout.svg" alt="logout" />
+									<div
+										className="flex w-full"
+										onClick={() => setLogin(false)}
+									>
+										<div className="w-6 h-6 mr-4">
+											<img src="/logout.svg" alt="logout" />
+										</div>
+										<span>ログアウト</span>
 									</div>
-									<span onClick={() => setLogin(false)}>
-										ログアウト
-									</span>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
@@ -222,7 +233,7 @@ const Header = () => {
 						>
 							<Image
 								className=""
-								src={"/logoutAvatar.svg"}
+								src={"/logout-avatar.svg"}
 								alt={"setting.svg"}
 								width={30}
 								height={30}
