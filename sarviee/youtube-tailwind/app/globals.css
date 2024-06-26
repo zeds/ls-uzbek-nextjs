@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.body {
-  paddig-top: 56px;
+body {
+  padding-top: 56px;
 }
