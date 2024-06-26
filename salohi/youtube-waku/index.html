@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+	<title>Youtube-枠</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: "Roboto", Arial, sans-serif;
+			font-size: 16px;
+         padding-top: 56px;
+		}
+
+		.container {
+			width: 100%;
+			height: 100vh;
+			background: lightgoldenrodyellow;
+		}
+
+		header {
+			position: fixed;
+         top: 0 ;
+         left: 0;
+			width: 100%;
+			height: 56px;
+			border: 4px solid lightgreen;
+         background: green;
+         z-index: 10;
+		}
+
+		main {
+			width: 100%;
+			height: 100%;
+			border: 4px solid blue;
+			position: relative;
+		}
+
+		.tag-container {
+			padding-left: 240px;
+			border: 4px solid skyblue;
+			height: 56px;
+			width: 100%;
+		}
+
+		.article-container {
+			padding-left: 240px;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			border: 4px solid pink;
+			gap: 12px;
+		}
+
+		.article {
+			border: 4px solid green;
+		}
+
+		.article img {
+			width: 100%;
+         height: 100%;
+		}
+
+		nav {
+			position: absolute;
+			width: 216px;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			border: 4px solid orange;
+		}
+
+		li {
+			padding: 16px 0 14px;
+			flex-direction: column;
+			width: 64px;
+		}
+
+		@media ( width <= 680px) {
+			nav {
+            display: none;
+         }
+         .tag-container {
+            padding-left: 0px;
+         }
+			.article-container {
+            grid-template-columns: 1fr;
+            padding-left: 0px;
+         }
+		}
+
+      @media ( 680px < width <= 780px) {
+			nav {
+            display: none;
+         }
+         .tag-container {
+            padding-left: 0px;
+         }
+			.article-container {
+            grid-template-columns: 1fr 1fr;
+            padding-left: 0px;
+         }
+		}
+
+		@media ( 780px < width <= 1080px) {
+			nav {
+            width: 64px;
+         }
+         .tag-container {
+            padding-left: 80px;
+         }
+			.article-container {
+            grid-template-columns: 1fr 1fr;
+            padding-left: 80px;
+         }
+		}
+
+		/* side menuが1列になるだけ */
+      @media ( 1080px < width <= 1320px) {
+         nav {
+            width: 64px;
+         }
+         .tag-container {
+            padding-left: 80px;
+
+         }
+         .article-container {
+            padding-left: 80px;
+         }
+      }
+
+		@media ( 1320px < width <= 1570px) {
+         .article-container {
+            grid-template-columns: 1fr 1fr 1fr;
+         }
+		}
+
+		@media ( 1570px < width) {
+         .article-container {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+         }
+		}
+
+   </style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+
+		</header>
+		<main>
+			<div class="tag-container">
+				<tag>全て</tag>
+				<tag>ミックス</tag>
+				<tag>ライブ</tag>
+				<tag>ニュース</tag>
+				<tag>ペット</tag>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<img src="./images/yt-home.svg" alt="home" />
+						<span class="title">Home</span>
+					</li>
+				</ul>
+			</nav>
+			<div class="article-container">
+				<div class="article">
+					<img src="./images/raichel.webp"></img>
+				</div>
+				<div class="article">
+					<img src="./images/raichel.webp"></img>
+				</div>
+				<div class="article">
+					<img src="./images/raichel.webp"></img>
+				</div>
+				<div class="article">
+					<img src="./images/raichel.webp"></img>
+				</div>
+				<div class="article">
+					<img src="./images/raichel.webp"></img>
+				</div>
+			</div>
+		</main>
+
+	</div>
+</body>
+
+</html>
