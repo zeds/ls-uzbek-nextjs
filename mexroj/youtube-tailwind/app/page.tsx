@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div
       className="w-full h-full border-4 border-blue-700
-     bg-[rgb-(250,250,210)]"
+     bg-[rgba-(250,250,210,1)] relative"
     >
       <div className="pl-0 border-4 border-sky-300 h-14 w-full flex md:pl-20  xl:pl-60   ">
         <div>全て</div>
