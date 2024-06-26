@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import Tags from "@/components/Tags";
+import Articles from "@/components/Articles";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +23,11 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<div className="w-full h-dvh bg-sky-300">
 					<Header />
+					<Tags />
 
-					<main className="w-full h-screen border-4 border-blue-800 relative">
-						<Navbar />
+					<Articles />
+					<Navbar />
+					<main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
 						{children}
 					</main>
 				</div>
