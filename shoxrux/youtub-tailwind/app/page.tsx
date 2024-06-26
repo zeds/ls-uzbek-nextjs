@@ -3,9 +3,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
+    <div className='w-[320px] bg-green-200 '>
       <h1> Top Page</h1>
-      <button>gooo</button>
     </div>
   );
 }
