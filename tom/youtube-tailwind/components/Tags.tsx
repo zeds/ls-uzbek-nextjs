@@ -13,16 +13,14 @@ export default function Tags() {
 	];
 
 	return (
-		// <div className="fixed w-full h-[56px] top-[56px] left-0 border-4 border-blue-400 flex gap-3 items-center">
-		<div className="tag_list">
-			{tagName.map((item, index) => (
-				<div
-					key={index}
-					className="bg-gray-300 px-2 py-1 rounded overflow-x-auto"
-				>
-					{item.name}
-				</div>
-			))}
+		<div className="tag_container">
+			<div className="tag_list">
+				{tagName.map((item, index) => (
+					<div key={index} className="tag">
+						{item.name}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
