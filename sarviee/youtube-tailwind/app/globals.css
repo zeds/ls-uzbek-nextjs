@@ -3,5 +3,16 @@
 @tailwind utilities;
 
 body {
-  padding-top: 56px;
+	padding-top: 56px;
+}
+
+.tag_list {
+	padding-left: 250px;
+	display: flex;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	background: red;
 }
