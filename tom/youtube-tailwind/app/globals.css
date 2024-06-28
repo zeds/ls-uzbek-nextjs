@@ -48,3 +48,161 @@ body {
 	cursor: pointer;
 	background: #e5e5e5;
 }
+
+nav {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+
+	width: 216px;
+	left: 0;
+	top: 56px;
+	bottom: 0;
+	border: 4px solid orange;
+	z-index: 20;
+	background: white;
+	overflow-y: auto;
+	scrollbar-width: none;
+
+	/* 大きい時 */
+	width: 240px;
+	padding: 12px;
+
+	/* 小さい時 */
+	/* width: 72px;
+	padding: 0 4px; */
+}
+
+nav ul {
+	/* 大きい時 */
+	padding-right: 10px;
+
+	/* 小さい時 */
+	/* padding-right: 0px; */
+}
+
+nav li {
+	/* 大きい時 */
+	display: flex;
+	font-size: 16px;
+	padding: 10px 12px;
+	/* background: lightgray; */
+	align-items: center;
+	border-radius: 10px;
+
+	/* 小さい時 */
+	/* padding: 16px 0px 14px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	font-size: 10px;
+	line-height: 14px;
+	border-radius: 10px; */
+}
+nav li img {
+	width: 24px;
+	height: 24px;
+	margin-bottom: 6px;
+}
+nav li:hover {
+	background: lightgray;
+}
+
+nav .title {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.separator {
+	border-top: 1px solid lightgray;
+	/* height: 10px;
+	width: 100%; */
+	margin-top: 12px;
+	padding-top: 12px;
+}
+@media (width <= 680px) {
+	nav {
+		display: none;
+	}
+	.tag-container {
+		padding-left: 0px;
+	}
+	.article-container {
+		grid-template-columns: 1fr;
+		padding-left: 0px;
+	}
+}
+
+@media (680px < width <= 780px) {
+	nav {
+		display: none;
+	}
+	.tag-container {
+		padding-left: 0px;
+	}
+	.article-container {
+		grid-template-columns: 1fr 1fr;
+		padding-left: 0px;
+	}
+}
+
+@media (780px < width <= 1080px) {
+	nav {
+		width: 72px;
+		padding: 0 4px;
+	}
+	nav ul {
+		padding-right: 0px;
+	}
+	nav li {
+		padding: 16px 0px 14px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: white;
+		font-size: 10px;
+		line-height: 14px;
+		border-radius: 10px;
+	}
+	.tag-container {
+		padding-left: 80px;
+	}
+	.article-container {
+		grid-template-columns: 1fr 1fr;
+		padding-left: 80px;
+	}
+}
+
+/* side menuが1列になるだけ */
+@media (1080px < width <= 1320px) {
+	nav {
+		width: 72px;
+		padding: 0 4px;
+	}
+	nav ul {
+		padding-right: 0px;
+	}
+	nav li {
+		padding: 16px 0px 14px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: white;
+		font-size: 10px;
+		line-height: 14px;
+		border-radius: 10px;
+	}
+
+	.tag-container {
+		padding-left: 80px;
+	}
+	.article-container {
+		padding-left: 80px;
+	}
+}
