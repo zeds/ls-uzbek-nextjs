@@ -52,6 +52,11 @@ body {
 	border: 4px solid pink;
 	gap: 12px;
 	padding-top: 56px;
+	padding-right: 20px;
+}
+
+.hero {
+	position: relative;
 }
 
 .article {
@@ -61,6 +66,16 @@ body {
 .article img {
 	width: 100%;
 	height: 100%;
+	border-radius: 12px;
+}
+.time {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 /* === side menu ==== */
@@ -100,11 +115,15 @@ nav ul {
 nav li {
 	/* 大きい時 */
 	display: flex;
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: rgba(15, 15, 15, 1);
 	padding: 10px 12px;
 	/* background: lightgray; */
 	align-items: center;
 	border-radius: 10px;
+	gap: 24px;
 
 	/* 小さい時 */
 	/* padding: 16px 0px 14px;
@@ -148,7 +167,7 @@ nav .title {
 	}
 	.article-container {
 		grid-template-columns: 1fr;
-		padding-left: 0px;
+		padding-left: 20px;
 	}
 }
 
@@ -183,6 +202,7 @@ nav .title {
 		font-size: 10px;
 		line-height: 14px;
 		border-radius: 10px;
+		gap: 0;
 	}
 	.tag-container {
 		padding-left: 80px;
@@ -212,6 +232,7 @@ nav .title {
 		font-size: 10px;
 		line-height: 14px;
 		border-radius: 10px;
+		gap: 0;
 	}
 
 	.tag-container {
