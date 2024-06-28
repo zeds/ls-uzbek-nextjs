@@ -14,7 +14,7 @@ export default function Tags() {
 
   return (
     <div className="tag_container">
-      <div className="tag_list pl-0 border-4 border-sky-300 h-14 w-full flex md:pl-20  xl:pl-60 ">
+      <div className="tag_list pl-0 bg-white h-14 w-full flex md:pl-20 xl:pl-60 ">
         {tagName.map((item, index) => (
           <div key={index} className="tag">
             {item.name}

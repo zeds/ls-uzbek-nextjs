@@ -1,40 +1,79 @@
-import React from "react";
+"use client";
+import Link from "next/link";
+import React, { useState } from "react";
 
-export default function Header() {
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+const Header = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-[56px]  border-solid border-4 border-green-300 z-10 flex items-center justify-between">
-      <div className="flex gap-3">
-        <img className="h-5" src="/images/burger.svg" />
-        <img className="h-5" src="/images/youtube-logo.svg" />
-      </div>
-
-      {/* search_container */}
-
-      <div className="flex h-10 flex-grow-1 my-0 mx-5 max-w-[666px] ">
-        <input
-          type="text"
-          placeholder="検索"
-          className="w-full h-full border-solid border-#d3d3d3 rounded-2xl rounded-r-none"
-        />
-        <button className="w-15 h-full border-solid border-1 border-#d3d3d3 border-l-none rounded-2xl rounded-l-none  bg-#f8f8f8 flex items-center justify-center relative hover:bg-#e0e0e0">
-          search
-          <img src="images/scope.svg" />
-        </button>
-        <div className="flex w-10 ml-[14px] justify-center items-center rounded-2xl relative hover:bg-#e0e0e0">
-          <img src="images/mic.svg" />
-        </div>
-
-        {/* right container */}
-        <div className="h-full w-[150px] flex justify-around items-center mr-5 ">
-          <div className="h-10 w-10 rounded-[20px] justify-center items-center relative">
-            <img src="images/video.svg" />
+    <>
+      <div className="fixed z-10 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+        <div className="flex items-center justify-center w-[169px] ">
+          <div className="w-10 h-10 p-2 shrink-0">
+            <img src="images/burger.svg" alt=""></img>
           </div>
-          <div className="bell">
-            <img src="images/bell.svg" />
-          </div>
-          <img className="h-8 rounded-[20px]" src="images/me.jpeg" />
+          <Link href={"/"}>
+            <div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
+              <img src="images/youtube-logo.svg" alt=""></img>
+            </div>
+          </Link>
         </div>
+        <div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
+          {/* search */}
+          <input
+            type="text"
+            placeholder="検索"
+            className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
+          ></input>
+
+          {/* scope */}
+          <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+            <img
+              className="w-[24px] absolute right-4 bottom-1.5"
+              src="images/scope.svg"
+              alt=""
+            ></img>
+          </button>
+
+          {/* mic */}
+          <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
+            <img
+              className="flex rounded-full w-[24px]"
+              src="images/mic.svg"
+              alt=""
+            ></img>
+          </button>
+        </div>
+        <ul className="flex items-center justify-end w-[225px] h-[40px]  shrink-0">
+          {/* search */}
+          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+            <img className="" src="images/scope.svg" alt=""></img>
+          </li>
+          {/* mic */}
+          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+            <img className="" src="images/mic.svg" alt=""></img>
+          </li>
+
+          <>
+            {/* video */}
+            <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+              <img className="" src="images/video.svg" alt=""></img>
+            </li>
+            {/*bell*/}
+            <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+              <img className="" src="images/bell.svg" alt=""></img>
+            </li>
+          </>
+          <img
+            className="w-[32px] h-[32px] rounded-full cursor-pointer"
+            src="images/me.jpeg"
+            alt="me"
+          ></img>
+        </ul>
       </div>
-    </div>
+    </>
   );
-}
+};
+
+export default Header;
