@@ -1,37 +1,68 @@
 import React from "react";
 
 export default function Articles() {
-	const article = [
-		{ title: "あいうえお1", img: "/images/raichel.webp" },
-		{ title: "あいうえお2", img: "/images/raichel.webp" },
-		{ title: "あいうえお3", img: "/images/raichel.webp" },
-		{ title: "あいうえお4", img: "/images/raichel.webp" },
-		{ title: "あいうえお5", img: "/images/raichel.webp" },
-		{ title: "あいうえお6", img: "/images/raichel.webp" },
-		{ title: "あいうえお7", img: "/images/raichel.webp" },
-		{ title: "あいうえお8", img: "/images/raichel.webp" },
-		{ title: "あいうえお9", img: "/images/raichel.webp" },
-		{ title: "あいうえお10", img: "/images/raichel.webp" },
-		{ title: "あいうえお11", img: "/images/raichel.webp" },
-		{ title: "あいうえお12", img: "/images/raichel.webp" },
-		{ title: "あいうえお13", img: "/images/raichel.webp" },
-		{ title: "あいうえお14", img: "/images/raichel.webp" },
-		{ title: "あいうえお15", img: "/images/raichel.webp" },
-		{ title: "あいうえお16", img: "/images/raichel.webp" },
-		{ title: "あいうえお17", img: "/images/raichel.webp" },
-		{ title: "あいうえお18", img: "/images/raichel.webp" },
-		{ title: "あいうえお19", img: "/images/raichel.webp" },
-		{ title: "あいうえお20", img: "/images/raichel.webp" },
-	];
+  const articles = [
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+    {
+      title: "Partially Examined Life #335: Aristotle on Fundamental Explanations (Part Two)",
+      img: "/images/01.jpg",
+      authorImg: "/images/001.jpg",
+      author: "The Partially Examined Life",
+      statistics: "10人回視聴・1時間前",
+    },
+  ];
 
-	return (
-		<div className="w-full grid grid-cols-3 bg-pink-400 gap-3 overflow-y-auto pt-[56px] pl-[250px]">
-			{article.map((item, index) => (
-				<div key={index}>
-					<img src={item.img} alt="hero" />
-					<div className="bg-red-500">{item.title}</div>
-				</div>
-			))}
-		</div>
-	);
+  return (
+    <section className="pl-[240px] pr-[20px] pt-[120px] h-full grid grid-cols-3 gap-[10px]">
+      {articles.map((article, index) => (
+        <article key={index} className="w-full aspect-[2/1.8]">
+          <img src={article.img} alt="Top Article" className="w-full rounded-[8px]" />
+          <div className="flex gap-[10px] mt-[10px]">
+            <img src={article.authorImg} alt="Author" className="w-[36px] h-[36px] rounded-full" />
+            <div className="w-full">
+              <div className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium text-[#0f0f0f]">
+                {article.title}
+              </div>
+              <div className="text-[14px]">{article.author}</div>
+              <div className="text-[14px]">{article.statistics}</div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
 }

@@ -21,13 +21,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="w-full h-dvh bg-sky-300">
+				<div className="w-full h-screen bg-sky-300">
 					<Header />
-					<Tags />
-
-					<Articles />
 					<Navbar />
-					<main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
+					<div className="flex flex-col">
+						<Tags />
+						<Articles />
+					</div>
+					<main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800 overflow-auto">
 						{children}
 					</main>
 				</div>
