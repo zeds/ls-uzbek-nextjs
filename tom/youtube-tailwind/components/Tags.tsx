@@ -13,8 +13,8 @@ export default function Tags() {
 	];
 
 	return (
-		<div className="tag_container">
-			<div className="tag_list">
+		<div className="tag-container">
+			<div className="tag-list">
 				{tagName.map((item, index) => (
 					<div key={index} className="tag">
 						{item.name}
