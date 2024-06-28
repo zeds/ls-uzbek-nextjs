@@ -24,7 +24,7 @@ function Articles() {
         { title: "あいうえお19", img: "./fff.jpg" },
         { title: "あいうえお20", img: "./fff.jpg" },
     ];
-    return (react_1["default"].createElement("div", { className: "w-full grid grid-cols-3 bg-pink-400 gap-3 overflow-y-auto pt-[16px] pl-[250px]" }, article.map(function (item, index) { return (react_1["default"].createElement("div", { key: index },
+    return (react_1["default"].createElement("div", { className: "w-full grid grid-cols-3 bg-pink-400 gap-3 overflow-y-auto pt-[16px] pl-[260px] pr-5" }, article.map(function (item, index) { return (react_1["default"].createElement("div", { key: index },
         react_1["default"].createElement("img", { src: item.img, alt: "hero", className: "rounded-lg" }),
         react_1["default"].createElement("div", { className: "bg-red-500" }, item.title))); })));
 }

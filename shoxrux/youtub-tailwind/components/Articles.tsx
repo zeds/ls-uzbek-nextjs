@@ -25,7 +25,7 @@ export default function Articles() {
 	];
 
 	return (
-		<div className="w-full grid grid-cols-3 bg-pink-400 gap-3 overflow-y-auto pt-[16px] pl-[250px]">
+		<div className="w-full grid grid-cols-3 bg-pink-400 gap-3 overflow-y-auto pt-[16px] pl-[260px] pr-5">
 			{article.map((item, index) => (
 				<div key={index}>
 					<img src={item.img} alt="hero" className="rounded-lg" />
