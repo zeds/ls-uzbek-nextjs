@@ -24,9 +24,8 @@ export default function RootLayout({
         <div className="w-full h-dvh bg-sky-300">
           <Header />
           <Tags />
-
-          <Articles />
           <Navbar />
+          <Articles />
 
           <main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
             {children}

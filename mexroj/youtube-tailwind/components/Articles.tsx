@@ -25,7 +25,7 @@ export default function Articles() {
   ];
 
   return (
-    <div className="pl-0 grid grid-cols-1 sm:grid-cols-2 md:pl-20 xl:pl-60 lg:grid-cols-3 2xl:grid-cols-4   border-4 border-pink-300 gap-3">
+    <div className="pl-0 grid grid-cols-1 sm:grid-cols-2 md:pl-20 xl:pl-60 lg:grid-cols-3 2xl:grid-cols-4 pt-16 gap-3">
       {article.map((item, index) => (
         <div key={index}>
           <img src={item.img} alt="hero" />
