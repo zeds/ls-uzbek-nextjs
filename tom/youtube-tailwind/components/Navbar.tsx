@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+// CSJ
+
 export default function Navbar() {
 	const items = [
 		{ title: "ホーム", img: "./images/yt-home.svg" },
