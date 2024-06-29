@@ -7,12 +7,6 @@ body {
 }
 
 .tag-container {
-	position: absolute;
-	background: red;
-	height: 56px;
-}
-
-.tag_container {
 	position: fixed;
 	z-index: 1;
 	top: 56px;
@@ -23,7 +17,7 @@ body {
 	align-items: center;
 	display: flex;
 }
-.tag_list {
+.tag-list {
 	display: flex;
 	white-space: nowrap;
 	overflow-x: auto;
@@ -48,6 +42,43 @@ body {
 	cursor: pointer;
 	background: #e5e5e5;
 }
+
+/* === article ==== */
+
+.article-container {
+	padding-left: 240px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	border: 4px solid pink;
+	gap: 12px;
+	padding-top: 56px;
+	padding-right: 20px;
+}
+
+.hero {
+	position: relative;
+}
+
+.article {
+	border: 4px solid green;
+}
+
+.article img {
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+}
+.time {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+/* === side menu ==== */
 
 nav {
 	display: flex;
@@ -84,11 +115,15 @@ nav ul {
 nav li {
 	/* 大きい時 */
 	display: flex;
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: rgba(15, 15, 15, 1);
 	padding: 10px 12px;
 	/* background: lightgray; */
 	align-items: center;
 	border-radius: 10px;
+	gap: 24px;
 
 	/* 小さい時 */
 	/* padding: 16px 0px 14px;
@@ -119,11 +154,10 @@ nav .title {
 
 .separator {
 	border-top: 1px solid lightgray;
-	/* height: 10px;
-	width: 100%; */
 	margin-top: 12px;
 	padding-top: 12px;
 }
+
 @media (width <= 680px) {
 	nav {
 		display: none;
@@ -133,7 +167,7 @@ nav .title {
 	}
 	.article-container {
 		grid-template-columns: 1fr;
-		padding-left: 0px;
+		padding-left: 20px;
 	}
 }
 
@@ -168,6 +202,7 @@ nav .title {
 		font-size: 10px;
 		line-height: 14px;
 		border-radius: 10px;
+		gap: 0;
 	}
 	.tag-container {
 		padding-left: 80px;
@@ -197,6 +232,7 @@ nav .title {
 		font-size: 10px;
 		line-height: 14px;
 		border-radius: 10px;
+		gap: 0;
 	}
 
 	.tag-container {
@@ -204,5 +240,17 @@ nav .title {
 	}
 	.article-container {
 		padding-left: 80px;
+	}
+}
+
+@media (1320px < width <= 1570px) {
+	.article-container {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media (1570px < width) {
+	.article-container {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 }
