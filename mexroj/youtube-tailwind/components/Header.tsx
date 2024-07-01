@@ -45,7 +45,7 @@ const Header = () => {
             ></img>
           </button>
         </div>
-        <ul className="flex items-center justify-end w-[225px] h-[40px]  shrink-0">
+        <ul className="flex items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">
           {/* search */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="" src="images/scope.svg" alt=""></img>

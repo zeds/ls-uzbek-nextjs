@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import Tags from "@/components/Tags";
+import Articles from "@/components/Articles";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,30 +23,14 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="w-full h-dvh bg-blue-200">
           <Header />
-          <main className="w-full h-screen border-4 border-blue-800 relative">
-            <Navbar />
-            <div className="pl-60 w-full h-[56px] border-4 border-blue-400">
-              Tag-container
-            </div>
-            <div className="grid pl-60 border-4 border-pink-200 gap-3 grid-cols-3">
-              <div className="border-4 border-green-600">
-                <img src="a1.webp" alt="a1"></img>
-              </div>
-              <div className="border-4 border-green-600">
-                <img src="a1.webp" alt="a1"></img>
-              </div>
-              <div className="border-4 border-green-600">
-                <img src="a1.webp" alt="a1"></img>
-              </div>
-              <div className="border-4 border-green-600">
-                <img src="a1.webp" alt="a1"></img>
-              </div>
-              <div className="border-4 border-green-600">
-                <img src="a1.webp" alt="a1"></img>
-              </div>
-            </div>
+          <Tags />
+
+          <Articles />
+          <Navbar />
+          <div>{children}</div>
+          {/* <main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
             {children}
-          </main>
+          </main> */}
         </div>
       </body>
     </html>
