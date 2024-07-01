@@ -5,24 +5,24 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <header className="fixed z-10 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
-      <div className="flex items-center justify-center w-[169px]">
-        <div className="w-10 h-10 p-2 shrink-0">
+    <header className="fixed z-10 flex h-14 top-0 w-full justify-between items-center bg-white px-3">
+      <div className="flex items-center justify-center w-[168px]">
+        <button className="w-10 h-10 p-2 shrink-0 focus:outline-none">
           <Image src="/images/burger.svg" alt="Menu" width={24} height={24} />
-        </div>
+        </button>
         <Link href="/">
-          <div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
+          <div className="w-[127px] h-14 py-[18px] pl-4 pr-[14px] shrink-0">
             <Image src="/images/youtube-logo.svg" alt="YouTube Logo" width={90} height={20} />
           </div>
         </Link>
       </div>
-      <div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
+      <div className="ml-[90px] w-full max-w-[732px] h-10 hidden sm:flex justify-end">
         <input
           type="text"
           placeholder="検索"
-          className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
+          className="pl-4 h-10 w-full max-w-[536px] rounded-l-full outline outline-gray-300 focus:outline-blue-500"
         />
-        <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+        <button className="shrink-0 w-16 h-10 bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300 focus:outline-blue-500">
           <Image
             className="absolute right-4 bottom-1.5"
             src="/images/scope.svg"
@@ -31,7 +31,7 @@ const Header = () => {
             height={24}
           />
         </button>
-        <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center">
+        <button className="shrink-0 ml-3 w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center focus:outline-none">
           <Image
             className="rounded-full"
             src="/images/mic.svg"
@@ -41,22 +41,30 @@ const Header = () => {
           />
         </button>
       </div>
-      <ul className="flex items-center justify-end w-[225px] h-[40px] pr-3 shrink-0">
-        <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-          <Image src="/images/scope.svg" alt="Search" width={24} height={24} />
+      <ul className="flex items-center justify-end w-[225px] h-10 pr-3 shrink-0">
+        <li className="flex shrink-0 sm:hidden w-10 h-10 p-2">
+          <button className="focus:outline-none">
+            <Image src="/images/scope.svg" alt="Search" width={24} height={24} />
+          </button>
         </li>
-        <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-          <Image src="/images/mic.svg" alt="Microphone" width={24} height={24} />
+        <li className="flex shrink-0 sm:hidden w-10 h-10 p-2">
+          <button className="focus:outline-none">
+            <Image src="/images/mic.svg" alt="Microphone" width={24} height={24} />
+          </button>
         </li>
-        <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-          <Image src="/images/video.svg" alt="Video" width={24} height={24} />
+        <li className="flex items-center shrink-0 w-10 h-10 p-2">
+          <button className="focus:outline-none">
+            <Image src="/images/video.svg" alt="Video" width={24} height={24} />
+          </button>
         </li>
-        <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
-          <Image src="/images/bell.svg" alt="Notifications" width={24} height={24} />
+        <li className="flex items-center shrink-0 w-10 h-10 p-2">
+          <button className="focus:outline-none">
+            <Image src="/images/bell.svg" alt="Notifications" width={24} height={24} />
+          </button>
         </li>
         <li>
           <Image
-            className="w-[32px] h-[32px] rounded-full cursor-pointer"
+            className="w-8 h-8 rounded-full cursor-pointer"
             src="/images/profile.jpg"
             alt="User Profile"
             width={32}
