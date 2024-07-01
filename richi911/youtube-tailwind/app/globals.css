@@ -5,3 +5,22 @@
 body {
   padding-top: 56px;
 }
+
+.media-scroller {
+  /* position: fixed; */
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  gap: 12px;
+  margin-left: 250px;
+  z-index: 999;
+}
+
+.media-element {
+  background: lightgray;
+  padding: 5px;
+  border-radius: 10px;
+}
