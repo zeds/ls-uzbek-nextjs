@@ -18,7 +18,7 @@ export default function Tags() {
         {tagName.map((item, index) => (
           <div
             key={index}
-            className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f m-3 py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
+            className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
           >
             {item.name}
           </div>
