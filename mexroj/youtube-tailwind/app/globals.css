@@ -4,46 +4,23 @@
 
 body {
   padding-top: 56px;
-  position: relative;
 }
 
-.tag-container {
-  position: absolute;
-  background: red;
-  height: 56px;
-}
-
-.tag_container {
-  position: fixed;
-  z-index: 1;
-  top: 56px;
-  height: 56px;
-  width: 100%;
-  align-items: center;
-  display: flex;
-}
-.tag_list {
-  display: flex;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: scroll;
+.tag-list {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.tag {
-  flex: 0 0 auto;
-  margin-right: 10px;
-  background: #f2f2f2;
-  font-weight: 500;
-  font-size: 14px;
-  color: #0f0f0f;
-  margin: 12px 12px 12px 0;
-  padding: 5px 12px;
-  border-radius: 8px;
-  height: 32px;
-  line-height: 23px;
+
+/* === side menu ==== */
+
+nav {
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-.tag:hover {
-  cursor: pointer;
-  background: #e5e5e5;
+
+nav .title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }

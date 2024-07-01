@@ -25,11 +25,27 @@ export default function Articles() {
   ];
 
   return (
-    <div className="pl-0 grid grid-cols-1 sm:grid-cols-2 md:pl-20 xl:pl-60 lg:grid-cols-3 2xl:grid-cols-4 pt-16 gap-3">
+    <div
+      className=" grid pl-5 grid-cols-1 border-solid border-4 gap-3
+    pt-14 pr-5 sm:grid-cols-2 md:pl-20 xl:grid-cols-3 lg:pl-60 2xl:grid-cols-4 bg-orange-400"
+    >
       {article.map((item, index) => (
-        <div key={index}>
-          <img src={item.img} alt="hero" />
-          <div className="bg-red-400">{item.title}</div>
+        <div key={index} className=" border-solid border-4 border-green-500 ">
+          <div className=" relative">
+            <img
+              src={item.img}
+              alt="hero"
+              className="w-full h-full rounded-[12px] "
+            />
+            <div className="absolute bottom-[5px] bg-(rgba[0,0,0,0.6]) text-white p-[5px] rounded-[5px]">
+              10:00
+            </div>
+          </div>
+          <div>
+            <div className="title">あいうえお</div>
+            <div className="user">かきくけこ</div>
+            <div className="stats">さしすせそ</div>
+          </div>
         </div>
       ))}
     </div>

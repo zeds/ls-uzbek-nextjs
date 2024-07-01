@@ -13,10 +13,13 @@ export default function Tags() {
   ];
 
   return (
-    <div className="tag_container">
-      <div className="tag_list pl-0 bg-white h-14 w-full flex md:pl-20 xl:pl-60 ">
+    <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 bg-white">
+      <div className="tag-list flex whitespace-nowrap overflow-x-scroll ">
         {tagName.map((item, index) => (
-          <div key={index} className="tag">
+          <div
+            key={index}
+            className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f m-3 py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
+          >
             {item.name}
           </div>
         ))}
