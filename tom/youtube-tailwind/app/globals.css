@@ -6,6 +6,16 @@ body {
 	padding-top: 56px;
 }
 
+.logo {
+	height: 100%;
+	background: blue;
+	padding: 18px 0;
+}
+
+.logo img {
+	height: 100%;
+}
+
 .tag-container {
 	position: fixed;
 	z-index: 1;
