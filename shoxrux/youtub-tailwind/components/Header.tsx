@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   return (
     <>
-      <div className="fixed z-10 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+      <div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
         <div className="flex items-center justify-center w-[169px] ">
           <div className="w-10 h-10 p-2 shrink-0">
             <img src="images/burger.svg" alt=""></img>
@@ -29,25 +29,26 @@ const Header = () => {
 
           {/* scope */}
           <button
-           data-tooltip-target="tooltip-default"
+            data-tooltip-target="tooltip-default"
             type="button"
-            className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
+            className="tooltip-default shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
           >
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
               src="images/scope.svg"
               alt=""
             ></img>
-            {/* <div className="scope-tooltip"><h1>searching</h1></div> */}
+            
           </button>
-         
+
           {/* mic */}
-          <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
+          <button className="tooltip shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
             <img
               className="flex rounded-full w-[24px]"
               src="images/mic.svg"
               alt=""
             ></img>
+            <span className="tooltip-text">音声で検索</span>
           </button>
         </div>
         <ul className="flex items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">
