@@ -19,7 +19,7 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
+        <div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-center">
           {/* search */}
           <input
             type="text"
@@ -28,14 +28,19 @@ const Header = () => {
           ></input>
 
           {/* scope */}
-          <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+          <button
+           data-tooltip-target="tooltip-default"
+            type="button"
+            className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
+          >
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
               src="images/scope.svg"
               alt=""
             ></img>
+            {/* <div className="scope-tooltip"><h1>searching</h1></div> */}
           </button>
-
+         
           {/* mic */}
           <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
             <img
@@ -49,12 +54,10 @@ const Header = () => {
           {/* search */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="" src="images/scope.svg" alt=""></img>
-			<div className="micTool">searching</div>
           </li>
           {/* mic */}
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="" src="images/mic.svg" alt=""></img>
-          
           </li>
 
           <>
