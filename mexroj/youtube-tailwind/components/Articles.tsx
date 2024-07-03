@@ -149,7 +149,7 @@ export default function Articles() {
             />
             <div
               className="absolute bottom-[5px] right-1
-             bg-(rgba[0,0,0,0.6]) text-white p-[5px] rounded-[5px]"
+             bg-[rgba(0,0,0,0.6)] text-white p-[5px] rounded-[5px]"
             >
               10:00
             </div>
