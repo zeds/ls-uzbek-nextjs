@@ -26,7 +26,7 @@ export default function Navbar() {
 						) : (
 							<li key={index}>
 								<img src={item.img} alt="home" />
-								<span className="title">{item.title}</span>
+								<span className="nav-title">{item.title}</span>
 							</li>
 						)}
 					</>
