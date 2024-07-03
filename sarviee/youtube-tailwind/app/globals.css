@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  padding-top: 56px;
-}
-
 .tag_container {
   position: fixed;
   z-index: 1;
@@ -13,10 +9,14 @@ body {
   height: 56px;
   width: 100%;
   padding-left: 240px;
-  background: rgb(143, 215, 248);
+  background: rgb(255, 255, 255);
   align-items: center;
   display: flex;
+  white-space: nowrap;
   overflow-x: auto;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .tag_list {
@@ -52,7 +52,7 @@ nav {
   left: 0;
   top: 56px;
   bottom: 0;
-  border: 4px solid orange;
+  /*border: 4px solid orange;*/
   z-index: 20;
   background: white;
   overflow-y: auto;
@@ -83,6 +83,7 @@ nav li {
   /* background: lightgray; */
   align-items: center;
   border-radius: 10px;
+  gap: 5px;
 
   /* 小さい時 */
   /* padding: 16px 0px 14px;
