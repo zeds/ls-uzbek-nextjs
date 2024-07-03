@@ -1,8 +1,6 @@
 import Image from "next/image";
 import React from "react";
 
-// CSJ
-
 export default function Navbar() {
   const items = [
     { title: "ホーム", img: "./images/yt-home.svg" },
@@ -18,7 +16,7 @@ export default function Navbar() {
 
   return (
     <nav className="hidden md:flex md:w-[72px] md:py-0 md:px-1  md:flex-col fixed lg:w-[240px] left-0 top-14 bottom-0 z-20 bg-white  ">
-      <ul className="pl-[10px]">
+      <ul className="pl-[10px] ">
         {items.map((item, index) => (
           <>
             {item.title === "" ? (
@@ -26,7 +24,7 @@ export default function Navbar() {
             ) : (
               <li
                 key={index}
-                className="flex lg:text-[14px] font-medium lg:leading-4 text-(rgba[15,15,15,1]) lg:p-[10px]  items-center rounded-[10px] lg:gap-6 hover:bg-gray-200 md:flex-col md:justify-center  md:gap-0 md:text-[10px] md:leading-[14px] md:rounded-[10px] md:p-1  lg:flex-row lg:justify-start"
+                className="flex lg:text-[14px] font-medium lg:leading-4 text-[rgba(15,15,15,1)] lg:p-[10px]  items-center rounded-[10px] lg:gap-6 hover:bg-gray-200 md:flex-col md:justify-center  md:gap-0 md:text-[10px] md:leading-[14px] md:rounded-[10px] md:p-1  lg:flex-row lg:justify-start"
               >
                 <img src={item.img} alt="home" className="w-6 h-6 mb-[6px]" />
                 <span className="title ">{item.title} </span>
