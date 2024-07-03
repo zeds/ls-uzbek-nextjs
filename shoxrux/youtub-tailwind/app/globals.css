@@ -275,3 +275,13 @@ nav .title {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 }
+.tooltip-default{
+	position: relative;
+}
+.scope-tooltip{
+	position: absolute;
+	top: 20px;
+}
+#tooltip-default{
+	top: -10px;
+}

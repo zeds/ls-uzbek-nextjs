@@ -29,18 +29,25 @@ const Header = () => {
 
           {/* scope */}
           <button
-           data-tooltip-target="tooltip-default"
+            data-tooltip-target="tooltip-default"
             type="button"
-            className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
+            className="tooltip-default shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300"
           >
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
               src="images/scope.svg"
               alt=""
             ></img>
-            {/* <div className="scope-tooltip"><h1>searching</h1></div> */}
+            <div
+              id="tooltip-default"
+              role="tooltip"
+              className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+            >
+              Tooltip content
+              <div className="tooltip-arrow" data-popper-arrow></div>
+            </div>
           </button>
-         
+
           {/* mic */}
           <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
             <img

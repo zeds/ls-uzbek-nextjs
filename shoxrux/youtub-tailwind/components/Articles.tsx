@@ -47,8 +47,11 @@ export default function Articles() {
             <div className="user">かきくけこ</div>
             <div className="stats">さしすせそ</div>
           </div>
+
+          
         </div>
       ))}
+      
     </div>
   );
 }

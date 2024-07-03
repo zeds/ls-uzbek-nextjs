@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Tags from "@/components/Tags";
 import Articles from "@/components/Articles";
+import Tooltip from "./tooltip/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
