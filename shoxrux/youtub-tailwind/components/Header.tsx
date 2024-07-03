@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   return (
     <>
-      <div className="fixed z-10 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+      <div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
         <div className="flex items-center justify-center w-[169px] ">
           <div className="w-10 h-10 p-2 shrink-0">
             <img src="images/burger.svg" alt=""></img>
@@ -38,23 +38,17 @@ const Header = () => {
               src="images/scope.svg"
               alt=""
             ></img>
-            <div
-              id="tooltip-default"
-              role="tooltip"
-              className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-            >
-              Tooltip content
-              <div className="tooltip-arrow" data-popper-arrow></div>
-            </div>
+            
           </button>
 
           {/* mic */}
-          <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
+          <button className="tooltip shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
             <img
               className="flex rounded-full w-[24px]"
               src="images/mic.svg"
               alt=""
             ></img>
+            <span className="tooltip-text">音声で検索</span>
           </button>
         </div>
         <ul className="flex items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">

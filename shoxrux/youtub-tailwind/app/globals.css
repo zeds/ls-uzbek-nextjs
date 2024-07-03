@@ -285,3 +285,21 @@ nav .title {
 #tooltip-default{
 	top: -10px;
 }
+.tooltip:hover .tooltip-text {
+	opacity: 1;
+	visibility: visible;
+}
+
+.tooltip-text {
+	z-index: 10;
+    visibility: hidden;
+    position: absolute;
+    bottom: -45px;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 12px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
