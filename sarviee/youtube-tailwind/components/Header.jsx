@@ -24,32 +24,34 @@ const Header = () => {
             className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
           />
           {/* scope */}
-          <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300">
+          <button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300 tooltip">
             <img
               className="w-[24px] absolute right-4 bottom-1.5"
               src="scope.svg"
               alt=""
             />
+            <span className="tooltip-text">Search</span>
           </button>
           {/* mic */}
-          <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square">
-            <img className="flex rounded-full w-[24px]" src="mic.svg" alt="" />
+          <button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square relative tooltip">
+            <img
+              className="flex rounded-full w-[24px]"
+              src="images/mic.svg"
+              alt=""
+            ></img>
+            <span className="tooltip-text">音声で検索</span>
           </button>
         </div>
         <ul className="flex items-center justify-end w-[225px] h-[40px] shrink-0">
-          {/* search */}
-
-          {/* mic */}
-          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
-            <img className="" src="mic.svg" alt="" />
-          </li>
           {/* video */}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2 tooltip">
             <img className="" src="video.svg" alt=""></img>
+            <span className="tooltip-text">Video</span>
           </li>
           {/*bell*/}
-          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+          <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2 tooltip">
             <img className="" src="bell.svg" alt=""></img>
+            <span className="tooltip-text">Bell</span>
           </li>
           {/* Mr Tom */}
           <li className="flex items-center">
