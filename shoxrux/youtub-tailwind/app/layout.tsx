@@ -22,7 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="w-full h-dvh bg-sky-300">
+				<div className="w-full h-dvh">
 					<Header />
 					
 					<Tags />
