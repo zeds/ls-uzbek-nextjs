@@ -156,6 +156,26 @@ nav .title {
 	margin-top: 12px;
 	padding-top: 12px;
 }
+.tooltip:hover .tooltip-text {
+	opacity: 1;
+	visibility: visible;
+}
+
+.tooltip-text {
+	visibility: hidden;
+	position: absolute;
+	bottom: -45px;
+
+	display: inline-block;
+	white-space: nowrap;
+	padding: 10px;
+
+	font-size: 12px;
+	color: white;
+
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+}
 
 @media (width <= 680px) {
 	nav {
