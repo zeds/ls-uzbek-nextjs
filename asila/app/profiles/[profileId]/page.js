@@ -6,79 +6,98 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const Profile = () => {
-  const [dataSource, setDataSource] = useState({});
-  const supabase = createClient();
-  const profileId = usePathname().split("/")[2];
-  const route = useRouter();
+	const [dataSource, setDataSource] = useState({});
+	const supabase = createClient();
+	const profileId = usePathname().split("/")[2];
+	const route = useRouter();
 
-  useEffect(() => {
-    getProfile();
-    console.log("profileId=", profileId);
-  }, []);
+	useEffect(() => {
+		getProfile();
+		console.log("profileId=", profileId);
+	}, []);
 
-  const clickEdit = () => {
-    route.push(`/profiles/${profileId}/edit`);
-  };
+	const clickEdit = () => {
+		route.push(`/profiles/${profileId}/edit`);
+	};
 
-  const getProfile = useCallback(async () => {
-    try {
-      //   setLoading(true)
+	const getProfile = useCallback(async () => {
+		try {
+			//   setLoading(true)
 
-      const { data, error, status } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", profileId)
-        .single();
+			const { data, error, status } = await supabase
+				.from("profiles")
+				.select("*")
+				.eq("id", profileId)
+				.single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
+			if (error && status !== 406) {
+				throw error;
+			}
 
-      if (data) {
-        console.log("data = ", data);
-        setDataSource(data);
-      }
-    } catch (error) {
-      alert("Error loading user data!");
-    } finally {
-      //   setLoading(false)
-    }
-  }, []);
+			if (data) {
+				console.log("data = ", data);
+				setDataSource(data);
+			}
+		} catch (error) {
+			alert("Error loading user data!");
+		} finally {
+			//   setLoading(false)
+		}
+	}, []);
 
-  return (
-    <div className="w-full h-screen bg-blue-200 flex justify-center p-7 ">
-      {/* 576pxの外枠 */}
-      <div className="w-full max-w-xl bg-pink-200 rounded-3xl">
-        {/* アバター */}
-        <div className="w-full flex justify-center items-center mt-5 flex-col ">
-          <img
-            className="w-[100px] rounded-full"
-            src={dataSource.avatar_url}
-            alt=""
-          />
-          <div className="w-full justify-center flex flex-col  items-center">
-            <label className="h-[30px] mt-10 font-serif text-xl">
-              username: {dataSource.username}
-            </label>
-            <label className=" h-[30px] font-serif text-xl">
-              email: {dataSource.email}
-            </label>
-          </div>
-          <div className="flex justify-center items-center  gap-3  w-full mt-3">
-            {/* <button className="bg-blue-300 hover:bg-blue-500 text-black rounded-md p-2">
-              <Link href={`/profiles`}>プロフィール一覧へ</Link>
-            </button> */}
-            <button
-              onClick={clickEdit}
-              className=" p-2 bg-blue-300  hover:bg-blue-500  text-black rounded-md"
-            >
-              Edit Profile
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="pt-[56px] w-full h-screen bg-blue-300 flex justify-center">
+			{/* 576pxの外枠 */}
+			<div className="w-full max-w-xl  bg-gradient-to-r from-indigo-500">
+				<Link href={`/profiles`} className="underline">
+					プロフィール一覧へ
+				</Link>
+				{/* アバター */}
+				<div className="w-full flex justify-center items-center mt-5 flex-col">
+					<img className="w-[80px]" src={dataSource.avatar_url} alt="" />
+					<label className="w-full px-[100px] h-[30px] mt-10">
+						username: {dataSource.username}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						email: {dataSource.email}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						birthday: {dataSource.birthday}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						sex: {dataSource.sex}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						school: {dataSource.school}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						occupation: {dataSource.occupation}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						address: {dataSource.address}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						phone: {dataSource.phone}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						hobby: {dataSource.hobby}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						nationality: {dataSource.nationality}
+					</label>
+					<label className="w-full px-[100px] h-[30px] ">
+						introduce: {dataSource.introduce}
+					</label>
+					<button
+						onClick={clickEdit}
+						className="mt-5 p-2 bg-blue-500 text-white rounded-md"
+					>
+						プロフィールを編集
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Profile;

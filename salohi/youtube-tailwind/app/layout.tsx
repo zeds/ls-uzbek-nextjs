@@ -8,9 +8,9 @@ import Articles from "@/components/Articles";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
-	weight: "400",
+	weight: "500",
 	subsets: ["latin"],
-	fallback: ["arial", "sans-serif"],
+	fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -26,13 +26,13 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={roboto.className}>
-				<div className="w-full h-vh">
+				<div className="w-full h-dvh">
 					<Header />
 					<Tags />
 					<Navbar />
-					<Articles />
+					{/* <Articles /> */}
 
-					<main className="fixed top-[56px] left-0 bottom-0 w-full">
+					<main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
 						{children}
 					</main>
 				</div>

@@ -6,153 +6,16 @@ body {
 	padding-top: 56px;
 }
 
-.logo {
-	height: 100%;
-	background: blue;
-	padding: 18px 0;
-}
-
-.logo img {
-	height: 100%;
-}
-
-.tag-container {
-	position: fixed;
-	z-index: 1;
-	top: 56px;
-	height: 56px;
-	width: 100%;
-	padding-left: 240px;
-	background: red;
-	align-items: center;
-	display: flex;
-}
 .tag-list {
-	display: flex;
-	white-space: nowrap;
-	overflow-x: auto;
-	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-}
-.tag {
-	flex: 0 0 auto;
-	margin-right: 10px;
-	background: #f2f2f2;
-	font-weight: 500;
-	font-size: 14px;
-	color: #0f0f0f;
-	margin: 12px 12px 12px 0;
-	padding: 5px 12px;
-	border-radius: 8px;
-	height: 32px;
-	line-height: 23px;
-}
-.tag:hover {
-	cursor: pointer;
-	background: #e5e5e5;
-}
-
-/* === article ==== */
-
-.article-container {
-	padding-left: 240px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	border: 4px solid pink;
-	gap: 12px;
-	padding-top: 56px;
-	padding-right: 20px;
-}
-
-.hero {
-	position: relative;
-}
-
-.article {
-	border: 4px solid green;
-}
-
-.article img {
-	width: 100%;
-	height: 100%;
-	border-radius: 12px;
-}
-.time {
-	position: absolute;
-	right: 10px;
-	bottom: 5px;
-	background: rgba(0, 0, 0, 0.6);
-	color: white;
-	padding: 5px;
-	border-radius: 5px;
 }
 
 /* === side menu ==== */
 
 nav {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-
-	width: 216px;
-	left: 0;
-	top: 56px;
-	bottom: 0;
-	border: 4px solid orange;
-	z-index: 20;
-	background: white;
 	overflow-y: auto;
 	scrollbar-width: none;
-
-	/* 大きい時 */
-	width: 240px;
-	padding: 12px;
-
-	/* 小さい時 */
-	/* width: 72px;
-	padding: 0 4px; */
-}
-
-nav ul {
-	/* 大きい時 */
-	padding-right: 10px;
-
-	/* 小さい時 */
-	/* padding-right: 0px; */
-}
-
-nav li {
-	/* 大きい時 */
-	display: flex;
-	font-size: 14px;
-	font-weight: 500;
-	line-height: 20px;
-	color: rgba(15, 15, 15, 1);
-	padding: 10px 12px;
-	/* background: lightgray; */
-	align-items: center;
-	border-radius: 10px;
-	gap: 24px;
-
-	/* 小さい時 */
-	/* padding: 16px 0px 14px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: white;
-	font-size: 10px;
-	line-height: 14px;
-	border-radius: 10px; */
-}
-nav li img {
-	width: 24px;
-	height: 24px;
-	margin-bottom: 6px;
-}
-nav li:hover {
-	background: lightgray;
 }
 
 nav .title {
@@ -162,105 +25,30 @@ nav .title {
 	-webkit-line-clamp: 1;
 }
 
-.separator {
-	border-top: 1px solid lightgray;
-	margin-top: 12px;
-	padding-top: 12px;
+.Articletitle {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
-@media (width <= 680px) {
-	nav {
-		display: none;
-	}
-	.tag-container {
-		padding-left: 0px;
-	}
-	.article-container {
-		grid-template-columns: 1fr;
-		padding-left: 20px;
-	}
+.tooltip:hover .tooltip-text {
+	opacity: 1;
+	visibility: visible;
 }
 
-@media (680px < width <= 780px) {
-	nav {
-		display: none;
-	}
-	.tag-container {
-		padding-left: 0px;
-	}
-	.article-container {
-		grid-template-columns: 1fr 1fr;
-		padding-left: 0px;
-	}
-}
+.tooltip-text {
+	visibility: hidden;
+	position: absolute;
+	bottom: -45px;
 
-@media (780px < width <= 1080px) {
-	nav {
-		width: 72px;
-		padding: 0 4px;
-	}
-	nav ul {
-		padding-right: 0px;
-	}
-	nav li {
-		padding: 16px 0px 14px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background: white;
-		font-size: 10px;
-		line-height: 14px;
-		border-radius: 10px;
-		gap: 0;
-	}
-	.tag-container {
-		padding-left: 80px;
-	}
-	.article-container {
-		grid-template-columns: 1fr 1fr;
-		padding-left: 80px;
-	}
-}
+	display: inline-block;
+	white-space: nowrap;
+	padding: 10px;
 
-/* side menuが1列になるだけ */
-@media (1080px < width <= 1320px) {
-	nav {
-		width: 72px;
-		padding: 0 4px;
-	}
-	nav ul {
-		padding-right: 0px;
-	}
-	nav li {
-		padding: 16px 0px 14px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background: white;
-		font-size: 10px;
-		line-height: 14px;
-		border-radius: 10px;
-		gap: 0;
-	}
+	font-size: 12px;
+	color: white;
 
-	.tag-container {
-		padding-left: 80px;
-	}
-	.article-container {
-		padding-left: 80px;
-	}
-}
-
-@media (1320px < width <= 1570px) {
-	.article-container {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-}
-
-@media (1570px < width) {
-	.article-container {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
 }
