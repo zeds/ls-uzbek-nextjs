@@ -47,24 +47,26 @@ const Header = () => {
             <span className="tooltip-text">音声で検索</span>
           </button>
         </div>
-        <ul className="flex items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">
+        <ul className="flex relative items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">
           {/* search */}
-          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2 relative tooltip">
             <img className="" src="images/scope.svg" alt=""></img>
+            <span className="tooltip-text">検索</span>
           </li>
           {/* mic */}
-          <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+          <li className="flex relative shrink-0 sm:hidden w-[40px] h-[40px] p-2 tooltip cursor-pointer">
             <img className="" src="images/mic.svg" alt=""></img>
+            <span className="tooltip-text">音声で検索</span>
           </li>
 
           <>
             {/* video */}
-            <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2 tooltip cursor-pointer">
+            <li className="flex relative items-center shrink-0 w-[40px] h-[40px] p-2 tooltip cursor-pointer">
               <img className="" src="images/video.svg" alt=""></img>
               <span className="tooltip-text">作成</span>
             </li>
             {/*bell*/}
-            <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2 tooltip cursor-pointer">
+            <li className="flex relative items-center shrink-0 w-[40px] h-[40px] p-2 tooltip cursor-pointer">
               <img className="" src="images/bell.svg" alt=""></img>
               <span className="tooltip-text">通知</span>
             </li>
