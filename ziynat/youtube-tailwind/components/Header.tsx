@@ -15,7 +15,7 @@ const Header = () => {
           </div>
           <Link href={"/"}>
             <div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
-              <img src="images/youtube-logo.svg" alt=""></img>
+              <img src="images/logos--youtube.svg" alt=""></img>
             </div>
           </Link>
         </div>
@@ -73,8 +73,8 @@ const Header = () => {
           </>
           <img
             className="w-[32px] h-[32px] rounded-full cursor-pointer"
-            src="me.jpg"
-            alt="me"
+            src="images/icon.jpg"
+            alt="ziynat"
           ></img>
         </ul>
       </div>
