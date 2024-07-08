@@ -33,12 +33,26 @@ nav .title {
 }
 
 .tooltip:hover .tooltip-text {
-	opacity: 1;
+	/* opacity: 1; */
+	/* display: block; */
 	visibility: visible;
 }
 
-.tooltip-text {
+.tooltip .tooltip-text {
+	/* opacity: 0; */
+	/* display: none; */
 	visibility: hidden;
+	position: absolute;
+	white-space: nowrap;
+	bottom: -60px;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 10px;
+	border-radius: 7px;
+	font-size: 12px;
+	transition-duration: 0.5s;
+
+	/* visibility: hidden;
 	position: absolute;
 	bottom: -45px;
 
@@ -50,5 +64,5 @@ nav .title {
 	color: white;
 
 	background: rgba(0, 0, 0, 0.5);
-	border-radius: 5px;
+	border-radius: 5px; */
 }
