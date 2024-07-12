@@ -13,13 +13,17 @@ export default function Tags() {
   ];
 
   return (
-    // <div className="fixed w-full h-[56px] top-[56px] left-0 border-4 border-blue-400 flex gap-3 items-center">
-    <div className="media-scroller">
-      {tagName.map((item, index) => (
-        <div key={index} className="media-element">
-          {item.name}
-        </div>
-      ))}
+    <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 bg-white">
+      <div className="tag-list flex whitespace-nowrap overflow-x-scroll ">
+        {tagName.map((item, index) => (
+          <div
+            key={index}
+            className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-gray-300"
+          >
+            {item.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

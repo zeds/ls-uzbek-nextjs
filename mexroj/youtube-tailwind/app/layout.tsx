@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
+import Tags from "@/components/Tags";
+import Articles from "@/components/Articles";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -25,10 +28,13 @@ export default function RootLayout({
       <body className={roboto.className}>
         <div className="w-full h-dvh">
           <Header />
+          <Tags />
+          <Navbar />
+          {/* <Articles /> */}
 
-          <main className="top-[56px] w-full  border-4 border-blue-800">
-            {children}
-          </main>
+          {/* <main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800"> */}
+          {children}
+          {/* </main> */}
         </div>
       </body>
     </html>
