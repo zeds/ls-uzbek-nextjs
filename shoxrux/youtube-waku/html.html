@@ -1,0 +1,88 @@
+<!-- CSS yordamida yon navigatsiya panelini (navbar) "scrollable" qilish uchun quyidagi qadamlarni bajaring:
+
+1. Yon navigatsiya paneli uchun balandlik va kenglik o'rnating: Yon navigatsiya panelingiz uchun maxsus kenglik va balandlikni belgilab qo'ying. Bu panel o'lchamini aniqlaydi.
+
+2. CSS-da overflow xususiyatini qo'llang: overflow-y: auto yoki overflow: auto xususiyatlarini qo'llash orqali scroll ni yoqishingiz mumkin.
+
+Quyidagi misolda yon navigatsiya paneliga qanday qilib scrool qo'shish mumkinligini ko'rsatib beraman: -->
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Navbar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100vh; /* To'liq ekran balandligi */
+            width: 250px; /* Yon panel kengligi */
+            position: fixed; /* Doimiy joylashuv */
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-y: scroll; /* Vertikal scroll */
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+    <!-- Ko'proq linklar qo'shing -->
+    <a href="#link1">Link 1</a>
+    <a href="#link2">Link 2</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+    <a href="#link5">Link 5</a>
+    <a href="#link6">Link 6</a>
+    <a href="#link7">Link 7</a>
+    <a href="#link8">Link 8</a>
+    <a href="#link9">Link 9</a>
+    <a href="#link10">Link 10</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+    <a href="#link5">Link 5</a>
+    <a href="#link6">Link 6</a>
+    <a href="#link7">Link 7</a>
+    <a href="#link8">Link 8</a>
+    <a href="#link9">Link 9</a>
+    <a href="#link10">Link 10</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+    <a href="#link5">Link 5</a>
+    <a href="#link6">Link 6</a>
+    <a href="#link7">Link 7</a>
+    <a href="#link8">Link 8</a>
+    <a href="#link9">Link 9</a>
+    <a href="#link10">Link 10</a>
+</div>
+
+<div style="margin-left:260px; padding:20px;">
+    <h2>Scrollable Sidebar Example</h2>
+    <p>Asosiy kontent bu yerda joylashadi.</p>
+</div>
+
+</body>
+</html>
+<!-- Bu kodda .sidebar classi yordamida yon panel balandligi ekran balandligiga teng qilib belgilangan (height: 100vh). overflow-y: auto xususiyati vertikal scroll ni yoqadi. Shunday qilib, yon paneldagi kontent ekrandan ortib ketsa, scroll yordamida uni ko'rishingiz mumkin bo'ladi. -->

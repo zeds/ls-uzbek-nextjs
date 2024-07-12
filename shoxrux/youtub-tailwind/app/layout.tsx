@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Tags from "@/components/Tags";
 import Articles from "@/components/Articles";
+import Tooltip from "./tooltip/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="w-full h-dvh bg-sky-300">
+				<div className="w-full h-dvh">
 					<Header />
+					
 					<Tags />
 
-					<Articles />
+					<Articles  />
 					<Navbar />
 					<main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800">
 						{children}
