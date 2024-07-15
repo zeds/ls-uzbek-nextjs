@@ -1,6 +1,25 @@
 import Image from "next/image";
 
 export default function Home() {
+  const list = [
+    { name: "All" },
+    { name: "Music" },
+    { name: "Live" },
+    { name: "オーディオブック" },
+    { name: "フィットネス" },
+    { name: "最近アップロードされた動画" },
+    { name: "視聴済み" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+    { name: "新しい動画の発見" },
+  ];
+
   return (
     <div className="w-full h-dvh flex pt-14">
       <>
@@ -75,62 +94,13 @@ export default function Home() {
         nav
       </div>
       <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-[90px] xl:pl-[280px] bg-white">
-        <div className="tag-list flex whitespace-nowrap overflow-x-scroll">
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            All
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Mixes
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Genshin Impact
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Soundtracks
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Chill-out Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Japanese Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Soundtracks
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Chill-out Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Japanese Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Soundtracks
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Chill-out Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Japanese Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Indie Music
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Live
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Live
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Live
-          </div>
-          <div className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-black hover:text-white">
-            Live
-          </div>
-        </div>
+        <ul className="fixed w-full flex bg-red-400 pl-5 md:pl-[80px] xl:pl-[270px] gap-3 p-1 overflow-scroll hidden-scrollbar ">
+          {list.map((item, index) => (
+            <li className="bg-gray-300 p-2 whitespace-nowrap" key={index}>
+              {item.name}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="h-fit w-full grid grid-cols-1 md:pl-[80px] xl:pl-[280px] sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 pt-[60px]">
         <div className="border-solid border-4">
