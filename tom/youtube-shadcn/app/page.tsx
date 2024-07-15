@@ -66,6 +66,7 @@ export default function Home() {
 						</li>
 
 						<>
+							{/* あいえうお */}
 							{/* video */}
 							<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
 								<img className="" src="images/video.svg" alt=""></img>
