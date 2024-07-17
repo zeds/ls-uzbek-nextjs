@@ -95,7 +95,7 @@ export default function Home() {
 			</div>
 
 			{/* tag */}
-			<ul className="fixed w-full flex bg-red-400 pl-5 md:pl-[90px] xl:pl-[280px] gap-3 p-1 overflow-y-scroll hidden-scrollbar">
+			<ul className="fixed w-full flex bg-red-400 pl-5 md:pl-[90px] xl:pl-[280px] gap-3 py-1 pr-5 overflow-x-scroll hidden-scrollbar">
 				{list.map((item, index) => (
 					<li className="bg-gray-300 p-2 whitespace-nowrap" key={index}>
 						{item}
