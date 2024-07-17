@@ -45,7 +45,7 @@ export default function Articles() {
 	return (
 		// <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 bg-white">
 
-		<div className="grid gap-3 grid-cols-1 px-3 pt-14 sm:pl-3 md:pl-20 lg:pl-60 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+		<div className="grid gap-3 grid-cols-1 px-3 pt-28 sm:pl-3 md:pl-20 lg:pl-20 2xl:px-60 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
 			{dataSource.map((item, index) => (
 				<div key={index}>
 					<div className="relative">
@@ -55,6 +55,7 @@ export default function Articles() {
 							src={item.img_url}
 							alt="hero"
 							sizes="100vw"
+							className="rounded"
 							style={{ width: "100%", height: "auto" }}
 						/>
 						<div className="absolute bottom-[5px] right-1 bg-[rgba(0,0,0,0.6)] text-white p-[5px] rounded-[5px]">

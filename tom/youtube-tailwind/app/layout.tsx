@@ -27,9 +27,9 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={roboto.className}>
 				<div className="w-full h-dvh">
-					<Header />
+					{/* <Header />
 					<Tags />
-					<Navbar />
+					<Navbar /> */}
 					{/* <Articles /> */}
 
 					{/* <main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800"> */}
