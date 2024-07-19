@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import {
 	Cloud,
@@ -32,8 +34,15 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import Image from "next/image";
+import { useCounterStore } from "@/store";
 
 const Header = () => {
+	const router = useRouter();
+
+	const { changeText, isLogin, setLogin } = useCounterStore();
+
 	return (
 		<>
 			<div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
@@ -95,95 +104,107 @@ const Header = () => {
 							<img className="" src="images/bell.svg" alt=""></img>
 						</li>
 					</>
-					<DropdownMenu>
-						<DropdownMenuTrigger asChild>
-							<img
-								className="w-[32px] h-[32px] rounded-full cursor-pointer"
-								src="images/my foto.jpg"
-								alt="saxa"
-							></img>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent className="w-56">
-							<DropdownMenuLabel>My Account</DropdownMenuLabel>
-							<DropdownMenuSeparator />
-							<DropdownMenuGroup>
+					{isLogin ? (
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<img
+									className="w-[32px] h-[32px] rounded-full cursor-pointer"
+									src="tom.jpeg"
+									alt=""
+								></img>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="w-56 pt-5 mr-5">
+								<DropdownMenuGroup>
+									<DropdownMenuItem>
+										<div className="flex">
+											<div class="w-10 h-10 mr-4">
+												<img
+													className="rounded-full"
+													src="tom.jpeg"
+													alt="tom"
+												/>
+											</div>
+											<div>
+												<div>Tsutomu Okumura</div>
+												<div>@tom</div>
+												<div className="text-[#095ED5] mt-2">
+													チャンネルを表示
+												</div>
+											</div>
+										</div>
+									</DropdownMenuItem>
+									<DropdownMenuSeparator />
+
+									<DropdownMenuItem>
+										<Link
+											href={`/profiles/`}
+											className="flex items-center"
+										>
+											<div className="w-6 h-6 mr-4">
+												<img src="/google.svg" alt="google" />
+											</div>
+											<span>マイプロフィール</span>
+										</Link>
+									</DropdownMenuItem>
+								</DropdownMenuGroup>
+								<DropdownMenuGroup>
+									<DropdownMenuSub>
+										<DropdownMenuSubTrigger>
+											<div className="w-6 h-6 mr-4">
+												<Image
+													width={36}
+													height={36}
+													src="/changeAccount.svg"
+													alt="changeAccount"
+												/>
+											</div>
+											<span>アカウントを切り替える</span>
+										</DropdownMenuSubTrigger>
+										<DropdownMenuPortal>
+											<DropdownMenuSubContent>
+												<DropdownMenuItem>
+													<Mail className="mr-2 h-4 w-4" />
+													<span>Email</span>
+												</DropdownMenuItem>
+												<DropdownMenuItem>
+													<MessageSquare className="mr-2 h-4 w-4" />
+													<span>Message</span>
+												</DropdownMenuItem>
+												<DropdownMenuSeparator />
+												<DropdownMenuItem>
+													<PlusCircle className="mr-2 h-4 w-4" />
+													<span>More...</span>
+												</DropdownMenuItem>
+											</DropdownMenuSubContent>
+										</DropdownMenuPortal>
+									</DropdownMenuSub>
+								</DropdownMenuGroup>
+								<DropdownMenuSeparator />
 								<DropdownMenuItem>
-									<User className="mr-2 h-4 w-4" />
-									<span>Profile</span>
-									<DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+									<div className="flex w-full">
+										<div className="w-6 h-6 mr-4">
+											<img src="/logout.svg" alt="logout" />
+										</div>
+										<span>ログアウト</span>
+									</div>
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<CreditCard className="mr-2 h-4 w-4" />
-									<span>Billing</span>
-									<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Settings className="mr-2 h-4 w-4" />
-									<span>Settings</span>
-									<DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Keyboard className="mr-2 h-4 w-4" />
-									<span>Keyboard shortcuts</span>
-									<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-								</DropdownMenuItem>
-							</DropdownMenuGroup>
-							<DropdownMenuSeparator />
-							<DropdownMenuGroup>
-								<DropdownMenuItem>
-									<Users className="mr-2 h-4 w-4" />
-									<span>Team</span>
-								</DropdownMenuItem>
-								<DropdownMenuSub>
-									<DropdownMenuSubTrigger>
-										<UserPlus className="mr-2 h-4 w-4" />
-										<span>Invite users</span>
-									</DropdownMenuSubTrigger>
-									<DropdownMenuPortal>
-										<DropdownMenuSubContent>
-											<DropdownMenuItem>
-												<Mail className="mr-2 h-4 w-4" />
-												<span>Email</span>
-											</DropdownMenuItem>
-											<DropdownMenuItem>
-												<MessageSquare className="mr-2 h-4 w-4" />
-												<span>Message</span>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem>
-												<PlusCircle className="mr-2 h-4 w-4" />
-												<span>More...</span>
-											</DropdownMenuItem>
-										</DropdownMenuSubContent>
-									</DropdownMenuPortal>
-								</DropdownMenuSub>
-								<DropdownMenuItem>
-									<Plus className="mr-2 h-4 w-4" />
-									<span>New Team</span>
-									<DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-								</DropdownMenuItem>
-							</DropdownMenuGroup>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem>
-								<Github className="mr-2 h-4 w-4" />
-								<span>GitHub</span>
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<LifeBuoy className="mr-2 h-4 w-4" />
-								<span>Support</span>
-							</DropdownMenuItem>
-							<DropdownMenuItem disabled>
-								<Cloud className="mr-2 h-4 w-4" />
-								<span>API</span>
-							</DropdownMenuItem>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem>
-								<LogOut className="mr-2 h-4 w-4" />
-								<span>Log out</span>
-								<DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-							</DropdownMenuItem>
-						</DropdownMenuContent>
-					</DropdownMenu>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					) : (
+						<div
+							className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+							onClick={() => router.push("/login")}
+						>
+							<Image
+								className=""
+								src={"/logout-avatar.svg"}
+								alt={"setting.svg"}
+								width={30}
+								height={30}
+							/>
+							<span className="text-[rgba(8,94,212,1)]">ログイン</span>
+						</div>
+					)}
 				</ul>
 			</div>
 		</>
