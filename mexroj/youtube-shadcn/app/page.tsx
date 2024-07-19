@@ -25,6 +25,18 @@ const list = [
   "新しい動画の発見",
 ];
 
+const navItems = [
+  { title: "ホーム", img: "./images/yt-home.svg" },
+  { title: "ショート", img: "./images/yt-short.svg" },
+  { title: "登録チャンネル", img: "./images/yt-r-channel.svg" },
+  { title: "YouTube Music", img: "./images/yt-r-channel.svg" },
+  { title: "", img: "" },
+  { title: "チャンネル", img: "./images/yt-channel.svg" },
+  { title: "履歴", img: "./images/yt-history.svg" },
+  { title: "再生リスト", img: "./images/yt-play-list.svg" },
+  { title: "再生した動画", img: "./images/yt-my-movie.svg" },
+];
+
 export default function Home() {
   const [dataSource, setDataSource] = useState<articleProp[]>([]);
 
@@ -56,20 +68,8 @@ export default function Home() {
     getArticles();
   }, []);
 
-  const navItems = [
-    { title: "ホーム", img: "./images/yt-home.svg" },
-    { title: "ショート", img: "./images/yt-short.svg" },
-    { title: "登録チャンネル", img: "./images/yt-r-channel.svg" },
-    { title: "YouTube Music", img: "./images/yt-r-channel.svg" },
-    { title: "", img: "" },
-    { title: "チャンネル", img: "./images/yt-channel.svg" },
-    { title: "履歴", img: "./images/yt-history.svg" },
-    { title: "再生リスト", img: "./images/yt-play-list.svg" },
-    { title: "再生した動画", img: "./images/yt-my-movie.svg" },
-  ];
-
   return (
-    <div className="w-full h-full flex pt-14">
+    <div className="w-full h-full flex pt-14 hidden-scrollbar">
       {/* navbar */}
       <nav className="hidden md:flex md:w-[72px] md:py-0 md:px-1  md:flex-col fixed lg:w-[240px] left-0 top-14 bottom-0 z-20 bg-white  ">
         <ul className="pl-[10px] ">
@@ -103,7 +103,7 @@ export default function Home() {
         </ul>
 
         {/* articles */}
-        <div className="grid gap-3  px-4 md:pl-20 lg:pl-60 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid gap-3  px-4 md:pl-20 lg:pl-60 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 hidden-scrollbar overflow-y-scroll">
           {dataSource.map((item, index) => (
             <div key={index}>
               <Link href={"./videoplay"}>

@@ -35,12 +35,6 @@ nav .title {
   -webkit-line-clamp: 1;
 }
 
-.Articletitle {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
 .tooltip:hover .tooltip-text {
   opacity: 1;
   visibility: visible;
