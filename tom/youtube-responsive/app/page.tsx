@@ -1,15 +1,110 @@
 import Image from "next/image";
 
+const list = [
+	"すべて",
+	"ライブ",
+	"オーディオブック",
+	"観光",
+	"フィットネス",
+	"最近アップロードされた動画",
+	"視聴済み",
+	"新しい動画の発見",
+];
+
 export default function Home() {
 	return (
 		<div className="w-full h-dvh bg-sky-300 flex pt-14 pr-5">
-			<div className="fixed top-0 bg-gray-400 w-full h-14 z-20">
-				ヘッダー
-			</div>
+			<>
+				<div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+					<div className="flex items-center justify-center w-[169px] ">
+						<div className="w-10 h-10 p-2 shrink-0">
+							<img src="images/burger.svg" alt=""></img>
+						</div>
+						{/* <Link href={"/"}> */}
+						<div className="w-[127px] h-[56px] py-[18px] pl-[16px] pr-[14px] shrink-0">
+							<img src="images/youtube-logo.svg" alt=""></img>
+						</div>
+						{/* </Link> */}
+					</div>
+					<div className="ml-[90px] w-full max-w-[732px] h-[40px] hidden sm:flex justify-end">
+						{/* search */}
+						<input
+							type="text"
+							placeholder="検索"
+							className="pl-4 h-[40px] w-full max-w-[536px] rounded-l-full outline outline-gray-300"
+						></input>
+
+						{/* scope */}
+						<button className="shrink-0 w-[64px] h-[40px] bg-gray-200 relative rounded-r-full border-2 border-solid outline outline-gray-300 tooltip">
+							<img
+								className="w-[24px] absolute right-4 bottom-1.5"
+								src="images/scope.svg"
+								alt=""
+							></img>
+							<span className="tooltip-text">検索</span>
+						</button>
+
+						{/* mic */}
+						<button className="shrink-0 ml-[12px] w-[40px] h-[40px] rounded-full bg-gray-300 flex items-center justify-center aspect-square relative tooltip">
+							<img
+								className="flex rounded-full w-[24px]"
+								src="images/mic.svg"
+								alt=""
+							></img>
+							<span className="tooltip-text">音声で検索</span>
+						</button>
+					</div>
+					<ul className="flex items-center justify-end w-[225px] h-[40px] pr-3  shrink-0">
+						{/* search */}
+						<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+							<img className="" src="images/scope.svg" alt=""></img>
+						</li>
+						{/* mic */}
+						<li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
+							<img className="" src="images/mic.svg" alt=""></img>
+						</li>
+
+						<>
+							{/* video */}
+							<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+								<img className="" src="images/video.svg" alt=""></img>
+							</li>
+							{/*bell*/}
+							<li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
+								<img className="" src="images/bell.svg" alt=""></img>
+							</li>
+						</>
+						<img
+							className="w-[32px] h-[32px] rounded-full cursor-pointer"
+							src="images/my foto.jpg"
+							alt="saxa"
+						></img>
+					</ul>
+				</div>
+			</>
+
 			<div className="fixed z-20 h-dvh hidden md:block md:w-[80px] xl:w-[270px] bg-pink-300">
-				nav
+				<nav>
+					<ul>
+						<li className="flex px-[12px] items-center  bg-red-500 py-3 text-[14px] h-[40px] gap-6">
+							<img src="images/yt-home.svg" alt="home" />
+							<div>ホーム</div>
+						</li>
+					</ul>
+				</nav>
 			</div>
-			<div className="bg-green-300 h-fit w-full grid grid-cols-1 pl-5 md:pl-[80px] xl:pl-[270px] sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
+
+			{/* tag */}
+			<ul className="fixed w-full flex bg-red-400 pl-5 md:pl-[90px] xl:pl-[280px] gap-3 py-1 pr-5 overflow-x-scroll hidden-scrollbar">
+				{list.map((item, index) => (
+					<li className="bg-gray-300 p-2 whitespace-nowrap" key={index}>
+						{item}
+					</li>
+				))}
+			</ul>
+
+			{/* articles */}
+			<div className="bg-green-300 pt-[70px] h-fit w-full grid grid-cols-1 pl-5 md:pl-[90px] xl:pl-[280px] sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
 				<div className="bg-red-300">
 					<div className="relative">
 						<img src="diana.webp" alt="diana" />

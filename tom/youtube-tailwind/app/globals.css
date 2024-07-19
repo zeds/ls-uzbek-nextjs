@@ -2,67 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	padding-top: 56px;
-}
-
-.tag-list {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-/* === side menu ==== */
-
-nav {
-	overflow-y: auto;
-	scrollbar-width: none;
-}
-
-nav .title {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-}
-
-.Articletitle {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-}
-
-.tooltip:hover .tooltip-text {
-	/* opacity: 1; */
-	/* display: block; */
-	visibility: visible;
-}
-
-.tooltip .tooltip-text {
-	/* opacity: 0; */
-	/* display: none; */
-	visibility: hidden;
-	position: absolute;
-	white-space: nowrap;
-	bottom: -60px;
-	background: rgba(0, 0, 0, 0.6);
-	color: white;
-	padding: 10px;
-	border-radius: 7px;
-	font-size: 12px;
-	transition-duration: 0.5s;
-
-	/* visibility: hidden;
-	position: absolute;
-	bottom: -45px;
-
-	display: inline-block;
-	white-space: nowrap;
-	padding: 10px;
-
-	font-size: 12px;
-	color: white;
-
-	background: rgba(0, 0, 0, 0.5);
-	border-radius: 5px; */
+@layer utilities {
+	.hidden-scrollbar {
+		-ms-overflow-style: none; /* IE, Edge 対応 */
+		scrollbar-width: none; /* Firefox 対応 */
+	}
+	.hidden-scrollbar::-webkit-scrollbar {
+		/* Chrome, Safari 対応 */
+		display: none;
+	}
 }
