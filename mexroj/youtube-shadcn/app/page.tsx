@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 // import "./global.css";
 
 type articleProp = {
@@ -12,6 +13,17 @@ type articleProp = {
   user_name: string;
   stats: string;
 };
+
+const list = [
+  "すべて",
+  "ライブ",
+  "オーディオブック",
+  "観光",
+  "フィットネス",
+  "最近アップロードされた動画",
+  "視聴済み",
+  "新しい動画の発見",
+];
 
 export default function Home() {
   const [dataSource, setDataSource] = useState<articleProp[]>([]);
@@ -43,17 +55,6 @@ export default function Home() {
   useEffect(() => {
     getArticles();
   }, []);
-
-  const tagName = [
-    { name: "すべて" },
-    { name: "音楽" },
-    { name: "ライブ" },
-    { name: "オーディオブック" },
-    { name: "フィットネス" },
-    { name: "最近アップロードされた動画" },
-    { name: "視聴済み" },
-    { name: "新しい動画の発見" },
-  ];
 
   const navItems = [
     { title: "ホーム", img: "./images/yt-home.svg" },
@@ -93,16 +94,13 @@ export default function Home() {
       {/* main */}
       <div>
         {/* tags */}
-        <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 bg-white overflow-scroll hidden-scrollbar">
-          {tagName.map((item, index) => (
-            <div
-              key={index}
-              className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
-            >
-              {item.name}
-            </div>
+        <ul className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 overflow-y-scroll hidden-scrollbar bg-white">
+          {list.map((item, index) => (
+            <li key={index}>
+              <Button>{item}</Button>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* articles */}
         <div className="grid gap-3  px-4 md:pl-20 lg:pl-60 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -118,9 +116,9 @@ export default function Home() {
                     sizes="100vw"
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <div className="absolute bottom-[5px] right-1 bg-[rgba(0,0,0,0.6)] text-white p-[5px] rounded-[5px]">
+                  <span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
                     10:00
-                  </div>
+                  </span>
                 </div>
               </Link>
 
