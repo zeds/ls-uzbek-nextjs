@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Header from "@/components/Header";
 // import "./global.css";
 
 type articleProp = {
@@ -13,17 +13,6 @@ type articleProp = {
   user_name: string;
   stats: string;
 };
-
-const list = [
-  "すべて",
-  "ライブ",
-  "オーディオブック",
-  "観光",
-  "フィットネス",
-  "最近アップロードされた動画",
-  "視聴済み",
-  "新しい動画の発見",
-];
 
 export default function Home() {
   const [dataSource, setDataSource] = useState<articleProp[]>([]);
@@ -56,6 +45,17 @@ export default function Home() {
     getArticles();
   }, []);
 
+  const tagName = [
+    { name: "すべて" },
+    { name: "音楽" },
+    { name: "ライブ" },
+    { name: "オーディオブック" },
+    { name: "フィットネス" },
+    { name: "最近アップロードされた動画" },
+    { name: "視聴済み" },
+    { name: "新しい動画の発見" },
+  ];
+
   const navItems = [
     { title: "ホーム", img: "./images/yt-home.svg" },
     { title: "ショート", img: "./images/yt-short.svg" },
@@ -70,6 +70,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-full flex pt-14">
+      <Header/>
       {/* navbar */}
       <nav className="hidden md:flex md:w-[72px] md:py-0 md:px-1  md:flex-col fixed lg:w-[240px] left-0 top-14 bottom-0 z-20 bg-white  ">
         <ul className="pl-[10px] ">
@@ -94,13 +95,16 @@ export default function Home() {
       {/* main */}
       <div>
         {/* tags */}
-        <ul className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 overflow-y-scroll hidden-scrollbar bg-white">
-          {list.map((item, index) => (
-            <li key={index}>
-              <Button>{item}</Button>
-            </li>
+        <div className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 bg-white overflow-scroll hidden-scrollbar">
+          {tagName.map((item, index) => (
+            <div
+              key={index}
+              className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
+            >
+              {item.name}
+            </div>
           ))}
-        </ul>
+        </div>
 
         {/* articles */}
         <div className="grid gap-3  px-4 md:pl-20 lg:pl-60 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -116,9 +120,9 @@ export default function Home() {
                     sizes="100vw"
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
+                  <div className="absolute bottom-[5px] right-1 bg-[rgba(0,0,0,0.6)] text-white p-[5px] rounded-[5px]">
                     10:00
-                  </span>
+                  </div>
                 </div>
               </Link>
 
