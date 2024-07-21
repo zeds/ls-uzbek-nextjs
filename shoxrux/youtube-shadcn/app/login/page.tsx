@@ -12,8 +12,8 @@ const Page = () => {
     <div className="w-full h-dvh bg-gray-100 flex justify-center items-center">
       <div className="w-[500px] h-fit rounded-md bg-blue-300 p-5">
         <div className="my-6 text-center">ログイン</div>
-        <Input className="mb-5" />
-        <Input />
+        <Input className="mb-5" type="email" placeholder="Email" />
+        <Input type="password" placeholder="Password"/>
         <div className="text-center my-2"> {message}</div>
         <Button className="w-full mb-2">ログイン</Button>
         <div className="w-[80%] m-auto rounded-md text-center my-2 bg-green-200">
