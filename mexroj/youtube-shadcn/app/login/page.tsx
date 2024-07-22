@@ -16,18 +16,10 @@ const Page = () => {
         <div className="text-red-500">{message}</div>
 
         <Button className="mt-5 w-full">ログイン</Button>
-        <Link
-          href={"/"}
-          className="underline text-blue-500 text-sm mt-1 cursor-pointer"
-        >
-          パスワードを忘れた
-        </Link>
-        <Link
-          href={"/"}
-          className="flex justify-end  underline text-blue-500 text-sm mt-3 cursor-pointer"
-        >
-          新規登録はこちら
-        </Link>
+        <div className="flex justify-between items-center my-5">
+          <Link href={"/"}>パスワードを忘れた</Link>
+          <Link href={"/"}>新規登録はこちら</Link>
+        </div>
       </div>
     </div>
   );
