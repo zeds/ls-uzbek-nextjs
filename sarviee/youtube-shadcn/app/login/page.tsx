@@ -17,13 +17,13 @@ const Page = () => {
 
         <Button className="mt-5 w-full">ログイン</Button>
         <Link href={"/"} className="text-blue-500 text-sm mt-1 cursor-pointer">
-          パスワードを忘れた
+          Forgot Password
         </Link>
         <Link
           href={"/"}
           className="flex  text-blue-500 text-sm mt-3 cursor-pointer"
         >
-          新規登録はこちら
+          Sign up
         </Link>
       </div>
     </div>
