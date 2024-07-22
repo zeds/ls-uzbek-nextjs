@@ -6,7 +6,7 @@ import { Router } from "next/router";
 import React, { useState } from "react";
 
 const Page = () => {
-  const [message, setMessage] = useState("6文字以上入力する必要があります");
+  const [message, setMessage] = useState("Enter at least 6 symbols");
   return (
     <div className="pt-[56px] w-full h-dvh bg-blue-300 justify-center items-center flex">
       <div className="flex flex-col w-[600px] h-fit bg-gray-200 p-4 rounded-sm rounded">
