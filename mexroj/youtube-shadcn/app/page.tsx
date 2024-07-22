@@ -92,17 +92,17 @@ export default function Home() {
       </nav>
 
       {/* main */}
-      <div>
-        {/* tags */}
-        <ul className="fixed z-10 top-14 h-14 w-full items-center flex sm:pl-0 md:pl-20 lg:pl-60 overflow-y-scroll hidden-scrollbar bg-white">
-          {list.map((item, index) => (
-            <li key={index}>
-              <Button>{item}</Button>
-            </li>
-          ))}
-        </ul>
+      {/* tags */}
+      <ul className="fixed w-full flex md:pl-[80px] xl:pl-[240px] gap-3 p-1 z-10 bg-white overflow-y-scroll hidden-scrollbar">
+        {list.map((item, index) => (
+          <li key={index}>
+            <Button>{item}</Button>
+          </li>
+        ))}
+      </ul>
 
-        {/* articles */}
+      {/* articles */}
+      <div className="pt-14">
         <div className="grid gap-3  px-4 md:pl-20 lg:pl-60 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {dataSource.map((item, index) => (
             <div key={index}>
@@ -116,9 +116,9 @@ export default function Home() {
                     sizes="100vw"
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
+                  <div className="absolute bottom-[5px] right-1 bg-[rgba(0,0,0,0.6)] text-white p-[5px] rounded-[5px]">
                     10:00
-                  </span>
+                  </div>
                 </div>
               </Link>
 
