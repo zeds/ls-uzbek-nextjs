@@ -1,4 +1,7 @@
+"use client";
 import React from "react";
+import { useCounterStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 import {
   Cloud,
@@ -36,6 +39,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Header = () => {
+  const { changeText, isLogin, setLogin } = useCounterStore();
+  const router = useRouter();
+
   return (
     <>
       <div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
@@ -86,7 +92,6 @@ const Header = () => {
           <li className="flex shrink-0 sm:hidden w-[40px] h-[40px] p-2">
             <img className="" src="images/mic.svg" alt=""></img>
           </li>
-
           <>
             {/* video */}
             <li className="flex items-center shrink-0 w-[40px] h-[40px] p-2">
@@ -97,85 +102,102 @@ const Header = () => {
               <img className="" src="images/bell.svg" alt=""></img>
             </li>
           </>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <img
-                className="w-[32px] h-[32px] rounded-full cursor-pointer"
-                src="images/icon.jpg"
-                alt=""
-              ></img>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 pt-5 mr-5">
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <div className="flex">
-                    <div className="w-10 h-10 mr-4">
-                      <img
-                        className="rounded-full"
-                        src="images/icon.jpg"
-                        alt="ziynat"
-                      />
-                    </div>
-                    <div>
-                      <div>Ziynat Abdukodirova</div>
-                      <div>@ziynatzl56</div>
-                      <div className="text-[#095ED5] mt-2">
-                        チャンネルを表示
+          {isLogin ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <img
+                  className="w-[32px] h-[32px] rounded-full cursor-pointer"
+                  src="icon.jpg"
+                  alt=""
+                ></img>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[300px]" align="end">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <div className="flex">
+                      <div className="w-10 h-10 mr-4">
+                        <img
+                          className="rounded-full"
+                          src="icon.jpg"
+                          alt="ziynat"
+                        />
+                      </div>
+                      <div>
+                        <div>Ziynat Abdukodirova</div>
+                        <div>@ziynatzl56</div>
+                        <div className="text-[#095ED5] mt-2">
+                          チャンネルを表示
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </DropdownMenuItem>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
                 <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link href={`/profiles/`} className="flex items-center">
+                      <div className="w-6 h-6 mr-4">
+                        <img src="/google.svg" alt="google" />
+                      </div>
+                      <span>マイプロフィル</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <div className="w-6 h-6 mr-4">
+                        <Image
+                          width={36}
+                          height={36}
+                          src="/changeAccount.svg"
+                          alt="changeAccount"
+                        />
+                      </div>
+                      <span>アカウントを切り替える</span>
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuItem>
+                          <Mail className="mr-2 h-4 w-4" />
+                          <span>Email</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          <span>Message</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <span>More...</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <Link href={`/profiles/`} className="flex items-center">
+                  <div className="flex w-full" onClick={() => setLogin(false)}>
                     <div className="w-6 h-6 mr-4">
-                      <img src="/google.svg" alt="google" />
+                      <img src="/logout.svg" alt="logout" />
                     </div>
-                    <span>マイプロフィル</span>
-                  </Link>
-                  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>
-                    <div className="w-6 h-6 mr-4">
-                      <Image
-                        width={36}
-                        height={36}
-                        src="/changeAccount.svg"
-                        alt="changeAccount"
-                      />
-                    </div>
-                    <span>アカウントを切り替える</span>
-                  </DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuItem>
-                        <Mail className="mr-2 h-4 w-4" />
-                        <span>Email</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <MessageSquare className="mr-2 h-4 w-4" />
-                        <span>Message</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        <span>More...</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-              </DropdownMenuGroup>
-              <DropdownMenuItem>
-                <div className="flex w-full">
-                  <div className="w-6 h-6 mr-4">
-                    <img src="/logout.svg" alt="logout" />
+                    <span>ログアウト</span>
                   </div>
-                  <span>ログアウト</span>
-                </div>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div
+              className="flex border-[1px] px-2 py-1 rounded-full items-center cursor-pointer"
+              onClick={() => router.push("/login")}
+            >
+              <Image
+                className=""
+                src={"/logout-avatar.svg"}
+                alt={"setting.svg"}
+                width={30}
+                height={30}
+              />
+              <span className="text-[rgba(8,94,212,1)]">ログイン</span>
+            </div>
+          )}
         </ul>
       </div>
     </>

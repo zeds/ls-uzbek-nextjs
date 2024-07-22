@@ -76,7 +76,7 @@ export default function Home() {
             </>
             <img
               className="w-[32px] h-[32px] rounded-full cursor-pointer"
-              src="images/youtubeprofile.jpg"
+              src="images/icon.jpg"
               alt="ziynat"
             ></img>
           </ul>
