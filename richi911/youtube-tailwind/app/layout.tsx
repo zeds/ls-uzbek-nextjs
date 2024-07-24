@@ -30,11 +30,11 @@ export default function RootLayout({
           <Header />
           <Tags />
           <Navbar />
-          <Articles />
+          {/* <Articles /> */}
 
-          <main className="fixed top-[56px] left-0 bottom-0 w-full">
-            {children}
-          </main>
+          {/* <main className="fixed top-[56px] left-0 bottom-0 w-full border-4 border-blue-800"> */}
+          {children}
+          {/* </main> */}
         </div>
       </body>
     </html>

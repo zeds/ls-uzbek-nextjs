@@ -41,7 +41,12 @@ import { useCounterStore } from "@/store";
 const Header = () => {
   const router = useRouter();
 
-  const { changeText, isLogin, setLogin } = useCounterStore();
+  const { changeText, isLogin, setLogin, user } = useCounterStore();
+
+  const clickLogout = () => {
+    setLogin(false);
+    router.push("/signup");
+  };
 
   return (
     <>
@@ -109,24 +114,24 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <img
                   className="w-[32px] h-[32px] rounded-full cursor-pointer"
-                  src="tom.jpeg"
-                  alt=""
+                  src="mexroj.jpg"
+                  alt="mexroj"
                 ></img>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 pt-5 mr-5">
+              <DropdownMenuContent className="w-80 pt-5 mr-6">
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <div className="flex">
                       <div className="w-10 h-10 mr-4">
                         <img
                           className="rounded-full"
-                          src="tom.jpeg"
-                          alt="tom"
+                          src="mexroj.jpg"
+                          alt="mexroj"
                         />
                       </div>
                       <div>
-                        <div>Tsutomu Okumura</div>
-                        <div>@tom</div>
+                        <div>{user.username}</div>
+                        <div>{user.email}</div>
                         <div className="text-[#095ED5] mt-2">
                           チャンネルを表示
                         </div>
@@ -136,7 +141,7 @@ const Header = () => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuItem>
-                    <Link href={`/profiles/`} className="flex items-center">
+                    <Link href={`/profiles`} className="flex items-center">
                       <div className="w-6 h-6 mr-4">
                         <img src="/google.svg" alt="google" />
                       </div>
@@ -178,7 +183,7 @@ const Header = () => {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <div className="flex w-full">
+                  <div className="flex w-full" onClick={() => clickLogout()}>
                     <div className="w-6 h-6 mr-4">
                       <img src="/logout.svg" alt="logout" />
                     </div>
