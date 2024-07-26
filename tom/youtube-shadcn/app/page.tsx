@@ -1,5 +1,9 @@
+"use client";
 import Header from "@/components/Header";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { useCounterStore } from "@/store";
 
 const list = [
 	"すべて",
@@ -12,7 +16,57 @@ const list = [
 	"新しい動画の発見",
 ];
 
+type ArticleProp = {
+	id: string;
+	img_url: string;
+	title: string;
+	user_name: string;
+	stats: string;
+};
+
 export default function Home() {
+	const supabase = createClient();
+	const [dataSource, setDataSource] = useState<ArticleProp[]>([]);
+
+	const { user, isLogin, text } = useCounterStore();
+
+	const getArticles = async (keyword: any) => {
+		try {
+			console.log("searchKeyword=", keyword); // piano
+			keyword = "%" + keyword + "%"; // %piano%
+
+			const { data, error, status } = await supabase
+				.from("articles")
+				.select("*")
+				// .eq("user_id", user.id)
+				.ilike("title", keyword) // %piano%
+				.order("id", { ascending: false });
+
+			if (error && status !== 406) {
+				throw error;
+			}
+
+			if (data) {
+				console.log("data = ", data);
+				setDataSource(data);
+			}
+		} catch (error) {
+			alert("Error loading user data!");
+		} finally {
+			//   setLoading(false)
+		}
+	};
+
+	useEffect(() => {
+		console.log("1. top useEffect isLogin=", isLogin);
+		getArticles("");
+	}, [isLogin]);
+
+	useEffect(() => {
+		console.log("2. top useEffect isLogin=", isLogin);
+		getArticles("");
+	}, []);
+
 	return (
 		<div className="w-full h-dvh bg-sky-300 flex pt-14 pr-5">
 			<Header />
@@ -39,7 +93,30 @@ export default function Home() {
 
 			{/* articles */}
 			<div className="bg-green-300 pt-[70px] h-fit w-full grid grid-cols-1 pl-5 md:pl-[90px] xl:pl-[280px] sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
-				<div className="bg-red-300">
+				{dataSource.map((item, index) => (
+					<div key={index} className="bg-red-300">
+						<div className="relative">
+							<img className="w-full" src={item.img_url} alt="diana" />
+							<span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
+								10:00
+							</span>
+						</div>
+						<div className="flex">
+							<img
+								className="w-9 h-9 rounded-full"
+								src="tom.jpeg"
+								alt="tom"
+							/>
+							<div>
+								<div>{item.title}</div>
+								<div>{item.user_name}</div>
+								<div>{item.stats}</div>
+							</div>
+						</div>
+					</div>
+				))}
+
+				{/* <div className="bg-red-300">
 					<div className="relative">
 						<img src="diana.webp" alt="diana" />
 						<span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
@@ -58,53 +135,7 @@ export default function Home() {
 							<div>stats</div>
 						</div>
 					</div>
-				</div>
-				<div className="bg-red-300">
-					<div className="relative">
-						<img src="diana.webp" alt="diana" />
-						<span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
-							10:00
-						</span>
-					</div>
-					<div className="flex">
-						<img
-							className="w-9 h-9 rounded-full"
-							src="tom.jpeg"
-							alt="tom"
-						/>
-						<div>
-							<div>title</div>
-							<div>user</div>
-							<div>stats</div>
-						</div>
-					</div>
-				</div>
-				<div className="bg-red-300">
-					<div className="relative">
-						<img src="diana.webp" alt="diana" />
-						<span className="absolute bottom-0 right-0 bg-[rgba(0,0,0,0.7)] text-white p-1">
-							10:00
-						</span>
-					</div>
-					<div className="flex">
-						<img
-							className="w-9 h-9 rounded-full"
-							src="tom.jpeg"
-							alt="tom"
-						/>
-						<div>
-							<div>title</div>
-							<div>user</div>
-							<div>stats</div>
-						</div>
-					</div>
-				</div>
-				<div className="bg-red-300">item-2</div>
-				<div className="bg-red-300">item-3</div>
-				<div className="bg-red-300">item-4</div>
-				<div className="bg-red-300">item-5</div>
-				<div className="bg-red-300">item-6</div>
-				<div className="bg-red-300">item-7</div>
+				</div> */}
 			</div>
 		</div>
 	);

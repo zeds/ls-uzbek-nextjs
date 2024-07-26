@@ -37,7 +37,7 @@ import {
 import Link from "next/link";
 
 const Header = () => {
-	const { changeText, isLogin, setLogin } = useCounterStore();
+	const { changeText, isLogin, setLogin, user, setUser } = useCounterStore();
 	const router = useRouter();
 
 	return (
@@ -121,8 +121,8 @@ const Header = () => {
 											/>
 										</div>
 										<div>
-											<div>Tsutomu Okumura</div>
-											<div>@tomzed39</div>
+											<div>{user.username}</div>
+											<div>{user.email}</div>
 											<div className="text-[#095ED5] mt-2">
 												チャンネルを表示
 											</div>
