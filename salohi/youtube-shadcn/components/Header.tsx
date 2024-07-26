@@ -45,7 +45,7 @@ const Header = () => {
 
 	return (
 		<>
-			<div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+			<div className="fixed z-30 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
 				<div className="flex items-center justify-center w-[169px] ">
 					<div className="w-10 h-10 p-2 shrink-0">
 						<img src="images/burger.svg" alt=""></img>
