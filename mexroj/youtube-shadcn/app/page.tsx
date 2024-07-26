@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useCounterStore } from "@/store";
 // import "./global.css";
 
 type articleProp = {
@@ -27,6 +28,7 @@ const list = [
 
 export default function Home() {
   const [dataSource, setDataSource] = useState<articleProp[]>([]);
+  const { setLogin, setUser, user } = useCounterStore();
 
   const supabase = createClient();
 
@@ -35,6 +37,7 @@ export default function Home() {
       const { data, error, status } = await supabase
         .from("articles")
         .select("*")
+        .eq("user_id", user.id)
         .order("id", { ascending: false });
 
       if (error && status !== 406) {
