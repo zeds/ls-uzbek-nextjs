@@ -18,6 +18,11 @@ const Page = () => {
   const route = useRouter();
 
   const clickLogin = async () => {
+    if (password.length < 6) {
+      setMessage("パスワードは6文字以上である必要があります");
+      return;
+    }
+
     let { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -57,7 +62,7 @@ const Page = () => {
 
   return (
     <div className="flex w-full h-dvh bg-red-200 justify-center items-center">
-      <div className="w-[600px] h-fit bg-green-200 p-5 mt-5">
+      <div className="w-[700px] h-fit bg-green-300 p-5 mt-5">
         <div className="my-5 text-center">ログイン</div>
         <Input
           type="email"
@@ -72,15 +77,18 @@ const Page = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="パスワード"
         />
-        <div className="my-2 text-center">{message}</div>
+        <div className="my-2 text-center text-red-600">{message}</div>
         <Button onClick={() => clickLogin()} className="w-full mt-5">
           ログイン
         </Button>
-        <div className="my-2 w-full justify-center flex">
-          <Link href="/forgot-password">パスワードを忘れた方はこちら</Link>
-        </div>
-        <div className="my-2w-full justify-center flex">
-          <Link href="/signup">アカウントを作成する</Link>
+        <div className="my-2 w-full  justify-between flex">
+          <Link href="/forgot-password" className="underline text-blue-700">
+            パスワードを忘れた方はこちら
+          </Link>
+
+          <Link href="/signup" className="underline text-blue-700">
+            アカウントを作成する
+          </Link>
         </div>
       </div>
     </div>
