@@ -28,32 +28,39 @@ const list = [
 
 export default function Home() {
   const [dataSource, setDataSource] = useState<articleProp[]>([]);
-  const { setLogin, setUser, user } = useCounterStore();
+  const { isLogin, setLogin, setUser, user } = useCounterStore();
 
   const supabase = createClient();
 
   const getArticles = useCallback(async () => {
     try {
-      if (setLogin(true)) {
+      if (isLogin) {
         const { data, error, status } = await supabase
           .from("articles")
-          .eq("user_id", user.id)
           .select("*")
+          .eq("user_id", user.id)
           .order("id", { ascending: false });
+        if (error && status !== 406) {
+          throw error;
+        }
+
+        if (data) {
+          console.log("data = ", data);
+          setDataSource(data);
+        }
       } else {
         const { data, error, status } = await supabase
           .from("articles")
           .select("*")
           .order("id", { ascending: false });
-      }
+        if (error && status !== 406) {
+          throw error;
+        }
 
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        console.log("data = ", data);
-        setDataSource(data);
+        if (data) {
+          console.log("data = ", data);
+          setDataSource(data);
+        }
       }
     } catch (error) {
       alert("Error loading user data!");
