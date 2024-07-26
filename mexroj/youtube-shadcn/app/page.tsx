@@ -34,11 +34,18 @@ export default function Home() {
 
   const getArticles = useCallback(async () => {
     try {
-      const { data, error, status } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("id", { ascending: false });
+      if (setLogin(true)) {
+        const { data, error, status } = await supabase
+          .from("articles")
+          .eq("user_id", user.id)
+          .select("*")
+          .order("id", { ascending: false });
+      } else {
+        const { data, error, status } = await supabase
+          .from("articles")
+          .select("*")
+          .order("id", { ascending: false });
+      }
 
       if (error && status !== 406) {
         throw error;
@@ -58,6 +65,14 @@ export default function Home() {
   useEffect(() => {
     getArticles();
   }, []);
+
+  // const idArticles = useCallback(async () => {
+  //   const { data, error, status } = await supabase
+  //         .from("articles")
+  //         .select("*")
+  //         .eq("user_id", user.id)
+  //         .order("id", { ascending: false }); }
+  //         [] );
 
   const navItems = [
     { title: "ホーム", img: "./images/yt-home.svg" },

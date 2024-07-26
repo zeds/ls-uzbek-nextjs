@@ -45,7 +45,7 @@ const Header = () => {
 
   const clickLogout = () => {
     setLogin(false);
-    router.push("/signup");
+    router.push("/");
   };
 
   return (
