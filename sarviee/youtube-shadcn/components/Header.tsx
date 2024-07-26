@@ -125,8 +125,8 @@ const Header = () => {
                         />
                       </div>
                       <div>
-                        <div>Tsutomu Okumura</div>
-                        <div>@tom</div>
+                        <div>{user.username}</div>
+                        <div>{user.email}</div>
                         <div className="text-[#095ED5] mt-2">
                           チャンネルを表示
                         </div>
