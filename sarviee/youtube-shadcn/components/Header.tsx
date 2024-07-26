@@ -125,8 +125,8 @@ const Header = () => {
                         />
                       </div>
                       <div>
-                        <div>{user.username}</div>
-                        <div>{user.email}</div>
+                        <div>Tom</div>
+                        <div>gmailadres</div>
                         <div className="text-[#095ED5] mt-2">
                           チャンネルを表示
                         </div>
