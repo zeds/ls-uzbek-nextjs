@@ -30,106 +30,37 @@ export default function Home() {
 
 	const { user, isLogin, text } = useCounterStore();
 
-	const getArticles = useCallback(
-		async (keyword: any) => {
-			try {
-				console.log("searchKeyword=", keyword); // piano
-				keyword = "%" + keyword + "%"; // %piano%
+	const getArticles = async (keyword: any) => {
+		try {
+			console.log("searchKeyword=", keyword); // piano
+			keyword = "%" + keyword + "%"; // %piano%
 
-				console.log("user=", user);
-				console.log("top isLogin=", isLogin);
+			const { data, error, status } = await supabase
+				.from("articles")
+				.select("*")
+				// .eq("user_id", user.id)
+				.ilike("title", keyword) // %piano%
+				.order("id", { ascending: false });
 
-				if (isLogin) {
-					const { data, error, status } = await supabase
-						.from("articles")
-						.select("*")
-						.eq("user_id", user.id)
-						.ilike("title", keyword) // %piano%
-						.order("id", { ascending: false });
-
-					if (error && status !== 406) {
-						throw error;
-					}
-
-					if (data) {
-						console.log("data = ", data);
-						setDataSource(data);
-					}
-				} else {
-					const { data, error, status } = await supabase
-						.from("articles")
-						.select("*")
-						.ilike("title", keyword) // %piano%
-						.order("id", { ascending: false });
-
-					if (error && status !== 406) {
-						throw error;
-					}
-
-					if (data) {
-						console.log("data = ", data);
-						setDataSource(data);
-					}
-				}
-			} catch (error) {
-				alert("Error loading user data!");
-			} finally {
-				//   setLoading(false)
+			if (error && status !== 406) {
+				throw error;
 			}
-		},
-		[supabase]
-	); // Added dependency array here
+
+			if (data) {
+				console.log("data = ", data);
+				setDataSource(data);
+			}
+		} catch (error) {
+			alert("Error loading user data!");
+		} finally {
+			//   setLoading(false)
+		}
+	};
 
 	useEffect(() => {
 		console.log("1. top useEffect isLogin=", isLogin);
-		async function hoge(keyword: any) {
-			try {
-				console.log("searchKeyword=", keyword); // piano
-				keyword = "%" + keyword + "%"; // %piano%
-
-				console.log("user=", user);
-				console.log("top isLogin=", isLogin);
-
-				if (isLogin) {
-					const { data, error, status } = await supabase
-						.from("articles")
-						.select("*")
-						.eq("user_id", user.id)
-						.ilike("title", keyword) // %piano%
-						.order("id", { ascending: false });
-
-					if (error && status !== 406) {
-						throw error;
-					}
-
-					if (data) {
-						console.log("data = ", data);
-						setDataSource(data);
-					}
-				} else {
-					const { data, error, status } = await supabase
-						.from("articles")
-						.select("*")
-						.ilike("title", keyword) // %piano%
-						.order("id", { ascending: false });
-
-					if (error && status !== 406) {
-						throw error;
-					}
-
-					if (data) {
-						console.log("data = ", data);
-						setDataSource(data);
-					}
-				}
-			} catch (error) {
-				alert("Error loading user data!");
-			} finally {
-				//   setLoading(false)
-			}
-		}
-		hoge("");
-	}, [isLogin, supabase, user]);
+		getArticles("");
+	}, [isLogin]);
 
 	useEffect(() => {
 		console.log("2. top useEffect isLogin=", isLogin);
