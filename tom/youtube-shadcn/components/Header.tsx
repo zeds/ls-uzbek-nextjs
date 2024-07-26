@@ -37,11 +37,18 @@ import {
 import Link from "next/link";
 
 const Header = () => {
-	const { changeText, isLogin, setLogin } = useCounterStore();
+	const { changeText, isLogin, setLogin, user, setUser } = useCounterStore();
 	const router = useRouter();
 
 	return (
 		<div className="fixed z-20 flex h-[56px] top-0 w-full justify-between items-center bg-white px-3">
+			<div>
+				{isLogin ? (
+					<div>ログインしてます</div>
+				) : (
+					<div>ログインしてません</div>
+				)}
+			</div>
 			<div className="flex items-center justify-center w-[169px] ">
 				<div className="w-10 h-10 p-2 shrink-0">
 					<img src="images/burger.svg" alt=""></img>
@@ -121,8 +128,8 @@ const Header = () => {
 											/>
 										</div>
 										<div>
-											<div>Tsutomu Okumura</div>
-											<div>@tomzed39</div>
+											<div>{user.username}</div>
+											<div>{user.email}</div>
 											<div className="text-[#095ED5] mt-2">
 												チャンネルを表示
 											</div>

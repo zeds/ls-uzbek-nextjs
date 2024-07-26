@@ -1,18 +1,28 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-export const useCounterStore = create((set, get) => ({
+
+type StoreProp = {
+	isLogin: boolean;
+	text: string;
+	changeText: (arg0: string) => void;
+	setLogin: (arg0: boolean) => void;
+	setUser: (arg0: any) => void;
+	user: any;
+};
+
+export const useCounterStore = create<StoreProp>()((set, get) => ({
 	isLogin: false,
 	text: "",
-	changeText: (value) => {
+	changeText: (value: string) => {
 		console.log("changeText=", value);
 		set({ text: value });
 	},
-	setLogin: (value) => {
+	setLogin: (value: boolean) => {
 		set({ isLogin: value });
 	},
-	setUser: (payload) => set({ user: payload }),
+	setUser: (payload: any) => set({ user: payload }),
 	user: {
-		id: "aiueo",
+		id: "",
 		username: "",
 		email: "",
 		avatar_url: "",
