@@ -61,8 +61,8 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="flex w-full h-dvh bg-red-200 justify-center items-center">
-      <div className="w-[700px] h-fit bg-green-300 p-5 mt-5">
+    <div className="flex w-full h-dvh justify-center items-center">
+      <div className="w-[700px] h-fit bg-gray-300 p-5 mt-5">
         <div className="my-5 text-center">ログイン</div>
         <Input
           type="email"

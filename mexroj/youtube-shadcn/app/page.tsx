@@ -118,10 +118,10 @@ export default function Home() {
 
       {/* main */}
       {/* tags */}
-      <ul className="fixed w-full flex md:pl-[80px] xl:pl-[240px] gap-3 p-1 z-10 bg-white overflow-y-scroll hidden-scrollbar">
+      <ul className="fixed w-full flex md:pl-[80px] xl:pl-[240px] gap-3 p-1 z-10 bg-white  overflow-y-scroll hidden-scrollbar">
         {list.map((item, index) => (
           <li key={index}>
-            <Button>{item}</Button>
+            <Button className="bg-stone-400">{item}</Button>
           </li>
         ))}
       </ul>

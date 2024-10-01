@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 type articleProp = {
   img: string;
@@ -53,8 +54,8 @@ export default function Page() {
   ];
 
   return (
-    <div className=" grid grid-cols-1 lg:grid-cols-2 ">
-      <div className="w-full p-4">
+    <div className=" grid grid-cols-2 ">
+      <div className=" p-4 ">
         <img src="https://i.ytimg.com/vi/rBadprLH1jM/hq720.jpg" alt="video" />
         <div className="text-2xl">
           ИСТОРИИ СПАСАТЕЛЯ! Страшные истории на ночь.Страшилки на ночь.
@@ -75,16 +76,13 @@ export default function Page() {
       <div className="relative">
         {/* tags */}
         <div className="fixed  z-10 top-14 h-14 w-full items-center flex  bg-white">
-          <div className="tag-list flex whitespace-nowrap overflow-x-scroll ">
+          <ul className="fixed w-full flex md:pl-[80px] xl:pl-[240px] gap-3 p-1 z-10 bg-white  overflow-y-scroll hidden-scrollbar">
             {tagName.map((item, index) => (
-              <div
-                key={index}
-                className="flex mr-[10px] bg-gray-200 font-medium text-[14px] text-#0f0f0f  py-[5px] px-3 rounded-[8px] h-8 leading-[23px] hover:cursor-pointer hover:bg-red-300"
-              >
-                {item.name}
-              </div>
+              <li key={index}>
+                <Button className="bg-stone-400">{item.name}</Button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         {/* recomments */}
